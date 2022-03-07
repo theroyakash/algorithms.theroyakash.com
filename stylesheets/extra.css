@@ -1,0 +1,15 @@
+@font-face {
+	font-family: "Computer Modern";
+	src: url("./cmunrm.woff");
+	font-weight: regular;
+}
+
+@font-face {
+	font-family: "Computer Modern";
+	src: url("./cmunbx.woff");
+	font-weight: bold;
+}
+
+:root{
+    --md-text-font: "Computer Modern";
+}
