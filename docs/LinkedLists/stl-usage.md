@@ -1,9 +1,12 @@
 ---
 title: Linked List STL operations
+tags:
+    - `STL`
 ---
 
-# Linked List from `STL`.
+# Linked List STL operations
 Instead of implementing linked list from scratch, better to use the standard template library. C++ `stl` has 2 linked lists,
+
 - [`std::list<typename>` is a doubly-linked list data structure](https://en.cppreference.com/w/cpp/container/list), and
 - [`std::forward_list<typename>` is a singly-linked list data structure](https://en.cppreference.com/w/cpp/container/forward_list).
 

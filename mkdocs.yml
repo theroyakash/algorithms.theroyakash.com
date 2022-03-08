@@ -1,13 +1,32 @@
 site_name: theroyakash algorithms
+site_url: https://algorithms.theroyakash.com
+
+nav:
+  - Introduction: index.md
+  - Freebies: freebies.md
+  - Arrays: 
+    - Intro to Arrays: ./arrays/arrays.md
+    - Array Problems: ./arrays/array-problems.md
+    - Sliding window problems: ./arrays/sliding-window.md
+  - Stacks:
+    - Stacks Usage: ./stacks/usage.md
+    - Stack Problems: ./stacks/problems.md
+  - Linked List: 
+    - Linked List STL Usage: ./LinkedLists/stl-usage.md
+    - Linked List problems: ./LinkedLists/problems.md
+  - Binary Search: ./bss.md
+
 theme:
   name: material
   logo: images/logo.png
   features:
     - navigation.expand
+    - navigation.top
   palette:
     primary: white
+    accent: indigo
   font:
-    code: Courier Prime
+    code: Ubuntu Mono
   icon:
     admonition:
       note: octicons/tag-16
@@ -25,6 +44,7 @@ theme:
 
 plugins:
   - search
+  - tags
 
 markdown_extensions:
   - meta
@@ -32,12 +52,20 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.arithmatex:
       generic: true
   - admonition
   - pymdownx.details
-
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - attr_list
+  - md_in_html
+  
 extra_css:
   - stylesheets/extra.css
 

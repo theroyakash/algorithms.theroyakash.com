@@ -1,6 +1,8 @@
 ---
 title: Linked List Problems
+description: Most of the Linked List Problems asked in interviews [for SDE I and II].
 ---
+
 # Linked List problems
 ## Implement Linked list and write `reverse()`
 ## Problem Statement
