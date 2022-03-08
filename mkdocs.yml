@@ -4,6 +4,7 @@ site_url: https://algorithms.theroyakash.com
 nav:
   - Introduction: index.md
   - Freebies: freebies.md
+  - Blind 75 Problems: ./blind75.md
   - Arrays: 
     - Intro to Arrays: ./arrays/arrays.md
     - Array Problems: ./arrays/array-problems.md
@@ -24,7 +25,7 @@ theme:
     - navigation.top
   palette:
     primary: white
-    accent: indigo
+    accent: red
   font:
     code: Ubuntu Mono
   icon:
