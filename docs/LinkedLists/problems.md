@@ -1036,10 +1036,95 @@ public:
     }
 };
 ```
-## Reverse Nodes in k-Group
+## Find the starting point of cycle in linked list
+[Problem on Leetcode $\to$](https://leetcode.com/problems/linked-list-cycle-ii/)
 ### Problem Statement
-Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.
+Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
 
-k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+![image](../images/llcyclestartingpoint.png)
 
-You may not alter the values in the list's nodes, only nodes themselves may be changed.
+Do not modify the linked list.
+
+### Constraints
+- The number of the nodes in the list is in the range [$0$, $10^4$].
+- $-10^5$ <= `Node.val` <= $10^5$
+- You solve it using $O(1)$ (i.e. constant) memory,
+
+### Linked List definition
+```cpp
+// Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+```
+
+### Approach with extra space
+- We can hash all the nodes while traversing the list,
+- If we find a `node == nullptr` we **stop** and say **NO** cycle present.
+- Else if we find a node that has been already hashed then we say this is the entry point of the cycle.
+
+#### Pseudocode for this apporach
+```cpp
+ListNode* hash = HashTable();
+ListNode* node = LinkedListHead();
+
+while(node){
+    if (hash.contains(node)){
+        return node;
+    }
+    hash(node);
+    node = node.next;
+}
+```
+
+#### Time and Space complexity
+- Time is $O(N)$,
+- Space is $O(N)$ for the hashtable.
+
+### Approach with no extra space
+- First we run the sub-routine of `if_has_loop()`,
+- That algorithm stops (if linked list has loop) when the slow and the fast pointer points to the same node.
+- If you observe closely this point will be equi-distant from the node where the cycle started as the head to the node where the cycle started.
+    ![image](../images/equidistant.png)
+- Now we can advance a ref. pointer to head and the slow or fast pointer by 1 until they meet.
+
+#### C++ Code
+```cpp
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        
+        if (head == nullptr or head->next == nullptr) return nullptr;
+        
+        ListNode *slowPointer = head;
+        ListNode *fastPointer = head;
+        
+        ListNode *traveller = head;
+        
+        while((fastPointer!=nullptr) and (fastPointer->next!=nullptr)){
+            slowPointer = slowPointer->next;
+            fastPointer = fastPointer->next->next;
+            
+            if (slowPointer == fastPointer){
+                break;
+            }
+        }
+        
+        if ((fastPointer) and (fastPointer->next)){
+            // Means there is cycle in the list
+
+            while(slowPointer != traveller){
+                slowPointer = slowPointer->next;
+                traveller = traveller->next;
+            }
+            
+            return traveller;
+        }
+        
+        // Means there is no cycle in the list
+        return nullptr;
+    }
+};
+```
