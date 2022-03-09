@@ -982,17 +982,78 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reverse-nodes-in-k-group" class="md-nav__link">
-    Reverse Nodes in k-Group
+  <a href="#find-the-starting-point-of-cycle-in-linked-list" class="md-nav__link">
+    Find the starting point of cycle in linked list
   </a>
   
-    <nav class="md-nav" aria-label="Reverse Nodes in k-Group">
+    <nav class="md-nav" aria-label="Find the starting point of cycle in linked list">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#problem-statement_8" class="md-nav__link">
     Problem Statement
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints_1" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-list-definition" class="md-nav__link">
+    Linked List definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-with-extra-space" class="md-nav__link">
+    Approach with extra space
+  </a>
+  
+    <nav class="md-nav" aria-label="Approach with extra space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode-for-this-apporach" class="md-nav__link">
+    Pseudocode for this apporach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity_5" class="md-nav__link">
+    Time and Space complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-with-no-extra-space" class="md-nav__link">
+    Approach with no extra space
+  </a>
+  
+    <nav class="md-nav" aria-label="Approach with no extra space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-code_5" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1595,17 +1656,78 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reverse-nodes-in-k-group" class="md-nav__link">
-    Reverse Nodes in k-Group
+  <a href="#find-the-starting-point-of-cycle-in-linked-list" class="md-nav__link">
+    Find the starting point of cycle in linked list
   </a>
   
-    <nav class="md-nav" aria-label="Reverse Nodes in k-Group">
+    <nav class="md-nav" aria-label="Find the starting point of cycle in linked list">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#problem-statement_8" class="md-nav__link">
     Problem Statement
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints_1" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-list-definition" class="md-nav__link">
+    Linked List definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-with-extra-space" class="md-nav__link">
+    Approach with extra space
+  </a>
+  
+    <nav class="md-nav" aria-label="Approach with extra space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pseudocode-for-this-apporach" class="md-nav__link">
+    Pseudocode for this apporach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity_5" class="md-nav__link">
+    Time and Space complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-with-no-extra-space" class="md-nav__link">
+    Approach with no extra space
+  </a>
+  
+    <nav class="md-nav" aria-label="Approach with no extra space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-code_5" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2597,11 +2719,94 @@ Similarly [1] and n = 1 will return []. </p>
 <a id="__codelineno-19-90" name="__codelineno-19-90" href="#__codelineno-19-90"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-19-91" name="__codelineno-19-91" href="#__codelineno-19-91"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
-<h2 id="reverse-nodes-in-k-group">Reverse Nodes in k-Group</h2>
+<h2 id="find-the-starting-point-of-cycle-in-linked-list">Find the starting point of cycle in linked list</h2>
+<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
 <h3 id="problem-statement_8">Problem Statement</h3>
-<p>Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.</p>
-<p>k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.</p>
-<p>You may not alter the values in the list's nodes, only nodes themselves may be changed.</p>
+<p>Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
+<p><img alt="image" src="../../images/llcyclestartingpoint.png" /></p>
+<p>Do not modify the linked list.</p>
+<h3 id="constraints_1">Constraints</h3>
+<ul>
+<li>The number of the nodes in the list is in the range [<span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(10^4\)</span>].</li>
+<li><span class="arithmatex">\(-10^5\)</span> &lt;= <code>Node.val</code> &lt;= <span class="arithmatex">\(10^5\)</span></li>
+<li>You solve it using <span class="arithmatex">\(O(1)\)</span> (i.e. constant) memory,</li>
+</ul>
+<h3 id="linked-list-definition">Linked List definition</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">// Definition for singly-linked list.</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">ListNode</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="approach-with-extra-space">Approach with extra space</h3>
+<ul>
+<li>We can hash all the nodes while traversing the list,</li>
+<li>If we find a <code>node == nullptr</code> we <strong>stop</strong> and say <strong>NO</strong> cycle present.</li>
+<li>Else if we find a node that has been already hashed then we say this is the entry point of the cycle.</li>
+</ul>
+<h4 id="pseudocode-for-this-apporach">Pseudocode for this apporach</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HashTable</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LinkedListHead</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="k">while</span><span class="p">(</span><span class="n">node</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hash</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">node</span><span class="p">)){</span><span class="w"></span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="n">hash</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="time-and-space-complexity_5">Time and Space complexity</h4>
+<ul>
+<li>Time is <span class="arithmatex">\(O(N)\)</span>,</li>
+<li>Space is <span class="arithmatex">\(O(N)\)</span> for the hashtable.</li>
+</ul>
+<h3 id="approach-with-no-extra-space">Approach with no extra space</h3>
+<ul>
+<li>First we run the sub-routine of <code>if_has_loop()</code>,</li>
+<li>That algorithm stops (if linked list has loop) when the slow and the fast pointer points to the same node.</li>
+<li>If you observe closely this point will be equi-distant from the node where the cycle started as the head to the node where the cycle started.
+    <img alt="image" src="../../images/equidistant.png" /></li>
+<li>Now we can advance a ref. pointer to head and the slow or fast pointer by 1 until they meet.</li>
+</ul>
+<h4 id="c-code_5">C++ Code</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">detectCycle</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">slowPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">fastPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">traveller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="w">        </span><span class="k">while</span><span class="p">((</span><span class="n">fastPointer</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="p">(</span><span class="n">fastPointer</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">)){</span><span class="w"></span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="w">            </span><span class="n">slowPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slowPointer</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="w">            </span><span class="n">fastPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fastPointer</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">slowPointer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">fastPointer</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">fastPointer</span><span class="p">)</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="p">(</span><span class="n">fastPointer</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)){</span><span class="w"></span>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="w">            </span><span class="c1">// Means there is cycle in the list</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">slowPointer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">traveller</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a><span class="w">                </span><span class="n">slowPointer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slowPointer</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a><span class="w">                </span><span class="n">traveller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traveller</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-22-28" name="__codelineno-22-28" href="#__codelineno-22-28"></a>
+<a id="__codelineno-22-29" name="__codelineno-22-29" href="#__codelineno-22-29"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">traveller</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-30" name="__codelineno-22-30" href="#__codelineno-22-30"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-22-31" name="__codelineno-22-31" href="#__codelineno-22-31"></a>
+<a id="__codelineno-22-32" name="__codelineno-22-32" href="#__codelineno-22-32"></a><span class="w">        </span><span class="c1">// Means there is no cycle in the list</span>
+<a id="__codelineno-22-33" name="__codelineno-22-33" href="#__codelineno-22-33"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-22-34" name="__codelineno-22-34" href="#__codelineno-22-34"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-22-35" name="__codelineno-22-35" href="#__codelineno-22-35"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
 
               
             </article>
