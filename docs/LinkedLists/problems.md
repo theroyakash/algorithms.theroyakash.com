@@ -1061,6 +1061,8 @@ struct ListNode {
 ```
 
 ### Approach with extra space
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CYhSFVVJ880" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 - We can hash all the nodes while traversing the list,
 - If we find a `node == nullptr` we **stop** and say **NO** cycle present.
 - Else if we find a node that has been already hashed then we say this is the entry point of the cycle.
@@ -1084,11 +1086,16 @@ while(node){
 - Space is $O(N)$ for the hashtable.
 
 ### Approach with no extra space
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OjdeaMp8ey8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 - First we run the sub-routine of `if_has_loop()`,
 - That algorithm stops (if linked list has loop) when the slow and the fast pointer points to the same node.
 - If you observe closely this point will be equi-distant from the node where the cycle started as the head to the node where the cycle started.
     ![image](../images/equidistant.png)
 - Now we can advance a ref. pointer to head and the slow or fast pointer by 1 until they meet.
+
+### Video for intuition
+The following is a video explaining why this apporach works?
 
 #### C++ Code
 ```cpp
