@@ -13,6 +13,7 @@ Implement Linked list and write `reverse()` method that reverse the list in-plac
 ### Approach
 Using variables we'll reverse the list in $O(N)$ time and $O(1)$ space.
 ### C++ Code for Linked List
+
 ```cpp
 #include <iostream>
 
@@ -1132,6 +1133,88 @@ public:
         
         // Means there is no cycle in the list
         return nullptr;
+    }
+};
+```
+## Given the head of a linked list, rotate the list to the right by k places
+### Problem Statement
+Given the head of a linked list, rotate the list to the right by k places.
+
+!!! note "Test case examples"
+    Input: head = `[1,2,3,4,5]`, k = 2
+    Output: `[4,5,1,2,3]`
+
+    Input: head = [0,1,2], k = 4
+    Output: [2,0,1]
+
+### Constraints:
+1. The number of nodes in the list is in the range $[0, 500]$
+2. $-100$ <= `Node.val` <= $100$
+3. $0$ <= k <= $2 * 10^9$
+
+### Approach
+- First of all the thing is if the size of the linked list is $K$ then doing exactly K rotation is essentially doing nothing. For example
+    ![image](../images/3rotation.png)
+- So total of $k \text{ mod size of the list}$ meaningful rotations are actually happening. This is the way we can reduce the high $2 * 10^9$ number down to the range $0 \to 500$ the size of the list.
+- Now armed with this knowledge, we can think of what it means to be rotating the list?
+    ![image](../images/llrotation2.png)
+    - In the above picture observe that rotating this list by 2 step is actually setting the $\text{size} - K^{th}$ element's next = `NULL`,
+    - and add the last `2` elements to the front of the list.
+- We can approach this via the following way:
+    - First set the final element's next = `firstNode`.
+    - Now set the point where it **supposed** to be the new head by breaking off the `prevNode`'s next = `NULL`.
+
+
+### C++ Code
+```cpp
+class Solution {
+private:
+    pair<int, ListNode *> getSizeAndLastNode(ListNode *head){
+        int size = 0;
+        ListNode *headref = head;
+        
+        while(headref->next){
+            size++;
+            headref = headref->next;
+        }
+        
+        size++;
+
+        return make_pair(size, headref);
+    }
+
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        
+        if (head == NULL || head->next == NULL) {
+            return head;
+        }
+        
+        pair<int, ListNode*> p = getSizeAndLastNode(head);
+        
+        int size = p.first;
+        ListNode *last = p.second;
+        
+        
+        int numberOfRotation = k % size;  // Number of effective rotation
+        
+        // now last points to the last node
+        // making it full circle
+        last -> next = head;
+        
+        // figure out the break point?
+        int breakPoint = size - numberOfRotation;
+        
+        int index = 1;
+        while(index!=breakPoint){
+            index++;
+            head = head -> next;
+        }
+        
+        ListNode *newHead = head->next;
+        head->next = nullptr;
+        
+        return newHead;
     }
 };
 ```
