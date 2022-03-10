@@ -6,16 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="One of my favorite data structure is binary heaps.">
       
       
-        <link rel="canonical" href="https://algorithms.theroyakash.com/blind75/">
+      
+        <link rel="canonical" href="https://algorithms.theroyakash.com/heap-pq/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
-        <title>Blind 75 Problem Set - theroyakash algorithms</title>
+        <title>Priority Queues and Binary Heaps - theroyakash algorithms</title>
       
     
     
@@ -67,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blind-75-problems" class="md-skip">
+        <a href="#priority-queues-and-binary-heaps" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blind 75 Problem Set
+              Priority Queues and Binary Heaps
             
           </span>
         </div>
@@ -212,21 +214,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../blind75/" class="md-nav__link">
         Blind 75 Problems
       </a>
-      
     </li>
   
 
@@ -452,11 +444,52 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../heap-pq/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Heap (Priority Queue)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Heap (Priority Queue)
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-these-priority-queues" class="md-nav__link">
+    What are these priority queues?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -481,6 +514,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-these-priority-queues" class="md-nav__link">
+    What are these priority queues?
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -494,117 +542,24 @@
 
   
 
-  <nav class="md-tags" >
-    
-      
-        <span class="md-tag">Blind 75</span>
-      
-    
-      
-        <span class="md-tag">ONGOING SERIES</span>
-      
-    
-  </nav>
 
 
-
-<h1 id="blind-75-problems">Blind 75 problems</h1>
-<p>This blind problems are a curated set of problems by a facebook engineer and is extremely useful for cracking the coding interview. However we've covered some of the problems in the problems sections of every other topics. Here I'll be adding links to those solutions.</p>
-<p><a href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions">Find the blind 75 problems on leetcode <span class="arithmatex">\(\to\)</span></a></p>
-<div class="admonition danger important">
-<p class="admonition-title">Linked List problems</p>
+<h1 id="priority-queues-and-binary-heaps">Priority Queues and Binary Heaps</h1>
+<h2 id="what-are-these-priority-queues">What are these priority queues?</h2>
+<p>A priority queue is a queue where the most important element is always at the front. The queue can be a max-priority queue (largest element first) or a min-priority queue (smallest element first).</p>
+<p>So as a data structure designer you have the following options to design a priority queue:</p>
 <ul>
-<li><a href="https://algorithms.theroyakash.com/LinkedLists/problems/#implement-linked-list-and-write-reverse">Reverse a Linked List</a></li>
-<li><a href="https://algorithms.theroyakash.com/LinkedLists/problems/#detect-a-cycle-in-linked-list">Detect Cycle in a Linked List</a></li>
-<li><a href="https://algorithms.theroyakash.com/LinkedLists/problems/#merge-2-sorted-lists">Merge 2 Sorted Lists</a></li>
-<li>Merge K Sorted lists</li>
-<li><a href="https://algorithms.theroyakash.com/LinkedLists/problems/#remove-nth-node-from-end-of-list">Remove Nth Node From End Of List</a></li>
-<li>Reorder List</li>
+<li>An max sorted array or min-sorted array, but downside is inserting new items is slow because they must be inserted in sorted order.</li>
+<li>or an binary heap (max heap or min heap)</li>
 </ul>
-</div>
-<div class="admonition danger">
-<p class="admonition-title">Heap</p>
+<p>Now the question arises what are heaps? The heap is a natural data structure for a priority queue. In fact, the two terms are often used as synonyms. A heap is more efficient than a sorted array because a heap only has to be partially sorted. All heap operations are in the order of <span class="arithmatex">\(\text{log}\)</span> or <span class="arithmatex">\(O(\mathcal{N})\)</span>.</p>
+<p>Examples of algorithms that can benefit from a priority queue implemented as heap</p>
 <ul>
-<li>Merge K Sorted Lists</li>
-<li>Top K Frequent Elements</li>
-<li>Find Median from Data Stream</li>
+<li>Dijkstra's algorithm for graph searching uses a priority queue to calculate the minimum cost.</li>
+<li>A* pathfinding for artificial intelligence.</li>
+<li>Huffman coding for data compression. This algorithm builds up a compression tree. It repeatedly needs to find the two nodes with the smallest frequencies that do not have a parent node yet.</li>
+<li>Heap sorting algorithm.</li>
 </ul>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tree</p>
-<ul>
-<li>Maximum Depth of Binary Tree</li>
-<li>Same Tree</li>
-<li>Invert/Flip Binary Tree</li>
-<li>Binary Tree Maximum Path Sum</li>
-<li>Binary Tree Level Order Traversal</li>
-<li>Serialize and Deserialize Binary Tree</li>
-<li>Subtree of Another Tree</li>
-<li>Construct Binary Tree from Preorder and Inorder Traversal</li>
-<li>Validate Binary Search Tree</li>
-<li>Kth Smallest Element in a BST</li>
-<li>Lowest Common Ancestor of BST</li>
-<li>Implement Trie (Prefix Tree)</li>
-<li>Add and Search Word</li>
-<li>Word Search II</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">String</p>
-<ul>
-<li>Longest Substring Without Repeating Characters</li>
-<li>Longest Repeating Character Replacement</li>
-<li>Minimum Window Substring</li>
-<li>Valid Anagram</li>
-<li>Group Anagrams</li>
-<li>Valid Parentheses</li>
-<li>Valid Palindrome</li>
-<li>Longest Palindromic Substring</li>
-<li>Palindromic Substrings</li>
-<li>Encode and Decode Strings (Leetcode Premium)</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Binary (bitwise operations)</p>
-<ul>
-<li>Sum of Two Integers</li>
-<li>Number of 1 Bits</li>
-<li>Counting Bits</li>
-<li>Missing Number</li>
-<li>Reverse Bits</li>
-</ul>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Array</p>
-<ul>
-<li>Two Sum</li>
-<li>Best Time to Buy and Sell Stock</li>
-<li>Contains Duplicate</li>
-<li>Product of Array Except Self</li>
-<li>Maximum Subarray</li>
-<li>Maximum Product Subarray</li>
-<li>Find Minimum in Rotated Sorted Array</li>
-<li>Search in Rotated Sorted Array</li>
-<li>3 Sum</li>
-<li>Container With Most Water</li>
-</ul>
-</div>
-<div class="admonition danger">
-<p class="admonition-title">Dynamic Programming</p>
-<ul>
-<li>Climbing Stairs</li>
-<li>Coin Change</li>
-<li>Longest Increasing Subsequence</li>
-<li>Longest Common Subsequence</li>
-<li>Word Break Problem</li>
-<li>Combination Sum</li>
-<li>House Robber</li>
-<li>House Robber II</li>
-<li>Decode Ways</li>
-<li>Unique Paths</li>
-<li>Jump Game</li>
-</ul>
-</div>
 
               
             </article>
@@ -623,7 +578,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../freebies/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Freebies" rel="prev">
+        <a href="../bss/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Binary Search" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -632,26 +587,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Freebies
+              Binary Search
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../arrays/arrays/" class="md-footer__link md-footer__link--next" aria-label="Next: Intro to Arrays" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Intro to Arrays
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

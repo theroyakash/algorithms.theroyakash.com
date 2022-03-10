@@ -1069,6 +1069,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#given-the-head-of-a-linked-list-rotate-the-list-to-the-right-by-k-places" class="md-nav__link">
+    Given the head of a linked list, rotate the list to the right by k places
+  </a>
+  
+    <nav class="md-nav" aria-label="Given the head of a linked list, rotate the list to the right by k places">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_9" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints_2" class="md-nav__link">
+    Constraints:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_8" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code_6" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1094,6 +1135,21 @@
     <li class="md-nav__item">
       <a href="../../bss/" class="md-nav__link">
         Binary Search
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../heap-pq/" class="md-nav__link">
+        Heap (Priority Queue)
       </a>
     </li>
   
@@ -1742,6 +1798,47 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#given-the-head-of-a-linked-list-rotate-the-list-to-the-right-by-k-places" class="md-nav__link">
+    Given the head of a linked list, rotate the list to the right by k places
+  </a>
+  
+    <nav class="md-nav" aria-label="Given the head of a linked list, rotate the list to the right by k places">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_9" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints_2" class="md-nav__link">
+    Constraints:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_8" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code_6" class="md-nav__link">
+    C++ Code
+  </a>
   
 </li>
         
@@ -2826,6 +2923,91 @@ Similarly [1] and n = 1 will return []. </p>
 <a id="__codelineno-22-33" name="__codelineno-22-33" href="#__codelineno-22-33"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-22-34" name="__codelineno-22-34" href="#__codelineno-22-34"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-22-35" name="__codelineno-22-35" href="#__codelineno-22-35"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="given-the-head-of-a-linked-list-rotate-the-list-to-the-right-by-k-places">Given the head of a linked list, rotate the list to the right by k places</h2>
+<h3 id="problem-statement_9">Problem Statement</h3>
+<p>Given the head of a linked list, rotate the list to the right by k places.</p>
+<div class="admonition note">
+<p class="admonition-title">Test case examples</p>
+<p>Input: head = <code>[1,2,3,4,5]</code>, k = 2
+Output: <code>[4,5,1,2,3]</code></p>
+<p>Input: head = [0,1,2], k = 4
+Output: [2,0,1]</p>
+</div>
+<h3 id="constraints_2">Constraints:</h3>
+<ol>
+<li>The number of nodes in the list is in the range <span class="arithmatex">\([0, 500]\)</span></li>
+<li><span class="arithmatex">\(-100\)</span> &lt;= <code>Node.val</code> &lt;= <span class="arithmatex">\(100\)</span></li>
+<li><span class="arithmatex">\(0\)</span> &lt;= k &lt;= <span class="arithmatex">\(2 * 10^9\)</span></li>
+</ol>
+<h3 id="approach_8">Approach</h3>
+<ul>
+<li>First of all the thing is if the size of the linked list is <span class="arithmatex">\(K\)</span> then doing exactly K rotation is essentially doing nothing. For example
+    <img alt="image" src="../../images/3rotation.png" /></li>
+<li>So total of <span class="arithmatex">\(k \text{ mod size of the list}\)</span> meaningful rotations are actually happening. This is the way we can reduce the high <span class="arithmatex">\(2 * 10^9\)</span> number down to the range <span class="arithmatex">\(0 \to 500\)</span> the size of the list.</li>
+<li>Now armed with this knowledge, we can think of what it means to be rotating the list?
+    <img alt="image" src="../../images/llrotation2.png" /><ul>
+<li>In the above picture observe that rotating this list by 2 step is actually setting the <span class="arithmatex">\(\text{size} - K^{th}\)</span> element's next = <code>NULL</code>,</li>
+<li>and add the last <code>2</code> elements to the front of the list.</li>
+</ul>
+</li>
+<li>We can approach this via the following way:<ul>
+<li>First set the final element's next = <code>firstNode</code>.</li>
+<li>Now set the point where it <strong>supposed</strong> to be the new head by breaking off the <code>prevNode</code>'s next = <code>NULL</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-code_6">C++ Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">getSizeAndLastNode</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">headref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">headref</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">            </span><span class="n">size</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">            </span><span class="n">headref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headref</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">        </span><span class="n">size</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">make_pair</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">headref</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">rotateRight</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="w">        </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">ListNode</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getSizeAndLastNode</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">numberOfRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w">  </span><span class="c1">// Number of effective rotation</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="w">        </span><span class="c1">// now last points to the last node</span>
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a><span class="w">        </span><span class="c1">// making it full circle</span>
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="w">        </span><span class="n">last</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="w">        </span><span class="c1">// figure out the break point?</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">breakPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">numberOfRotation</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>
+<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">index</span><span class="o">!=</span><span class="n">breakPoint</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a><span class="w">            </span><span class="n">index</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a><span class="w">            </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>
+<a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">newHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a><span class="w">        </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>
+<a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">newHead</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
