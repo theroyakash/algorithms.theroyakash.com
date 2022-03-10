@@ -16,6 +16,7 @@ nav:
     - Linked List STL Usage: ./LinkedLists/stl-usage.md
     - Linked List problems: ./LinkedLists/problems.md
   - Binary Search: ./bss.md
+  - Heap (Priority Queue): heap-pq.md
 
 theme:
   name: material
