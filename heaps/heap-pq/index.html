@@ -6,25 +6,23 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="One of my favorite data structure is binary heaps.">
       
       
+        <link rel="canonical" href="https://algorithms.theroyakash.com/heaps/heap-pq/">
       
-        <link rel="canonical" href="https://algorithms.theroyakash.com/heap-pq/">
-      
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
-        <title>Priority Queues and Binary Heaps - theroyakash algorithms</title>
+        <title>Heaps Introduction, STL - theroyakash algorithms</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2d9f7617.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -43,9 +41,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -83,9 +81,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="theroyakash algorithms" class="md-header__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
+    <a href="../.." title="theroyakash algorithms" class="md-header__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
       
-  <img src="../images/logo.png" alt="logo">
+  <img src="../../images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Priority Queues and Binary Heaps
+              Heaps Introduction, STL
             
           </span>
         </div>
@@ -168,9 +166,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="theroyakash algorithms" class="md-nav__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
+    <a href="../.." title="theroyakash algorithms" class="md-nav__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
       
-  <img src="../images/logo.png" alt="logo">
+  <img src="../../images/logo.png" alt="logo">
 
     </a>
     theroyakash algorithms
@@ -186,7 +184,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -201,7 +199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../freebies/" class="md-nav__link">
+      <a href="../../freebies/" class="md-nav__link">
         Freebies
       </a>
     </li>
@@ -216,7 +214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blind75/" class="md-nav__link">
+      <a href="../../blind75/" class="md-nav__link">
         Blind 75 Problems
       </a>
     </li>
@@ -257,7 +255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrays/arrays/" class="md-nav__link">
+      <a href="../../arrays/arrays/" class="md-nav__link">
         Intro to Arrays
       </a>
     </li>
@@ -271,7 +269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrays/array-problems/" class="md-nav__link">
+      <a href="../../arrays/array-problems/" class="md-nav__link">
         Array Problems
       </a>
     </li>
@@ -285,7 +283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrays/sliding-window/" class="md-nav__link">
+      <a href="../../arrays/sliding-window/" class="md-nav__link">
         Sliding window problems
       </a>
     </li>
@@ -333,7 +331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stacks/usage/" class="md-nav__link">
+      <a href="../../stacks/usage/" class="md-nav__link">
         Stacks Usage
       </a>
     </li>
@@ -347,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stacks/problems/" class="md-nav__link">
+      <a href="../../stacks/problems/" class="md-nav__link">
         Stack Problems
       </a>
     </li>
@@ -395,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../LinkedLists/stl-usage/" class="md-nav__link">
+      <a href="../../LinkedLists/stl-usage/" class="md-nav__link">
         Linked List STL Usage
       </a>
     </li>
@@ -409,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../LinkedLists/problems/" class="md-nav__link">
+      <a href="../../LinkedLists/problems/" class="md-nav__link">
         Linked List problems
       </a>
     </li>
@@ -431,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bss/" class="md-nav__link">
+      <a href="../../bss/" class="md-nav__link">
         Binary Search
       </a>
     </li>
@@ -447,6 +445,34 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Heap (Priority Queue)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Heap (Priority Queue)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Heap (Priority Queue)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -456,12 +482,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Heap (Priority Queue)
+          Heaps Introduction, STL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Heap (Priority Queue)
+        Heaps Introduction, STL
       </a>
       
         
@@ -486,10 +512,65 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#identification" class="md-nav__link">
+    Identification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stl-usage" class="md-nav__link">
+    STL Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="STL Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions-to-remember" class="md-nav__link">
+    Functions to remember
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-consensus-on-what-heap-to-use" class="md-nav__link">
+    General Consensus on what heap to use?
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../problems/" class="md-nav__link">
+        Heap Problems
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -527,6 +608,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#identification" class="md-nav__link">
+    Identification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stl-usage" class="md-nav__link">
+    STL Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="STL Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions-to-remember" class="md-nav__link">
+    Functions to remember
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-consensus-on-what-heap-to-use" class="md-nav__link">
+    General Consensus on what heap to use?
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -560,6 +675,29 @@
 <li>Huffman coding for data compression. This algorithm builds up a compression tree. It repeatedly needs to find the two nodes with the smallest frequencies that do not have a parent node yet.</li>
 <li>Heap sorting algorithm.</li>
 </ul>
+<h2 id="identification">Identification</h2>
+<p>You should make and use heap for the problems with the following combination:</p>
+<ul>
+<li>K &amp;</li>
+<li>largest or smallest,</li>
+<li>and solvable by sorting the input seq.</li>
+</ul>
+<h2 id="stl-usage"><code>STL</code> Usage</h2>
+<p>A priority queue is a container adaptor that provides constant time lookup of the largest (by default) element, at the expense of logarithmic insertion and extraction. The default container is a <code>std::vector&lt;T&gt;</code> underneath.</p>
+<p>A user-provided Compare can be supplied to change the ordering, e.g. using <code>std::greater&lt;T&gt;</code> would cause the smallest element to appear as the <code>top()</code> [Min Heap].</p>
+<h3 id="functions-to-remember">Functions to remember</h3>
+<ul>
+<li><code>top()</code> to get the top of the heap. [either min or max element at the time]</li>
+<li><code>empty()</code> returns false if the heap is not empty,</li>
+<li><code>size()</code> number of elements in the heap,</li>
+<li><code>push()</code> to add element takes <span class="arithmatex">\(O(\log N)\)</span> comparisons and then the time for <code>push_back()</code> method for the underlying container. By default the <code>std::vector&lt;T&gt;</code> container is used,</li>
+<li><code>pop()</code> to remove the top element and build heap. <span class="arithmatex">\(O(\log N)\)</span> comparisons and then the time for <code>push_back()</code> method for underlying container.</li>
+</ul>
+<h2 id="general-consensus-on-what-heap-to-use">General Consensus on what heap to use?</h2>
+<ul>
+<li>Given in the question <code>K</code> and <code>smallest</code> use <code>MaxHeap</code> of size K,</li>
+<li>Given in the question <code>K</code> and <code>largest</code> use <code>MinHeap</code> of size K.</li>
+</ul>
 
               
             </article>
@@ -578,7 +716,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../bss/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Binary Search" rel="prev">
+        <a href="../../bss/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Binary Search" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -592,6 +730,21 @@
           </div>
         </a>
       
+      
+        
+        <a href="../problems/" class="md-footer__link md-footer__link--next" aria-label="Next: Heap Problems" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Heap Problems
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
@@ -645,12 +798,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.467223ff.min.js"></script>
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
