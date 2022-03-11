@@ -16,7 +16,9 @@ nav:
     - Linked List STL Usage: ./LinkedLists/stl-usage.md
     - Linked List problems: ./LinkedLists/problems.md
   - Binary Search: ./bss.md
-  - Heap (Priority Queue): heap-pq.md
+  - Heap (Priority Queue):
+    - Heaps Introduction, STL: ./heaps/heap-pq.md
+    - Heap Problems: ./heaps/problems.md
 
 theme:
   name: material
@@ -30,6 +32,7 @@ theme:
   font:
     code: Ubuntu Mono
   icon:
+    repo: fontawesome/brands/git-alt
     admonition:
       note: octicons/tag-16
       abstract: octicons/checklist-16
@@ -46,7 +49,8 @@ theme:
 
 plugins:
   - search
-  - tags
+  - tags:
+      tags_file: tags.md
 
 markdown_extensions:
   - meta

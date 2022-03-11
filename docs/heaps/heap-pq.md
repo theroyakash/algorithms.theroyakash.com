@@ -1,6 +1,11 @@
 ---
 title: Priority Queues and Binary Heaps
 description: One of my favorite data structure is binary heaps.
+tags:
+	- tutorials
+	- STL
+	- Implementation
+	- Introduction
 ---
 # Priority Queues and Binary Heaps
 ## What are these priority queues?
@@ -19,3 +24,28 @@ Examples of algorithms that can benefit from a priority queue implemented as hea
 * A* pathfinding for artificial intelligence.
 * Huffman coding for data compression. This algorithm builds up a compression tree. It repeatedly needs to find the two nodes with the smallest frequencies that do not have a parent node yet.
 * Heap sorting algorithm.
+
+## Identification
+
+You should make and use heap for the problems with the following combination:
+
+- K &
+- largest or smallest,
+- and solvable by sorting the input seq.
+
+## `STL` Usage
+A priority queue is a container adaptor that provides constant time lookup of the largest (by default) element, at the expense of logarithmic insertion and extraction. The default container is a `std::vector<T>` underneath.
+
+A user-provided Compare can be supplied to change the ordering, e.g. using `std::greater<T>` would cause the smallest element to appear as the `top()` [Min Heap].
+
+
+### Functions to remember
+- `top()` to get the top of the heap. [either min or max element at the time]
+- `empty()` returns false if the heap is not empty,
+- `size()` number of elements in the heap,
+- `push()` to add element takes $O(\log N)$ comparisons and then the time for `push_back()` method for the underlying container. By default the `std::vector<T>` container is used,
+- `pop()` to remove the top element and build heap. $O(\log N)$ comparisons and then the time for `push_back()` method for underlying container.
+
+## General Consensus on what heap to use?
+- Given in the question `K` and `smallest` use `MaxHeap` of size K,
+- Given in the question `K` and `largest` use `MinHeap` of size K.
