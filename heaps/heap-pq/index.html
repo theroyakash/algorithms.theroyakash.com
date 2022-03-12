@@ -540,9 +540,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#general-consensus-on-what-heap-to-use" class="md-nav__link">
-    General Consensus on what heap to use?
+  <a href="#recommended-use-of-heaps-instead-of-using-stl" class="md-nav__link">
+    Recommended use of heaps instead of using STL
   </a>
+  
+    <nav class="md-nav" aria-label="Recommended use of heaps instead of using STL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#things-to-look-out-before-you-start" class="md-nav__link">
+    Things to look out before you start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-build-subroutines" class="md-nav__link">
+    Heap Build Subroutines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -636,9 +663,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#general-consensus-on-what-heap-to-use" class="md-nav__link">
-    General Consensus on what heap to use?
+  <a href="#recommended-use-of-heaps-instead-of-using-stl" class="md-nav__link">
+    Recommended use of heaps instead of using STL
   </a>
+  
+    <nav class="md-nav" aria-label="Recommended use of heaps instead of using STL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#things-to-look-out-before-you-start" class="md-nav__link">
+    Things to look out before you start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-build-subroutines" class="md-nav__link">
+    Heap Build Subroutines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -693,11 +747,83 @@
 <li><code>push()</code> to add element takes <span class="arithmatex">\(O(\log N)\)</span> comparisons and then the time for <code>push_back()</code> method for the underlying container. By default the <code>std::vector&lt;T&gt;</code> container is used,</li>
 <li><code>pop()</code> to remove the top element and build heap. <span class="arithmatex">\(O(\log N)\)</span> comparisons and then the time for <code>push_back()</code> method for underlying container.</li>
 </ul>
-<h2 id="general-consensus-on-what-heap-to-use">General Consensus on what heap to use?</h2>
+<h2 id="recommended-use-of-heaps-instead-of-using-stl">Recommended use of heaps instead of using <code>STL</code></h2>
+<p>Most likely the input to the problem involving heap is a sequence of numbers given in a <code>std::vector&lt;int&gt;</code>. Now it'll be very rewarding if you use the corman textbook guideline to heapify the vector in-place in <span class="arithmatex">\(O(N)\)</span> time.</p>
+<p>I've implemented the following functions for heap usage according to the Corman textbook. You understand these following implementation very well and you should be able to implement them in an interview setting under couple of minutes.</p>
+<p>Must watch to follow the following code</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xnpo1atN-Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="things-to-look-out-before-you-start">Things to look out before you start</h3>
 <ul>
-<li>Given in the question <code>K</code> and <code>smallest</code> use <code>MaxHeap</code> of size K,</li>
-<li>Given in the question <code>K</code> and <code>largest</code> use <code>MinHeap</code> of size K.</li>
+<li>
+<p>First we are implicitly thinking the almost/nearly complete binary tree for heap but actually using a <code>std::vector&lt;int&gt;</code> to represent in memory.</p>
+<p><img alt="image" src="../../images/heaprepr.png" /></p>
+</li>
+<li>
+<p>In this representation we do not need to store the pointers to the elements for <code>left</code> or <code>right</code>. Instead use the following functions
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">left</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// Assuming 0 based index</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kt">int</span><span class="w"> </span><span class="nf">right</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Similarly to get the parent element we just have to write the inverse of the upper two functions
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">parent</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">childIndex</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1">// Return floor (index / 2)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// integer division returns floor</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+</li>
 </ul>
+<p>Now that we know how the heap is structured we are ready to implement 3 helper functions.</p>
+<div class="admonition danger">
+<p class="admonition-title">Why are we doing this instead of <code>std::priority_queue&lt;int&gt;</code>?</p>
+<p>If you have the sequence before you start the function, inserting elements into a new <code>std::priority_queue&lt;int&gt;</code> will take <span class="arithmatex">\(O(N) * \text{one element insertion time} = O(N \log N)\)</span> time. With that you are required to use additional space as well. If you use the following approach you will get constant memory heap build in <span class="arithmatex">\(O(N)\)</span> time, although you'll lose access to the original ordering of elements in the vector.</p>
+<p>So according to the problem you should be able to switch between these 2 different approaches to build the heap. However it is recommended to use the following approach it takes <span class="arithmatex">\(O(N)\)</span> time.</p>
+</div>
+<h3 id="heap-build-subroutines">Heap Build Subroutines</h3>
+<p>There are 2 subroutines according to the the guidelines described in Corman Book. In the following implementation I'll be building a Max Heap, change the code accordingly for min heap implementation.</p>
+<ul>
+<li>In order to maintain the heap property we call subroutine <span class="arithmatex">\(\text{MAX_HEAPIFY(A, i)}\)</span>, cures the heap of one-place violation only. The element at this location might have to go down to the very last level of the heap. So the time complexity for this algorithm is <span class="arithmatex">\(O(h)\)</span> where <span class="arithmatex">\(h\)</span> is the height of the heap. The following example shows how one place violation of the heap property can be?
+    <img alt="image" src="../../images/MAX_HEAPIFY.png" /></li>
+<li>Now we can use this <span class="arithmatex">\(\text{MAX_HEAPIFY(A, i)}\)</span> in a bottom up manner to convert an unordered array <span class="arithmatex">\(A[0... n]\)</span> into a max heap.</li>
+</ul>
+<h3 id="c-code">C++ Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">maxHeapify</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">vector</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">atIndex</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// Interface: MaxHeapify of `std::vector` vector, and the violation is at `atIndex`</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">// Only solves a single violation</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">leftChildren</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atIndex</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rightChildren</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atIndex</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">largest</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">// Now check of the elements is present in the heap?</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">leftChildren</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">vector</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="n">vector</span><span class="p">)[</span><span class="n">leftChildren</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">vector</span><span class="p">)[</span><span class="n">atIndex</span><span class="p">])){</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leftChildren</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">rightChildren</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">vector</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="n">vector</span><span class="p">)[</span><span class="n">rightChildren</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">vector</span><span class="p">)[</span><span class="n">atIndex</span><span class="p">])){</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rightChildren</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">largest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atIndex</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">largest</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">atIndex</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">((</span><span class="o">*</span><span class="n">vector</span><span class="p">)[</span><span class="n">atIndex</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">vector</span><span class="p">)[</span><span class="n">largest</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="n">maxHeapify</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span><span class="w"> </span><span class="n">largest</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="kt">void</span><span class="w"> </span><span class="nf">buildHeap</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">vector</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="c1">// Build heap procedure. Runs in O(N) time in-place.</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
               
             </article>
