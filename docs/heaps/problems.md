@@ -8,15 +8,13 @@ tags:
 
 # Heap Problems
 
-## Kth Largest Element in an Array
+## [Kth Largest Element in an Array (Medium)](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
-[Questions on leetcode $\to$](https://leetcode.com/problems/kth-largest-element-in-an-array/)
-
-### Problem statement
+### Problem Statement
 Given an integer array nums and an integer k, return the kth largest element in the array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
 ### Examples
-```text
+```
 Input: nums = [3,2,1,5,6,4], k = 2
 Output: 5
 
@@ -60,4 +58,35 @@ public:
         return minHeap.top();
     }
 };
+```
+
+## [Top K Frequent Elements (Medium)](https://leetcode.com/problems/top-k-frequent-elements/)
+
+### Problem Statement
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+### Examples
+```
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+
+Input: nums = [1], k = 1
+Output: [1]
+```
+### Constraints
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>k</code> is in the range <code>[1, the number of unique elements in the array]</code>.</li>
+	<li>It is <strong>guaranteed</strong> that the answer is <strong>unique</strong>.</li>
+</ul>
+
+**Follow up:** The algorithm's time complexity must be better than $O(n \log n)$, where n is the array's size.
+
+### Approach
+
+
+### Code
+```cpp
+
 ```
