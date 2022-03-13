@@ -29,4 +29,35 @@ Output: 4
 - $- 10^4 \leq \text{nums[i]} \leq 10^4$
 
 ### Approach
-This is a most obvious heap problem. Using a min heap we can solve this problem.
+- There are several approaches, in which 2 are the most efficient:
+  - use a `k` size min heap and put values into the heap until sequence runs out.
+  - use the `buildHeap()` approach to build the given sequence into a heap, then remove top k times.
+- The first approach takes $O(N)$ time and no extra memory.
+- The second approach takes $O(N \log K)$ time and $O(K)$ extra memory.
+- If you are given a sequence with no ending (data stream) then the second one will be the better approach.
+- Here in the solution we'll be using the second approach.
+
+```cpp
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> minHeap;
+        
+        for (auto i:nums){
+            if (minHeap.size() != k){
+				// Until the min Heap is not of size `K` push elements
+                minHeap.push(i);
+            } else {
+				// Now the min Heap is of size K. Push one element [it may be the kth largest]
+                minHeap.push(i);
+
+				// If not the kth largest it'll be removed
+				// Otherwise the k+1th largest will be removed
+                minHeap.pop();
+            }
+        }
+        
+        return minHeap.top();
+    }
+};
+```
