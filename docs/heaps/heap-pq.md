@@ -98,26 +98,32 @@ There are 2 subroutines according to the the guidelines described in Corman Book
 ### C++ Code
 ```cpp
 void maxHeapify(std::vector<int> *vector, int atIndex){
+    
 	// Interface: MaxHeapify of `std::vector` vector, and the violation is at `atIndex`
 	// Only solves a single violation
+	// This is for maintaining the heap property
 	
 	int leftChildren = atIndex*2 + 1;
 	int rightChildren = atIndex*2 + 2;
 
-	int largest;
+	int largest = atIndex;
 
-	// Now check of the elements is present in the heap?
-	if ((leftChildren <= vector->size()) && ((*vector)[leftChildren] > (*vector)[atIndex])){
+	// Now check of what is larger the left children or the current Index?
+	if ((leftChildren < vector->size()) && ((*vector)[leftChildren] > (*vector)[largest])){
 		largest = leftChildren;
 		
-	} else if ((rightChildren <= vector->size()) && ((*vector)[rightChildren] > (*vector)[atIndex])){
+	}
+    
+	// Now check of what is larger the right children or the current Index?
+    if ((rightChildren < vector->size()) && ((*vector)[rightChildren] > (*vector)[largest])){
 		largest = rightChildren;
-	} else {
-		largest = atIndex;
 	}
 
+	// If some largest is either present in the left or right children means a swap is needed.
 	if (largest != atIndex){
 		std::swap((*vector)[atIndex], (*vector)[largest]);
+
+		// Recursively call to maxHeapify the affected children
 		maxHeapify(vector, largest);
 	}
 }
@@ -125,5 +131,16 @@ void maxHeapify(std::vector<int> *vector, int atIndex){
 
 void buildHeap(std::vector<int> *vector){
 	// Build heap procedure. Runs in O(N) time in-place.
+	// Each leaf-node in a heap is a heap. The procedure BUILD-MAX-HEAP goes through the remaining nodes of the
+	// tree and runs MAX-H EAPIFY on each one
+
+	int heapSize = vector->size();
+	
+	int lastHeadIndex = heapSize / 2 - 1;
+	cout << "Last Head is at " << lastHeadIndex << "\n";
+	
+	for (int i = lastHeadIndex; i >= 0; i--) {
+		maxHeapify(vector, i);
+	}
 }
 ```
