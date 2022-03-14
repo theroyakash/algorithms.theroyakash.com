@@ -27,9 +27,10 @@ Output: 4
 - $- 10^4 \leq \text{nums[i]} \leq 10^4$
 
 ### Approach
+
 - There are several approaches, in which 2 are the most efficient:
-  - use a `k` size min heap and put values into the heap until sequence runs out.
-  - use the `buildHeap()` approach to build the given sequence into a heap, then remove top k times.
+	- use a `k` size min heap and put values into the heap until sequence runs out.
+	- use the `buildHeap()` approach to build the given sequence into a heap, then remove top k times.
 - The first approach takes $O(N)$ time and no extra memory.
 - The second approach takes $O(N \log K)$ time and $O(K)$ extra memory.
 - If you are given a sequence with no ending (data stream) then the second one will be the better approach.
@@ -50,7 +51,7 @@ public:
                 minHeap.push(i);
 
 				// If not the kth largest it'll be removed
-				// Otherwise the k+1th largest will be removed
+				// Otherwise the k-1th largest will be removed
                 minHeap.pop();
             }
         }
@@ -58,6 +59,54 @@ public:
         return minHeap.top();
     }
 };
+```
+
+## K Largest Elements in the heap
+### Problem Statement
+This problem is a bit different than the previous one. Here you have to return K largest elements from a given sequence. For example
+
+```mermaid
+flowchart LR
+    10-->12
+	12-->13
+	13-->167
+	167-->46
+	46-->2157
+```
+
+For the above sequence the $K = 3$ largest elements should be the following:
+```mermaid
+flowchart LR
+	2157-->167-->46
+```
+
+### Approach
+- From the above code if we look closely enough, we find that after all the operations done the remaining elements in the `k` sized heap contains all the elements that are greater or equal to the $K^{\text{th}}$ largest element in the given sequence.
+- So return all the elements from the heap.
+
+### C++ Code
+```cpp
+std::vector<int> kLargestElements(std::vector<int> &vector, int k){
+    std::priority_queue<int, std::vector<int>, std::greater<int>> minHeap;
+
+    std::vector<int> out;
+
+    for (auto element:vector){
+        if (minHeap.size() != k){
+            minHeap.push(element);
+        } else {
+            minHeap.push(element);
+            minHeap.pop();
+        }
+    }
+
+    while (!minHeap.empty()){
+        out.push_back(minHeap.top());
+        minHeap.pop();
+    }
+
+    return out;
+}
 ```
 
 ## [Top K Frequent Elements (Medium)](https://leetcode.com/problems/top-k-frequent-elements/)
