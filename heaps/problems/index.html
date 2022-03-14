@@ -561,6 +561,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#k-largest-elements-in-the-heap" class="md-nav__link">
+    K Largest Elements in the heap
+  </a>
+  
+    <nav class="md-nav" aria-label="K Largest Elements in the heap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_1" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_1" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#top-k-frequent-elements-medium" class="md-nav__link">
     Top K Frequent Elements (Medium)
   </a>
@@ -569,7 +603,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement_1" class="md-nav__link">
+  <a href="#problem-statement_2" class="md-nav__link">
     Problem Statement
   </a>
   
@@ -590,7 +624,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#approach_1" class="md-nav__link">
+  <a href="#approach_2" class="md-nav__link">
     Approach
   </a>
   
@@ -691,6 +725,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#k-largest-elements-in-the-heap" class="md-nav__link">
+    K Largest Elements in the heap
+  </a>
+  
+    <nav class="md-nav" aria-label="K Largest Elements in the heap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_1" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_1" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#top-k-frequent-elements-medium" class="md-nav__link">
     Top K Frequent Elements (Medium)
   </a>
@@ -699,7 +767,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement_1" class="md-nav__link">
+  <a href="#problem-statement_2" class="md-nav__link">
     Problem Statement
   </a>
   
@@ -720,7 +788,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#approach_1" class="md-nav__link">
+  <a href="#approach_2" class="md-nav__link">
     Approach
   </a>
   
@@ -773,9 +841,11 @@
 </ul>
 <h3 id="approach">Approach</h3>
 <ul>
-<li>There are several approaches, in which 2 are the most efficient:</li>
+<li>There are several approaches, in which 2 are the most efficient:<ul>
 <li>use a <code>k</code> size min heap and put values into the heap until sequence runs out.</li>
 <li>use the <code>buildHeap()</code> approach to build the given sequence into a heap, then remove top k times.</li>
+</ul>
+</li>
 <li>The first approach takes <span class="arithmatex">\(O(N)\)</span> time and no extra memory.</li>
 <li>The second approach takes <span class="arithmatex">\(O(N \log K)\)</span> time and <span class="arithmatex">\(O(K)\)</span> extra memory.</li>
 <li>If you are given a sequence with no ending (data stream) then the second one will be the better approach.</li>
@@ -795,7 +865,7 @@
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                </span><span class="n">minHeap</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                </span><span class="c1">// If not the kth largest it&#39;ll be removed</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                </span><span class="c1">// Otherwise the k+1th largest will be removed</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                </span><span class="c1">// Otherwise the k-1th largest will be removed</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="n">minHeap</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
@@ -804,15 +874,55 @@
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
-<h2 id="top-k-frequent-elements-medium"><a href="https://leetcode.com/problems/top-k-frequent-elements/">Top K Frequent Elements (Medium)</a></h2>
+<h2 id="k-largest-elements-in-the-heap">K Largest Elements in the heap</h2>
 <h3 id="problem-statement_1">Problem Statement</h3>
+<p>This problem is a bit different than the previous one. Here you have to return K largest elements from a given sequence. For example</p>
+<pre class="mermaid"><code>flowchart LR
+    10--&gt;12
+    12--&gt;13
+    13--&gt;167
+    167--&gt;46
+    46--&gt;2157</code></pre>
+<p>For the above sequence the <span class="arithmatex">\(K = 3\)</span> largest elements should be the following:
+<pre class="mermaid"><code>flowchart LR
+    2157--&gt;167--&gt;46</code></pre></p>
+<h3 id="approach_1">Approach</h3>
+<ul>
+<li>From the above code if we look closely enough, we find that after all the operations done the remaining elements in the <code>k</code> sized heap contains all the elements that are greater or equal to the <span class="arithmatex">\(K^{\text{th}}\)</span> largest element in the given sequence.</li>
+<li>So return all the elements from the heap.</li>
+</ul>
+<h3 id="c-code">C++ Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kLargestElements</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vector</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">minHeap</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">out</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">element</span><span class="o">:</span><span class="n">vector</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">minHeap</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">k</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="n">minHeap</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">element</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="n">minHeap</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">element</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="n">minHeap</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">minHeap</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">minHeap</span><span class="p">.</span><span class="n">top</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">minHeap</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">out</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="top-k-frequent-elements-medium"><a href="https://leetcode.com/problems/top-k-frequent-elements/">Top K Frequent Elements (Medium)</a></h2>
+<h3 id="problem-statement_2">Problem Statement</h3>
 <p>Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.</p>
 <h3 id="examples_1">Examples</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Input: nums = [1,1,1,2,2,3], k = 2
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Output: [1,2]
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Input: nums = [1], k = 1
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Output: [1]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Input: nums = [1,1,1,2,2,3], k = 2
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Output: [1,2]
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Input: nums = [1], k = 1
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Output: [1]
 </code></pre></div>
 <h3 id="constraints_1">Constraints</h3>
 <ul>
@@ -822,9 +932,9 @@
 </ul>
 
 <p><strong>Follow up:</strong> The algorithm's time complexity must be better than <span class="arithmatex">\(O(n \log n)\)</span>, where n is the array's size.</p>
-<h3 id="approach_1">Approach</h3>
+<h3 id="approach_2">Approach</h3>
 <h3 id="code">Code</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>
 </code></pre></div>
 
               
