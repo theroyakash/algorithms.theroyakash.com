@@ -137,10 +137,77 @@ void buildHeap(std::vector<int> *vector){
 	int heapSize = vector->size();
 	
 	int lastHeadIndex = heapSize / 2 - 1;
-	cout << "Last Head is at " << lastHeadIndex << "\n";
 	
 	for (int i = lastHeadIndex; i >= 0; i--) {
 		maxHeapify(vector, i);
 	}
 }
+```
+
+
+## Heap Sorting with min heap implementation
+Using min heap we can get the smallest element in $O(\log n)$ time. For $n$ elements it will take $O(n \log n)$ time. This is the best a comparison sort can get. This solution takes no extra memory as the `out` array is filled one by one and the `nums` array is reduced one by one in the public `sortArray()` method.
+
+The following `buildHeap` procedure actually builds the min heap in $O(N)$ time in-place.
+```cpp
+class Solution {
+private:
+    
+    int leftChild(int index){
+        return (index * 2) + 1;
+    }
+    
+    int rightChild(int index){
+        return (index * 2) + 2;
+    }
+    
+    void minHeapify(vector<int> &nums, int index){
+        
+        int smallest = index;
+        int leftindex = leftChild(index);
+        int rightindex = rightChild(index);
+        
+        int size = nums.size();
+        
+        if ((leftindex < size) && (nums[leftindex] < nums[smallest])){
+            smallest = leftindex;
+        }
+        
+        if ((rightindex < size) && (nums[rightindex] < nums[smallest])){
+            smallest = rightindex;
+        }
+        
+        if (smallest != index){
+            swap(nums[smallest], nums[index]);
+            minHeapify(nums, smallest);
+        }
+    }
+    
+    void buildHeap(vector<int> &nums){
+        int size = nums.size();
+        
+        int lastparent = (size / 2) - 1;
+        
+        for (int i = lastparent; i>=0; i--){
+            minHeapify(nums, i);
+        }
+    }
+
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        vector<int> out;
+        
+        buildHeap(nums);
+        
+        while (nums.size()!=0){
+            std::swap(nums[0], nums.back());
+            out.push_back(nums.back());
+            
+            nums.pop_back();
+            minHeapify(nums, 0);
+        }
+        
+        return out;
+    }
+};
 ```
