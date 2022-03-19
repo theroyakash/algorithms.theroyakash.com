@@ -897,3 +897,69 @@ Explanation: The above elevation map (black section) is represented by array [0,
 
 ### Problem Statement
 A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively.
+
+
+## Score of Parentheses
+[Problem on leetcode $\to$](https://leetcode.com/problems/score-of-parentheses/)
+
+### Problem Statement
+Given a balanced parentheses string s, return the score of the string
+- "()" has score 1,
+- AB has score A + B, where A and B are balanced parentheses strings,
+- (A) has score 2 * A, where A is a balanced parentheses string.
+
+### Examples
+```
+Input: s = "()"
+Output: 1
+
+Input: s = "(())"
+Output: 2
+
+Input: s = "()()"
+Output: 2
+```
+
+### Constraints
+- $2$ <= `s.length` <= $50$
+- `s` consists of only `'('` and `')'`.
+- `s` is always a balanced parentheses string.
+
+### Approach
+- Using recursion because seems like a recursive problem with pattern of `return (what is inside of(what is inside of (what is inside)))`.
+
+### C++ code
+
+```cpp
+class Solution {
+private:
+    int globalTracker = 0;
+public:
+    int scoreOfParentheses(string s) {
+        int score = 0;
+        
+        // Using recursion bcz seems like a recursive problem
+        // return (what is inside of(what is inside of (what is inside)))
+        
+        while(globalTracker < s.size() - 1){
+            char first = s.at(globalTracker);
+            globalTracker++;
+            char second = s.at(globalTracker);
+            
+            if (first == '('){
+                if (second == ')'){
+                    score = score + 1;
+                    globalTracker++;
+                } else {
+                    score = score + 2 *(scoreOfParentheses(s));
+                }
+            } else {
+                return score;
+            }
+            
+        }
+        
+        return score;
+    }
+};
+```
