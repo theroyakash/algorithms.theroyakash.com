@@ -19,16 +19,19 @@ nav:
   - Heap (Priority Queue):
     - Heaps Introduction, STL: ./heaps/heap-pq.md
     - Heap Problems: ./heaps/problems.md
+  - Trees:
+    - Tree Implementation: ./trees/implementation.md
+    - Tree Problems: ./trees/problems.md
 
 theme:
   name: material
-  logo: images/logo.png
+  # logo: images/logo.png
   features:
     - navigation.expand
     - navigation.top
   palette:
-    primary: white
-    accent: red
+    primary: indigo
+    accent: deep purple
   font:
     code: Ubuntu Mono
   icon:
