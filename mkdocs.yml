@@ -5,7 +5,9 @@ nav:
   - Introduction: index.md
   - Freebies: freebies.md
   - Blind 75 Problems: ./blind75.md
-  - Arrays: 
+  - Recursion:
+    - Recursion Introduction: ./recursion/intro.md
+  - Arrays:
     - Intro to Arrays: ./arrays/arrays.md
     - Array Problems: ./arrays/array-problems.md
     - Sliding window problems: ./arrays/sliding-window.md

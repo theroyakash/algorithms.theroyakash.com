@@ -174,6 +174,7 @@ std::vector<int> kSortedArray(std::vector<int> &array, int k) {
 Given a sorted integer array `arr`, two integers `k` and `x`, return the `k` closest integers to `x` in the array. The result should also be sorted in ascending order.
 
 An integer a is closer to x than an integer b if:
+
 1. `|a - x| < |b - x|`
 2. `|a - x| == |b - x|` and `a < b`
 
@@ -187,6 +188,9 @@ Output: [1,2,3,4]
 ```
 
 ### Approach
+- One approach could be that we subtract `x` from each element of the array and return whose difference with $x$ is in $\{0 \to k\}$
+- Other approach would be to use a heap. Like the previous problem we pushed K `largest` or `smallest` elements into the array. Here what we'll do is
+    - Make a minHeap,
 
 ## [Top K Frequent Elements (Medium)](https://leetcode.com/problems/top-k-frequent-elements/)
 
