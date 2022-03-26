@@ -6,25 +6,23 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Materials for FAANG and top startup's coding interview preparation and running notes on that.">
       
       
+        <link rel="canonical" href="https://algorithms.theroyakash.com/recursion/intro/">
       
-        <link rel="canonical" href="https://algorithms.theroyakash.com/">
-      
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.7">
     
     
       
-        <title>theroyakash algorithms - theroyakash algorithms</title>
+        <title>Recursion Introduction - theroyakash algorithms</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.9d5733d3.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9d5733d3.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -43,9 +41,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#theroyakash-algorithms" class="md-skip">
+        <a href="#introduction-to-recursion" class="md-skip">
           Skip to content
         </a>
       
@@ -83,7 +81,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="theroyakash algorithms" class="md-header__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
+    <a href="../.." title="theroyakash algorithms" class="md-header__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -102,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              theroyakash algorithms
+              Recursion Introduction
             
           </span>
         </div>
@@ -169,7 +167,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="theroyakash algorithms" class="md-nav__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
+    <a href="../.." title="theroyakash algorithms" class="md-nav__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -186,66 +184,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Introduction
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         Introduction
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-this" class="md-nav__link">
-    What is this?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#patterns" class="md-nav__link">
-    Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#other-links" class="md-nav__link">
-    Other links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -258,7 +201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="freebies/" class="md-nav__link">
+      <a href="../../freebies/" class="md-nav__link">
         Freebies
       </a>
     </li>
@@ -273,7 +216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blind75/" class="md-nav__link">
+      <a href="../../blind75/" class="md-nav__link">
         Blind 75 Problems
       </a>
     </li>
@@ -286,12 +229,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -312,11 +257,92 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="recursion/intro/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Recursion Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Recursion Introduction
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-this-making-problem-space-smaller-idea" class="md-nav__link">
+    What is this making problem space smaller idea?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#easier-recursion-problems" class="md-nav__link">
+    Easier Recursion problems
+  </a>
+  
+    <nav class="md-nav" aria-label="Easier Recursion problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#print-some-useful-information-10-times" class="md-nav__link">
+    Print some useful information 10 times
+  </a>
+  
+    <nav class="md-nav" aria-label="Print some useful information 10 times">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approach" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#similarly-print-1-to-10-using-recursive-calls" class="md-nav__link">
+    Similarly print 1 to 10 using recursive calls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -362,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arrays/arrays/" class="md-nav__link">
+      <a href="../../arrays/arrays/" class="md-nav__link">
         Intro to Arrays
       </a>
     </li>
@@ -376,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arrays/array-problems/" class="md-nav__link">
+      <a href="../../arrays/array-problems/" class="md-nav__link">
         Array Problems
       </a>
     </li>
@@ -390,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="arrays/sliding-window/" class="md-nav__link">
+      <a href="../../arrays/sliding-window/" class="md-nav__link">
         Sliding window problems
       </a>
     </li>
@@ -438,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stacks/usage/" class="md-nav__link">
+      <a href="../../stacks/usage/" class="md-nav__link">
         Stacks Usage
       </a>
     </li>
@@ -452,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stacks/problems/" class="md-nav__link">
+      <a href="../../stacks/problems/" class="md-nav__link">
         Stack Problems
       </a>
     </li>
@@ -500,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LinkedLists/stl-usage/" class="md-nav__link">
+      <a href="../../LinkedLists/stl-usage/" class="md-nav__link">
         Linked List STL Usage
       </a>
     </li>
@@ -514,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="LinkedLists/problems/" class="md-nav__link">
+      <a href="../../LinkedLists/problems/" class="md-nav__link">
         Linked List problems
       </a>
     </li>
@@ -536,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="bss/" class="md-nav__link">
+      <a href="../../bss/" class="md-nav__link">
         Binary Search
       </a>
     </li>
@@ -577,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="heaps/heap-pq/" class="md-nav__link">
+      <a href="../../heaps/heap-pq/" class="md-nav__link">
         Heaps Introduction, STL
       </a>
     </li>
@@ -591,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="heaps/problems/" class="md-nav__link">
+      <a href="../../heaps/problems/" class="md-nav__link">
         Heap Problems
       </a>
     </li>
@@ -639,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="trees/implementation/" class="md-nav__link">
+      <a href="../../trees/implementation/" class="md-nav__link">
         Tree Implementation
       </a>
     </li>
@@ -653,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="trees/problems/" class="md-nav__link">
+      <a href="../../trees/problems/" class="md-nav__link">
         Tree Problems
       </a>
     </li>
@@ -694,23 +720,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-this" class="md-nav__link">
-    What is this?
+  <a href="#what-is-this-making-problem-space-smaller-idea" class="md-nav__link">
+    What is this making problem space smaller idea?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#patterns" class="md-nav__link">
-    Patterns
+  <a href="#easier-recursion-problems" class="md-nav__link">
+    Easier Recursion problems
+  </a>
+  
+    <nav class="md-nav" aria-label="Easier Recursion problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#print-some-useful-information-10-times" class="md-nav__link">
+    Print some useful information 10 times
+  </a>
+  
+    <nav class="md-nav" aria-label="Print some useful information 10 times">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approach" class="md-nav__link">
+    Approach
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#other-links" class="md-nav__link">
-    Other links
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#similarly-print-1-to-10-using-recursive-calls" class="md-nav__link">
+    Similarly print 1 to 10 using recursive calls
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -731,38 +783,51 @@
 
 
 
-<h1 id="theroyakash-algorithms">theroyakash algorithms</h1>
-<p>Materials for FAANG and top startup coding interview and running notes on that. Made by <a href="https://www.theroyakash.com">@theroyakash</a></p>
-<div class="admonition danger">
-<p class="admonition-title">Who am I?</p>
-<p>I go by theroyakash on the internet. I am a computer scientist currently doing masters in computer science from IIT (Indian Institute of Technology), with research in high performance algorithms, data structures, distributed systems, and beyond. See my work searching google for <a href="https://g.co/kgs/Yx9DpE">theroyakash</a> and on <a href="https://github.com/theroyakash">Github</a>.</p>
-</div>
-<h2 id="what-is-this">What is this?</h2>
-<p>This material categorizes coding interview problems into a set of <strong>8 patterns</strong>. Each pattern will be a complete tool - consisting of data structures, algorithms, and analysis techniques - to solve a specific category of problems. The goal is to build an understanding of the underlying pattern so that we can apply that pattern to solve other problems.</p>
-<p><strong>Complete guide and roadmap for SDE I</strong></p>
-<h2 id="patterns">Patterns</h2>
-<ol>
-<li>Sliding Window Pattern </li>
-<li>Arrays and Strings</li>
-<li>Linked lists</li>
-<li>Stacks and Queues</li>
-<li>Trees and Graphs along with heaps</li>
-<li>Bit Manipulation (With C/C++)</li>
-<li>Sorting and Searching</li>
-<li>Dynamic Programming with Top Down (Recursive) approach</li>
-</ol>
-<figure>
-<p><img alt="Image title" src="https://images.unsplash.com/photo-1630794367767-3ac02dc66bf3?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1074&amp;q=80" width="600" />
-  </p>
-<figcaption>This is me!</figcaption>
-</figure>
-<h2 id="other-links"><strong>Other links</strong></h2>
+<h1 id="introduction-to-recursion">Introduction to recursion</h1>
+<p>Recursion is when a [function] calls itself until some condition is met. Following things we need to understand very clearly before proceeding with recursion</p>
+<h2 id="what-is-this-making-problem-space-smaller-idea">What is this <strong>making problem space smaller</strong> idea?</h2>
+<p>We are not specifically looking for to reduce the problem space, instead we'll be making some decisions that will reduce the problem space. Reduction of problem space is a by-product of the decisions that we'll be making in a specific stage of the algorithm.</p>
+<p>For recursive function calls a new stack space is created and the function will have no memory of what were the variables in the previous function call. To avoid this we use parameterized recursive calls.</p>
+<h2 id="easier-recursion-problems">Easier Recursion problems</h2>
+<h3 id="print-some-useful-information-10-times">Print some useful information 10 times</h3>
+<p>Following is the code for printing "something useful" 10 times with recursion,</p>
+<h4 id="approach">Approach</h4>
 <ul>
-<li>Visit my website <a href="https://theroyakash.com/">here</a>.</li>
-<li>My <a href="https://github.com/theroyakash">Github</a>,</li>
-<li><a href="https://theroyakash.com/about/">More about me</a>,</li>
-<li><a href="mailto:hey@theroyakash.com">Send me an email</a>.</li>
+<li>Static and global variables are stored in heap which is shared across all function calls. So we'll store a counter inside the heap to keep track of the counter across all function calls.</li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(){</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Something</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="similarly-print-1-to-10-using-recursive-calls">Similarly print 1 to 10 using recursive calls</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(){</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
               
             </article>
@@ -780,15 +845,30 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="../../blind75/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blind 75 Problems" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Blind 75 Problems
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="freebies/" class="md-footer__link md-footer__link--next" aria-label="Next: Freebies" rel="next">
+        <a href="../../arrays/arrays/" class="md-footer__link md-footer__link--next" aria-label="Next: Intro to Arrays" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Freebies
+              Intro to Arrays
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -848,12 +928,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.5e67fbfe.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.5e67fbfe.min.js"}</script>
     
     
-      <script src="assets/javascripts/bundle.e87a5f81.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e87a5f81.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

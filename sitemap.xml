@@ -2,77 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://algorithms.theroyakash.com/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/blind75/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/bss/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/freebies/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/LinkedLists/problems/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/LinkedLists/stl-usage/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/arrays/array-problems/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/arrays/arrays/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/arrays/sliding-window/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/heaps/heap-pq/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/heaps/problems/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://algorithms.theroyakash.com/recursion/intro/</loc>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/stacks/problems/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/stacks/usage/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/trees/implementation/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://algorithms.theroyakash.com/trees/problems/</loc>
-         <lastmod>2022-03-20</lastmod>
+         <lastmod>2022-03-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
