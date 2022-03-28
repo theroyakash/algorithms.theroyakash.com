@@ -100,7 +100,7 @@ int sumOfFirstNNumbers_static(int N){
 ```
 
 ## Reverse an array of numbers using recursive calls only
-**Approach**: Add 'n'th element and recursively call the function from 1 to $n-1$, and add $n-1^{th}$ elements to the answer array, again recursively call the function until we reach $0^{th}$ element.
+**Approach**: Add `n`th element and recursively call the function from 1 to $n-1$, and add $n-1^{th}$ elements to the answer array, again recursively call the function until we reach $0^{th}$ element.
 
 ```cpp
 std::vector<int> reverse(std::vector<int> &arr, int from, int to){
@@ -120,8 +120,9 @@ std::vector<int> reverse(std::vector<int> &arr, int from, int to){
 
 We can also modify the original to avoid extra spaces. We can swap the last and first elements until first pointer crosses last pointer.
 
-The following is a $O(1)$ solution.
+The following is $O(N)$ auxiliary space solution.
 
+### Code
 ```cpp
 void reverse(std::vector<int> &arr, int from, int to){
 	// reverse using recursion only
@@ -130,5 +131,52 @@ void reverse(std::vector<int> &arr, int from, int to){
 		std::swap(arr[from], arr[to]);
 		reverse(arr, from+1, to-1);
 	}
+}
+```
+
+## Find all the sub-sequences that sums up to K.
+### Problem Statement
+You'll be given a sequence and with recursive calls find out all the sub-sequences that sum up to K.
+
+### Approach
+1. First we can either take or not take one element of the sequence,
+2. each time we'll check if the number is taken the sum is greater than the required or not,
+3. If greater we stop and return else we include it and check if the sum is equal to K?
+4. If equal we simply print the sequence.
+
+### Code
+```cpp
+#include <iostream>
+#include <vector>
+
+using std::cout;
+using std::endl;
+
+void solver(std::vector<int> &v, int index, int k, int sum){
+    // sub-seq whose sum is K from the given sequence V
+
+    // shared across all recursive calls
+    static std::vector<int> b;
+
+    if (index > v.size()) return;
+
+    if (sum < k){
+        // try with the current value
+        b.push_back(v[index]);
+        sum = sum + v[index];
+        solver(v, index+1, k, sum);
+        
+        // again try without the current value
+        b.pop_back();
+        sum = sum - v[index];
+        solver(v, index+1, k, sum);
+    }
+
+    if (sum == k){
+        for (auto i:b){
+            cout << i << " ";
+        }
+        cout << endl;
+    }
 }
 ```
