@@ -158,14 +158,14 @@ void solver(std::vector<int> &v, int index, int k, int sum){
     // shared across all recursive calls
     static std::vector<int> b;
 
-    if (index > v.size()) return;
+    if (index > v.size() - 1) return;
 
     if (sum < k){
         // try with the current value
         b.push_back(v[index]);
         sum = sum + v[index];
         solver(v, index+1, k, sum);
-        
+
         // again try without the current value
         b.pop_back();
         sum = sum - v[index];

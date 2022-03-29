@@ -33,3 +33,50 @@ Output: []
 - $1$ <= `candidates[i]` <= $200$
 - All elements of candidates are distinct.
 - $1$ <= `target` <= $500$
+
+### Approach
+- We'll create a recursive subroutine called `recurse` which will recursively find all the sub-sequences that sums up to `target`
+- Recall a similar problem in the [intro section](/recursion/intro/) where we solved Find all the sub-sequences that sums up to K. But here the problem is little different, here one element can be added multiple times.
+- So we create a modification in the first recursive call: `recurse(candidates, target, sum, index);`. In this case we are again calling with the same index so that we can check if multiple times we can add the same element.
+- For the case where we are not considering a particular element [as] we are not considering a particular element, we'll simply call the recursive call `recurse(candidates, target, sum, index + 1;` with $\text{Index} + 1$.
+
+### Code
+
+```cpp
+class Solution {
+public:
+    
+    vector<vector<int>> answer;
+    
+    void recurse(vector<int> &candidates, int target, int sum, int index) {
+        
+        static vector<int> b; // shared data structure
+        
+        if (index > candidates.size() - 1) return;
+        
+        if (sum < target) {
+            
+            // check with the current index
+            b.push_back(candidates[index]);
+            sum = sum + candidates[index];
+            recurse(candidates, target, sum, index); // can take the same index multiple times
+            
+            // remove the current index and check again
+            b.pop_back();
+            sum = sum - candidates[index];
+            recurse(candidates, target, sum, index+1); // index+1 bcz we are no longer interested with that index
+        }
+        
+        if (sum == target) {
+            vector<int> bk(b);
+            answer.push_back(bk);
+        }
+        
+    }
+    
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        recurse(candidates, target, 0, 0);
+        return answer;
+    }
+};
+```
