@@ -239,6 +239,33 @@
     C++
   </a>
   
+    <nav class="md-nav" aria-label="C++">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-c-output-with-color" class="md-nav__link">
+    Writing C++ Output with color
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-with-stdcout" class="md-nav__link">
+    Usage with std::cout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithms-c" class="md-nav__link">
+    Algorithms - C++
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -320,7 +347,7 @@
   
     <li class="md-nav__item">
       <a href="../recursion/problems/" class="md-nav__link">
-        Recursion Problems
+        Recursion, Backtracking, Subset Pattern
       </a>
     </li>
   
@@ -703,6 +730,33 @@
     C++
   </a>
   
+    <nav class="md-nav" aria-label="C++">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-c-output-with-color" class="md-nav__link">
+    Writing C++ Output with color
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-with-stdcout" class="md-nav__link">
+    Usage with std::cout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithms-c" class="md-nav__link">
+    Algorithms - C++
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -740,9 +794,42 @@
 </ul>
 <h2 id="c">C++</h2>
 <p>I actually now prefer to solve algorithm problems in C++ now, so AKDSFramework alternative is here for C++. <a href="https://github.com/theroyakash/tinydscpp">Click to get it on Github <span class="arithmatex">\(\to\)</span></a>.</p>
-<p>TinyDSC++ is a simple data structure implementation library that you can remember to implement in an interview setting.</p>
+<h3 id="writing-c-output-with-color">Writing C++ Output with color</h3>
+<p>Distinguishing C++ output inside the terminal is a hard job. Use the following color pallette to distinguish the outputs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define RESET &quot;\033[0m&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#define BLACK &quot;\033[30m&quot;              </span><span class="cm">/* Black */</span><span class="cp"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#define RED &quot;\033[31m&quot;                </span><span class="cm">/* Red */</span><span class="cp"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#define GREEN &quot;\033[32m&quot;              </span><span class="cm">/* Green */</span><span class="cp"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#define YELLOW &quot;\033[33m&quot;             </span><span class="cm">/* Yellow */</span><span class="cp"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cp">#define BLUE &quot;\033[34m&quot;               </span><span class="cm">/* Blue */</span><span class="cp"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#define MAGENTA &quot;\033[35m&quot;            </span><span class="cm">/* Magenta */</span><span class="cp"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cp">#define CYAN &quot;\033[36m&quot;               </span><span class="cm">/* Cyan */</span><span class="cp"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cp">#define WHITE &quot;\033[37m&quot;              </span><span class="cm">/* White */</span><span class="cp"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cp">#define BOLDBLACK &quot;\033[1m\033[30m&quot;   </span><span class="cm">/* Bold Black */</span><span class="cp"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cp">#define BOLDRED &quot;\033[1m\033[31m&quot;     </span><span class="cm">/* Bold Red */</span><span class="cp"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cp">#define BOLDGREEN &quot;\033[1m\033[32m&quot;   </span><span class="cm">/* Bold Green */</span><span class="cp"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="cp">#define BOLDYELLOW &quot;\033[1m\033[33m&quot;  </span><span class="cm">/* Bold Yellow */</span><span class="cp"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cp">#define BOLDBLUE &quot;\033[1m\033[34m&quot;    </span><span class="cm">/* Bold Blue */</span><span class="cp"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="cp">#define BOLDMAGENTA &quot;\033[1m\033[35m&quot; </span><span class="cm">/* Bold Magenta */</span><span class="cp"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="cp">#define BOLDCYAN &quot;\033[1m\033[36m&quot;    </span><span class="cm">/* Bold Cyan */</span><span class="cp"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="cp">#define BOLDWHITE &quot;\033[1m\033[37m&quot;   </span><span class="cm">/* Bold White */</span><span class="cp"></span>
+</code></pre></div>
+<h3 id="usage-with-stdcout">Usage with <code>std::cout</code></h3>
+<p>Everytime you use any of the color you must reset the color from the terminal like the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">BOLDCYAN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RESET</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="algorithms-c">Algorithms - C++</h2>
+<p>C++ Algorithms is a simple data structure implementation library that you can remember to implement in an interview setting.</p>
 <h2 id="contributing">Contributing</h2>
-<p>There is some open positions for contribution in <strong>AKDSFramework</strong> <strong>tinyds</strong>, and <strong>tinydscpp</strong> projects. If you are willing to work open source please reach out to me at <a href="mailto:hey@theroyakash.com">hey@theroyakash.com</a>.</p>
+<p>There is some open positions for contribution in <strong>AKDSFramework</strong> <strong>tinyds</strong>, and <strong>C++ Algorithms</strong> projects. If you are willing to work open source please reach out to me at <a href="mailto:hey@theroyakash.com">hey@theroyakash.com</a>.</p>
 <div class="admonition warning important">
 <p class="admonition-title">Warning</p>
 <p>Note that I am currently a masters student in computer science, so I won't be able to provide financial reimbursement for any of the contributions done for the project. If that does not bother you, please reach out.</p>
