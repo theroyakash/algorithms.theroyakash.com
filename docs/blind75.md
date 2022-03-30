@@ -83,7 +83,7 @@ This blind problems are a curated set of problems by a facebook engineer and is 
     - Longest Increasing Subsequence
     - Longest Common Subsequence
     - Word Break Problem
-    - Combination Sum
+    - [Combination Sum](/recursion/problems/#combination-sum)
     - House Robber
     - House Robber II
     - Decode Ways

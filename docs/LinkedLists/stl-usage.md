@@ -10,6 +10,15 @@ Instead of implementing linked list from scratch, better to use the standard tem
 - [`std::list<typename>` is a doubly-linked list data structure](https://en.cppreference.com/w/cpp/container/list), and
 - [`std::forward_list<typename>` is a singly-linked list data structure](https://en.cppreference.com/w/cpp/container/forward_list).
 
+## Table of contents
+- [Linked List STL operations](#linked-list-stl-operations)
+  - [Table of contents](#table-of-contents)
+  - [`std::list<typename>`](#stdlisttypename)
+    - [Operations](#operations)
+      - [Operation Modefiers](#operation-modefiers)
+      - [Essential operations](#essential-operations)
+  - [`std::forward_list<typename>`](#stdforward_listtypename)
+
 ## `std::list<typename>`
 - supports constant time insertion and removal of elements from anywhere in the container
 - Adding, removing and moving the elements within the list or across several lists does not invalidate the iterators or references. An iterator is invalidated only when the corresponding element is deleted.

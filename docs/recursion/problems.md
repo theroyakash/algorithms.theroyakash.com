@@ -1,4 +1,55 @@
-# Recursion Problems
+# Recursion, Backtracking and Subset Problems
+
+These pattern of questions include subset formation, backtracking and recursive calls. Almost all of the questions are leetcode medium level questions. Solving these following problems will help people gain a better understanding of
+
+1. Backtracking,
+2. Recursion calls,
+3. Subset pattern of questions.
+
+## Find all the subsets
+[Problem on Leetcode $\to$](https://leetcode.com/problems/subsets/)
+
+Given an integer array nums of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order.
+
+### Approach
+With basic recursive approach, we first include an element and don't include an element. This is how we can generate all the unique subsets from a given set. We push the subset to the answer only at the last step of the recursion tree when the index reaches to the last element.
+
+### Code
+```cpp
+class Solution {
+private:
+    vector<vector<int>> answer;
+
+    void recurse(vector<int>& v, int index) {
+        static vector<int> b;
+
+        if (index > v.size() - 1) {
+            
+            // Push the subset only at the last step of the recursion tree
+            
+            vector<int> c(b); // create a copy of b and add it into answer
+            answer.push_back(c);
+
+            return;
+        }
+
+        // with the element
+        b.push_back(v[index]);
+        recurse(v, index + 1);
+
+        // without the current element
+        b.pop_back();
+        recurse(v, index + 1);
+    }
+
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        recurse(nums, 0);
+        return answer;
+    }
+};
+
+```
 
 ## Combination Sum
 [Problem on Leetcode $\to$](https://leetcode.com/problems/combination-sum/)

@@ -7,7 +7,7 @@ nav:
   - Blind 75 Problems: ./blind75.md
   - Recursion:
     - Recursion Introduction: ./recursion/intro.md
-    - Recursion Problems: ./recursion/problems.md
+    - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
   - Arrays:
     - Intro to Arrays: ./arrays/arrays.md
     - Array Problems: ./arrays/array-problems.md
