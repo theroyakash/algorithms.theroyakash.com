@@ -51,6 +51,60 @@ public:
 
 ```
 
+## Subsets II
+Subsets II is a little bit different, given an integer array nums **that may contain duplicates**, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+### Approach
+- The approach should be similar to the subset approach, now in order to avoid duplicates in the power set what we can do is the following
+    - We can first sort the input array 
+    - then skip duplicates while traversing through the array in the recursive calls by instead of skipping 1 index, skip multiple indexes until we can't find a new value.
+    - This specific modification helps us avoid duplicates
+        ```cpp
+        while(index < nums.size() - 1 and nums[index] == nums[index + 1]){
+            index++;
+        }
+        ```
+- Now we can avoid duplicates in the power set.
+### Code
+
+```cpp
+class Solution {
+private:
+    
+    vector<vector<int>> answer;
+    
+    void recurse(vector<int>& nums, int index){
+        
+        static vector<int> b;
+        
+        if (index >= nums.size()) {
+            // at the end of tree
+            vector<int> c(b);
+            answer.push_back(c);
+            return;
+        }
+        
+        b.push_back(nums[index]);
+        recurse(nums, index + 1);
+        
+        b.pop_back();
+        while(index < nums.size() - 1 and nums[index] == nums[index + 1]){
+            index++;
+        }
+        recurse(nums, index + 1);
+    }
+    
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        recurse(nums, 0);
+        return answer;
+    }
+};
+```
+
 ## Combination Sum
 [Problem on Leetcode $\to$](https://leetcode.com/problems/combination-sum/)
 
@@ -131,3 +185,14 @@ public:
     }
 };
 ```
+
+## Combination Sum III
+
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/combination-sum-iii/)
+
+This is a slight modification of the previous problem, find all valid combinations of k numbers that sum up to n such that the following conditions are true:
+
+- Only numbers 1 through 9 are used.
+- Each number is used at most once.
+
+Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
