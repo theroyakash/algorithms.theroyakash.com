@@ -18,7 +18,9 @@ nav:
   - Linked List: 
     - Linked List STL Usage: ./LinkedLists/stl-usage.md
     - Linked List problems: ./LinkedLists/problems.md
-  - Binary Search: ./bss.md
+  - Binary Search: 
+    - Basics and introduction: ./bss.md
+    - Other binary search problems: ./otherbinarysearch-problems.md
   - Heap (Priority Queue):
     - Heaps Introduction, STL: ./heaps/heap-pq.md
     - Heap Problems: ./heaps/problems.md

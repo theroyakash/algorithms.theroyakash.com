@@ -1,5 +1,5 @@
 ---
-title: Binary Search Problem
+title: Binary Search
 tags:
     - Medium
     - Binary Search
