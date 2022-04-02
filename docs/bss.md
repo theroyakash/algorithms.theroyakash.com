@@ -36,7 +36,7 @@ def ceil(array: list[int], target: int) -> int:
     start: int = 0
     end: int = len(array) - 1
 
-    while start < end:
+    while start <= end:
         middle: int = int((start + end) / 2)
         if array[middle] < target:
             start = middle+1
