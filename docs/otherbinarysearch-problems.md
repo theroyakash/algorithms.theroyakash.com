@@ -90,8 +90,44 @@ int firstOccurence(vector<int> &v, int target){
 }
 ```
 
+!!! danger "For finding the last occurence"
+    Similarly we can find the last occurence of an element in the sorted array by modifying the previous problem slightly, by first finding the element with binary search, then instead of finding the element in the left side [for first occurence] we search the right sub array for the last occurence of the element.
+
+    ```cpp
+    int lastOccurence(vector<int> &v, int target){
+        int start = 0;
+        int end = v.size() - 1;
+
+        int middle = start + (end - start) / 2;
+        int last = -1;
+
+        while (start <= end) {
+
+            if (v[middle] == target) {
+                // modification to the general binary search
+                last = middle;
+                start = middle + 1; // look in the right subarray for the last occurrence
+            } else if (v[middle] < target) {
+                start = middle + 1;
+            } else {
+                end = middle - 1;
+            }
+
+            middle = start + (end - start) / 2;
+
+        }
+
+        return last;
+    }
+    ```
+
 
 ## Count of an Element in a Sorted Array
+This is a very simple problem, we can find the first occurrence of an element [index] and last occurence of an element and subtract. This will return the number of times the element was found in the array.
+
+### Expected Time complexity
+$O(\text{lg} N)$ for finding the first occurrence and $O(\text{lg} N)$ for finding the last occurrence. Total of $O(\text{lg} N)$.
+
 ## Number of Times a Sorted array is Rotated
 ## Find an Element in a Rotated Sorted Array
 ## Searching in a Nearly Sorted Array
