@@ -685,8 +685,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#straing-forward-brute-force-approach" class="md-nav__link">
-    Straing Forward Brute Force Approach
+  <a href="#brute-force-approach" class="md-nav__link">
+    Brute Force Approach
   </a>
   
 </li>
@@ -1069,8 +1069,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#straing-forward-brute-force-approach" class="md-nav__link">
-    Straing Forward Brute Force Approach
+  <a href="#brute-force-approach" class="md-nav__link">
+    Brute Force Approach
   </a>
   
 </li>
@@ -1306,9 +1306,9 @@
 <p>An asending sorted array <span class="arithmatex">\(A[0 \to N]\)</span> once rotated becomes <span class="arithmatex">\(A[1 \to N] + A[0]\)</span>. When it twice rotated becomes <span class="arithmatex">\(A[2 \to N] + A[0 \to 1]\)</span>.</p>
 <p>When the array is rotated <span class="arithmatex">\(k\)</span> times, the array becomes <span class="arithmatex">\(A[K \to N] + A[0 \to K - 1]\)</span>
 <img alt="image" src="../images/03a749f6-c901-4f26-b46e-230b46fab28d.png" /></p>
-<h3 id="straing-forward-brute-force-approach">Straing Forward Brute Force Approach</h3>
-<p>Using a linear search if we find for some <span class="arithmatex">\(i\)</span> <span class="arithmatex">\(A[i] &gt; A[i+1]\)</span>, that <span class="arithmatex">\(i\)</span> is the index of the rotation starting point. Subtract <span class="arithmatex">\(i\)</span> from length of the array to find how much rotation took place.</p>
-<p>This solution is <span class="arithmatex">\(O(N)\)</span> so not efficient enough.</p>
+<h3 id="brute-force-approach">Brute Force Approach</h3>
+<p>Using a linear search if we find for some <span class="arithmatex">\(i\)</span> <span class="arithmatex">\(A[i] &gt; A[i+1]\)</span>, that <span class="arithmatex">\(i\)</span> is the index of the rotation starting point. Subtract <span class="arithmatex">\(i\)</span> from length of the array to find how much rotation took place. </p>
+<p>One more thing we can observe is that the index of the minimum element is the # of rotations done on the sorted array. Both of these solution is <span class="arithmatex">\(O(N)\)</span> so not efficient enough.</p>
 <h2 id="find-an-element-in-a-rotated-sorted-array">Find an Element in a Rotated Sorted Array</h2>
 <h2 id="searching-in-a-nearly-sorted-array">Searching in a Nearly Sorted Array</h2>
 <h2 id="find-floor-of-an-element-in-a-sorted-array">Find Floor of an element in a Sorted Array</h2>
