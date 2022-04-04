@@ -129,6 +129,17 @@ This is a very simple problem, we can find the first occurrence of an element [i
 $O(\text{lg} N)$ for finding the first occurrence and $O(\text{lg} N)$ for finding the last occurrence. Total of $O(\text{lg} N)$.
 
 ## Number of Times a Sorted array is Rotated
+### Problem Statement
+An asending sorted array $A[0 \to N]$ once rotated becomes $A[1 \to N] + A[0]$. When it twice rotated becomes $A[2 \to N] + A[0 \to 1]$.
+
+When the array is rotated $k$ times, the array becomes $A[K \to N] + A[0 \to K - 1]$
+![image](./images/03a749f6-c901-4f26-b46e-230b46fab28d.png)
+
+### Straing Forward Brute Force Approach
+Using a linear search if we find for some $i$ $A[i] > A[i+1]$, that $i$ is the index of the rotation starting point. Subtract $i$ from length of the array to find how much rotation took place.
+
+This solution is $O(N)$ so not efficient enough.
+
 ## Find an Element in a Rotated Sorted Array
 ## Searching in a Nearly Sorted Array
 ## Find Floor of an element in a Sorted Array
