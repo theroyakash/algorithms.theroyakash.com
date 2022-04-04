@@ -135,10 +135,10 @@ An asending sorted array $A[0 \to N]$ once rotated becomes $A[1 \to N] + A[0]$. 
 When the array is rotated $k$ times, the array becomes $A[K \to N] + A[0 \to K - 1]$
 ![image](./images/03a749f6-c901-4f26-b46e-230b46fab28d.png)
 
-### Straing Forward Brute Force Approach
-Using a linear search if we find for some $i$ $A[i] > A[i+1]$, that $i$ is the index of the rotation starting point. Subtract $i$ from length of the array to find how much rotation took place.
+### Brute Force Approach
+Using a linear search if we find for some $i$ $A[i] > A[i+1]$, that $i$ is the index of the rotation starting point. Subtract $i$ from length of the array to find how much rotation took place. 
 
-This solution is $O(N)$ so not efficient enough.
+One more thing we can observe is that the index of the minimum element is the # of rotations done on the sorted array. Both of these solution is $O(N)$ so not efficient enough.
 
 ## Find an Element in a Rotated Sorted Array
 ## Searching in a Nearly Sorted Array
