@@ -123,6 +123,9 @@ int firstOccurence(vector<int> &v, int target){
 
 
 ## Count of an Element in a Sorted Array
+
+[Similar problem on Leetcode $\to$](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+
 This is a very simple problem, we can find the first occurrence of an element [index] and last occurence of an element and subtract. This will return the number of times the element was found in the array.
 
 ### Expected Time complexity
@@ -133,12 +136,51 @@ $O(\text{lg} N)$ for finding the first occurrence and $O(\text{lg} N)$ for findi
 An asending sorted array $A[0 \to N]$ once rotated becomes $A[1 \to N] + A[0]$. When it twice rotated becomes $A[2 \to N] + A[0 \to 1]$.
 
 When the array is rotated $k$ times, the array becomes $A[K \to N] + A[0 \to K - 1]$
+
 ![image](./images/03a749f6-c901-4f26-b46e-230b46fab28d.png)
 
 ### Brute Force Approach
 Using a linear search if we find for some $i$ $A[i] > A[i+1]$, that $i$ is the index of the rotation starting point. Subtract $i$ from length of the array to find how much rotation took place. 
 
-One more thing we can observe is that the index of the minimum element is the # of rotations done on the sorted array. Both of these solution is $O(N)$ so not efficient enough.
+One more thing we can observe is that the $(\text{size - index of the minimum element})$ is the # of rotations done on the sorted array. Both of these solution is $O(N)$ so not efficient enough.
+
+### More optimized approach
+We cannot afford to search for the minimum element in the entire array, this will cost $O(N)$ time. However if we reduce the size of the search space we can reduce the time complexity of the algorithm.
+
+This apporach works like this:
+
+1. First check the middle $i$, if the value is smaller than both the element to its side $i - 1$ and $i + 1$, then it is the point of the minimum element means this is the point of rotation.
+2. If this is not true then based on some idea we should reduce the size of the search space, otherwise its gonna be $O(N)$
+      1. We do this very ingenious way, first we check if the middle element is smaller than the first element or not? If this is the case then the minimum element is present in the left side of the middle element.
+      2. Else the element should be present in the right side of the middle element.
+
+### Code
+```cpp
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        int size = nums.size();
+
+        int middle = start + (end - start) / 2;
+        
+        while (start < end){
+            
+            if (nums[middle] > nums[end]) {
+                start = middle + 1;
+            } else {
+                end = middle;
+            }
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return size - start + 1;
+    }
+};
+```
 
 ## Find an Element in a Rotated Sorted Array
 ## Searching in a Nearly Sorted Array
