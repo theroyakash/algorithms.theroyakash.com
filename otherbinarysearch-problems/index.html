@@ -691,6 +691,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#more-optimized-approach" class="md-nav__link">
+    More optimized approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1075,6 +1089,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#more-optimized-approach" class="md-nav__link">
+    More optimized approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1298,17 +1326,55 @@
 </code></pre></div>
 </div>
 <h2 id="count-of-an-element-in-a-sorted-array">Count of an Element in a Sorted Array</h2>
+<p><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/">Similar problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
 <p>This is a very simple problem, we can find the first occurrence of an element [index] and last occurence of an element and subtract. This will return the number of times the element was found in the array.</p>
 <h3 id="expected-time-complexity_1">Expected Time complexity</h3>
 <p><span class="arithmatex">\(O(\text{lg} N)\)</span> for finding the first occurrence and <span class="arithmatex">\(O(\text{lg} N)\)</span> for finding the last occurrence. Total of <span class="arithmatex">\(O(\text{lg} N)\)</span>.</p>
 <h2 id="number-of-times-a-sorted-array-is-rotated">Number of Times a Sorted array is Rotated</h2>
 <h3 id="problem-statement">Problem Statement</h3>
 <p>An asending sorted array <span class="arithmatex">\(A[0 \to N]\)</span> once rotated becomes <span class="arithmatex">\(A[1 \to N] + A[0]\)</span>. When it twice rotated becomes <span class="arithmatex">\(A[2 \to N] + A[0 \to 1]\)</span>.</p>
-<p>When the array is rotated <span class="arithmatex">\(k\)</span> times, the array becomes <span class="arithmatex">\(A[K \to N] + A[0 \to K - 1]\)</span>
-<img alt="image" src="../images/03a749f6-c901-4f26-b46e-230b46fab28d.png" /></p>
+<p>When the array is rotated <span class="arithmatex">\(k\)</span> times, the array becomes <span class="arithmatex">\(A[K \to N] + A[0 \to K - 1]\)</span></p>
+<p><img alt="image" src="../images/03a749f6-c901-4f26-b46e-230b46fab28d.png" /></p>
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 <p>Using a linear search if we find for some <span class="arithmatex">\(i\)</span> <span class="arithmatex">\(A[i] &gt; A[i+1]\)</span>, that <span class="arithmatex">\(i\)</span> is the index of the rotation starting point. Subtract <span class="arithmatex">\(i\)</span> from length of the array to find how much rotation took place. </p>
-<p>One more thing we can observe is that the index of the minimum element is the # of rotations done on the sorted array. Both of these solution is <span class="arithmatex">\(O(N)\)</span> so not efficient enough.</p>
+<p>One more thing we can observe is that the <span class="arithmatex">\((\text{size - index of the minimum element})\)</span> is the # of rotations done on the sorted array. Both of these solution is <span class="arithmatex">\(O(N)\)</span> so not efficient enough.</p>
+<h3 id="more-optimized-approach">More optimized approach</h3>
+<p>We cannot afford to search for the minimum element in the entire array, this will cost <span class="arithmatex">\(O(N)\)</span> time. However if we reduce the size of the search space we can reduce the time complexity of the algorithm.</p>
+<p>This apporach works like this:</p>
+<ol>
+<li>First check the middle <span class="arithmatex">\(i\)</span>, if the value is smaller than both the element to its side <span class="arithmatex">\(i - 1\)</span> and <span class="arithmatex">\(i + 1\)</span>, then it is the point of the minimum element means this is the point of rotation.</li>
+<li>If this is not true then based on some idea we should reduce the size of the search space, otherwise its gonna be <span class="arithmatex">\(O(N)\)</span><ol>
+<li>We do this very ingenious way, first we check if the middle element is smaller than the first element or not? If this is the case then the minimum element is present in the left side of the middle element.</li>
+<li>Else the element should be present in the right side of the middle element.</li>
+</ol>
+</li>
+</ol>
+<h3 id="code_1">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">findMin</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">end</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">                </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">                </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">middle</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">            </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
 <h2 id="find-an-element-in-a-rotated-sorted-array">Find an Element in a Rotated Sorted Array</h2>
 <h2 id="searching-in-a-nearly-sorted-array">Searching in a Nearly Sorted Array</h2>
 <h2 id="find-floor-of-an-element-in-a-sorted-array">Find Floor of an element in a Sorted Array</h2>
