@@ -183,6 +183,10 @@ public:
 ```
 
 ## Find an Element in a Rotated Sorted Array
+### Approach
+- If we look at the previous problem, we'll see that the (rotation point): let's call that the pivot, the subarray before pivot is sorted and subarray after pivot is sorted as well.
+- If we run 2 binary search on each of the subarrays we'll find the target element in $O(\text{lg} N)$ time.
+
 ## Searching in a Nearly Sorted Array
 ## Find Floor of an element in a Sorted Array
 ## Ceil of an element in a Sorted Array
