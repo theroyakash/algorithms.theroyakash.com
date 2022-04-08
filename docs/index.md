@@ -13,7 +13,13 @@ Materials for FAANG and top startup coding interview and running notes on that. 
 ## What is this?
 This material categorizes coding interview problems into a set of **8 patterns**. Each pattern will be a complete tool - consisting of data structures, algorithms, and analysis techniques - to solve a specific category of problems. The goal is to build an understanding of the underlying pattern so that we can apply that pattern to solve other problems.
 
-**Complete guide and roadmap for SDE I**
+**Complete guide and roadmap for SDE I and**
+
+## Also Coming Soon
+Few more freebies coming soon
+- Complete Notes for Advanced algorithms design and selected data structure analysis
+- Randomized algorithm notes
+- Distributed Systems Book [expected 2023 Summer].
 
 ## Patterns
 
