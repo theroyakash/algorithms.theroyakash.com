@@ -844,7 +844,7 @@
 <p>Graph is one of the most common and important data structure. With C++ and STL I'll show you the best possible implementation for graph that you'll be able to implement and analyze in your code at FAANG interviews within the time constraints.</p>
 <h2 id="graph-adjacency-list-vs-adjacency-matrix">Graph Adjacency List vs Adjacency Matrix</h2>
 <p>Most of the cases the List representation is good enough, if the graph is sparse then it will take less space, and if the graph is dense you should use the adjacency matrix representation.</p>
-<p>Any graph with <strong>less than 70% of the all possible edges</strong>: <span class="arithmatex">\(E \geq 0.7 * {n \choose 2}\)</span> present can be considered to be implemented as adjacency list.</p>
+<p>In my opinion any graph with <strong>less than 70% of the all possible edges</strong>: <span class="arithmatex">\(\text{Count(E)} \geq 0.7 * {n \choose 2}\)</span> present can be considered to be implemented as adjacency list.</p>
 <h2 id="c-graph-representation">C++ Graph representation</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;list&gt;</span><span class="cp"></span>
