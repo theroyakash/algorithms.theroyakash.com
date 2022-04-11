@@ -8,7 +8,8 @@ Here are things that you get for free if you wish to work in Python.
 - [TinyDS](https://github.com/theroyakash/tinyds), small and simple pythonic implementations for most of your coding problems that are asked in SDE I or II interviews at FAANGs that you will be able to implement on the spot if asked.
 
 ## C++
-I actually now prefer to solve algorithm problems in C++ now, so AKDSFramework alternative is here for C++. [Click to get it on Github $\to$](https://github.com/theroyakash/tinydscpp).
+- I actually now prefer to solve algorithm problems in C++ now, so AKDSFramework alternative is here for C++. [Click to get it on Github $\to$](https://github.com/theroyakash/tinydscpp).
+- How to use the `stdin` and `stdout` and take input from files and write output to text files to quickly submit solutions to online coding platforms. [Here is an article with that information](/stdinout-usage).
 
 ### Writing C++ Output with color
 Distinguishing C++ output inside the terminal is a hard job. Use the following color pallette to distinguish the outputs.
@@ -47,7 +48,7 @@ int main() {
     return 0;
 }
 ```
-## Algorithms - C++
+## Algorithms C++
 C++ Algorithms is a simple data structure implementation library that you can remember to implement in an interview setting.
 
 ## Contributing

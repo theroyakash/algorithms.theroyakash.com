@@ -187,6 +187,38 @@ public:
 - If we look at the previous problem, we'll see that the (rotation point): let's call that the pivot, the subarray before pivot is sorted and subarray after pivot is sorted as well.
 - If we run 2 binary search on each of the subarrays we'll find the target element in $O(\text{lg} N)$ time.
 
+### Code
+```cpp
+// Consider binary_search is already available
+
+int rotatation_point(vector<int> &v){
+    int start = 0;
+    int end = v.size() - 1;
+
+    int mid = start + (end - start) / 2;
+
+    while(start <= end){
+        if (v[middle] > v[end]){
+            start = middle + 1;
+        } else {
+            end = middle - 1;
+        }
+
+        middle = start + (end - start) / 2;
+    }
+
+    // now middle is the index of the rotation point
+    int index1 = binary_search(v, 0, middle - 1);
+    int index2 = binary_search(v, middle, end);
+
+    return std::max(index1, index2);
+}
+
+int search_on_rotated(vector<int> &v){
+    // find the rotation point
+}
+```
+
 ## Searching in a Nearly Sorted Array
 ## Find Floor of an element in a Sorted Array
 ## Ceil of an element in a Sorted Array

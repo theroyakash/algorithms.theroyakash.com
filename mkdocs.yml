@@ -5,6 +5,7 @@ nav:
   - Introduction: index.md
   - Freebies: freebies.md
   - Blind 75 Problems: ./blind75.md
+  - Standard Input Output: ./stdinout-usage.md
   - Recursion:
     - Recursion Introduction: ./recursion/intro.md
     - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
