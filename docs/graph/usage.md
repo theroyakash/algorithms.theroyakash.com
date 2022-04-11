@@ -5,7 +5,7 @@ Graph is one of the most common and important data structure. With C++ and STL I
 ## Graph Adjacency List vs Adjacency Matrix
 Most of the cases the List representation is good enough, if the graph is sparse then it will take less space, and if the graph is dense you should use the adjacency matrix representation.
 
-Any graph with **less than 70% of the all possible edges**: $E \geq 0.7 * {n \choose 2}$ present can be considered to be implemented as adjacency list.
+In my opinion any graph with **less than 70% of the all possible edges**: $\text{Count(E)} \geq 0.7 * {n \choose 2}$ present can be considered to be implemented as adjacency list.
 
 ## C++ Graph representation
 ```cpp
