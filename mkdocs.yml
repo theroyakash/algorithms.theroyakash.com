@@ -27,6 +27,9 @@ nav:
   - Trees:
     - Tree Implementation: ./trees/implementation.md
     - Tree Problems: ./trees/problems.md
+  - Graphs:
+    - Graph Usage: graph/usage.md
+    - BFS and DFS: graph/bfs-dfs.md
 
 theme:
   name: material
