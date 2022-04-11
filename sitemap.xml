@@ -26,6 +26,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://algorithms.theroyakash.com/stdinout-usage/</loc>
+         <lastmod>2022-04-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://algorithms.theroyakash.com/LinkedLists/problems/</loc>
          <lastmod>2022-04-11</lastmod>
          <changefreq>daily</changefreq>
