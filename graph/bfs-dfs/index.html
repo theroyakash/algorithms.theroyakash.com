@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#breath-first-and-depth-first-search" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -737,10 +742,50 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          BFS and DFS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         BFS and DFS
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#things-to-remember-about" class="md-nav__link">
+    Things to remember about
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-graph-implementation" class="md-nav__link">
+    Standard Graph implementation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -770,6 +815,30 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#things-to-remember-about" class="md-nav__link">
+    Things to remember about
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-graph-implementation" class="md-nav__link">
+    Standard Graph implementation
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -786,9 +855,16 @@
 
 
 
-  <h1>BFS and DFS</h1>
-
-
+<h1 id="breath-first-and-depth-first-search">Breath first and depth first search</h1>
+<p>BFS and DFS are two of the most common graph as well as tree traversal techniques that ever existed. You should always understand the basic understanding behind these traversals.</p>
+<h2 id="things-to-remember-about">Things to remember about</h2>
+<ul>
+<li>BFS uses a queue and FIFO ordering is something that it uses.</li>
+<li>DFS uses recursion, recursivly goes in depth until the element is found.</li>
+</ul>
+<h2 id="standard-graph-implementation">Standard Graph implementation</h2>
+<p>We'll use our own standard implementation for graph and will write BFS and DFS to work on that standard graph.</p>
+<p>This following graph implementation may not be the very best implementation that you'll find, but it is good enough and most importantly you'll be able to implement this in an interview setting.</p>
 
               
             </article>
