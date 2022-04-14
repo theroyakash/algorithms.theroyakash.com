@@ -47,3 +47,55 @@ public:
 ```
 
 Now on top of this custom graph [adjacency list] representation we'll implement BFS and DFS the 2 most common algorithms in graphs and trees ever.
+
+### BFS Implementation
+Implementation follows CLRS text book for reference although not a blind copy.
+```cpp
+#include <iostream>
+#include <list>
+#include <unordered_map>
+#include <vector>
+#include <utility>
+
+#include <queue>
+
+vector<char> BFS(Graph &g, char startFromVertex){
+
+	// create a queue
+	queue<char> q;
+
+	// result order for the bfs
+	vector<char> bfstree;
+
+	// the graph as a map
+	unordered_map<char, list<pair<char, int>>> graphView = g.view();
+
+	// visited map
+	unordered_map<char, bool> visited;
+	for (auto vertex:graphView)
+		visited[vertex.first] = false;
+
+	q.push(startFromVertex); // startFromVertex must be in graph g
+
+
+	while(!q.empty()){
+		char vert = q.front();
+		if (visited[vert] == false){
+			// if we did not visit this vertex please process
+			bfstree.push_back(vert);
+			
+			auto neighbors = graphView[vert];
+			for (auto neighbor:neighbors){
+				q.push(neighbor.first);
+			}
+
+			visited[vert] = true;
+		}
+		
+		// now remove the vertex
+		q.pop();
+	}
+
+	return bfstree;
+}
+```
