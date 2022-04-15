@@ -1,14 +1,14 @@
-# Breath first and depth first search
+# Breath first and depth-first search
 BFS and DFS are two of the most common graph as well as tree traversal techniques that ever existed. You should always understand the basic understanding behind these traversals.
 
 ## Things to remember about
 - BFS uses a queue and FIFO ordering is something that it uses.
-- DFS uses recursion, recursivly goes in depth until the element is found.
+- DFS uses recursion, and recursively goes in-depth until the element is found.
 
 ## Standard Graph implementation
-We'll use our own standard implementation for graph and will write BFS and DFS to work on that standard graph.
+We'll use our standard implementation for graphs and will write BFS and DFS to work on that standard graph.
 
-This following graph implementation may not be the very best implementation that you'll find, but it is good enough and most importantly you'll be able to implement this in an interview setting.
+The following graph implementation may not be the very best implementation that you'll find, but it is good enough and most importantly you'll be able to implement this in an interview setting.
 
 ```cpp
 #include <iostream>
@@ -46,10 +46,10 @@ public:
 };
 ```
 
-Now on top of this custom graph [adjacency list] representation we'll implement BFS and DFS the 2 most common algorithms in graphs and trees ever.
+Now on top of this custom graph [adjacency list] representation, we'll implement BFS and DFS the 2 most common algorithms in graphs and trees ever.
 
-### BFS Implementation
-Implementation follows CLRS text book for reference although not a blind copy.
+## BFS with standard graph
+Implementation follows the CLRS textbook for reference although is not a blind copy.
 ```cpp
 #include <iostream>
 #include <list>
@@ -97,5 +97,47 @@ vector<char> BFS(Graph &g, char startFromVertex){
 	}
 
 	return bfstree;
+}
+```
+
+## DFS on standard Graph
+
+Implementation of DFS is recursive, it recursively goes into the graph then backtracks once there is nowhere to go. But in this implementation, I'll strictly avoid recursion because the graph is a little hard to grasp, and doing recursion on a graph may seem $\text{BLACK MAGIC}$. Instead, I'll implement DFS using a stack data structure to mimic recursion. It's an iterative implementation that is much easier to grasp.
+
+```cpp
+vector<char> DFS(Graph &g, char startFromVertex){
+
+    vector<char> stack;
+    unordered_map<char, bool> visited;
+    vector<char> dfsOrder;
+
+    auto graphView = g.view();
+
+    // initialize all the visited == false
+    for (auto vertex:graphView)
+        visited[vertex.first] = false;
+
+    // push whatever with you are starting with
+    stack.push_back(startFromVertex);
+
+    while(!stack.empty()){
+        char tos = stack.back();
+        stack.pop_back();
+
+        if (visited[tos] == false){
+            // if this top of the stack is not visited then mark it
+            // visited and push into the answer array [dfsOrder].
+            visited[tos] = true;
+            dfsOrder.push_back(tos);
+        }
+
+        for (auto adj_list:graphView[tos]){    // look at the adj_list of tos vertex
+            if (visited[adj_list.first] == false){
+                stack.push_back(adj_list.first);
+            }
+        }
+    }
+
+    return dfsOrder;
 }
 ```

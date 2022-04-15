@@ -1,5 +1,5 @@
 # Taking data in and writing data out to a file
-In some of the problems in SDE 1 and SDE 2 online coding rounds you have to take care of the program inputs.
+In some of the problems in SDE 1 and SDE 2 online coding rounds, you have to take care of the program inputs.
 
 Here is an example of how we can write all inputs to a text file and then run our algorithms.
 
@@ -11,7 +11,7 @@ freopen("output.txt", "w", stdout);
 ```
 
 ### Input
-Now in input.txt file you design as the inputs are given in the following case the input was
+Now in the input.txt file, you design as the inputs are given in the following case the input was
 
 ```
 3
@@ -81,38 +81,38 @@ public:
 
 
 int main() {
-	
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+    
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 
     Graph g;
 
-	int vertex;
-	cin >> vertex;
+    int vertex;
+    cin >> vertex;
 
-	vector<char> v;
+    vector<char> v;
 
-	while (vertex != 0){
-		char vertex_label;
-		cin >> vertex_label;
-		v.push_back(vertex_label);
-		vertex--;
-	}
+    while (vertex != 0){
+        char vertex_label;
+        cin >> vertex_label;
+        v.push_back(vertex_label);
+        vertex--;
+    }
 
     g.register_vertex(v);
 
-	int numberofedges;
+    int numberofedges;
 
-	cin >> numberofedges;
+    cin >> numberofedges;
 
-	while(numberofedges != 0){
-		char from, to;
-		int weight;
+    while(numberofedges != 0){
+        char from, to;
+        int weight;
 
-		cin >> from >> to >> weight;
-		g.add_edge(from, to, weight);
-		numberofedges--;
-	}
+        cin >> from >> to >> weight;
+        g.add_edge(from, to, weight);
+        numberofedges--;
+    }
 
     unordered_map<char, list<pair<char, int>>> map = g.view();
 

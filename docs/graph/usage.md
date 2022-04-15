@@ -1,9 +1,9 @@
 # Graph Usage
 
-Graph is one of the most common and important data structure. With C++ and STL I'll show you the best possible implementation for graph that you'll be able to implement and analyze in your code at FAANG interviews within the time constraints.
+The graph is one of the most common and important data structures. With C++ and STL I'll show you the best possible implementation for the graph that you'll be able to implement and analyze in your code at FAANG interviews within the time constraints.
 
 ## Graph Adjacency List vs Adjacency Matrix
-Most of the cases the List representation is good enough, if the graph is sparse then it will take less space, and if the graph is dense you should use the adjacency matrix representation.
+Most of cases the List representation is good enough, if the graph is sparse then it will take less space, and if the graph is dense you should use the adjacency matrix representation.
 
 In my opinion any graph with **less than 70% of the all possible edges**: $\text{Count(E)} \geq 0.7 * {n \choose 2}$ present can be considered to be implemented as adjacency list.
 
