@@ -94,6 +94,9 @@ extra_javascript:
 
 extra:
   generator: false
+  analytics:
+    provider: google
+    property: G-QZBMGS6591
   social:
     - icon: fontawesome/brands/twitter 
       link: https://twitter.com/theroyakash
