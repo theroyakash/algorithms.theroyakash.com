@@ -28,10 +28,7 @@ Few more freebies coming soon
 7. Sorting and Searching
 8. Dynamic Programming with Top-Down (Recursive) approach
 
-<figure markdown>
-  ![Image title](https://images.unsplash.com/photo-1630794367767-3ac02dc66bf3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80){ width="600" }
-  <figcaption>This is me!</figcaption>
-</figure>
+![Image title](https://images.unsplash.com/photo-1630794367767-3ac02dc66bf3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80)
 
 ## **Other links**
 - Visit my website [here](https://theroyakash.com/).
