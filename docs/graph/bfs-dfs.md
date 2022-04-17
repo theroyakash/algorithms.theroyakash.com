@@ -141,3 +141,180 @@ vector<char> DFS(Graph &g, char startFromVertex){
     return dfsOrder;
 }
 ```
+
+## Application of depth first search
+### Find all the connected components of a graph
+#### Approach
+
+- Using depth first search we can go in depth of a graph and for each connected components the DFS program will stop. 
+- We do this until we visit all the nodes in a graph. This way we'll find all the connected components of the graph.
+
+#### C++ Code
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <forward_list>
+
+using namespace std;
+
+
+class Graph{
+private:
+	unordered_map<char, forward_list<char>> adj_list;
+
+public:
+    Graph(vector<char> vertices){
+        for (char vert:vertices){
+            forward_list<char> neighbor;
+            adj_list.insert({
+                vert, neighbor
+            });
+        }
+    }
+
+    unordered_map<char, forward_list<char>> view(){
+        return adj_list;
+    }
+
+    void add_edge(char from, char to){
+        adj_list[from].push_front(to);
+        adj_list[to].push_front(from);
+    }
+};
+
+vector<char> DFSOrder(Graph &g, char startingVertex){
+	unordered_map<char, bool> visited;
+	vector<char> stack;
+
+	vector<char> order;
+
+	auto view = g.view();
+
+	// mark all node to visited == false
+	for(auto y:view)
+		visited[y.first] = false;
+
+	stack.push_back(startingVertex);
+
+	while (!stack.empty()){
+		char tos = stack.back();
+		stack.pop_back();
+
+		if (visited[tos] == false){
+			visited[tos] = true;
+			order.push_back(tos);
+		}
+
+		for (auto nbr:view[tos]){
+			if (visited[nbr] == false){
+				stack.push_back(nbr);
+			}
+		}
+	}
+
+	return order;
+}
+
+void connected_components(Graph &g){
+	unordered_map<char, bool> visited;
+	auto view = g.view();
+
+	// mark all node to visited == false
+	for(auto y:view)
+		visited[y.first] = false;
+
+	// while( visited == all not true)
+	// use dfs;
+	int connected_component_number = 0;
+
+	while(!visited.empty()){
+		// take any random vertex that is not yet visited
+		char startingVertex = visited.begin()->first;
+		vector<char> dfs = DFSOrder(g, startingVertex);
+		cout << "Connected Component Number: " << connected_component_number << " -> ";
+		// now remove all the visited in this call of dfs
+		for (char this_component_vertex:dfs){
+			cout << this_component_vertex << " ";
+			visited.erase(this_component_vertex);
+		}
+		connected_component_number++;
+		cout << endl;
+	}
+
+}
+
+
+// DRIVER CODE
+int main(){
+	
+	int number_of_vertices;
+	vector<char> v;
+    cin >> number_of_vertices;
+
+
+	while (number_of_vertices){
+		char vertex;
+		cin >> vertex;
+		v.push_back(vertex);
+		number_of_vertices--;
+	}
+
+	Graph g = Graph(v);
+
+	int number_of_edges;
+	cin >> number_of_edges;
+
+	while(number_of_edges){
+		char from, to;
+		cin >> from >> to;
+		g.add_edge(from, to);
+		number_of_edges--;
+	}
+
+	auto view = g.view();
+
+	for (auto vert:view){
+		cout << vert.first << " -> ";
+		for (auto nbr:vert.second)
+			cout << nbr << " ";
+
+		cout << endl;
+	}
+
+	vector<char> dfs = DFSOrder(g, 'a');
+    cout << "DFS ORDER Starting From 'a' -> ";
+	for (auto i:dfs)
+		cout << i << " ";
+
+	cout << endl;
+
+	connected_components(g);
+}
+```
+#### Example input
+```
+5
+a
+b
+c
+d
+e
+3
+a b
+b c
+c e
+```
+#### Example Output
+```
+e -> c 
+d -> 
+c -> e b 
+a -> b 
+b -> c a
+
+DFS ORDER Starting From 'a' -> a b c e 
+Connected Component Number: 0 -> b a c e 
+Connected Component Number: 1 -> d 
+```

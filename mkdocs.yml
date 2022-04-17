@@ -42,7 +42,7 @@ theme:
     primary: indigo
     accent: deep purple
   font:
-    code: Courier Prime
+    code: Ubuntu Mono
   icon:
     repo: fontawesome/brands/git-alt
     admonition:
