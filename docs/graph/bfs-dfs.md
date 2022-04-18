@@ -220,6 +220,9 @@ void connected_components(Graph &g){
 	auto view = g.view();
 
 	// mark all node to visited == false
+    // doesn't matter what is the value for each (key, value) pair in map;
+    // we'll be deleting upon seeing a key that is visited.
+    // we could have made a vector then the delete would become O(n);
 	for(auto y:view)
 		visited[y.first] = false;
 
