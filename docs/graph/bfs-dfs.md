@@ -159,8 +159,7 @@ vector<char> DFS(Graph &g, char startFromVertex){
 
 using namespace std;
 
-
-class Graph{
+class Graph {
 private:
 	unordered_map<char, forward_list<char>> adj_list;
 
@@ -187,7 +186,6 @@ public:
 vector<char> DFSOrder(Graph &g, char startingVertex){
 	unordered_map<char, bool> visited;
 	vector<char> stack;
-
 	vector<char> order;
 
 	auto view = g.view();
@@ -233,12 +231,15 @@ void connected_components(Graph &g){
 		// take any random vertex that is not yet visited
 		char startingVertex = visited.begin()->first;
 		vector<char> dfs = DFSOrder(g, startingVertex);
+
 		cout << "Connected Component Number: " << connected_component_number << " -> ";
+
 		// now remove all the visited in this call of dfs
-		for (char this_component_vertex:dfs){
+        for (char this_component_vertex:dfs){
 			cout << this_component_vertex << " ";
 			visited.erase(this_component_vertex);
 		}
+
 		connected_component_number++;
 		cout << endl;
 	}
@@ -293,16 +294,21 @@ int main(){
 	connected_components(g);
 }
 ```
-#### Example input
+
+Let's run the above program on a random graph
+
+![connected](../images/connected.jpeg)
+
+#### Input Pattern
 ```
-5
+5               <- Number of vertices
 a
 b
-c
+c               <- all the vertices of the graph
 d
 e
-3
-a b
+3               <- number of edges
+a b             <- Edges in between vertices, undirected edges
 b c
 c e
 ```
