@@ -12,6 +12,11 @@
 	font-weight: bold;
 }
 
+@font-face {
+	font-family: "Computer Modern Code";
+	src: url("./cmuntt.woff");
+	font-weight: regular;
+}
 
 h1{
     font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';

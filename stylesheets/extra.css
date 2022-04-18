@@ -10,6 +10,13 @@
 	font-weight: bold;
 }
 
+@font-face {
+	font-family: "Computer Modern Code";
+	src: url("./cmuntt.woff");
+	font-weight: regular;
+}
+
 :root{
     --md-text-font: "Computer Modern";
+	--md-code-font: "Computer Modern Code";
 }
