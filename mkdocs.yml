@@ -31,6 +31,7 @@ nav:
   - Graphs:
     - Graph Usage: graph/usage.md
     - BFS and DFS: graph/bfs-dfs.md
+    - Graph Problems: graph/problems.md
 
 theme:
   name: material
