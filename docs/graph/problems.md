@@ -1,9 +1,9 @@
 # More Graph Problems
 
-## Cycle Detection in Directed Graph
+## Cycle Detection in Undirected Graph
 Using simple traversal techniques we can detect cycles in undirected graphs. Here first we'll implement this using breath first search then we'll also show how to do this using depth first search.
 ```cpp
-// DIRECTED GRAPH DEFINITION
+// UNDIRECTED GRAPH DEFINITION
 class Graph {
 private:
     unordered_map<char, forward_list<char>> adj_list;
@@ -17,7 +17,9 @@ public:
     }
 
     void add_directed_edge(char from, char to) {
+        // undirected graph
         adj_list[from].push_front(to);
+        adj_list[to].push_front(from);
     }
 
     unordered_map<char, forward_list<char>> view() {
@@ -45,6 +47,7 @@ bool CYCLE_DETECTABLE_SEARCH(Graph &g, char startingVertex) {
 
     // for starting vertex parent = 'N' for NULL;
     q.push({startingVertex, 'N'});
+    visited[startingVertex] = true;
 
     while (!q.empty()) {
         pair<char, char> front = q.front();
@@ -62,14 +65,14 @@ bool CYCLE_DETECTABLE_SEARCH(Graph &g, char startingVertex) {
                 visited[nbr] = true;
                 q.push({nbr, thisvertex});
             } else if (visited[nbr] == true and nbr != parent) {
+                // this neighbor of the vertex is already visited
+                // and this neighbor is not the immediate parent
+                // meaning there must be a cycle.
                 return true;
-            } else {
-                visited[nbr] = true;
-                q.push({nbr, thisvertex});
             }
         }
     }
-
+    
     return false;
 }
 
