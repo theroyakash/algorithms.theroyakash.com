@@ -1,4 +1,102 @@
 # More Graph Problems
+
+## Cycle Detection in Directed Graph
+Using simple traversal techniques we can detect cycles in undirected graphs. Here first we'll implement this using breath first search then we'll also show how to do this using depth first search.
+```cpp
+// DIRECTED GRAPH DEFINITION
+class Graph {
+private:
+    unordered_map<char, forward_list<char>> adj_list;
+
+public:
+    Graph(vector<char> vertexSet) {
+        for (auto i : vertexSet) {
+            forward_list<char> l;
+            adj_list.insert({i, l});
+        }
+    }
+
+    void add_directed_edge(char from, char to) {
+        adj_list[from].push_front(to);
+    }
+
+    unordered_map<char, forward_list<char>> view() {
+        return adj_list;
+    }
+};
+```
+
+### Approach using breath first search
+
+- The apporach is very simple, if during traversal if you find any one of the neighbor of some vertex previously visited other than the immediate parent/neighbor means there is a cycle.
+- So put the vertex and it's immediate parent inside a Queue (to run BFS).
+
+```cpp
+bool CYCLE_DETECTABLE_SEARCH(Graph &g, char startingVertex) {
+    // For BFS we need a queue and this queue has vertex and it's
+    // immediate parent as a pair<char, char>
+    queue<pair<char, char>> q;
+
+    unordered_map<char, bool> visited;
+    auto graphView = g.view();
+
+    for (auto vertexName : graphView)
+        visited[vertexName.first] = false;
+
+    // for starting vertex parent = 'N' for NULL;
+    q.push({startingVertex, 'N'});
+
+    while (!q.empty()) {
+        pair<char, char> front = q.front();
+        q.pop();
+        char thisvertex = front.first;
+        char parent = front.second;
+
+        // for all the neighbors for thisvertex insert into queue
+        // mark thisvertex as their immediate parents
+        // if we see some visited vertex other than it's immediate neighbor/parent
+        // return true
+
+        for (char nbr : graphView[thisvertex]) {
+            if (visited[nbr] == false) {
+                visited[nbr] = true;
+                q.push({nbr, thisvertex});
+            } else if (visited[nbr] == true and nbr != parent) {
+                return true;
+            } else {
+                visited[nbr] = true;
+                q.push({nbr, thisvertex});
+            }
+        }
+    }
+
+    return false;
+}
+
+bool hasCycle(Graph &g) {
+    // assuming multiple connected components are there
+    unordered_map<char, bool> visited;
+    auto graphView = g.view();
+
+    for (auto vertexName : graphView)
+        visited[vertexName.first] = false;
+
+    bool hasCycleForThisComponent;
+
+    for (auto vertex : graphView) {
+        if (!visited[vertex.first]) {
+            hasCycleForThisComponent = CYCLE_DETECTABLE_SEARCH(g, vertex.first);
+        }
+
+        if (hasCycleForThisComponent) {
+            return true;
+        }
+    }
+
+    return false;
+}
+```
+
 ## Directed Graph Problems
 In this section the given graph has directed edges, below are some standard directed graph problems that is the building block for many other graph problems in general.
 
@@ -47,7 +145,7 @@ public:
     }
 };
 
-# Driver Code
+// Driver Code
 int main() {
 
     int number_of_vertices;
