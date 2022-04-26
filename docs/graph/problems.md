@@ -107,6 +107,58 @@ Given a graph G find out if this is a bipartite graph? For a bipartite graph, th
 - Bi-partite graph is a 2 colorable graph, one approach could be if we check a graph if it's 2 colorable then it's bipartite. Bipartite is equivalent to 2-colorable. Here we'll traverse through the graph and color every vertex. Now if we find some vertex that takes other than the 2 color considered first we'll say it is not bipartite. Else if the entire graph is 2 colorable then we'll return true.
 - Also we can approach this problem as this $\to$ any odd length cycle containing graph is not a bipartite graph.
 
+```cpp
+// Any 2 Colorable graph is a bipartite graph Approach is much simpler to go through.
+enum class Color {black, red, gray};
+
+bool isBipartite(Graph &g){
+	// set all the graph vertex color as gray
+	auto graph = g.view();
+	unordered_map<char, Color> color;
+
+	for(auto vertex:graph){
+		color[vertex.first] = Color::gray;
+	}
+
+	// set a starting index where to start the journey
+	char startingVertex = graph.begin()->first;
+
+	// create a queue for bfs
+	queue<char> q;
+	q.push(startingVertex);
+	color[startingVertex] = Color::red;
+
+	// run a bfs
+	while (!q.empty()){
+		char thisvertex = q.front();
+		q.pop();
+
+		for (char nbr:graph[thisvertex]){
+			
+			if (color[nbr] == Color::gray){
+				// if not visited then only process
+				if (color[thisvertex] == Color::red){
+					color[nbr] = Color::black;
+				} else if (color[thisvertex] == Color::black){
+					color[nbr] = Color::red;
+				}
+				
+				// push into the queue for bfs
+				q.push(nbr);
+
+			} else {
+				// check for termination condition
+				if (color[nbr] == color[thisvertex]){
+					return false;
+				}
+			}
+		}
+	}
+
+	return true;
+}
+```
+
 ## Directed Graph Problems
 In this section the given graph has directed edges, below are some standard directed graph problems that is the building block for many other graph problems in general.
 
@@ -154,42 +206,4 @@ public:
         return adj_list;
     }
 };
-
-// Driver Code
-int main() {
-
-    int number_of_vertices;
-    vector<char> v;
-    cin >> number_of_vertices;
-
-    while (number_of_vertices){
-        char vertex;
-        cin >> vertex;
-        v.push_back(vertex);
-        number_of_vertices--;
-    }
-
-    Graph g = Graph(v);
-
-    int number_of_edges;
-    cin >> number_of_edges;
-
-    while(number_of_edges){
-        char from, to;
-        cin >> from >> to;
-        g.add_directed_edge(from, to);
-        number_of_edges--;
-    }
-
-    auto view = g.view();
-
-    for (auto vert:view){
-        cout << vert.first << " -> ";
-        for (auto nbr:vert.second)
-            cout << nbr << " ";
-
-        cout << endl;
-    }
-
-}
 ```
