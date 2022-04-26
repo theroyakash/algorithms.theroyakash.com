@@ -72,7 +72,7 @@ bool CYCLE_DETECTABLE_SEARCH(Graph &g, char startingVertex) {
             }
         }
     }
-    
+
     return false;
 }
 
@@ -99,6 +99,13 @@ bool hasCycle(Graph &g) {
     return false;
 }
 ```
+
+## Bipartite Graph Check
+### Problem Statement
+Given a graph G find out if this is a bipartite graph? For a bipartite graph, the graph has 2 set of vertices, in each set vertices are not connected to each other.
+### Approach
+- Bi-partite graph is a 2 colorable graph, one approach could be if we check a graph if it's 2 colorable then it's bipartite. Bipartite is equivalent to 2-colorable. Here we'll traverse through the graph and color every vertex. Now if we find some vertex that takes other than the 2 color considered first we'll say it is not bipartite. Else if the entire graph is 2 colorable then we'll return true.
+- Also we can approach this problem as this $\to$ any odd length cycle containing graph is not a bipartite graph.
 
 ## Directed Graph Problems
 In this section the given graph has directed edges, below are some standard directed graph problems that is the building block for many other graph problems in general.
