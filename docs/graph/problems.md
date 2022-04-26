@@ -16,7 +16,7 @@ public:
         }
     }
 
-    void add_directed_edge(char from, char to) {
+    void add_edge(char from, char to) {
         // undirected graph
         adj_list[from].push_front(to);
         adj_list[to].push_front(from);
@@ -109,53 +109,55 @@ Given a graph G find out if this is a bipartite graph? For a bipartite graph, th
 
 ```cpp
 // Any 2 Colorable graph is a bipartite graph Approach is much simpler to go through.
-enum class Color {black, red, gray};
+enum class Color { black,
+                   red,
+                   gray };
 
-bool isBipartite(Graph &g){
-	// set all the graph vertex color as gray
-	auto graph = g.view();
-	unordered_map<char, Color> color;
+bool isBipartite(Graph &g) {
+    // set all the graph vertex color as gray
+    auto graph = g.view();
+    unordered_map<char, Color> color;
 
-	for(auto vertex:graph){
-		color[vertex.first] = Color::gray;
-	}
+    for (auto vertex : graph) {
+        color[vertex.first] = Color::gray;
+    }
 
-	// set a starting index where to start the journey
-	char startingVertex = graph.begin()->first;
+    // set a starting index where to start the journey
+    char startingVertex = graph.begin()->first;
 
-	// create a queue for bfs
-	queue<char> q;
-	q.push(startingVertex);
-	color[startingVertex] = Color::red;
+    // create a queue for bfs
+    queue<char> q;
+    q.push(startingVertex);
+    color[startingVertex] = Color::red;
 
-	// run a bfs
-	while (!q.empty()){
-		char thisvertex = q.front();
-		q.pop();
+    // run a bfs
+    while (!q.empty()) {
+        char thisvertex = q.front();
+        q.pop();
 
-		for (char nbr:graph[thisvertex]){
-			
-			if (color[nbr] == Color::gray){
-				// if not visited then only process
-				if (color[thisvertex] == Color::red){
-					color[nbr] = Color::black;
-				} else if (color[thisvertex] == Color::black){
-					color[nbr] = Color::red;
-				}
-				
-				// push into the queue for bfs
-				q.push(nbr);
+        for (char nbr : graph[thisvertex]) {
 
-			} else {
-				// check for termination condition
-				if (color[nbr] == color[thisvertex]){
-					return false;
-				}
-			}
-		}
-	}
+            if (color[nbr] == Color::gray) {
+                // if not visited then only process
+                if (color[thisvertex] == Color::red) {
+                    color[nbr] = Color::black;
+                } else if (color[thisvertex] == Color::black) {
+                    color[nbr] = Color::red;
+                }
 
-	return true;
+                // push into the queue for bfs
+                q.push(nbr);
+
+            } else {
+                // check for termination condition
+                if (color[nbr] == color[thisvertex]) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
 }
 ```
 
