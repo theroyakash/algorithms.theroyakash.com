@@ -133,3 +133,36 @@ public:
 You'll be given the root node of the binary tree. Now you have to return all the branch's "SUM" in a vector.
 ### Example:
 ![image](../images/pathsum.jpeg)
+### Approach
+The code should be almost similar to the height finding recursive approach for binary trees. Here we will change the code slightly so that we pass a `int sum` with each recursion and continue to add until we reach the bottom of the tree. 
+
+At leaf node we check if `(tree->left == nullptr and tree->right == nullptr)` then we just push the sum to the answer and return.
+
+### Code
+```cpp
+void branchSum(vector<int> &v, Tree* tree, int sum) {
+    if (tree->left == nullptr and tree->right == nullptr) {
+        v.push_back(sum + tree->data);
+        return;
+    }
+
+    branchSum(v, tree->left, sum+tree->data);
+    branchSum(v, tree->right, sum+tree->data);
+}
+
+int main(){
+    vector<int> v;
+    branchSum(v, root, 0);
+
+    for (auto t:v)
+        cout << t << " ";
+}
+```
+
+**Output**
+```
+INORDER TRAVERSAL OF THE TREE
+4 2 5 1 6 3 7 
+Branch Sum of TREE
+7 8 10 11 
+```
