@@ -111,7 +111,7 @@ Given a graph G find out if this is a bipartite graph? For a bipartite graph, th
 // Any 2 Colorable graph is a bipartite graph Approach is much simpler to go through.
 enum class Color { black,
                    red,
-                   gray };
+                   gray }; // gray is to indicate that the vertex is not visted yet
 
 bool isBipartite(Graph &g) {
     // set all the graph vertex color as gray
