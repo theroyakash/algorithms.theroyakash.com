@@ -166,3 +166,9 @@ INORDER TRAVERSAL OF THE TREE
 Branch Sum of TREE
 7 8 10 11 
 ```
+
+## Invert a binary tree
+### Problem statement
+You'll be given a binary tree, find out the inverted equivalent of the tree. It is prefered to do the inversion in place.
+
+**For example**
