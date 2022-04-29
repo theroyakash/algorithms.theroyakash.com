@@ -171,4 +171,9 @@ Branch Sum of TREE
 ### Problem statement
 You'll be given a binary tree, find out the inverted equivalent of the tree. It is prefered to do the inversion in place.
 
-**For example**
+**Example**
+
+Let's say we have a binary tree B. Inverting the binary tree will result into the mirror immage of the tree.
+![invert1-tree](../images/invert1-tree.jpeg)
+
+### Apporach

@@ -75,8 +75,7 @@ int main() {
     // print all the edges
     auto edges = g.edges();
     for (auto edge:edges){
-        cout << edge.first << "->" << edge.second << "\n";
-        
+        cout << edge.first << "->" << edge.second << "\n";   
     }
 }
 ```

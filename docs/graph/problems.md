@@ -194,9 +194,7 @@ public:
     Graph(vector<char> vertexSet){
         for (auto i:vertexSet){
             forward_list<char> l;
-            adj_list.insert({
-                i, l
-            });
+            adj_list.insert({i, l});
         }
     }
 
