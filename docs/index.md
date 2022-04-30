@@ -9,7 +9,7 @@ Materials for FAANG and top startup coding interview and running notes on that. 
 
 ## Who am I?
 <figure markdown>
-  ![Image title](https://images.unsplash.com/photo-1577827586560-0f3b6e4dc4b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80){ width="500" }
+  ![Image title](https://images.unsplash.com/photo-1630794367539-054b35926a6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80){ width="700" }
   <figcaption>This is me!</figcaption>
 </figure>
 

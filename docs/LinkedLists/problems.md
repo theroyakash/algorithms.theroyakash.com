@@ -1,9 +1,12 @@
 ---
 title: Linked List Problems
 description: Most of the Linked List Problems asked in interviews [for SDE I and II].
+tags:
+    - Linked List Problems
+    - SDE 1 and SDE 2
 ---
 
-# Linked List problems
+# :chains: Linked List problems
 ## Implement Linked list and write `reverse()`
 ## Problem Statement
 Implement Linked list and write `reverse()` method that reverse the list in-place.
@@ -118,6 +121,9 @@ Given the head of a singly linked list, return the middle node of the linked lis
 
 ### Approach
 Use 2 pointers with different speed. Return the slow pointer.
+
+:material-file-code:
+
 ```cpp
 /**
  * Definition for singly-linked list.
@@ -199,7 +205,7 @@ Output: [1,1,2,3,4,4]
 ```
 ### Approach
 We'll use the `merge` subroutine from the merge sort in order to merge these two lists. One problem is that the `std::forward_list<typename>` do not have a `push_back()` method. Only have a `push_front()` method. So we need to reverse the list before returning it. Using `std::list<typename>` which is a doubly linked list will give us the sorted linked list instead of the reverse sorted linked list.
-### Code
+### :material-file-code: Code
 ```cpp
 #include <forward_list>
 #include <iostream>
@@ -247,7 +253,7 @@ forward_list<T> mergeTwoSortedLists(forward_list<T> *list1, forward_list<T> *lis
 }
 ```
 
-### Time and Space complexity
+### :material-clock-time-two: Time and Space complexity
 Time complexity is $O(N)$ and space complexity is $O(1)$ with this implementation.
 
 ### Implementing this problem in-place
@@ -362,8 +368,8 @@ Given the head of a linked list, remove the nth node from the end of the list an
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sLHLi7VUjGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Example
-For elements [1, 2, 3, 4, 5], remove the second node from the last. This will return [1, 2, 3, 5].
-Similarly [1] and n = 1 will return []. 
+For elements $[1, 2, 3, 4, 5]$, remove the second node from the last. This will return $[1, 2, 3, 5]$.
+Similarly $[1]$ and $n = 1$ will return $[]$. 
 
 ### **Constraints**
 Nodes are given either in a `forward_list<typename>` or in a custom linked list which is defined below.
@@ -379,10 +385,11 @@ Nodes are given either in a `forward_list<typename>` or in a custom linked list 
  * };
  */
 ```
+
 - The number of nodes in the list is $\mathcal{N}$
 - 1 <= $\mathcal{N}$ <= 30
 - 0 <= `(new ListNode())->val` <= 100
-- 1 <= n <= $\mathcal{N}$ [n is within the bounds].
+- 1 <= n <= $\mathcal{N}$ (n is within the bounds).
 
 ### Approach
 #### Implementation with **two pass**

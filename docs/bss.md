@@ -6,7 +6,7 @@ tags:
     - One day to complete
 ---
 
-# Binary Search Problems
+# :material-cloud-search: Binary Search Introductions
 
 Whenever a sorted array is given try to apply the binary search on that. This divides the array into two parts and only works on the other part. Recursion equation $T(n) = T(\frac{N}{2}) + C$
 
@@ -53,12 +53,12 @@ def ceil(array: list[int], target: int) -> int:
 ```
 
 !!! danger "Test Cases"
-    1. [2, 3, 5, 6, 6.6, 6.7, 7, 10], target=9
-    2. [2, 3, 5, 6, 6.6, 6.7, 7, 10], target=6.25
-    3. [2, 3, 5, 6, 6.6, 6.7, 7, 10], target=6.7
-    4. [2, 3, 5, 6, 6.6, 6.7, 7, 10], target=6.1
-    5. [2, 3, 5, 6, 6.6, 6.7, 7, 10], target=3.27
-    6. [2, 3, 5, 6, 6.6, 6.7, 7, 10], target=3
+    1. $[2, 3, 5, 6, 6.6, 6.7, 7, 10]$, $\text{target} = 9$
+    2. $[2, 3, 5, 6, 6.6, 6.7, 7, 10]$, $\text{target} = 6.25$
+    3. $[2, 3, 5, 6, 6.6, 6.7, 7, 10]$, $\text{target} = 6.7$
+    4. $[2, 3, 5, 6, 6.6, 6.7, 7, 10]$, $\text{target} = 6.1$
+    5. $[2, 3, 5, 6, 6.6, 6.7, 7, 10]$, $\text{target} = 3.27$
+    6. $[2, 3, 5, 6, 6.6, 6.7, 7, 10]$, $\text{target} = 3$
 
 
 ```python

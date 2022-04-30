@@ -8,7 +8,7 @@ tags:
     - C++ Code
 ---
 
-# Stack Problems
+# :material-stack-overflow: Stack Problems
 
 Patterns of questions when to use a stacks.
 

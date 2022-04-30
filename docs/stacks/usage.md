@@ -3,7 +3,7 @@ title: Stack Usage
 description: Most of the Stack Problems asked in interviews [for SDE I and II].
 ---
 
-# Implementation of Stacks and Queues
+# :material-stack-overflow: Implementation of Stacks and Queues
 A stack and Queue provides 2 basic operations, for stack it is `push()` and `pop()` and for queues it is `enqueue()`, `dequeue()`. Using Python's collection's deque we can implement both stack as well as queue in no time.
 
 In an interview setting you can implement stacks and queues from scratch in about 30-40 lines of code, for that I'll recommend you to use the following implementations.

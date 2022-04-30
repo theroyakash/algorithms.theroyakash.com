@@ -1,4 +1,4 @@
-# Introduction to recursion
+# :material-light-recessed: Introduction to recursion
 Recursion is when a [function] calls itself until some condition is met. Following things we need to understand very clearly before proceeding with recursion
 
 ## What is this **making problem space smaller** idea?

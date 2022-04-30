@@ -1,4 +1,6 @@
-# Taking data in and writing data out to a file
+# :pencil: Standard input output usage
+
+## Taking data in and writing data out to a file
 In some of the problems in SDE 1 and SDE 2 online coding rounds, you have to take care of the program inputs.
 
 Here is an example of how we can write all inputs to a text file and then run our algorithms.
@@ -38,7 +40,7 @@ b->a
 c->a
 ```
 
-## Code
+### :material-file-code: Code
 
 ```cpp
 #include <iostream>

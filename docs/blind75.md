@@ -5,7 +5,7 @@ tags:
     - ONGOING SERIES
 ---
 
-# Blind 75 problems
+# :material-list-status: Blind 75 problems
 This blind problems are a curated set of problems by a facebook engineer and is extremely useful for cracking the coding interview. However we've covered some of the problems in the problems sections of every other topics. Here I'll be adding links to those solutions.
 
 [Find the blind 75 problems on leetcode $\to$](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)

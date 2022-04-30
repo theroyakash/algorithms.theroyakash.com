@@ -1,4 +1,4 @@
-# Freebies
+# :confetti_ball: Freebies
 Here are things that you get for free if you wish to work in Python.
 
 - [AKDSFramework](https://github.com/theroyakash/AKDSFramework), a Purely written in Python library containing implementations of various data structures. See documentations [here $\to$](https://docs.akdsframework.theroyakash.com/).

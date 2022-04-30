@@ -1,4 +1,4 @@
-# Recursion, Backtracking and Subset Problems
+# :material-light-recessed: Recursion, Backtracking and Subset Problems
 
 These pattern of questions include subset formation, backtracking and recursive calls. Almost all of the questions are leetcode medium level questions. Solving these following problems will help people gain a better understanding of
 
@@ -134,10 +134,10 @@ Output: []
 
 ### Constraints:
 
-- $1$ <= `candidates.length` <= $30$
-- $1$ <= `candidates[i]` <= $200$
+- $1 \leq$ `candidates.length` $\leq 30$
+- $1 \leq$ <= `candidates[i]` $\leq 200$
 - All elements of candidates are distinct.
-- $1$ <= `target` <= $500$
+- $1 \leq$ `target` $\leq 500$
 
 ### Approach
 - We'll create a recursive subroutine called `recurse` which will recursively find all the sub-sequences that sums up to `target`

@@ -1,4 +1,4 @@
-# Tree Problems
+# :material-graph: Tree Problems
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal

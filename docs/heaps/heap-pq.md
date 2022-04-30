@@ -7,7 +7,7 @@ tags:
 	- Implementation
 	- Introduction
 ---
-# Priority Queues and Binary Heaps
+# :material-family-tree: Priority Queues and Binary Heaps
 ## What are these priority queues?
 A priority queue is a queue where the most important element is always at the front. The queue can be a max-priority queue (largest element first) or a min-priority queue (smallest element first).
 

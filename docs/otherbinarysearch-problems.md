@@ -2,7 +2,7 @@
 title: Binary Search Problems
 ---
 
-# Binary Search problems
+# :material-cloud-search: Binary Search problems
 Binary search problems are really useful because they run in sublinear time. We'll be solving the following problems in order to master this
 
 ## Binary Search implementation in C++

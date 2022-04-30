@@ -1,4 +1,4 @@
-# Graph Usage
+# :material-graphql: Graphs
 
 The graph is one of the most common and important data structures. With C++ and STL I'll show you the best possible implementation for the graph that you'll be able to implement and analyze in your code at FAANG interviews within the time constraints.
 
@@ -7,7 +7,7 @@ Most of cases the List representation is good enough, if the graph is sparse the
 
 In my opinion any graph with **less than 70% of the all possible edges**: $\text{Count(E)} \geq 0.7 * {n \choose 2}$ present can be considered to be implemented as adjacency list.
 
-## C++ Graph representation
+## C++ :octicons-code-16: Graph representation
 ```cpp
 #include <iostream>
 #include <list>
@@ -48,7 +48,7 @@ public:
 };
 ```
 
-The following code shows how to make a graph and use it
+The following code shows how to make a graph :material-graph: and use it
 
 ```cpp
 int main() {
