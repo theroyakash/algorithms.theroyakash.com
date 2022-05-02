@@ -7,9 +7,6 @@ nav:
     - Freebies: freebies.md
     - Blind 75 Problems: ./blind75.md
     - Standard Input Output: ./stdinout-usage.md
-  - Recursion and Dynamic Programming:
-    - Recursion Introduction: ./recursion/intro.md
-    - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
   - Arrays, Strings and Linked Lists:
     - Arrays:
       - Intro to Arrays: ./arrays/arrays.md
@@ -36,6 +33,9 @@ nav:
       - Graph Usage: graph/usage.md
       - BFS and DFS: graph/bfs-dfs.md
       - Graph Problems: graph/problems.md
+  - Recursion and Dynamic Programming:
+    - Recursion Introduction: ./recursion/intro.md
+    - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
 
 theme:
   name: material

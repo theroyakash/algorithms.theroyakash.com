@@ -177,3 +177,69 @@ Let's say we have a binary tree B. Inverting the binary tree will result into th
 ![invert1-tree](../images/invert1-tree.jpeg)
 
 ### Apporach
+
+- This is probably one of the best tree questions, it seems that there are a lot of things to track here. So solving this problem requires attention to lot of details.
+- The apporach to solve this is to swap the nodes instead of the values.
+- First we swap the left node with the right node for the head and then recursively swap the left and right nodes for the left and right nodes.
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (root){
+            TreeNode* temp = root->left;
+            root->left = root->right;
+            root->right = temp;
+        
+            invertTree(root->left);
+            invertTree(root->right);
+        }
+        
+        return root;
+    }
+};
+```
+
+### Approach With BFS
+I personally don't prefer any recursive approach. With BFS also we can easily solve this problem. We put the node in queue to be processed and when we are at this node if this is not `NULL` we swap it's left and right children.
+
+This is the way we can swap left and right thus inverting it level by level because BFS works level order.
+```cpp
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty()){
+            
+            TreeNode* thisNode = q.front();   // get front of the queue to process
+            q.pop();
+            
+            
+            if (thisNode != nullptr){
+                // swap it's left and right
+                TreeNode* left = thisNode->left;
+                thisNode->left = thisNode->right;
+                thisNode->right = left;
+                
+                q.push(thisNode->left);  // put both the children to be processed later
+                q.push(thisNode->right);
+            }
+        }
+        
+        return root;
+    }
+};
+```
