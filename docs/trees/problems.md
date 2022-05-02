@@ -243,3 +243,53 @@ public:
     }
 };
 ```
+
+## Iterative In Order Traversal
+As you probably guessed, I don't like to use recursive approaches all that much. In tree traversals you have to iterate over the tree in the following order: $\text{Left} \to \text{Right} \to \text{Root}$.
+
+**Now how can we avoid recursion?** One possible solution could be to use stack and imitate the call stack.
+
+### Code
+We should mimic the behavior of the recursion in the recursive implementation of the in order traversal.
+```cpp
+void iterativeInOrderTraversal(Tree* root){
+    vector<Tree*> stack;
+    Tree* traveller = root;
+
+    while (true){
+        if (traveller != nullptr){
+            stack.push_back(traveller);
+            traveller = traveller->left;
+        } else {
+            if (stack.empty()) break;
+
+            traveller = stack.back();
+            stack.pop_back();
+            cout << traveller->data << " ";
+            traveller = traveller->right;
+        }
+    }
+}
+```
+
+Now that we've seen the code, we should analyse the code using a dry run.
+
+**This is the starting of the algorithm**. In first step we go left until the first `NULL` is found, and we put all the nodes into the stack so to process later.
+![step1](../images/iterativeInorder/step1.png)
+
+**Now** at this point we've reached the point where we should start processing the node. This node `stack.top()` do not have any left children so for left we don't do anything, and print this node, then we should go to right and process that.
+![step2](../images/iterativeInorder/step2.png)
+
+**We keep on deleting from stack and print until we go right** of Node 1.
+![step3](../images/iterativeInorder/step3.png)
+
+**Now we** reached to a `non-NULL` node so the `if` part will be executed. It will put all the left of `3` into the stack until a `NULL` is reached. 
+![step4](../images/iterativeInorder/step4.png)
+![step5](../images/iterativeInorder/step5.png)
+![step6](../images/iterativeInorder/step6.png)
+![step7](../images/iterativeInorder/step7.png)
+![step8](../images/iterativeInorder/step8.png)
+
+At the very last step $\text{NODE}(5)$ will be processed which I did not show. It's a genuinely good problem and there is a lot to keep track of in the iterative version for a easy recursive problem. 
+
+This goes to show how much the recursion stack actually helps, but at the cost of proper mental gymnastics to come up with a recursive approach.
