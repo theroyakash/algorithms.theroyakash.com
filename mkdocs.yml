@@ -46,7 +46,7 @@ theme:
   # logo: images/logo.png
   features:
     - navigation.expand
-    - navigation.tracking
+    - navigation.instant
     - navigation.top
     - navigation.tabs
   palette:
