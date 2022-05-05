@@ -1114,6 +1114,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#minimum-depth-of-a-binary-tree" class="md-nav__link">
+    Minimum Depth of a Binary Tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum Depth of a Binary Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_3" class="md-nav__link">
+    Problem statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_3" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code_1" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1482,6 +1523,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#minimum-depth-of-a-binary-tree" class="md-nav__link">
+    Minimum Depth of a Binary Tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum Depth of a Binary Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_3" class="md-nav__link">
+    Problem statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_3" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code_1" class="md-nav__link">
+    C++ Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1757,6 +1839,35 @@
 <img alt="step8" src="../../images/iterativeInorder/step8.png" /></p>
 <p>At the very last step <span class="arithmatex">\(\text{NODE}(5)\)</span> will be processed which I did not show. It's a genuinely good problem and there is a lot to keep track of in the iterative version for a easy recursive problem. </p>
 <p>This goes to show how much the recursion stack actually helps, but at the cost of proper mental gymnastics to come up with a recursive approach.</p>
+<h2 id="minimum-depth-of-a-binary-tree">Minimum Depth of a Binary Tree</h2>
+<p><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/">Find the Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_3">Problem statement</h3>
+<p>Find the minimum depth of a binary tree. The minimum depth is the number of nodes along the shortest path from the root node to the nearest leaf node.</p>
+<h3 id="examples">Examples:</h3>
+<p>Depth = Path of 1 <span class="arithmatex">\(\to\)</span> 3. So the code should return 2.
+<pre class="mermaid"><code>graph TD
+    1((1)) --&gt; 2((2)) &amp; 3((3))
+    2      --&gt; 4((4)) &amp; 5((5))
+    style 1 fill:#bbf, color:#fff
+    style 3 fill:#bbf, color:#fff</code></pre></p>
+<p>Depth = Path of 12 <span class="arithmatex">\(\to\)</span> 7 <span class="arithmatex">\(\to\)</span> 9. So the code should return 3.</p>
+<pre class="mermaid"><code>graph TD
+    12((12)) --&gt; 7((7)) &amp; 1((1))
+    7 --&gt; 9((9))
+    1      --&gt; 10((10)) &amp; 5((5))
+    10 --&gt; 11((11))
+    style 12 fill:#bbf, color:white
+    style 7 fill:#bbf, color:#ffffff
+    style 9 fill:#bbf, color:#ffffff</code></pre>
+<h3 id="approach_3">Approach</h3>
+<ul>
+<li>This is a pattern related to breath first search traversal.</li>
+<li>Think of this logically, if you traverse level by level and you find the first node that is a leaf node. This means you found the shallowest node in the binary tree.</li>
+<li>You track and return the depth of that shallowest node.</li>
+</ul>
+<h3 id="c-code_1">C++ Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>
+</code></pre></div>
 
               
 
