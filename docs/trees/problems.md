@@ -293,3 +293,38 @@ Now that we've seen the code, we should analyse the code using a dry run.
 At the very last step $\text{NODE}(5)$ will be processed which I did not show. It's a genuinely good problem and there is a lot to keep track of in the iterative version for a easy recursive problem. 
 
 This goes to show how much the recursion stack actually helps, but at the cost of proper mental gymnastics to come up with a recursive approach.
+
+## Minimum Depth of a Binary Tree
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
+### Problem statement
+Find the minimum depth of a binary tree. The minimum depth is the number of nodes along the shortest path from the root node to the nearest leaf node.
+### Examples:
+Depth = Path of 1 $\to$ 3. So the code should return 2.
+```mermaid
+graph TD
+    1((1)) --> 2((2)) & 3((3))
+    2      --> 4((4)) & 5((5))
+    style 1 fill:#bbf, color:#fff
+    style 3 fill:#bbf, color:#fff
+```
+
+Depth = Path of 12 $\to$ 7 $\to$ 9. So the code should return 3.
+
+```mermaid
+graph TD
+    12((12)) --> 7((7)) & 1((1))
+    7 --> 9((9))
+    1      --> 10((10)) & 5((5))
+    10 --> 11((11))
+    style 12 fill:#bbf, color:white
+    style 7 fill:#bbf, color:#ffffff
+    style 9 fill:#bbf, color:#ffffff
+```
+### Approach
+- This is a pattern related to breath first search traversal.
+- Think of this logically, if you traverse level by level and you find the first node that is a leaf node. This means you found the shallowest node in the binary tree.
+- You track and return the depth of that shallowest node.
+### C++ Code
+```cpp
+
+```
