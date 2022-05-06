@@ -347,9 +347,7 @@ public:
         
         int depth = 1;
         
-        q.push({
-            root, 1
-        });
+        q.push({root, 1});
         
         while(!q.empty()){
             TreeNode* front = q.front().first;
@@ -357,14 +355,9 @@ public:
             
             q.pop();
             
-            if (front){
-            
-                if (front->left) q.push({front->left, nextDepth});
-                if (front->right) q.push({front->right, nextDepth});
-
-                if (!front->left and !front->right) return nextDepth - 1;
-            
-            }
+            if (front->left) q.push({front->left, nextDepth});
+            if (front->right) q.push({front->right, nextDepth});
+            if (!front->left and !front->right) return nextDepth - 1;
             
             depth = nextDepth;
         }
