@@ -377,3 +377,72 @@ Given a binary tree, connect each node with its level order successor. The last 
 A **new** `next` attribute is added to the tree structure. Update the `next` in-place.
 ### Example
 ![nextptr_bt](../images/nextptr_bt.png)
+
+```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* left;
+    Node* right;
+    Node* next;
+
+    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val, Node* _left, Node* _right, Node* _next)
+        : val(_val), left(_left), right(_right), next(_next) {}
+};
+*/
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        
+        if (!root) return root;
+        
+        queue<pair<Node*, int>> q;
+        vector<vector<Node*>> v;
+        
+        int depth = 1;
+        q.push({root, depth});
+        
+        while(!q.empty()) {
+            Node* front = q.front().first;
+            int depth = q.front().second;
+            
+            q.pop();
+            
+            if (depth > v.size()) {
+                vector<Node*> v1;
+                v1.push_back(front);
+                v.push_back(v1);
+            } else if (depth == v.size()) {
+                v[depth - 1].push_back(front);
+            }
+            
+            if (front->left) q.push({front->left, depth + 1});
+            if (front->right) q.push({front->right, depth + 1});
+            
+        }
+
+        // for each level of nodes process the next attribute and set to its neighbors.
+        
+        for (auto level:v) {
+            int size = level.size();
+            int index = 0;
+            
+            while(index < size - 1){
+                level[index] -> next = level[index + 1];
+                index++;
+            }
+            
+            level[index]->next = nullptr;
+        }
+        
+        return root;
+    }
+};
+```
