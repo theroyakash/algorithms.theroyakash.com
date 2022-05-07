@@ -366,3 +366,14 @@ public:
     }
 };
 ```
+
+## Connect Level Order Siblings
+
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)
+
+### Problem statement
+Given a binary tree, connect each node with its level order successor. The last node of each level should point to a null node in place.
+
+A **new** `next` attribute is added to the tree structure. Update the `next` in-place.
+### Example
+![nextptr_bt](../images/nextptr_bt.png)
