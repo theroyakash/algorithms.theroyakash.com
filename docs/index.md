@@ -3,11 +3,22 @@ title: theroyakash algorithms
 description: Materials for FAANG and top startup's coding interview preparation and running notes on that.
 ---
 
-# theroyakash algorithms
+<h1 align="center">
+  <br>
+  <a href="https://algorithms.theroyakash.com/"><img src="./images/theroyakashalgorithms.001.png" alt="AKDSFramework" width="800"></a>
+  <br>
+  theroyakash algorithms
+  <br>
+</h1>
 
-![theroyakash algorithms.001.png](../images/theroyakashalgorithms.001.png)
+<h4 align="center">Materials for FAANG and top startup coding interview and running notes on that. Made by <a href="https://theroyakash.com">theroyakash</a>.</h4>
 
-Materials for FAANG and top startup coding interview and running notes on that. Made by [@theroyakash](https://www.theroyakash.com)
+<p align="center">
+  <a href="https://algorithms.theroyakash.com/">Getting started</a> •
+  <a href="https://algorithms.theroyakash.com/freebies/">Freebies</a> •
+  <a href="https://learning.theroyakash.com/">theroyakash Learning Platform</a> •
+  <a href="https://github.com/theroyakash/algorithms.theroyakash.com/blob/main/LICENSE">License</a>
+</p>
 
 ## What is this?
 This material categorizes coding interview problems into a set of **8 patterns**. Each pattern will be a complete tool - consisting of **data structures**, **algorithms**, and **analysis techniques** - to solve a specific category of problems. The goal is to build an understanding of the _underlying pattern_ so that we can apply that pattern to solve other problems.
