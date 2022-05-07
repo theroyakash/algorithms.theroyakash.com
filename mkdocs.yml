@@ -2,7 +2,7 @@ site_name: theroyakash algorithms
 site_url: https://algorithms.theroyakash.com
 repo_url: https://github.com/theroyakash/algorithms.theroyakash.com
 edit_uri: ""
-repo_name: GitHub Repository
+repo_name: Star on GitHub
 
 nav:
   - Getting Started:
@@ -46,12 +46,13 @@ theme:
   # logo: images/logo.png
   features:
     - navigation.expand
-    - navigation.instant
+    - search.highlight
+    - search.share
     - navigation.top
     - navigation.tabs
   palette:
-    primary: indigo
-    accent: deep purple
+    primary: white
+    accent: red
   icon:
     repo: fontawesome/brands/git-alt
     admonition:
@@ -117,4 +118,4 @@ extra:
     - icon: fontawesome/brands/instagram
       link: https://instagram.com/theroyakash
 
-copyright: Copyright &copy; 2022 theroyakash
+copyright: Copyright &copy; 2022-2024 theroyakash
