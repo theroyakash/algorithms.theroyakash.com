@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://algorithms.theroyakash.com/trees/problems/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
     
     
       
@@ -19,7 +19,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.e411adfe.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3de6f41f.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
@@ -1181,6 +1181,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#approach-with-extra-space" class="md-nav__link">
+    Approach With Extra Space
+  </a>
+  
+    <nav class="md-nav" aria-label="Approach With Extra Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-for-this-approach" class="md-nav__link">
+    Code for this approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-without-extra-space" class="md-nav__link">
+    Approach Without Extra Space
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1617,6 +1644,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#approach-with-extra-space" class="md-nav__link">
+    Approach With Extra Space
+  </a>
+  
+    <nav class="md-nav" aria-label="Approach With Extra Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-for-this-approach" class="md-nav__link">
+    Code for this approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-without-extra-space" class="md-nav__link">
+    Approach Without Extra Space
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1971,6 +2025,12 @@
 <p>A <strong>new</strong> <code>next</code> attribute is added to the tree structure. Update the <code>next</code> in-place.</p>
 <h3 id="example_1">Example</h3>
 <p><img alt="nextptr_bt" src="../../images/nextptr_bt.png" /></p>
+<h3 id="approach-with-extra-space">Approach With Extra Space</h3>
+<ul>
+<li>We store level wise node references in a <code>vector&lt;vector&lt;Node *&gt;&gt;</code> using BFS and a modified queue,</li>
+<li>then we link them together. To maintain the <code>vector&lt;vector&lt;Node *&gt;&gt;</code> we need <span class="arithmatex">\(O(N)\)</span> Space.</li>
+</ul>
+<h4 id="code-for-this-approach">Code for this approach</h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cm">/*</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cm">// Definition for a Node.</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="cm">class Node {</span>
@@ -2038,6 +2098,8 @@
 <a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<h3 id="approach-without-extra-space">Approach Without Extra Space</h3>
+<p>In this approach, instead of storing the level wise ordering in a vector of vectors, we simply link the nodes as we go by just keeping one reference to the previously processed node. But still we have to keep the queue in order to run the BFS. So the extra space is actually needed which is <span class="arithmatex">\(\text{MAX(WIDTH of TREE)}\)</span>.</p>
 
               
 
@@ -2189,7 +2251,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "search.highlight", "search.share", "navigation.top", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ed9748b7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
