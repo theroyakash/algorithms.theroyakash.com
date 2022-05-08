@@ -378,6 +378,11 @@ A **new** `next` attribute is added to the tree structure. Update the `next` in-
 ### Example
 ![nextptr_bt](../images/nextptr_bt.png)
 
+### Approach With Extra Space
+- We store level wise node references in a `vector<vector<Node *>>` using BFS and a modified queue,
+- then we link them together. To maintain the `vector<vector<Node *>>` we need $O(N)$ Space.
+
+#### Code for this approach
 ```cpp
 /*
 // Definition for a Node.
@@ -446,3 +451,6 @@ public:
     }
 };
 ```
+
+### Approach Without Extra Space
+In this approach, instead of storing the level wise ordering in a vector of vectors, we simply link the nodes as we go by just keeping one reference to the previously processed node. But still we have to keep the queue in order to run the BFS. So the extra space is actually needed which is $\text{MAX(WIDTH of TREE)}$.

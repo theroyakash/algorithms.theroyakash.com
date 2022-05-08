@@ -1,5 +1,5 @@
 ---
-title: Tree Implementation and some helper functions
+title: Tree Implementation
 ---
 # :material-graph: Tree implementation
 Tree is a non linear graph data structure which has no cycle. Tree is hiararchical data structure, any sort of data that has some sort of hiararchy we can use a tree to represent, get, delete efficiently.
