@@ -472,3 +472,50 @@ graph TD
     style 7 fill:#bbf, color:#ffffff
     style 9 fill:#bbf, color:#ffffff
 ```
+### Code approach 1
+- We recursively go in depth first search and check if the sum is matching with the path,
+- if yes we return `true`.
+```cpp
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        
+        if (!root) return false;
+               
+        if (!root->left and !root->right) {
+            if (targetSum == root->val) {
+                return true;
+            }
+        }
+        
+        return hasPathSum(root->left, targetSum - root-> val) || hasPathSum(root->right, targetSum - root-> val);
+    }
+};
+```
+
+### Code approach 2
+It has a separate private boolean variable `a` which can even be modified to store how many times a path sum target is met.
+```cpp
+class Solution {
+private:
+    bool a[2] = {false, false};
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (!root) return false;
+        
+        if (not root->left and not root->right) {
+            if (root->val == targetSum) {
+                a[0] = true;
+                a[1] = true; // sets if at least 1 true occurred
+            } else {
+                a[0] = false; // resets to false if some branch did not cut it
+            }
+        }
+        
+        hasPathSum(root->left, targetSum-root->val);
+        hasPathSum(root->right, targetSum-root->val);
+        
+        return a[0] || a[1];
+    }
+};
+```
