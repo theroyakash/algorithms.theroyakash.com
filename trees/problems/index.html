@@ -1202,8 +1202,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#approach-without-extra-space" class="md-nav__link">
-    Approach Without Extra Space
+  <a href="#approach-a-bit-less-space" class="md-nav__link">
+    Approach a bit less space
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-tree-path-sum" class="md-nav__link">
+    Binary Tree Path Sum
+  </a>
+  
+    <nav class="md-nav" aria-label="Binary Tree Path Sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_5" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -1665,8 +1692,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#approach-without-extra-space" class="md-nav__link">
-    Approach Without Extra Space
+  <a href="#approach-a-bit-less-space" class="md-nav__link">
+    Approach a bit less space
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-tree-path-sum" class="md-nav__link">
+    Binary Tree Path Sum
+  </a>
+  
+    <nav class="md-nav" aria-label="Binary Tree Path Sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_5" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -2098,8 +2152,24 @@
 <a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
-<h3 id="approach-without-extra-space">Approach Without Extra Space</h3>
+<h3 id="approach-a-bit-less-space">Approach a bit less space</h3>
 <p>In this approach, instead of storing the level wise ordering in a vector of vectors, we simply link the nodes as we go by just keeping one reference to the previously processed node. But still we have to keep the queue in order to run the BFS. So the extra space is actually needed which is <span class="arithmatex">\(\text{MAX(WIDTH of TREE)}\)</span>.</p>
+<h2 id="binary-tree-path-sum">Binary Tree Path Sum</h2>
+<h3 id="problem-statement_5">Problem Statement</h3>
+<p>Given a binary tree and a number ‘S’, find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.</p>
+<h3 id="example_2">Example</h3>
+<ol>
+<li><strong>Path Sum</strong> = <span class="arithmatex">\(28\)</span>. <strong>Output</strong> = TRUE.</li>
+<li><strong>Path Sum</strong> = <span class="arithmatex">\(21\)</span>. <strong>Output</strong> = False. No path in the following tree has sum 21.
+<pre class="mermaid"><code>graph TD
+    12((12)) --&gt; 7((7)) &amp; 1((1))
+    7 --&gt; 9((9))
+    1      --&gt; 10((10)) &amp; 5((5))
+    10 --&gt; 11((11))
+    style 12 fill:#bbf, color:white
+    style 7 fill:#bbf, color:#ffffff
+    style 9 fill:#bbf, color:#ffffff</code></pre></li>
+</ol>
 
               
 
