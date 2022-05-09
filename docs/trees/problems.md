@@ -453,6 +453,9 @@ public:
 ```
 
 ### Approach a bit less space
+
+[Question on Leetcode $\to$](https://leetcode.com/problems/path-sum)
+
 In this approach, instead of storing the level wise ordering in a vector of vectors, we simply link the nodes as we go by just keeping one reference to the previously processed node. But still we have to keep the queue in order to run the BFS. So the extra space is actually needed which is $\text{MAX(WIDTH of TREE)}$.
 
 ## Binary Tree Path Sum
@@ -475,6 +478,8 @@ graph TD
 ### Code approach 1
 - We recursively go in depth first search and check if the sum is matching with the path,
 - if yes we return `true`.
+
+
 ```cpp
 class Solution {
 public:
@@ -516,6 +521,37 @@ public:
         hasPathSum(root->right, targetSum-root->val);
         
         return a[0] || a[1];
+    }
+};
+```
+
+## Count All Paths for a Sum
+In the previous example we checked if some path contains the sum or not? but here find all paths from root-to-leaf such that the sum of all the node values of each path equals ‘S’. Return the count of paths matching the sum.
+
+### Approach
+Approach is the same as the previous approach's code #$2$, with a little modification. Instead of marking true if some path gives a match we'll update some counter.
+### Code
+```cpp
+class Solution {
+private:
+    pair<bool, int> a = {false, 0}; // instead we put a counter in there.
+public:
+    int countPathSum(TreeNode* root, int targetSum) {
+        if (!root) return false;
+        
+        if (not root->left and not root->right) {
+            if (root->val == targetSum) {
+                a.first = true;
+                a.second += 1; // updates per target sum occurrences.
+            } else {
+                a.first = false; // resets to false if some branch did not cut it
+            }
+        }
+        
+        countPathSum(root->left, targetSum-root->val);
+        countPathSum(root->right, targetSum-root->val);
+        
+        return a.second;
     }
 };
 ```
