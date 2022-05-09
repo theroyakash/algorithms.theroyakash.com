@@ -555,3 +555,31 @@ public:
     }
 };
 ```
+
+## Traceout All Paths for a Sum
+It is the same as the previous problem but here you have to return the path where the sum is matching. Return a `vector<vector<Tree*>>`.
+
+### Example
+Target sum for the following tree: $34$
+```mermaid
+graph TD
+    12((12)) --> 7((1)) & 1((1))
+    7 --> 9((21))
+    1      --> 10((10)) & 5((5))
+    10 --> 11((11))
+    style 12 fill:#bbf
+    style 7 fill:#bbf
+    style 10 fill:#bbf
+    style 9 fill:#bbf
+    style 11 fill:#bbf
+    style 1 fill:#bbf
+```
+
+Paths that returns $34$ are the following:
+
+- $12 \to 1 \to 21$
+- $12 \to 1 \to 10 \to 11$
+
+So these 2 path should be returned as the function finishes.
+
+### Approach
