@@ -452,5 +452,23 @@ public:
 };
 ```
 
-### Approach Without Extra Space
+### Approach a bit less space
 In this approach, instead of storing the level wise ordering in a vector of vectors, we simply link the nodes as we go by just keeping one reference to the previously processed node. But still we have to keep the queue in order to run the BFS. So the extra space is actually needed which is $\text{MAX(WIDTH of TREE)}$.
+
+## Binary Tree Path Sum
+### Problem Statement
+Given a binary tree and a number ‘S’, find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.
+
+### Example
+1. **Path Sum** = $28$. **Output** = TRUE.
+2. **Path Sum** = $21$. **Output** = False. No path in the following tree has sum 21.
+```mermaid
+graph TD
+    12((12)) --> 7((7)) & 1((1))
+    7 --> 9((9))
+    1      --> 10((10)) & 5((5))
+    10 --> 11((11))
+    style 12 fill:#bbf, color:white
+    style 7 fill:#bbf, color:#ffffff
+    style 9 fill:#bbf, color:#ffffff
+```
