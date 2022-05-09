@@ -1281,6 +1281,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#traceout-all-paths-for-a-sum" class="md-nav__link">
+    Traceout All Paths for a Sum
+  </a>
+  
+    <nav class="md-nav" aria-label="Traceout All Paths for a Sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_5" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1812,6 +1839,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#traceout-all-paths-for-a-sum" class="md-nav__link">
+    Traceout All Paths for a Sum
+  </a>
+  
+    <nav class="md-nav" aria-label="Traceout All Paths for a Sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_5" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2327,6 +2381,28 @@
 <a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<h2 id="traceout-all-paths-for-a-sum">Traceout All Paths for a Sum</h2>
+<p>It is the same as the previous problem but here you have to return the path where the sum is matching. Return a <code>vector&lt;vector&lt;Tree*&gt;&gt;</code>.</p>
+<h3 id="example_3">Example</h3>
+<p>Target sum for the following tree: <span class="arithmatex">\(34\)</span>
+<pre class="mermaid"><code>graph TD
+    12((12)) --&gt; 7((1)) &amp; 1((1))
+    7 --&gt; 9((21))
+    1      --&gt; 10((10)) &amp; 5((5))
+    10 --&gt; 11((11))
+    style 12 fill:#bbf
+    style 7 fill:#bbf
+    style 10 fill:#bbf
+    style 9 fill:#bbf
+    style 11 fill:#bbf
+    style 1 fill:#bbf</code></pre></p>
+<p>Paths that returns <span class="arithmatex">\(34\)</span> are the following:</p>
+<ul>
+<li><span class="arithmatex">\(12 \to 1 \to 21\)</span></li>
+<li><span class="arithmatex">\(12 \to 1 \to 10 \to 11\)</span></li>
+</ul>
+<p>So these 2 path should be returned as the function finishes.</p>
+<h3 id="approach_5">Approach</h3>
 
               
 
