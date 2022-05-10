@@ -612,6 +612,7 @@ public:
         vector<int> thisLevel;
         vector<vector<int>> answer;
         
+        // recursively go dfs
         helper(root, targetSum, thisLevel, answer);
         
         return answer;
@@ -624,6 +625,8 @@ public:
         
         if (not root->left and not root->right) {
             if (targetSum == root->val) {
+                // means this path sum is exactly the targetSum
+                // record the path
                 answer.push_back(thisLevel);
             }
         }
