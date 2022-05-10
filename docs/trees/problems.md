@@ -583,3 +583,68 @@ Paths that returns $34$ are the following:
 So these 2 path should be returned as the function finishes.
 
 ### Approach
+- We create 2 vectors: one `vector<vector<Tree*>>` and one `vector<Tree*>`, the second one `vector<Tree*>` will be unique for each recursion level,
+- When we traverse the tree Depth First we put the nodes into `vector<Tree*>`,
+- When we reach the leaf node we check if the sum is matchting with the desired path sum. If yes we record the path sum.
+
+![image](../images/tracepathsum.png)
+
+### Code
+In code the tree is built using [tree from input stream](/trees/implementation/#tree-from-input-stream) approach.
+```cpp
+// Tree Definition
+class Tree {
+public:
+    int data;
+    Tree* left, *right;
+
+    Tree(int d){
+        data = d;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+class TracePathSum {
+public:
+    vector<vector<Tree*>> traceRoute(Tree* root, int targetSum) {
+        vector<Tree*> thisLevel;
+        vector<vector<Tree*>> answer;
+        helper(root, targetSum, thisLevel, answer);
+
+        return answer;
+    }
+
+    void helper(Tree* root, int targetSum, vector<Tree*> thisLevel, vector<vector<Tree*>> &answer){
+        if (!root) return;
+        
+        thisLevel.push_back(root);
+
+        if (not root->left and not root->right) {
+            if (root->data == targetSum) {
+                // means this path sum is exactly the targetSum
+                // record the path
+                answer.push_back(thisLevel);
+            }
+        }
+        
+        helper(root->left, targetSum-root->data, thisLevel, answer);
+        helper(root->right, targetSum-root->data, thisLevel, answer);
+    }
+};
+
+int main() {
+    TracePathSum T;
+
+    vector<vector<Tree*>> answer = T.traceRoute(root, 7);
+    for (auto path:answer) {
+        for (auto element:path) {
+            cout << element -> data << " ";
+        }
+
+        cout << endl;
+    }
+
+	return 0;
+}
+```
