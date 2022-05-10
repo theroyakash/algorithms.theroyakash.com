@@ -452,7 +452,7 @@ public:
 };
 ```
 
-### Approach a bit less space
+### Approach with a bit less space
 
 [Question on Leetcode $\to$](https://leetcode.com/problems/path-sum)
 
@@ -557,7 +557,11 @@ public:
 ```
 
 ## Traceout All Paths for a Sum
-It is the same as the previous problem but here you have to return the path where the sum is matching. Return a `vector<vector<Tree*>>`.
+It is the same as the previous problem but here you have to return the path where the sum is matching. Return a `vector<vector<Tree*>>`. Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
+
+A root-to-leaf path is a path starting from the root and ending at any leaf node. A leaf is a node with no children.
+
+[**Same Problem on Leetcode** $\to$](https://leetcode.com/problems/path-sum-ii/)
 
 ### Example
 Target sum for the following tree: $34$
@@ -590,61 +594,42 @@ So these 2 path should be returned as the function finishes.
 ![image](../images/tracepathsum.png)
 
 ### Code
-In code the tree is built using [tree from input stream](/trees/implementation/#tree-from-input-stream) approach.
 ```cpp
-// Tree Definition
-class Tree {
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
 public:
-    int data;
-    Tree* left, *right;
-
-    Tree(int d){
-        data = d;
-        left = nullptr;
-        right = nullptr;
-    }
-};
-
-class TracePathSum {
-public:
-    vector<vector<Tree*>> traceRoute(Tree* root, int targetSum) {
-        vector<Tree*> thisLevel;
-        vector<vector<Tree*>> answer;
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        vector<int> thisLevel;
+        vector<vector<int>> answer;
+        
         helper(root, targetSum, thisLevel, answer);
-
+        
         return answer;
     }
-
-    void helper(Tree* root, int targetSum, vector<Tree*> thisLevel, vector<vector<Tree*>> &answer){
+    
+    void helper(TreeNode* root, int targetSum, vector<int> thisLevel, vector<vector<int>> &answer){
         if (!root) return;
         
-        thisLevel.push_back(root);
-
+        thisLevel.push_back(root->val);
+        
         if (not root->left and not root->right) {
-            if (root->data == targetSum) {
-                // means this path sum is exactly the targetSum
-                // record the path
+            if (targetSum == root->val) {
                 answer.push_back(thisLevel);
             }
         }
         
-        helper(root->left, targetSum-root->data, thisLevel, answer);
-        helper(root->right, targetSum-root->data, thisLevel, answer);
+        helper(root->left, targetSum - root->val, thisLevel, answer);
+        helper(root->right, targetSum - root->val, thisLevel, answer);
     }
 };
-
-int main() {
-    TracePathSum T;
-
-    vector<vector<Tree*>> answer = T.traceRoute(root, 7);
-    for (auto path:answer) {
-        for (auto element:path) {
-            cout << element -> data << " ";
-        }
-
-        cout << endl;
-    }
-
-	return 0;
-}
 ```
