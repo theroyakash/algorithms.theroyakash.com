@@ -25,6 +25,7 @@ nav:
     - Heaps:
       - Heaps Introduction, STL: ./heaps/heap-pq.md
       - Heap Problems: ./heaps/problems.md
+      - Two Heaps Problems: ./2heaps/problems.md
   - Searching and Sorting:
     - Basics and introduction: ./bss.md
     - Other binary search problems: ./otherbinarysearch-problems.md

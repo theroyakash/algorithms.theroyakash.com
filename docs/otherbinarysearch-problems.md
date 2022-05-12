@@ -183,40 +183,122 @@ public:
 ```
 
 ## Find an Element in a Rotated Sorted Array
+[Problem on Leetcode $\to$](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 ### Approach
 - If we look at the previous problem, we'll see that the (rotation point): let's call that the pivot, the subarray before pivot is sorted and subarray after pivot is sorted as well.
 - If we run 2 binary search on each of the subarrays we'll find the target element in $O(\text{lg} N)$ time.
 
+![image](./images/search in a rotated sorted array.png)
+
 ### Code
 ```cpp
-// Consider binary_search is already available
-
-int rotatation_point(vector<int> &v){
-    int start = 0;
-    int end = v.size() - 1;
-
-    int mid = start + (end - start) / 2;
-
-    while(start <= end){
-        if (v[middle] > v[end]){
-            start = middle + 1;
-        } else {
-            end = middle - 1;
+class Solution {
+private:
+    int findRotationPoint(vector<int> &nums) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        // base cases:
+        if (nums.size() <= 1) return 0; // zero or one element array do not have rotations
+        if (nums[start] < nums[end]) return 0;  // no rotation at all
+        
+        int middle = start + (end - start) / 2;
+        
+        while (start < end) {
+            
+            if (nums[middle] > nums[end]) {
+                // means rotation point is right of mid
+                start = middle + 1;
+            } else {
+                end = middle;
+            }
+            
+            middle = start + (end - start) / 2;
         }
-
-        middle = start + (end - start) / 2;
+        
+        return start;
     }
+    
+    int binary_search(vector<int> &nums, int start, int end, int target) {
 
-    // now middle is the index of the rotation point
-    int index1 = binary_search(v, 0, middle - 1);
-    int index2 = binary_search(v, middle, end);
+        int mid = start + (end - start) / 2;
+        
+        while (start <= end) {
+            if (nums[mid] == target) return mid;
+            if (nums[mid] < target) start = mid + 1;
+            if (nums[mid] > target) end = mid - 1;
+            
+            mid = start + (end - start) / 2;
+        }
+        
+        return -1;
+    }
+    
+public:
+    int search(vector<int>& nums, int target) {
+        
+        if (nums.size() == 1) {
+            if (nums[0] == target) return 0;
+            else return -1;
+        }
+        
+        int rotationPoint = findRotationPoint(nums);
+        
+        // the array is sorted from 0 -> rotationPoint
+        // and rotationPoint -> nums.size() - 1
+        
+        int left = binary_search(nums, 0, rotationPoint, target);
+        int right = binary_search(nums, rotationPoint, nums.size() - 1, target);
 
-    return std::max(index1, index2);
-}
+        return std::max(left, right);
+    }
+};
+```
 
-int search_on_rotated(vector<int> &v){
-    // find the rotation point
-}
+### Time Complexity
+To find the rotation point we make $O(\lg N)$ comparisons and to do binary searchs on both the left and right takes $O(\lg N)$ time. So total time complexity is $O(\lg N)$.
+
+## Search Insert Position
+
+[Problem on Leetcode $\to$](https://leetcode.com/problems/search-insert-position/)
+
+Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+The algorithm must run with $O(\lg n)$ complexity.
+
+### Approach
+We can employ the normal binary search algorithm, and instead of returning -1 if we don't find the target number, we'll carefully look what all the pointers are pointing towards at the end of the binary search algorithm.
+
+If we look carefully we'll find that at the end of the binary search if there is no element present in the array, the pointer $\text{start}$ and $\text{end} - 1$ points to the insertion point for that element.
+
+### Careful Dry run with an example
+![image](./images/insertorder.png)
+
+### Code
+```cpp
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        int middle = start + (end - start) / 2;
+        
+        while (start <= end) {
+            if (nums[middle] == target) return middle;
+            if (nums[middle] > target) {
+                end = middle - 1;
+            } else if (nums[middle] < target) {
+                start = middle + 1;
+            }
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        // send back start or end - 1 instead of -1.
+        return start;
+    }
+};
 ```
 
 ## Searching in a Nearly Sorted Array
