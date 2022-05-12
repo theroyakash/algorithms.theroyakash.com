@@ -300,6 +300,81 @@ public:
     }
 };
 ```
+## Single Element in a Sorted Array
+
+[Problem on Leetcode $\to$](https://leetcode.com/problems/single-element-in-a-sorted-array/)
+
+### Problem Statement
+You are given a sorted array consisting of only integers where every element appears exactly twice, except for one element which appears exactly once. Return the single element that appears only once.
+
+Your solution must run in $O(\lg n)$ time and $O(1)$ space.
+
+### Approach
+- As the solution is required to be run in $O(1)$ space and $O(\lg n)$ time it means we have to use binary search.
+- Now we run the default binary search algorithm with some modification. We go to the middle element, now question arises based on what should we **divide the array** and **only** solve on one of those two part?
+- If you look closely at the array, you will notice that for each pair in the left side of the **odd one out** `<int, int>` the index is like this `<even, odd>` and for each pairs in the right side of the **odd one out** the index is like this `<odd, even>`.
+- We identify how the indexes are aranged and we jump to solve a smaller subproblem.
+
+### Code
+```cpp
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        
+        // if the size is 1 then it is the odd one out
+        if (nums.size() == 1) return nums[0];
+        
+        // boundary cases:
+        if (nums[0] != nums[1]) return nums[0];
+        if (nums[nums.size() - 1] != nums[nums.size() - 2]) return nums[nums.size() - 1];
+        
+        
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        int middle = start + (end - start) / 2;
+        
+        while (start <= end) {
+            int atMid = nums[middle];
+            if (atMid != nums[middle - 1] and atMid != nums[middle + 1]) {
+                // case where the middle element is the odd one out
+                return atMid;
+            }
+            
+            // check if the odd one out is the left or right sub part
+            
+            // case 1:
+            // [1, 1, ..., 2, 2, ...]
+            //             | middle
+            if (nums[middle] == nums[middle + 1]) {
+                // now check if middle is even and middle + 1 is odd?
+                // if this is true then odd one out is in the right subarray
+                if (middle % 2 == 0) {
+                    start = middle + 1;
+                } else {
+                    end = middle - 1;
+                }
+            }
+            
+            // case 2:
+            // [1, 1, ..., 2, 2, ...]
+            //                | middle
+            if(nums[middle] == nums[middle - 1]) {
+                // now check if middle is odd and middle - 1 is even?
+                if (middle % 2 != 0) {
+                    start = middle + 1;
+                } else {
+                    end = middle - 1;
+                }
+            }
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return -1;
+    }
+};
+```
 
 ## Searching in a Nearly Sorted Array
 ## Find Floor of an element in a Sorted Array
