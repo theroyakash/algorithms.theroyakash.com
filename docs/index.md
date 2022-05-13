@@ -25,18 +25,20 @@ This material categorizes coding interview problems into a set of **8 patterns**
 
 **Complete guide and roadmap for SDE I and SDE II algorithm round.**
 
-## Patterns
+## Content overview
 
-1. [Sliding Window Pattern](https://algorithms.theroyakash.com/arrays/sliding-window/), more is being added.
-2. Arrays and Strings
-3. [Recursion](https://algorithms.theroyakash.com/recursion/intro/) and [problems coming soon](https://algorithms.theroyakash.com/recursion/problems/)
-4. [Linked lists](https://algorithms.theroyakash.com/LinkedLists/stl-usage/) and [problems](https://algorithms.theroyakash.com/LinkedLists/problems/)
-5. [Stacks](https://algorithms.theroyakash.com/stacks/usage/) and Queues
-6. [Binary Search](https://algorithms.theroyakash.com/bss/) and [Problems (more coming soon)](https://algorithms.theroyakash.com/otherbinarysearch-problems/)
-7. [Trees](https://algorithms.theroyakash.com/trees/implementation/) and [Graphs](https://algorithms.theroyakash.com/graph/usage/) and [Graph Problems](https://algorithms.theroyakash.com/graph/problems/), along with [heaps](https://algorithms.theroyakash.com/heaps/heap-pq/) and [heap problems](https://algorithms.theroyakash.com/heaps/problems/)
-8. Bit Manipulation (With C/C++)
-9. Sorting and Searching [coming soon]
-10. Dynamic Programming with Top-Down (Recursive) approach [coming soon]
+1. [Sliding Window Pattern](/arrays/sliding-window/), more is being added.
+2. Arrays and Strings (Coming soon)
+3. [Recursion overview](/recursion/intro/) and [recursion problems (more) coming soon](/recursion/problems/)
+4. [Linked lists overview](/LinkedLists/stl-usage/) and [problems](/LinkedLists/problems/)
+5. [Stacks overview](/stacks/usage/) and [stack problems](/stacks/problems/) and Queues (coming soon)
+6. [Binary Search overview](/bss/) and [Problems (more coming soon)](/otherbinarysearch-problems/)
+7. [Trees overview](/trees/implementation/) and [tree problem](/trees/problems/)
+8. [Graphs overview](/graph/usage/), [graph bfs and dfs](/graph/bfs-dfs/) and [Graph Problems](/graph/problems/),
+9. [Heaps overview](/heaps/heap-pq/) and [heap problems](/heaps/problems/) and [2 heaps problems](/2heaps/problems/).
+10. Bit Manipulation (With C/C++) (coming soon)
+11. Sorting and Searching (coming soon)
+12. Dynamic Programming (coming soon)
 
 ## Also Coming Soon
 
