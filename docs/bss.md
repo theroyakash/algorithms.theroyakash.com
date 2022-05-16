@@ -10,7 +10,7 @@ tags:
 
 Whenever a sorted array is given try to apply the binary search on that. This divides the array into two parts and only works on the other part. Recursion equation $T(n) = T(\frac{N}{2}) + C$
 
-## Toy problem to start
+## Toy problem to start: Find Ceil
 ### Problem Statement
 Find the ceil of a target number for given set of numbers. That is find the smallest number that is greater or equal to the target number from the given array only.
 
@@ -28,6 +28,30 @@ Return 10
 - This is exactly the binary search problem but instead of reporting that we don't find the target number, if we don't find the target number, we return the next biggest number.
 - If the number is not found it means that the target number is not present, we have to return the next biggest number. Now the while loop will break at `end < start`. So the start pointer will be pointing to the next biggest number.
 
+```cpp
+int ceil (vector<int> &v, int target) {
+    int start = 0;
+    int end = v.size() - 1;
+
+    int middle = start + (end - start) / 2;
+
+    while (start <= end) {
+        if (v[middle] < target) {
+            start = middle + 1;
+        } else if (v[middle] > target) {
+            end = middle - 1;
+        } else {
+            return v[middle];
+        }
+    }
+
+    // If the element is not found, then the while loop's start and end pointer crosses
+    // each other and the start pointer points to the smallest element larger than the
+    // target element.
+
+    return v[start];
+}
+```
 
 ```python
 def ceil(array: list[int], target: int) -> int:
