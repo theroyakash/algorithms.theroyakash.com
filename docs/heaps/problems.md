@@ -61,7 +61,7 @@ public:
 };
 ```
 
-## K Largest Elements in the array
+## Find all K Largest Elements in the array
 ### Problem Statement
 This problem is a bit different than the previous one. Here you have to return K largest elements from a given sequence. For example
 
