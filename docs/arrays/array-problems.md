@@ -1,3 +1,9 @@
+---
+title: Problems on arrays
+tags:
+    - Array problems
+---
+
 # Problems on arrays
 ## Dutch National Flag Partitioning
 
@@ -10,7 +16,7 @@ Implemented naively, quicksort has large run times and deep function call stacks
 - For $O(1)$ space solutions we can do these steps:
     - Do - inplace grouping of all the less than target elements during the first pass,
     - Do - inplace grouping of all the greater than target elements during the next pass. During this pass if we find one element that is greater than the target we can say that "Hey! we have entered into the `less` subarray", so we can break out of the loop.
-    - Total time complexity is $O(N)$ for the first pass and on an average $O(\frac{N}{2})$ in the second pass. Total of $O(N)$.
+    - Total time complexity is $O(N)$ for the first pass and on an avarage $O(\frac{N}{2})$ in the second pass. Total of $O(N)$.
 
 
 ```python
@@ -37,9 +43,9 @@ def dutch_flag_partition(pivot_index: int, A: list[int]) -> None:
 ```
 
 !!! note "Test Cases"
-    Test PASSED (204/204) [   8 ms]
-    Average running time:   65 us
-    Median running time:    13 us
+    - Test PASSED (204/204) [   8 ms]
+    - Avarage running time:   65 us
+    - Median running time:    13 us
 
 
 !!! note "Similar problems"
@@ -49,13 +55,13 @@ def dutch_flag_partition(pivot_index: int, A: list[int]) -> None:
 ## String Compression Problem
 
 ### Problem Statement
-Implement a method to perform basic string compression, like this "aaaabbbcccaa" -> "a4b3c3a2"
+Implement a method to perform basic string compression, like "aaaabbbcccaa" $\to$ "a4b3c3a2"
 
-### My first Approach
-- Make a one key dictionary. Add and count the subsequent characters,
+### Approach
+- Make a one key dictionary. Add and count the subsequent characters, for C++ you'd make a `pair<int, int>` and destroy it once a new character is seen,
 - Once you find a new element then drop the key, add the contents to the builder string and count again.
 
-
+### Code
 ```python
 def string_compressing(string: str) -> str:
     build_string: list[str] = []  # using character array instead of string for O(1) append

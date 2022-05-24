@@ -11,9 +11,8 @@ Most of the array problems are typically solved with trivial solutions if $O(N)$
 ## Example problem
 
 ### Problem Statement
-```{admonition} Problem
-Your input is an array of integers, and you have to reorder its entries so that the even entries appear first.
-```
+!!! note "Problems"
+    Your input is an array of integers, and you have to reorder its entries so that the even entries appear first.
 
 ### Solution
 
@@ -46,16 +45,22 @@ def even_odd_separation(array: list[int]):
 ### Time and space complexity
 The above program changes the array in place, so constant space and passes through the array only once, so time complexity is $O(N)$.
 
-```{admonition} Test cases
-Test PASSED (1001/1001) [ 7 ms]
-Average running time:   22 us
-Median running time:     7 us
-```
+!!! note Test cases
+    - Test PASSED (1001/1001): (7 ms)
+    - Avarage running time: (22 us)
+    - Median running time: (7 us)
+
 
 ## Things to remember before solving Array Questions
-- Array problems often have simple brute.force solutions that use $O(n)$ space, but there are subtler solutions that use the array itself to reduce space complexity to $O(1)$,
-- Filling an array from the front is slow, so see if it's possible to write values from the back, with `append()` method,
+
+**GENERIC RECOMMENDATIONS**
+
+- Array problems often have simple brute force solutions that use $O(n)$ space, but there are subtler solutions that use the array itself to reduce space complexity to $O(1)$,
+- Filling an array from the front is slow, so see if it's possible to write values from the back, with `append()` in python and `push_back()` in C++ method,
 - Instead of deleting an entry from the array try to relocate or MARK as deleted the element. Because deleting element from array is worst case $O(N)$, beacuse all the elements to the right have to swapped one step left,
+
+**PYTHON SPECIFIC RECOMMENDATIONS**
+
 - `A.reverse()` is inplace reversal of array,
 - `reversed(A)` returns an iterator,
 - `del A[i]` removes the i th element,
@@ -64,9 +69,8 @@ Median running time:     7 us
 
 ## One toy problem
 
-```{admonition} Problem statement
-Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
-```
+!!! note Problem statement
+    Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
 ### Examples
 
@@ -99,5 +103,4 @@ def missingNumber(self, nums: List[int]) -> int:
         index += 1
 
     return int(possible_sum - actual_sum)
-
 ```
