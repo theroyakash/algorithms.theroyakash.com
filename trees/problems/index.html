@@ -2663,9 +2663,65 @@
 <li>Given a binary tree with one unit left node and unit right node, if <span class="arithmatex">\(\text{Val(left)} \leq \text{Val(parent)} \leq \text{Val(right)}\)</span> then it is a binary search tree.</li>
 <li>Given a binary tree with left subtree and right subtree, it is considered a binary search tree if both the left and right subtrees are binary search trees and condition 2 satisfies.</li>
 <li>Using these 3 steps we can determine if the binary tree is binary search tree.</li>
+<li>But using only these three steps can not independently determine if the binary tree is binary search tree? For example in the following tree, all the elements to the right subtree of the Node <span class="arithmatex">\(10\)</span> must be greater than <span class="arithmatex">\(10\)</span>. But the first <span class="arithmatex">\(3\)</span> steps of the algorithm only checks for local violations.
+    <pre class="mermaid"><code>graph TD
+
+    subgraph With No local and global violation
+    10a((10)) --&gt; 5a((5)) &amp; 15((15))
+    5a --&gt; 2((2)) &amp; 5b((6))
+    2 --&gt; 1a((1)) &amp; null1((null))
+    15 --&gt; 13((13)) &amp; 22((22))
+    13 --&gt; null12((null)) &amp; 14((14))
+    end
+
+    subgraph With Global violation at 3
+    10((10)) --&gt; 1((1)) &amp; 4((4))
+    4      --&gt; 3((3)) &amp; 6((6))
+    end</code></pre></li>
+<li>If we look closely all the elements of right subtree for 10 the for tree with no local violation, has the value <span class="arithmatex">\(\gt 10\)</span> so minimum for such elements in the right subarray is at least <span class="arithmatex">\(\gt 10\)</span>. And there is no max limit as such for any element in the right subtree. But once we fix the right of <span class="arithmatex">\(10\)</span> as <span class="arithmatex">\(15\)</span> then the left of <span class="arithmatex">\(15\)</span> can have the maximum value at most <span class="arithmatex">\(14\)</span> (because all are integers) and at minimum <span class="arithmatex">\(11\)</span> because it is on the right of 10. </li>
+<li>So now let's analyse for all nodes what can be the maximum and what can be the minimum value. Then if we recursively check we should check for Binary Search Tree property.</li>
 </ol>
+<p><strong>Below this is a tree and for each nodes the minumum and maximum is calculated</strong></p>
+<p><img alt="image" src="../../images/isValidBST.jpeg" /></p>
+<p><strong>From</strong> the diagram we can see that when we travel to left, the minimum for the <em>left</em> children is <span class="arithmatex">\(\text{Parent.Minimum}\)</span> and the maximum is <span class="arithmatex">\(\text{Parent.Value}\)</span>. When we travel to right, the minimum for the <em>right</em> children is <span class="arithmatex">\(\text{Parent.Value}\)</span> and the maximum is <span class="arithmatex">\(\text{Parent.Maximum}\)</span>.</p>
+<ul>
+<li>So upon travel to left, bound for left's value is <span class="arithmatex">\(\text{Min} = \text{Parent.Min}\)</span> and <span class="arithmatex">\(\text{Max} = \text{Parent.Value}\)</span></li>
+<li>Upon travel to right, bound for right's value is <span class="arithmatex">\(\text{Min} = \text{Parent.Value}\)</span> and <span class="arithmatex">\(\text{Max} = \text{Parent.Maximum}\)</span></li>
+</ul>
+<p>Now let's transfer it into a working C++ Code.</p>
 <h3 id="code_6">Code</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="cm">/**</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="cm"> * Definition for a binary tree node.</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="cm"> * struct TreeNode {</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="cm"> *     int val;</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="cm"> *     TreeNode *left;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="cm"> *     TreeNode *right;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="cm"> *     TreeNode() : val(0), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="cm"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="cm"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="cm"> * };</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="cm"> */</span><span class="w"></span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">subRoutine</span><span class="w"> </span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">minim</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">maxim</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">valueHere</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">thisLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">minim</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">valueHere</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">valueHere</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxim</span><span class="p">)</span><span class="w"> </span><span class="n">thisLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">isLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subRoutine</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">minim</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">isRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subRoutine</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">maxim</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">thisLevel</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isLeft</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isRight</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isValidBST</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">subRoutine</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">LONG_MIN</span><span class="p">,</span><span class="w"> </span><span class="n">LONG_MAX</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
