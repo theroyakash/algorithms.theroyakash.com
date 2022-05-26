@@ -653,8 +653,68 @@ Given a binary tree check if the binary tree conforms to the criteria for a bina
 2. Given a binary tree with one unit left node and unit right node, if $\text{Val(left)} \leq \text{Val(parent)} \leq \text{Val(right)}$ then it is a binary search tree.
 3. Given a binary tree with left subtree and right subtree, it is considered a binary search tree if both the left and right subtrees are binary search trees and condition 2 satisfies.
 4. Using these 3 steps we can determine if the binary tree is binary search tree.
+5. But using only these three steps can not independently determine if the binary tree is binary search tree? For example in the following tree, all the elements to the right subtree of the Node $10$ must be greater than $10$. But the first $3$ steps of the algorithm only checks for local violations.
+    ```mermaid
+    graph TD
 
+        subgraph With No local and global violation
+        10a((10)) --> 5a((5)) & 15((15))
+        5a --> 2((2)) & 5b((6))
+        2 --> 1a((1)) & null1((null))
+        15 --> 13((13)) & 22((22))
+        13 --> null12((null)) & 14((14))
+        end
+
+        subgraph With Global violation at 3
+        10((10)) --> 1((1)) & 4((4))
+        4      --> 3((3)) & 6((6))
+        end
+    ```
+6. If we look closely all the elements of right subtree for 10 the for tree with no local violation, has the value $\gt 10$ so minimum for such elements in the right subarray is at least $\gt 10$. And there is no max limit as such for any element in the right subtree. But once we fix the right of $10$ as $15$ then the left of $15$ can have the maximum value at most $14$ (because all are integers) and at minimum $11$ because it is on the right of 10. 
+7. So now let's analyse for all nodes what can be the maximum and what can be the minimum value. Then if we recursively check we should check for Binary Search Tree property.
+
+**Below this is a tree and for each nodes the minumum and maximum is calculated**
+
+![image](../images/isValidBST.jpeg)
+
+**From** the diagram we can see that when we travel to left, the minimum for the *left* children is $\text{Parent.Minimum}$ and the maximum is $\text{Parent.Value}$. When we travel to right, the minimum for the *right* children is $\text{Parent.Value}$ and the maximum is $\text{Parent.Maximum}$.
+
+- So upon travel to left, bound for left's value is $\text{Min} = \text{Parent.Min}$ and $\text{Max} = \text{Parent.Value}$
+- Upon travel to right, bound for right's value is $\text{Min} = \text{Parent.Value}$ and $\text{Max} = \text{Parent.Maximum}$
+
+Now let's transfer it into a working C++ Code.
 ### Code
 ```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 
+class Solution {
+private:
+    bool subRoutine (TreeNode* root, long minim, long maxim) {
+        if (!root) return true;
+        
+        long valueHere = root->val;
+        bool thisLevel = false;
+        
+        if (minim < valueHere and valueHere < maxim) thisLevel = true;
+        bool isLeft = subRoutine(root->left, minim, root->val);
+        bool isRight = subRoutine(root->right, root->val, maxim);
+        
+        return thisLevel && isLeft && isRight;
+    }
+    
+public:
+    bool isValidBST(TreeNode* root) {
+        return subRoutine(root, LONG_MIN, LONG_MAX);
+    }
+};
 ```
