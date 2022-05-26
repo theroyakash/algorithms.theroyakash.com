@@ -1,0 +1,4 @@
+# :material-train-car-passenger: Dynamic programming
+There is a famous quote saying that "**those who don't remember the past are condemned to repeat it**". This quoute very much synchronize with the meaning of dynamic programming. What in dynamic programming you do is you calculate and remember the calculation, if and when the same calculation is encountered again, instead of recomputing it you fetch the data this reducing computing time.
+
+There are several problems where you are required to calculate something multiple times and if you _cache_ the data then you can avoid computation multiple times.

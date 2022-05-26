@@ -89,6 +89,12 @@ graph LR
 - With queue we can solve this problem, and here is a step by step approach
     ![image](../images/levelorder2.png)
 
+
+#### Code
+```cpp
+
+```
+
 ## Balanced Binary Tree
 [Problem on leetcode $\to$](https://leetcode.com/problems/balanced-binary-tree/)
 ### Problem Statement
@@ -635,4 +641,20 @@ public:
         helper(root->right, targetSum - root->val, thisLevel, answer);
     }
 };
+```
+
+## Validate a Binary Search Tree
+[Problem on Leetcode $\to$](https://leetcode.com/problems/validate-binary-search-tree/)
+### Problem Statement
+Given a binary tree check if the binary tree conforms to the criteria for a binary search tree.
+
+### Approach
+1. Given a binary tree (with unit node) it is always considered a binary search tree.
+2. Given a binary tree with one unit left node and unit right node, if $\text{Val(left)} \leq \text{Val(parent)} \leq \text{Val(right)}$ then it is a binary search tree.
+3. Given a binary tree with left subtree and right subtree, it is considered a binary search tree if both the left and right subtrees are binary search trees and condition 2 satisfies.
+4. Using these 3 steps we can determine if the binary tree is binary search tree.
+
+### Code
+```cpp
+
 ```

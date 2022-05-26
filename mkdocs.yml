@@ -38,8 +38,11 @@ nav:
       - BFS and DFS: graph/bfs-dfs.md
       - Graph Problems: graph/problems.md
   - Recursion and Dynamic Programming:
-    - Recursion Introduction: ./recursion/intro.md
-    - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
+    - Recursion:
+      - Recursion Introduction: ./recursion/intro.md
+      - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
+    - Dynamic Programming:
+      - Introduction: ./dp/intro.md
 
 theme:
   name: material
