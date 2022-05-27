@@ -27,8 +27,8 @@ nav:
       - Heap Problems: ./heaps/problems.md
       - Two Heaps Problems: ./2heaps/problems.md
   - Searching and Sorting:
-    - Basics and introduction: ./bss.md
-    - Other binary search problems: ./otherbinarysearch-problems.md
+    - Basics and introduction: ./binary-search/intro.md
+    - Binary search problems: ./binary-search/problems.md
   - Trees and Graphs:
     - Trees:
       - Tree Implementation: ./trees/implementation.md

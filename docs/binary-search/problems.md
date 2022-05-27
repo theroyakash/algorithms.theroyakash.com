@@ -137,7 +137,7 @@ An asending sorted array $A[0 \to N]$ once rotated becomes $A[1 \to N] + A[0]$. 
 
 When the array is rotated $k$ times, the array becomes $A[K \to N] + A[0 \to K - 1]$
 
-![image](./images/03a749f6-c901-4f26-b46e-230b46fab28d.png)
+![image](../images/03a749f6-c901-4f26-b46e-230b46fab28d.png)
 
 ### Brute Force Approach
 Using a linear search if we find for some $i$ $A[i] > A[i+1]$, that $i$ is the index of the rotation starting point. Subtract $i$ from length of the array to find how much rotation took place. 
@@ -188,7 +188,7 @@ public:
 - If we look at the previous problem, we'll see that the (rotation point): let's call that the pivot, the subarray before pivot is sorted and subarray after pivot is sorted as well.
 - If we run 2 binary search on each of the subarrays we'll find the target element in $O(\text{lg} N)$ time.
 
-![image](./images/search in a rotated sorted array.png)
+![image](../images/search in a rotated sorted array.png)
 
 ### Code
 ```cpp
@@ -272,7 +272,7 @@ We can employ the normal binary search algorithm, and instead of returning -1 if
 If we look carefully we'll find that at the end of the binary search if there is no element present in the array, the pointer $\text{start}$ and $\text{end} - 1$ points to the insertion point for that element.
 
 ### Careful Dry run with an example
-![image](./images/insertorder.png)
+![image](../images/insertorder.png)
 
 ### Code
 ```cpp

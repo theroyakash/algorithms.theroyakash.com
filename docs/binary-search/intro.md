@@ -111,7 +111,7 @@ For a given N and a number K, find $\sqrt[N]{K}$.
 - Repeat until the difference between higher bound and lower bound is less than some $\epsilon = 10^{-6}$
 
 
-![../images/find NrootK.jpeg](./images/findNrootK.jpeg)
+![.../images/find NrootK.jpeg](../images/findNrootK.jpeg)
 
 
 ```python
