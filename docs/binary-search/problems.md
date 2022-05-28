@@ -244,10 +244,10 @@ public:
         
         int rotationPoint = findRotationPoint(nums);
         
-        // the array is sorted from 0 -> rotationPoint
+        // the array is sorted from 0 -> rotationPoint - 1
         // and rotationPoint -> nums.size() - 1
         
-        int left = binary_search(nums, 0, rotationPoint, target);
+        int left = binary_search(nums, 0, rotationPoint - 1, target);
         int right = binary_search(nums, rotationPoint, nums.size() - 1, target);
 
         return std::max(left, right);
