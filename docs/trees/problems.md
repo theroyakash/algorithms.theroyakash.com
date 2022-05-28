@@ -754,3 +754,36 @@ public:
 ### Time and memory complexity
 - We are essentially traversing in-order so the it's $O(N)$
 - Extra memory is $O(1)$. For usage of recursive function calls we need at least $O(\lg N)$ (height of the tree) auxiliary space.
+
+## Find the total number of Binary Search Trees possible
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/unique-binary-search-trees/)
+### Problem Statement
+Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
+### Approach
+It's the nth catalan number which represents the number of structures possible with upto n nodes. Now for each structure there can be only one inorder traversal which represents to a sorted order. So n'th catalan number is the answer.
+
+### Code
+```cpp
+class Solution {
+private:
+    unsigned long int catalan(int n) {
+        
+        vector<unsigned long int> catalanTable;
+        catalanTable.push_back(1); // catalan(0)
+        catalanTable.push_back(1); // catalan(1)
+        
+        for (int i=2; i<=n; i++) {
+            catalanTable.push_back(0);
+            for (int j = 0; j < i; j++)
+                catalanTable[i] += catalanTable[j] * catalanTable[i - j - 1];
+        }
+        
+        return catalanTable.back();
+    }
+public:
+    int numTrees(int n) {
+        // catalan's number is the answer
+        return (int) catalan(n);
+    }
+};
+```
