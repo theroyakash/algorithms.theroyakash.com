@@ -753,4 +753,4 @@ public:
 
 ### Time and memory complexity
 - We are essentially traversing in-order so the it's $O(N)$
-- Extra memory is $O(1)$
+- Extra memory is $O(1)$. For usage of recursive function calls we need at least $O(\lg N)$ (height of the tree) auxiliary space.
