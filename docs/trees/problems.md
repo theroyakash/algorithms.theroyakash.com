@@ -718,3 +718,39 @@ public:
     }
 };
 ```
+
+## Find Kth Largest value in the binary search tree
+[Problem On Leetcode $\to$](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+### Problem Statement
+Given a binary search tree find the kth largest value accross all the nodes in the tree.
+
+### Approach
+We should traverse the tree in-order, so the values encountered are in non descending order. Now we count until we reach kth smallest value. We record the kth smallest value in some variable and return.
+
+### Code
+```cpp
+class Solution {
+private:
+    int treeNodeCount = 1; // starting index is 1
+    int setValue; // should hold the kth smallest value
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        if (root) {
+            kthSmallest(root->left, k);
+            
+            if (treeNodeCount == k) {
+                setValue = root->val; // set the kth smallest value
+            }
+            
+            treeNodeCount++;
+            kthSmallest(root->right, k);
+        }
+        
+        return setValue;
+    }
+};
+```
+
+### Time and memory complexity
+- We are essentially traversing in-order so the it's $O(N)$
+- Extra memory is $O(1)$
