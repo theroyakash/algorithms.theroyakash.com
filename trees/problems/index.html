@@ -1377,6 +1377,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#find-kth-largest-value-in-the-binary-search-tree" class="md-nav__link">
+    Find Kth Largest value in the binary search tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Find Kth Largest value in the binary search tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_7" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_7" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_7" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-memory-complexity" class="md-nav__link">
+    Time and memory complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2063,6 +2104,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#find-kth-largest-value-in-the-binary-search-tree" class="md-nav__link">
+    Find Kth Largest value in the binary search tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Find Kth Largest value in the binary search tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_7" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_7" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_7" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-memory-complexity" class="md-nav__link">
+    Time and memory complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2723,6 +2805,39 @@
 <a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<h2 id="find-kth-largest-value-in-the-binary-search-tree">Find Kth Largest value in the binary search tree</h2>
+<p><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/">Problem On Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_7">Problem Statement</h3>
+<p>Given a binary search tree find the kth largest value accross all the nodes in the tree.</p>
+<h3 id="approach_7">Approach</h3>
+<p>We should traverse the tree in-order, so the values encountered are in non descending order. Now we count until we reach kth smallest value. We record the kth smallest value in some variable and return.</p>
+<h3 id="code_7">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">treeNodeCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// starting index is 1</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">setValue</span><span class="p">;</span><span class="w"> </span><span class="c1">// should hold the kth smallest value</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">kthSmallest</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">            </span><span class="n">kthSmallest</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">treeNodeCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">                </span><span class="n">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="c1">// set the kth smallest value</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">            </span><span class="n">treeNodeCount</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">            </span><span class="n">kthSmallest</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">setValue</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="time-and-memory-complexity">Time and memory complexity</h3>
+<ul>
+<li>We are essentially traversing in-order so the it's <span class="arithmatex">\(O(N)\)</span></li>
+<li>Extra memory is <span class="arithmatex">\(O(1)\)</span></li>
+</ul>
 
               
 
