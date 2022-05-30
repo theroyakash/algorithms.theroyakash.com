@@ -787,3 +787,13 @@ public:
     }
 };
 ```
+
+## Same Binary Search Tree
+### Problem Statement
+You are given 2 sequences of numbers. Find out if you put numbers in a binary search tree in those 2 orders it'll be the same binary search tree. The caveat is that you can't construct the tree yourself and compare using some tree traversal techniques.
+
+### Input Format
+You'll be given 2 binary search tree insertion order in 2 `vector<int>`. This is the order you are expected to insert into the binary search tree. Compare both and return `true` if the binary search trees are essentially the same.
+
+### Example
+`vector<int> v1 = {10, 15, 8, 12, 94, 81, 5, 2, 11};` and `vector<int> v2 = {10, 8, 5, 15, 2, 12, 11, 94, 81}` inserting using v1 order and v2 order will result in the same binary search tree, so the function will return `true`.
