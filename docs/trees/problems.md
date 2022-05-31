@@ -797,3 +797,11 @@ You'll be given 2 binary search tree insertion order in 2 `vector<int>`. This is
 
 ### Example
 `vector<int> v1 = {10, 15, 8, 12, 94, 81, 5, 2, 11};` and `vector<int> v2 = {10, 8, 5, 15, 2, 12, 11, 94, 81}` inserting using v1 order and v2 order will result in the same binary search tree, so the function will return `true`.
+
+### Approach
+If we look closely we'll see that the binary search tree is constructed uniquely if all the elements coming to left of the root element (10) is in the same order in both the cases. The elements that is greater than the root element (10) will not interfere with the left subtree of the binary search tree.
+
+So we compare the order of elements < root (10) and compare order of elements > root (10). If the order are same then both must be the same binary search tree.
+
+### Time and Space complexity
+No extra space is required, the algorithm runs in $O(n)$ time.
