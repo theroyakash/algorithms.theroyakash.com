@@ -376,13 +376,72 @@ public:
 };
 ```
 
+## Minimum Difference Element in a Sorted Array
+### Problem Statement
+Given an array of numbers sorted in ascending order, find the element in the array that has the minimum difference with the given ‘key’.
+
+### Examples
+```
+Input: [4, 6, 10], key = 7
+Output: 6
+Explanation: The difference between the key '7' and '6' is minimum than any other number in the array.
+```
+```
+Input: [4, 6, 10], key = 4
+Output: 4
+```
+```
+Input: [1, 3, 8, 10, 15], key = 12
+Output: 10
+```
+```
+Input: [4, 6, 10], key = 17
+Output: 10
+```
+
+### Approach
+- If the element is present in the array, we should return it.
+- If not present, then
+    - We should check the ceil and floor of the element from the array.
+    - Floor is the end pointer when the binary search is finished and ceil would be `end + 1` pointer because the array is sorted.
+    - Next we should check what is lower difference between floor and target or ceil or target, which ever is lower that is closer to target.
+
+### C++ Code Solution
+```cpp
+int minDiffElement(vector<int> &v, int target) {
+    int start = 0;
+    int end = v.size() - 1;
+
+    int middle = start + (end - start) / 2;
+
+    while (start <= end) {
+        if (v[middle] == target) return target;
+        if (v[middle] < target) start = middle + 1;
+        if (v[middle] > target) end = middle - 1;
+
+        middle = start + (end - start) / 2;
+    }
+
+    // lowerbound = at index end
+    int diFFWithLowerBound = std::abs(target - v[end]);
+    int diFFWithUpperBound = std::abs(v[end+1] - target);
+
+    if (diFFWithLowerBound > diFFWithUpperBound) return v[end + 1];
+    if (diFFWithLowerBound < diFFWithUpperBound) return v[end];
+
+    return -1; // both are same distant
+}
+```
+
+### Time and space complexity
+No extra space is required, so $O(1)$ space and total of $O(\lg n)$ time is required for binary search.
+
 ## Searching in a Nearly Sorted Array
 ## Find Floor of an element in a Sorted Array
 ## Ceil of an element in a Sorted Array
 ## Next alphabetical element
 ## Find position of an element in an Infinite Sorted Array
 ## Index of First 1 in a Binary Sorted Infinite Array
-## Minimum Difference Element in a Sorted Array
 ## Binary Search on Answer Concept
 ## Peak Element
 ## Find maximum element in Bitonic Array
