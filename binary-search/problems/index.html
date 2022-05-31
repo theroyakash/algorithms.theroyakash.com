@@ -1111,6 +1111,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#minimum-difference-element-in-a-sorted-array" class="md-nav__link">
+    Minimum Difference Element in a Sorted Array
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum Difference Element in a Sorted Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_2" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_5" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code-solution" class="md-nav__link">
+    C++ Code Solution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity" class="md-nav__link">
+    Time and space complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#searching-in-a-nearly-sorted-array" class="md-nav__link">
     Searching in a Nearly Sorted Array
   </a>
@@ -1148,13 +1196,6 @@
         <li class="md-nav__item">
   <a href="#index-of-first-1-in-a-binary-sorted-infinite-array" class="md-nav__link">
     Index of First 1 in a Binary Sorted Infinite Array
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#minimum-difference-element-in-a-sorted-array" class="md-nav__link">
-    Minimum Difference Element in a Sorted Array
   </a>
   
 </li>
@@ -1792,6 +1833,54 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#minimum-difference-element-in-a-sorted-array" class="md-nav__link">
+    Minimum Difference Element in a Sorted Array
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum Difference Element in a Sorted Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_2" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_5" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-code-solution" class="md-nav__link">
+    C++ Code Solution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity" class="md-nav__link">
+    Time and space complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#searching-in-a-nearly-sorted-array" class="md-nav__link">
     Searching in a Nearly Sorted Array
   </a>
@@ -1829,13 +1918,6 @@
         <li class="md-nav__item">
   <a href="#index-of-first-1-in-a-binary-sorted-infinite-array" class="md-nav__link">
     Index of First 1 in a Binary Sorted Infinite Array
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#minimum-difference-element-in-a-sorted-array" class="md-nav__link">
-    Minimum Difference Element in a Sorted Array
   </a>
   
 </li>
@@ -2230,13 +2312,66 @@
 <a id="__codelineno-6-56" name="__codelineno-6-56" href="#__codelineno-6-56"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-6-57" name="__codelineno-6-57" href="#__codelineno-6-57"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<h2 id="minimum-difference-element-in-a-sorted-array">Minimum Difference Element in a Sorted Array</h2>
+<h3 id="problem-statement_2">Problem Statement</h3>
+<p>Given an array of numbers sorted in ascending order, find the element in the array that has the minimum difference with the given ‘key’.</p>
+<h3 id="examples">Examples</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Input: [4, 6, 10], key = 7
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Output: 6
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Explanation: The difference between the key &#39;7&#39; and &#39;6&#39; is minimum than any other number in the array.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Input: [4, 6, 10], key = 4
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Output: 4
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Input: [1, 3, 8, 10, 15], key = 12
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Output: 10
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Input: [4, 6, 10], key = 17
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Output: 10
+</code></pre></div></p>
+<h3 id="approach_5">Approach</h3>
+<ul>
+<li>If the element is present in the array, we should return it.</li>
+<li>If not present, then<ul>
+<li>We should check the ceil and floor of the element from the array.</li>
+<li>Floor is the end pointer when the binary search is finished and ceil would be <code>end + 1</code> pointer because the array is sorted.</li>
+<li>Next we should check what is lower difference between floor and target or ceil or target, which ever is lower that is closer to target.</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-code-solution">C++ Code Solution</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">minDiffElement</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="c1">// lowerbound = at index end</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">diFFWithLowerBound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">end</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">diFFWithUpperBound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">target</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diFFWithLowerBound</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">diFFWithUpperBound</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">end</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diFFWithLowerBound</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">diFFWithUpperBound</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">end</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="c1">// both are same distant</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="time-and-space-complexity">Time and space complexity</h3>
+<p>No extra space is required, so <span class="arithmatex">\(O(1)\)</span> space and total of <span class="arithmatex">\(O(\lg n)\)</span> time is required for binary search.</p>
 <h2 id="searching-in-a-nearly-sorted-array">Searching in a Nearly Sorted Array</h2>
 <h2 id="find-floor-of-an-element-in-a-sorted-array">Find Floor of an element in a Sorted Array</h2>
 <h2 id="ceil-of-an-element-in-a-sorted-array">Ceil of an element in a Sorted Array</h2>
 <h2 id="next-alphabetical-element">Next alphabetical element</h2>
 <h2 id="find-position-of-an-element-in-an-infinite-sorted-array">Find position of an element in an Infinite Sorted Array</h2>
 <h2 id="index-of-first-1-in-a-binary-sorted-infinite-array">Index of First 1 in a Binary Sorted Infinite Array</h2>
-<h2 id="minimum-difference-element-in-a-sorted-array">Minimum Difference Element in a Sorted Array</h2>
 <h2 id="binary-search-on-answer-concept">Binary Search on Answer Concept</h2>
 <h2 id="peak-element">Peak Element</h2>
 <h2 id="find-maximum-element-in-bitonic-array">Find maximum element in Bitonic Array</h2>
