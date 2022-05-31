@@ -1481,6 +1481,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#approach_9" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity" class="md-nav__link">
+    Time and Space complexity
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2276,6 +2290,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#approach_9" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity" class="md-nav__link">
+    Time and Space complexity
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3011,6 +3039,11 @@
 <p>You'll be given 2 binary search tree insertion order in 2 <code>vector&lt;int&gt;</code>. This is the order you are expected to insert into the binary search tree. Compare both and return <code>true</code> if the binary search trees are essentially the same.</p>
 <h3 id="example_4">Example</h3>
 <p><code>vector&lt;int&gt; v1 = {10, 15, 8, 12, 94, 81, 5, 2, 11};</code> and <code>vector&lt;int&gt; v2 = {10, 8, 5, 15, 2, 12, 11, 94, 81}</code> inserting using v1 order and v2 order will result in the same binary search tree, so the function will return <code>true</code>.</p>
+<h3 id="approach_9">Approach</h3>
+<p>If we look closely we'll see that the binary search tree is constructed uniquely if all the elements coming to left of the root element (10) is in the same order in both the cases. The elements that is greater than the root element (10) will not interfere with the left subtree of the binary search tree.</p>
+<p>So we compare the order of elements &lt; root (10) and compare order of elements &gt; root (10). If the order are same then both must be the same binary search tree.</p>
+<h3 id="time-and-space-complexity">Time and Space complexity</h3>
+<p>No extra space is required, the algorithm runs in <span class="arithmatex">\(O(n)\)</span> time.</p>
 
               
 
