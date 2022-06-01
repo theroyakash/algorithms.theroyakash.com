@@ -1051,6 +1051,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#finding-floor-and-ceil-of-an-element-in-a-sorted-array" class="md-nav__link">
+    Finding Floor and Ceil of an element in a Sorted Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#approach_3" class="md-nav__link">
     Approach
   </a>
@@ -1159,23 +1166,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#searching-in-a-nearly-sorted-array" class="md-nav__link">
-    Searching in a Nearly Sorted Array
+  <a href="#search-in-a-sorted-matrix" class="md-nav__link">
+    Search in a sorted matrix
   </a>
+  
+    <nav class="md-nav" aria-label="Search in a sorted matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_3" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#find-floor-of-an-element-in-a-sorted-array" class="md-nav__link">
-    Find Floor of an element in a Sorted Array
+  <a href="#search-in-a-sorted-matrix-but-not-inter-row-wise-sorted" class="md-nav__link">
+    Search in a sorted matrix but not inter-row-wise sorted
+  </a>
+  
+    <nav class="md-nav" aria-label="Search in a sorted matrix but not inter-row-wise sorted">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_4" class="md-nav__link">
+    Problem Statement
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ceil-of-an-element-in-a-sorted-array" class="md-nav__link">
-    Ceil of an element in a Sorted Array
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1773,6 +1813,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#finding-floor-and-ceil-of-an-element-in-a-sorted-array" class="md-nav__link">
+    Finding Floor and Ceil of an element in a Sorted Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#approach_3" class="md-nav__link">
     Approach
   </a>
@@ -1881,23 +1928,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#searching-in-a-nearly-sorted-array" class="md-nav__link">
-    Searching in a Nearly Sorted Array
+  <a href="#search-in-a-sorted-matrix" class="md-nav__link">
+    Search in a sorted matrix
   </a>
+  
+    <nav class="md-nav" aria-label="Search in a sorted matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_3" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#find-floor-of-an-element-in-a-sorted-array" class="md-nav__link">
-    Find Floor of an element in a Sorted Array
+  <a href="#search-in-a-sorted-matrix-but-not-inter-row-wise-sorted" class="md-nav__link">
+    Search in a sorted matrix but not inter-row-wise sorted
+  </a>
+  
+    <nav class="md-nav" aria-label="Search in a sorted matrix but not inter-row-wise sorted">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_4" class="md-nav__link">
+    Problem Statement
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ceil-of-an-element-in-a-sorted-array" class="md-nav__link">
-    Ceil of an element in a Sorted Array
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2209,6 +2289,11 @@
 <p>To find the rotation point we make <span class="arithmatex">\(O(\lg N)\)</span> comparisons and to do binary searchs on both the left and right takes <span class="arithmatex">\(O(\lg N)\)</span> time. So total time complexity is <span class="arithmatex">\(O(\lg N)\)</span>.</p>
 <h2 id="search-insert-position">Search Insert Position</h2>
 <p><a href="https://leetcode.com/problems/search-insert-position/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<div class="admonition warning important">
+<p class="admonition-title">Warning</p>
+<h4 id="finding-floor-and-ceil-of-an-element-in-a-sorted-array"><strong>Finding Floor and Ceil of an element in a Sorted Array</strong></h4>
+<p>This is a very important idea we need to understand before you attempt this question. We need to run the binary search algorithm and see where the start and end stops after the execution. Do it yourself, and put it in the comments below. Do a dry run on the binary search algorithm and see what are the start and end points to after the execution finishes. <strong>I'll add a video for this later</strong>.</p>
+</div>
 <p>Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
 <p>The algorithm must run with <span class="arithmatex">\(O(\lg n)\)</span> complexity.</p>
 <h3 id="approach_3">Approach</h3>
@@ -2366,9 +2451,37 @@
 </code></pre></div>
 <h3 id="time-and-space-complexity">Time and space complexity</h3>
 <p>No extra space is required, so <span class="arithmatex">\(O(1)\)</span> space and total of <span class="arithmatex">\(O(\lg n)\)</span> time is required for binary search.</p>
-<h2 id="searching-in-a-nearly-sorted-array">Searching in a Nearly Sorted Array</h2>
-<h2 id="find-floor-of-an-element-in-a-sorted-array">Find Floor of an element in a Sorted Array</h2>
-<h2 id="ceil-of-an-element-in-a-sorted-array">Ceil of an element in a Sorted Array</h2>
+<h2 id="search-in-a-sorted-matrix">Search in a sorted matrix</h2>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix/">Similar Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_3">Problem Statement</h3>
+<p>Write an efficient algorithm that searches for a value target in an <span class="arithmatex">\(M \times N\)</span> integer matrix <code>matrix</code>. This matrix has the following properties:</p>
+<ol>
+<li>Integers in each row are sorted from left to right.</li>
+<li>The first integer of each row is greater than the last integer of the previous row. Also can be termed as <strong>inter-row-wise sorted</strong>.</li>
+</ol>
+<h3 id="example">Example</h3>
+<p><strong>Matrix</strong>: 
+<span class="arithmatex">\(M_A = \begin{bmatrix}
+1 &amp; 3 &amp; 5 &amp; 7 \\
+10 &amp; 11 &amp; 16 &amp; 20 \\
+23 &amp; 30 &amp; 34 &amp; 60 
+\end{bmatrix}\)</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Input = MA and target = 3
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Output: true
+</code></pre></div>
+<h2 id="search-in-a-sorted-matrix-but-not-inter-row-wise-sorted">Search in a sorted matrix but not <code>inter-row-wise</code> sorted</h2>
+<h3 id="problem-statement_4">Problem Statement</h3>
+<p>The problem statement is almost identical similar but the rule <em>first integer of each row is greater than the last integer of the previous row</em> does <strong>NOT</strong> apply here.</p>
+<h3 id="example_1">Example</h3>
+<p><strong>Matrix</strong>: 
+<span class="arithmatex">\(M_B = \begin{bmatrix}
+1 &amp; 3 &amp; 5 &amp; 7 \\
+2 &amp; 4 &amp; 64 &amp; 20 \\
+3 &amp; 5 &amp; 134 &amp; 60 
+\end{bmatrix}\)</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Input = MB and target = 3
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Output: true
+</code></pre></div>
 <h2 id="next-alphabetical-element">Next alphabetical element</h2>
 <h2 id="find-position-of-an-element-in-an-infinite-sorted-array">Find position of an element in an Infinite Sorted Array</h2>
 <h2 id="index-of-first-1-in-a-binary-sorted-infinite-array">Index of First 1 in a Binary Sorted Infinite Array</h2>
