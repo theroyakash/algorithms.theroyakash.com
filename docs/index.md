@@ -46,7 +46,7 @@ Few more freebies coming soon
 
 - Complete Notes for Advanced algorithms design and selected data structure analysis
 - Randomized algorithm notes
-- Distributed Systems Book [expected 2023 Summer].
+- Distributed Systems Book (expected 2023 Summer).
 
 ## Other Products
 See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see more products available for free to use.
