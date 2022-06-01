@@ -262,6 +262,10 @@ To find the rotation point we make $O(\lg N)$ comparisons and to do binary searc
 
 [Problem on Leetcode $\to$](https://leetcode.com/problems/search-insert-position/)
 
+!!! WARNING important
+    #### **Finding Floor and Ceil of an element in a Sorted Array**
+    This is a very important idea we need to understand before you attempt this question. We need to run the binary search algorithm and see where the start and end stops after the execution. Do it yourself, and put it in the comments below. Do a dry run on the binary search algorithm and see what are the start and end points to after the execution finishes. **I'll add a video for this later**.
+
 Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
 
 The algorithm must run with $O(\lg n)$ complexity.
@@ -436,9 +440,45 @@ int minDiffElement(vector<int> &v, int target) {
 ### Time and space complexity
 No extra space is required, so $O(1)$ space and total of $O(\lg n)$ time is required for binary search.
 
-## Searching in a Nearly Sorted Array
-## Find Floor of an element in a Sorted Array
-## Ceil of an element in a Sorted Array
+## Search in a sorted matrix
+[Similar Problem on Leetcode $\to$](https://leetcode.com/problems/search-a-2d-matrix/)
+
+### Problem Statement
+Write an efficient algorithm that searches for a value target in an $M \times N$ integer matrix `matrix`. This matrix has the following properties:
+
+1. Integers in each row are sorted from left to right.
+2. The first integer of each row is greater than the last integer of the previous row. Also can be termed as **inter-row-wise sorted**.
+
+### Example
+**Matrix**: 
+$M_A = \begin{bmatrix}
+1 & 3 & 5 & 7 \\
+10 & 11 & 16 & 20 \\
+23 & 30 & 34 & 60 
+\end{bmatrix}$
+
+```
+Input = MA and target = 3
+Output: true
+```
+
+## Search in a sorted matrix but not `inter-row-wise` sorted
+### Problem Statement
+The problem statement is almost identical similar but the rule _first integer of each row is greater than the last integer of the previous row_ does **NOT** apply here.
+
+### Example
+**Matrix**: 
+$M_B = \begin{bmatrix}
+1 & 3 & 5 & 7 \\
+2 & 4 & 64 & 20 \\
+3 & 5 & 134 & 60 
+\end{bmatrix}$
+
+```
+Input = MB and target = 3
+Output: true
+```
+
 ## Next alphabetical element
 ## Find position of an element in an Infinite Sorted Array
 ## Index of First 1 in a Binary Sorted Infinite Array
