@@ -462,7 +462,7 @@ Input = MA and target = 3
 Output: true
 ```
 ### Approach
-First you start a probe for the row in which the data may be present, then search column wise. Total time taken in this approach is $O(\lg \text{Rows}) + O(\lg \text{Columns})$.
+First you start a probe for the row in which the data may be present, then search column wise. Total time taken in this approach is $O(\log_2 \text{Rows}) + O(\log_2 \text{Columns})$.
 
 Check out the following code to see how the edge cases are handled.
 ### Code
@@ -540,6 +540,147 @@ Input = MB and target = 3
 Output: true
 ```
 
+## Search for Range
+[Problem on Leetcode $\to$](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value. If target is not found in the array, return $[-1, -1]$.
+
+We must write an algorithm with $O(\log_2 n)$ runtime complexity.
+
+### Approach
+(coming soon)
+
+### Example
+```
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+
+Input: nums = [], target = 0
+Output: [-1,-1]
+```
+
+### Code
+```cpp
+class Solution {
+public:
+    int firstOccurrence(vector<int> &nums, int target) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        int middle = start + (end - start) / 2;
+        
+        // [1,2,3,4,4,4,7]; target = 4;
+        //  |     |     |
+        // start. mid.  end.
+        
+        // next step: [1,2,3,4]
+        //               |   |
+        //               mid end
+        
+        // next step: [3,4]
+        //             | |
+        //           s,m end
+        
+        // next step: [4]
+        //             | start, end, middle
+        
+        while (start < end) {
+            if (nums[middle] < target) {
+                start = middle + 1;
+            } else {
+                end = middle;
+            }
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return start;
+    }
+    
+    int lastOccurrence(vector<int> &nums, int target) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        int middle = start + (end - start) / 2;
+        
+        while (start < end) {
+            
+            // there is a condition when it loops forever
+            // end = start + 1;
+            // [k , j]
+            //  |   |
+            // m,s  end
+            
+            // check for this
+            if (start == end - 1) {
+                // check for a case where [2,2] and target is 2
+                if (nums[start] == nums[end]) {
+                    return end;
+                }
+                
+                // manually escape this situation
+                // there can be case [5, 7] and t=5 where it loops forever because start = middle
+                if (nums[start] == target) {
+                    return start;
+                } else if (nums[end] == target){
+                    // case for [2,3] and t=3
+                    return end;
+                }
+            }
+            
+            if (nums[middle] > target) {
+                end = middle - 1;
+            } else {
+                start = middle;
+            }
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return start;
+    }
+    
+    bool binary_search(vector<int> &nums, int target) {
+        int start = 0;
+        int end = nums.size() - 1;
+        int middle = start + (end - start) / 2;
+        
+        while (start <= end) {
+            if (nums[middle] == target) {
+                return true;
+            }
+            
+            if (nums[middle] < target) start = middle + 1;
+            if (nums[middle] > target) end = middle - 1;
+                
+            middle = start + (end - start) / 2;
+        }
+        
+        return false;
+    }
+    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        
+        if (not binary_search(nums, target)) {
+            vector<int> answer = {-1,-1};
+            return answer;
+        }
+        
+        vector<int> answer;
+        
+        int firstocc = firstOccurrence(nums, target);
+        int lastocc = lastOccurrence(nums, target);
+        
+        answer.push_back(firstocc);
+        answer.push_back(lastocc);
+
+        return answer;
+    }
+};
+```
 ## Next alphabetical element
 ## Find position of an element in an Infinite Sorted Array
 ## Index of First 1 in a Binary Sorted Infinite Array
