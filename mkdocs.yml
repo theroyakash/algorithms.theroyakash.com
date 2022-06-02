@@ -78,6 +78,7 @@ plugins:
   - tags
 
 markdown_extensions:
+  - tables
   - meta
   - pymdownx.highlight:
       anchor_linenums: true

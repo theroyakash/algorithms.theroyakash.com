@@ -20,6 +20,13 @@ description: Materials for FAANG and top startup's coding interview preparation 
   <a href="https://github.com/theroyakash/algorithms.theroyakash.com/blob/main/LICENSE">License</a>
 </p>
 
+---
+
+<h4 align="center">
+  <a href="https://github.com/sponsors/theroyakash">Support this project on GitHub by becoming a sponsor</a>
+</h4>
+<p align="center">This project is completely free and funded by <a href="https://theroyakash.com">@theroyakash</a> and private sponsors.</p>
+
 ## What is this?
 This material categorizes coding interview problems into a set of **8 patterns**. Each pattern will be a complete tool - consisting of **data structures**, **algorithms**, and **analysis techniques** - to solve a specific category of problems. The goal is to build an understanding of the _underlying pattern_ so that we can apply that pattern to solve other problems.
 
@@ -40,12 +47,29 @@ This material categorizes coding interview problems into a set of **8 patterns**
 11. Sorting and Searching (coming soon)
 12. Dynamic Programming (coming soon)
 
+## Problem Counter
+The following table is meant to represent the amount of problems has a full analysis in the website. Maybe incorrectly represented upto 1-2 problems.
+
+| **Problem Concepts**                                                                                 | **Number of problems with detailed solutions** |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [Linked List Problems](https://algorithms.theroyakash.com/LinkedLists/problems/)                     | $12$                                           |
+| [Binary Search (Interview Problems)](/binary-search/problems/)                                       | $16$ so far, $8$ More scheduled to be added    |
+| [Tree Problems](https://algorithms.theroyakash.com/trees/problems/)                                  | $14$                                           |
+| [Graph Traversals, BFS, DFS and applications](https://algorithms.theroyakash.com/graph/bfs-dfs/)     | $3$                                            |
+| [Graph Interview Problems](https://algorithms.theroyakash.com/graph/problems/)                       | $3$                                            |
+| [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $10$                                           |
+| [Heap Problems](https://algorithms.theroyakash.com/heaps/problems/)                                  | $5$                                            |
+| [2 Heap Problems](https://algorithms.theroyakash.com/2heaps/problems/)                               | $2$ problem scheduled to be added              |
+| [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $3$, More are scheduled to be added            |
+| [Array + Sliding window concept Problems](https://algorithms.theroyakash.com/arrays/sliding-window/) | $4$                                            |
+| [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
+| Dynamic Programming                                                                                  | Not started yet                                |
+| **Total problems scheduled to be added**                                                             | $10$                                           |
+| **Total Number of Problems with Full analysis**                                                      | $68$ problems with **FULL** analysis           |
+
 ## Also Coming Soon
 
 Few more freebies coming soon
-
-- Complete Notes for Advanced algorithms design and selected data structure analysis
-- Randomized algorithm notes
 - Distributed Systems Book (expected 2023 Summer).
 
 ## Other Products
@@ -60,7 +84,7 @@ See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see mor
 I go by theroyakash on the internet. I am a computer scientist, a masters student in computer science from **Indian Institute of Technology (IIT) Madras**, with research in **high-performance algorithms**, **data structures**, **distributed systems**, and beyond. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
 
 
-## **Other links**
+## Other links
 - Visit my website [here](https://theroyakash.com/).
 - My [Github](https://github.com/theroyakash),
 - [More about me](https://theroyakash.com/about/),
