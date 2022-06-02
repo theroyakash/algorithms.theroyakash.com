@@ -461,6 +461,67 @@ $M_A = \begin{bmatrix}
 Input = MA and target = 3
 Output: true
 ```
+### Approach
+First you start a probe for the row in which the data may be present, then search column wise. Total time taken in this approach is $O(\lg \text{Rows}) + O(\lg \text{Columns})$.
+
+Check out the following code to see how the edge cases are handled.
+### Code
+```cpp
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        int rows = matrix.size();
+        int cols = matrix[0].size();
+        
+        // set a base case
+        // 1. the matrix is 1by1
+        if (rows == 1 and cols == 1) return matrix[0][0] == target;
+        
+        // 2. the target is < first element or > last element
+        // direcrtly return false without seeing/searching anything
+        if (target < matrix[0][0] or target > matrix[rows - 1][cols - 1]) return false;
+        
+        
+        // first find the row in which data may be present
+        int rowProbeStart = 0;
+        int rowProbeEnd = rows - 1;
+        int rowProbeMiddle = rowProbeStart + (rowProbeEnd - rowProbeStart) / 2;
+        
+        while(rowProbeStart <= rowProbeEnd) {
+            // check with the first element to get the index
+            // of the row in which the data is present
+            if (matrix[rowProbeMiddle][0] == target) return true;
+            if (matrix[rowProbeMiddle][0] > target) rowProbeEnd = rowProbeMiddle - 1;
+            if (matrix[rowProbeMiddle][0] < target) rowProbeStart = rowProbeMiddle + 1;
+            
+            rowProbeMiddle = rowProbeStart + (rowProbeEnd - rowProbeStart) / 2;
+        }
+        
+        cout << rowProbeEnd << endl;
+        
+        // rowProbeEnd is the rowIndex where we should search column wise.
+        // if rowProbeEnd = -1 means the target is less than the first element of the first row
+        // hence return false;
+        if (rowProbeEnd == -1) return false;
+        
+        // now when we get the column number
+        int start = 0;
+        int end = cols - 1;
+        
+        int middle = start + (end - start) / 2;
+        while (start <= end) {
+            if (matrix[rowProbeEnd][middle] == target) return true;
+            if (matrix[rowProbeEnd][middle] > target) end = middle - 1;
+            if (matrix[rowProbeEnd][middle] < target) start = middle + 1;
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return false;
+    }
+};
+```
 
 ## Search in a sorted matrix but not `inter-row-wise` sorted
 ### Problem Statement
