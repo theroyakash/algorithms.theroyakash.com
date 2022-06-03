@@ -547,9 +547,6 @@ Given an array of integers nums sorted in non-decreasing order, find the startin
 
 We must write an algorithm with $O(\log_2 n)$ runtime complexity.
 
-### Approach
-(coming soon)
-
 ### Example
 ```
 Input: nums = [5,7,7,8,8,10], target = 8
@@ -561,6 +558,31 @@ Output: [-1,-1]
 Input: nums = [], target = 0
 Output: [-1,-1]
 ```
+### Approach
+Two things we need to find here, these are the first occurrence of some repeating elements and last occurrence of some repeating elements. Before we do anything we should first search in $O(\lg n)$ whether the array contains the element or not, if not return $[-1,-1]$. Otherwise the program could become complicated while searching for first occurrence and last occurrence also search if it's there or not. Better to separate the logic.
+
+So we should write 3 subroutines: `firstOccurrence()` and `lastOccurrence()` and a routine for `binary_search()`. We'll return $[-1, -1]$ if `binary_search()` returns false.
+
+To calculate the `firstOccurrence()` we modify the binary search subroutine itself. When we find the middle element greater than or equal to the target then instead of setting $\text{end} = \text{middle} - 1$ we'll include the end as middle (set $\text{end} = \text{middle}$).
+
+To calculate the `lastOccurence()` we'll write the exact same code as `firstOccurence()` (using symmetry). However there is a problem with the code. The program for `lastOccurence()` will not halt and loop forever in the following scenario:
+
+```cpp
+while (start < end) {
+    ...
+    } else {
+        start = middle;
+    }
+    ...
+}
+```
+
+the code will fall into infinite loop when the arrangement becomes this
+<figure markdown>
+![infloopproblem](../images/infloopproblem.png){ width="300" }
+</figure>
+
+We'll manually update the lastOccurrence in this case.
 
 ### Code
 ```cpp
