@@ -10,26 +10,23 @@ nav:
     - Freebies: freebies.md
     - Blind 75 Problems: ./blind75.md
     - Standard Input Output: ./stdinout-usage.md
-  - Arrays, Strings and Linked Lists:
-    - Arrays:
-      - Intro to Arrays: ./arrays/arrays.md
-      - Array Problems: ./arrays/array-problems.md
-      - Sliding window problems: ./arrays/sliding-window.md
-    - Linked Lists:
-      - Linked List STL Usage: ./LinkedLists/stl-usage.md
-      - Linked List problems: ./LinkedLists/problems.md
-  - Stacks, Queues, Heaps:
-    - Stacks:
-      - Stacks Usage: ./stacks/usage.md
-      - Stack Problems: ./stacks/problems.md
-    - Heaps:
-      - Heaps Introduction, STL: ./heaps/heap-pq.md
-      - Heap Problems: ./heaps/problems.md
-      - Two Heaps Problems: ./2heaps/problems.md
+  - Linear Data Structures:
+    - Arrays, Strings and Linked Lists:
+      - Arrays:
+        - Intro to Arrays: ./arrays/arrays.md
+        - Array Problems: ./arrays/array-problems.md
+        - Sliding window problems: ./arrays/sliding-window.md
+      - Linked Lists:
+        - Linked List STL Usage: ./LinkedLists/stl-usage.md
+        - Linked List problems: ./LinkedLists/problems.md
+    - Stacks, Queues:
+      - Stacks:
+        - Stacks Usage: ./stacks/usage.md
+        - Stack Problems: ./stacks/problems.md
   - Searching and Sorting:
     - Basics and introduction: ./binary-search/intro.md
     - Binary search problems: ./binary-search/problems.md
-  - Trees and Graphs:
+  - Tree and Graph based data structures:
     - Trees:
       - Tree Implementation: ./trees/implementation.md
       - Tree Problems: ./trees/problems.md
@@ -37,12 +34,18 @@ nav:
       - Graph Usage: graph/usage.md
       - BFS and DFS: graph/bfs-dfs.md
       - Graph Problems: graph/problems.md
+    - Heaps:
+      - Heaps Introduction, STL: ./heaps/heap-pq.md
+      - Heap Problems: ./heaps/problems.md
+      - Two Heaps Problems: ./2heaps/problems.md
   - Recursion and Dynamic Programming:
     - Recursion:
       - Recursion Introduction: ./recursion/intro.md
       - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
     - Dynamic Programming:
       - Introduction: ./dp/intro.md
+  - Greedy Algorithms:
+    - Greedy Problems: ./greedy/problems.md
 
 theme:
   name: material
