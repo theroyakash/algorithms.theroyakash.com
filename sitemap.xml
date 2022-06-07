@@ -81,6 +81,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://algorithms.theroyakash.com/greedy/problems/</loc>
+         <lastmod>2022-06-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://algorithms.theroyakash.com/heaps/heap-pq/</loc>
          <lastmod>2022-06-07</lastmod>
          <changefreq>daily</changefreq>
