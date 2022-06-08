@@ -693,11 +693,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#find-all-numbers-disappeared-in-an-array" class="md-nav__link">
-    Find All Numbers Disappeared in an Array
+  <a href="#best-time-to-buy-and-sell-stock" class="md-nav__link">
+    Best Time to Buy and Sell Stock
   </a>
   
-    <nav class="md-nav" aria-label="Find All Numbers Disappeared in an Array">
+    <nav class="md-nav" aria-label="Best Time to Buy and Sell Stock">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -712,11 +712,38 @@
     Examples
   </a>
   
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    Example 1
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#constraints" class="md-nav__link">
-    Constraints
+  <a href="#example-2" class="md-nav__link">
+    Example 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_1" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
   </a>
   
 </li>
@@ -1516,11 +1543,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#find-all-numbers-disappeared-in-an-array" class="md-nav__link">
-    Find All Numbers Disappeared in an Array
+  <a href="#best-time-to-buy-and-sell-stock" class="md-nav__link">
+    Best Time to Buy and Sell Stock
   </a>
   
-    <nav class="md-nav" aria-label="Find All Numbers Disappeared in an Array">
+    <nav class="md-nav" aria-label="Best Time to Buy and Sell Stock">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1535,11 +1562,38 @@
     Examples
   </a>
   
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    Example 1
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#constraints" class="md-nav__link">
-    Constraints
+  <a href="#example-2" class="md-nav__link">
+    Example 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_1" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
   </a>
   
 </li>
@@ -1661,23 +1715,55 @@
 </code></pre></div>
 <h3 id="time-complexity">Time complexity</h3>
 <p>This solution take <span class="arithmatex">\(O(N)\)</span> time and constant space if you don't count the return string. It uses space to hold an <strong>one key</strong> dictionary and the return string.</p>
-<h2 id="find-all-numbers-disappeared-in-an-array">Find All Numbers Disappeared in an Array</h2>
+<h2 id="best-time-to-buy-and-sell-stock">Best Time to Buy and Sell Stock</h2>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
 <h3 id="problem-statement_2">Problem Statement</h3>
-<p>Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.</p>
+<p>You are given an array prices where <code>prices[i]</code> is the price of a given stock on the <span class="arithmatex">\(\text{i}^{\text{th}}\)</span> day.</p>
+<p>You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.</p>
+<p>Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return <span class="arithmatex">\(0\)</span>.</p>
 <h3 id="examples">Examples</h3>
-<p>Input: nums = [4,3,2,7,8,2,3,1]
-Output: [5,6]</p>
-<p>Input: nums = [1,1]
-Output: [2]</p>
-<h3 id="constraints">Constraints</h3>
+<h4 id="example-1">Example 1</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Input: prices = [7,1,5,3,6,4]
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Output: 5
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+</code></pre></div>
+<h4 id="example-2">Example 2</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Input: prices = [7,6,4,3,1]
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Output: 0
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Explanation: In this case, no transactions are done and the max profit = 0.
+</code></pre></div>
+<h3 id="approach_1">Approach</h3>
 <ul>
-<li>n == len(nums)</li>
-<li>1 &lt;= n &lt;= 105</li>
-<li>1 &lt;= nums[i] &lt;= n</li>
-<li>Algorithm must run in <span class="arithmatex">\(O(N)\)</span> time and no extra space.</li>
+<li>We start with the lowest profit possible which is <span class="arithmatex">\(0\)</span>,</li>
+<li>We'll start the analysis from day <span class="arithmatex">\(1\)</span> not from day <span class="arithmatex">\(0\)</span>,</li>
+<li>We indicate the dip is the day <span class="arithmatex">\(0^{th}\)</span> price. If we buy at that price then we analyse further.</li>
+<li>Now we analyze from day <span class="arithmatex">\(1 ... N\)</span><ul>
+<li>For day <span class="arithmatex">\(1\)</span> if we sell that stock the profit will be <code>profSLT = prices[1] - dip</code> at the <strong>lowest dip so far</strong>, we update the max profit by taking the <code>std::max</code> of previous maximum profit and todays profit.</li>
+<li>If todays price is lower than the last day's price, it is possible that we can get a better solution (profit) if not we already have stored the last best profit.</li>
+<li>We repeat this until we reach the last day.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span> <span class="nf">findDisappearedNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">pass</span>
+</li>
+</ul>
+<h3 id="code_1">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxProfit</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">prices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">mprof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// maximum profit</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">dip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">// should buy at lowest dip starting from day 1</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">            </span><span class="c1">// profit if sold today bought at the lowest dip so far;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">profSLT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">dip</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">            </span><span class="c1">// if this is the maxprofit then update</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">            </span><span class="n">mprof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">mprof</span><span class="p">,</span><span class="w"> </span><span class="n">profSLT</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dip</span><span class="p">)</span><span class="w"> </span><span class="n">dip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mprof</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
