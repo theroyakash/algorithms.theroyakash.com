@@ -152,3 +152,61 @@ public:
     }
 };
 ```
+## Best Time to Buy and Sell Stock II
+[Problem on Leetcode $\to$](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+### Problem Statement
+Similar to the previous problem, you are given an integer array prices where `prices[i]` is the price of a given stock on the ith day.
+
+On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.
+
+Find and return the maximum profit you can achieve.
+### Approach
+Similar to the previous problem we'll continue to implement the logic but, if we see a dip later in the future, we'll sell off and buy at tomorrows dip to avoid any potential loss.
+
+!!! note
+    Here `profitInCurrentWindow` in the code denotes the profit in the current window. An window is reset when we sell off the stock because there will be a dip in the next day. We start the window by buying the stock in the next dip.
+
+### Code
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
+        if (prices.size() == 1) return 0;
+        
+        int totalProfit = 0;
+        int dip = prices[0];
+        int profitInCurrentWindow = 0;
+        
+        // start from day 1 and local dip so far is day 0's price
+        for (int index = 1; index < prices.size(); index++) {
+            // today's price = prices[index]
+            int price = prices[index];
+            // see if selling today entails profit?
+            int profit = price - dip;
+            
+            // what is the max profit possible in the current window
+            profitInCurrentWindow = std::max(profitInCurrentWindow, profit);
+            
+            // if it is profitable and tomorrow's price goes down don't hold, sell and exit
+            // and reset the problem to next day and start again
+            if (profit > 0 and index < prices.size() - 1) {
+                if (prices[index + 1] < prices[index]) {
+                    totalProfit = totalProfit + profitInCurrentWindow;
+                    // also reset the dip to the index + 1
+                    // for a new profit calculation for tomorrow
+                    dip = prices[index + 1];
+                    index++; // we reset the entire problem and recalculate everything from the next index
+                    profitInCurrentWindow = 0; // reset the profit in the window
+                }
+            }
+            
+            if (price < dip) dip = price;
+        }
+        
+        totalProfit += profitInCurrentWindow; // update the last profit window
+        
+        return totalProfit;
+    }
+};
+```
