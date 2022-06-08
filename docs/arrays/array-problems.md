@@ -97,25 +97,58 @@ string_compressing("abbbcccaa")  # -> 'ab3c3a2'
 ### Time complexity
 This solution take $O(N)$ time and constant space if you don't count the return string. It uses space to hold an **one key** dictionary and the return string.
 
-## Find All Numbers Disappeared in an Array
+## Best Time to Buy and Sell Stock
+[Problem on Leetcode $\to$](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
 ### Problem Statement
-Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+You are given an array prices where `prices[i]` is the price of a given stock on the $\text{i}^{\text{th}}$ day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return $0$.
 
 ### Examples
-Input: nums = [4,3,2,7,8,2,3,1]
-Output: [5,6]
+#### Example 1
+```
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+```
+#### Example 2
+```
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+```
 
-Input: nums = [1,1]
-Output: [2]
+### Approach
+- We start with the lowest profit possible which is $0$,
+- We'll start the analysis from day $1$ not from day $0$,
+- We indicate the dip is the day $0^{th}$ price. If we buy at that price then we analyse further.
+- Now we analyze from day $1 ... N$
+    - For day $1$ if we sell that stock the profit will be `profSLT = prices[1] - dip` at the **lowest dip so far**, we update the max profit by taking the `std::max` of previous maximum profit and todays profit.
+    - If todays price is lower than the last day's price, it is possible that we can get a better solution (profit) if not we already have stored the last best profit.
+    - We repeat this until we reach the last day.
 
-### Constraints
-- n == len(nums)
-- 1 <= n <= 105
-- 1 <= nums[i] <= n
-- Algorithm must run in $O(N)$ time and no extra space.
-
-
-```python
-def findDisappearedNumbers(self, nums: list[int]) -> list[int]:
-    pass
+### Code
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int mprof = 0; // maximum profit
+        int dip = prices[0]; // should buy at lowest dip starting from day 1
+        
+        for (int i=1; i<prices.size(); i++) {
+            // profit if sold today bought at the lowest dip so far;
+            int profSLT = prices[i] - dip;
+            // if this is the maxprofit then update
+            mprof = std::max(mprof, profSLT);
+            
+            if (prices[i] < dip) dip = prices[i];
+        }
+        
+        return mprof;
+    }
+};
 ```
