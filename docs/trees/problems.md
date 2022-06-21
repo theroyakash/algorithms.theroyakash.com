@@ -861,3 +861,80 @@ public:
     }
 };
 ```
+
+## Count Complete Tree Nodes
+[Problem on Leetcode $\to$](https://leetcode.com/problems/count-complete-tree-nodes/)
+
+### Problem statement
+Given the root of a complete binary tree, return the number of the nodes in the tree.
+
+According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+
+Design an algorithm that runs in less than O(n) time complexity.
+
+### Approach
+We can easily solve this problem with recursion but as in this problem sub-trees of the binary tree is complete binary tree we can use the formula to calculate the number of nodes as $2^{\text{height}}$. This way the overall time complexity reduces.
+
+Otherwise if $O(N)$ is possible we could just run an in order traversal algorithm to find the number of nodes in the tree.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    
+    int two_pow(int n) {
+        // find 2^n
+        int result=1;
+        while (n!=0) {
+            result *= 2;
+            n--;
+        }
+        
+        return result;
+    }
+    
+    int lh(TreeNode* root) {
+        // find left height of a given tree
+        if (!root) return 0;
+        return 1 + lh(root->left);
+    }
+    
+    int rh(TreeNode* root) {
+        // find right height of a given tree
+        if (!root) return 0;
+        return 1 + rh(root->right);
+    }
+    
+    int count(TreeNode* root) {
+        int leftHeight = lh(root);
+        int rightHeight = rh(root);
+        
+        // if both left and right height is the same then
+        // with respect to the root at current recursion level it is balanced and complete
+        // so the number of node will be 2^n - 1
+        if (leftHeight == rightHeight) {
+            return two_pow(leftHeight) - 1;
+        }
+
+        // else we continue with the normal recursive counting
+        return 1 + count(root->left) + count(root->right);
+    }
+    
+public:
+    int countNodes(TreeNode* root) {
+        if (not root) return 0;
+        return count(root);
+    }
+};
+```

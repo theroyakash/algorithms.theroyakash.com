@@ -207,3 +207,11 @@ public:
     }
 };
 ```
+
+## Minimum spanning tree problem
+### [Minimum Cost to Connect all the points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
+
+we are given an array points representing integer coordinates of some points on a 2D-plane, where $\text{points[i]} = (x_i,y_i)$. The cost of connecting two points $(x_i,y_i)$ and $(x_j,y_j)$ is the manhattan distance between them: $\lvert x_i - x_j \rvert + \lvert y_i - y_j \rvert$. 
+
+Return the minimum cost to make all points connected. All points are connected if there is exactly one simple path between any two points.
+
