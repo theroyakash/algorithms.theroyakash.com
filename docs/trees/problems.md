@@ -938,3 +938,70 @@ public:
     }
 };
 ```
+
+## Deepest Leaves Sum
+[Problem on Leetcode $\to$](https://leetcode.com/problems/deepest-leaves-sum/)
+
+### Problem Statemet
+Given the root of a binary tree, return the sum of values of its deepest leaves.
+
+### Approach
+We shoud use my BFS technique with passing depth. Using this technique
+
+- when we find a leaf node we store it in a `pair<int, int>` and save the depth.
+- If we find a leaf node less than this depth, so this can not be in the answer so we ignore it.
+- If we find a leaf node is at the same level this means it can be included in the answer and later if we find any node at a deeper depth we'll discard all the calculations before.
+
+So here is the code using the upper approach
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    pair<int, int> sumAndDepth = {0,0};
+    int deepestLeavesSum(TreeNode* root) {
+        queue<pair<TreeNode*, int>> q;
+        
+        // set root node at depth 1
+        q.push({root, 1});
+        
+        while (!q.empty()) {
+            TreeNode* front = q.front().first;
+            int depth = q.front().second;
+            
+            q.pop();
+            
+            if (not front->left and not front->right) {
+                // it is a leaf node
+                if (depth == sumAndDepth.second) {
+                    // if the leaf node is at 'presumably' the deepest node
+                    // add the values
+                    sumAndDepth.first += front->val;
+                    sumAndDepth.second = depth;
+                } else if (depth > sumAndDepth.second) {
+                    // else if some other node is at a greater depth
+                    // reset the depth and sum
+                    sumAndDepth.first = 0 + front->val;
+                    sumAndDepth.second = depth;
+                }
+            }
+            
+            // simple BFS strategy
+            if (front->left) q.push({front->left, depth+1});
+            if (front->right) q.push({front->right, depth+1});
+        }
+        
+        return sumAndDepth.first;    // return the sum at the last
+    }
+};
+```

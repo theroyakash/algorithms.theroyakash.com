@@ -49,7 +49,7 @@ The following table is meant to represent the amount of problems has a full anal
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Linked List Problems](https://algorithms.theroyakash.com/LinkedLists/problems/)                     | $12$                                           |
 | [Binary Search (Interview Problems)](/binary-search/problems/)                                       | $16$ so far, $8$ More scheduled to be added    |
-| [Tree Problems](https://algorithms.theroyakash.com/trees/problems/)                                  | $16$                                           |
+| [Tree Problems](https://algorithms.theroyakash.com/trees/problems/)                                  | $18$                                           |
 | [Graph Traversals, BFS, DFS and applications](https://algorithms.theroyakash.com/graph/bfs-dfs/)     | $3$                                            |
 | [Graph Interview Problems](https://algorithms.theroyakash.com/graph/problems/)                       | $3$                                            |
 | [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $10$                                           |
@@ -60,7 +60,7 @@ The following table is meant to represent the amount of problems has a full anal
 | [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
 | Dynamic Programming                                                                                  | Not started yet                                |
 | **Total problems scheduled to be added**                                                             | $10$                                           |
-| **Total Number of Problems with Full analysis**                                                      | $70$ problems with **FULL** analysis           |
+| **Total Number of Problems with Full analysis**                                                      | $72$ problems with **FULL** analysis           |
 
 ## Also Coming Soon
 
