@@ -1580,6 +1580,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#deepest-leaves-sum" class="md-nav__link">
+    Deepest Leaves Sum
+  </a>
+  
+    <nav class="md-nav" aria-label="Deepest Leaves Sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statemet" class="md-nav__link">
+    Problem Statemet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_11" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2593,6 +2620,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#deepest-leaves-sum" class="md-nav__link">
+    Deepest Leaves Sum
+  </a>
+  
+    <nav class="md-nav" aria-label="Deepest Leaves Sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statemet" class="md-nav__link">
+    Problem Statemet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_11" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3446,6 +3500,68 @@
 <a id="__codelineno-18-56" name="__codelineno-18-56" href="#__codelineno-18-56"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">root</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-18-57" name="__codelineno-18-57" href="#__codelineno-18-57"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-18-58" name="__codelineno-18-58" href="#__codelineno-18-58"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="deepest-leaves-sum">Deepest Leaves Sum</h2>
+<p><a href="https://leetcode.com/problems/deepest-leaves-sum/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statemet">Problem Statemet</h3>
+<p>Given the root of a binary tree, return the sum of values of its deepest leaves.</p>
+<h3 id="approach_11">Approach</h3>
+<p>We shoud use my BFS technique with passing depth. Using this technique</p>
+<ul>
+<li>when we find a leaf node we store it in a <code>pair&lt;int, int&gt;</code> and save the depth.</li>
+<li>If we find a leaf node less than this depth, so this can not be in the answer so we ignore it.</li>
+<li>If we find a leaf node is at the same level this means it can be included in the answer and later if we find any node at a deeper depth we'll discard all the calculations before.</li>
+</ul>
+<p>So here is the code using the upper approach</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="cm">/**</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="cm"> * Definition for a binary tree node.</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="cm"> * struct TreeNode {</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="cm"> *     int val;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="cm"> *     TreeNode *left;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="cm"> *     TreeNode *right;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="cm"> *     TreeNode() : val(0), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="cm"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="cm"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="cm"> * };</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="cm"> */</span><span class="w"></span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">    </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sumAndDepth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">deepestLeavesSum</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">        </span><span class="n">queue</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">        </span><span class="c1">// set root node at depth 1</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">        </span><span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">            </span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">            </span><span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">                </span><span class="c1">// it is a leaf node</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a><span class="w">                    </span><span class="c1">// if the leaf node is at &#39;presumably&#39; the deepest node</span>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">                    </span><span class="c1">// add the values</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">                    </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="w">                    </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a><span class="w">                    </span><span class="c1">// else if some other node is at a greater depth</span>
+<a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="w">                    </span><span class="c1">// reset the depth and sum</span>
+<a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="w">                    </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="w">                    </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-19-40" name="__codelineno-19-40" href="#__codelineno-19-40"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a>
+<a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="w">            </span><span class="c1">// simple BFS strategy</span>
+<a id="__codelineno-19-43" name="__codelineno-19-43" href="#__codelineno-19-43"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-19-44" name="__codelineno-19-44" href="#__codelineno-19-44"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-19-45" name="__codelineno-19-45" href="#__codelineno-19-45"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-19-46" name="__codelineno-19-46" href="#__codelineno-19-46"></a>
+<a id="__codelineno-19-47" name="__codelineno-19-47" href="#__codelineno-19-47"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sumAndDepth</span><span class="p">.</span><span class="n">first</span><span class="p">;</span><span class="w">    </span><span class="c1">// return the sum at the last</span>
+<a id="__codelineno-19-48" name="__codelineno-19-48" href="#__codelineno-19-48"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-19-49" name="__codelineno-19-49" href="#__codelineno-19-49"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
