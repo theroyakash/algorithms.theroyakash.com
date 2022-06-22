@@ -999,9 +999,69 @@ public:
             // simple BFS strategy
             if (front->left) q.push({front->left, depth+1});
             if (front->right) q.push({front->right, depth+1});
-        }
+        } 
         
         return sumAndDepth.first;    // return the sum at the last
+    }
+};
+```
+
+## Sum of Nodes with Even-Valued Grandparent
+[Problem on Leetcode $\to$](https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/)
+### Problem Statement
+Given the root of a binary tree, return the sum of values of nodes with an even-valued grandparent. If there are no nodes with an even-valued grandparent, return 0.
+
+A grandparent of a node is the parent of its parent if it exists.
+
+### Approach
+It's a simple recursive problem, we'll get to every node and check if it is even then if it has a grandparent. Every node has 4 possible grand-children:
+
+- left of left children,
+- right of left children,
+- right of right children,
+- left of right children,
+
+With that apporach let's code
+
+### Code
+```cpp
+class Solution {
+private:
+    int sum = 0;
+public:
+    int sumEvenGrandparent(TreeNode* root) {
+        if (root) {
+
+            if (root->val % 2 == 0) {
+                
+                // if even number check all the grandchildren
+                if (root->left) {
+                    if (root->left->left) {
+                        sum +=root->left->left->val;
+                    }
+                    
+                    if (root->left->right) {
+                        sum +=root->left->right->val;
+                    }
+                }
+                
+                if (root->right) {
+                    
+                    if (root->right->left) {
+                        sum +=root->right->left->val;
+                    }
+                    
+                    if (root->right->right) {
+                        sum +=root->right->right->val;
+                    }
+                }
+            }
+            
+            sumEvenGrandparent(root->left);
+            sumEvenGrandparent(root->right);
+        }
+        
+        return sum;
     }
 };
 ```
