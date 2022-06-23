@@ -1,7 +1,5 @@
 ---
 title: Problems on arrays
-tags:
-    - Array problems
 ---
 
 # Problems on arrays
@@ -227,4 +225,79 @@ Output: [[1,5],[6,9]]
 Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 Output: [[1,2],[3,10],[12,16]]
 Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+```
+
+## Missing Number
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/missing-number/)
+
+### Problem statement
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+
+### Example
+```
+Input: nums = [3,0,1]
+Output: 2
+Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 
+2 is the missing number in the range since it does not appear in nums.
+```
+
+### Approach
+- There can be several approaches, one of which is sorting then find what's missing?
+- There is also another approach where you sum up all the numbers (using $\frac{n(n+1)}{2}$) then subtract from elements present in the array. This is a $O(N)$ and constant space solution. But using this is risky because if $n$ is anywhere large enough to $\text{INT_MAX}$ then there is a high probability that $\frac{n(n+1)}{2}$ overflows. So it is not recommended to use this approach instead use the following one:
+- There is another approach where you use XOR operations to find the missing elements. I have written all the code for all the approaches below. Here is no chance of integer overflow or anything. For XOR apporach you first have to find the XOR of elements from $\{1 \to n\}$ then find the XOR of elements present in the array. Now XOR between these two is the missing element so return it.
+
+### Code
+#### Using sorting method
+```cpp
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        
+        int index = 0;
+        for (auto i:nums) {
+            if (i != index) return index;
+            index++;
+        }
+        
+        return index;
+    }
+};
+```
+
+#### Using sum and substraction method
+```cpp
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int sum = n*(n+1) / 2;
+        
+        for (int i:nums) sum -= i;
+        
+        return sum;
+    }
+};
+```
+
+#### Using XOR Method
+```cpp
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int l1 = 0; // contains xor of 1 to n
+        int l2 = nums[0]; // contains xor of all the nums elements
+        
+        
+        for (int i=0; i <= nums.size(); i++) {
+            l1 ^= i;
+        }
+        
+        for (int j=1; j<nums.size(); j++) {
+            l2 ^= nums[j];
+        }
+        
+        return l1^l2;
+    }
+};
 ```

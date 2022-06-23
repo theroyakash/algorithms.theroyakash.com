@@ -44,6 +44,7 @@ nav:
       - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
     - Dynamic Programming:
       - Introduction: ./dp/intro.md
+      - Knapsack Pattern: ./dp/knapsack.md
   - Greedy Algorithms:
     - Greedy Problems: ./greedy/problems.md
 
