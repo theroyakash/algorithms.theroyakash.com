@@ -301,3 +301,65 @@ public:
     }
 };
 ```
+
+## Majority Element
+[Problem on Leetcode $\to$](https://leetcode.com/problems/majority-element/)
+### Problem Statement
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than $\lfloor\frac{n}{2}\rfloor$ times. You may assume that the majority element always exists in the array.
+
+### Approach
+- One approach is to use a dictionary to implement a counter for each element. Then find what is $\gt \lfloor\frac{n}{2}\rfloor$, but it'll take extra $O(n)$ space. So we need to find a new approach.
+- There is an algorithm called boyer moore majority voting algorithm, using that we can easily find the majority element in the array.
+
+### Boyer Moore Algorithm
+Boyer–Moore majority vote algorithm can find the majority of a sequence of elements using linear time and constant space if exists. The returned result may not be the majority element (if not exists), so we have to do an additional check if the indicated element indeed the majority element.
+
+The algorithm goes like this:
+- Initialize an element majority and a counter `counter` with `counter = 0`
+- For each element x of the input sequence:
+    - If `counter = 0`, then assign majority as x and `counter = 1`
+    - If you encounter next the same element as the majority element you increment the counter.
+    - Otherwise decrease the counter and no change to the majority element.
+- at the end return the `majority` variable. It may be or may not be the majority element (if it doesn't exists) then we need check if that is the majority element with just a single pass.
+
+### Example
+Let's run the algorithm on an example to see how this is working
+![image](../images/majority-example.png)
+
+### Running the algorithm on the example
+#### Iteration 1 to 4
+![image](../images/majority-example iter 1-4.png)
+#### Iteration 5 to 8
+![image](../images/majority-example iter 5-8.png)
+#### Iteration 9 and 10
+![image](../images/majority-example iter 9-10.png)
+
+At the very end the majority variable may or may not contains the majority element. We need check if that is the majority element with  a single pass on the array to count up the number of occurrences of the element indicated in majority variable.
+
+### Code
+```cpp
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int counter = 0;
+        int majority = 0;
+        
+        for (int i:nums) {
+            if (counter == 0) {
+                majority = i;
+                counter += 1;
+            } else {
+                if (i == majority) {
+                    counter++;
+                } else {
+                    counter--;
+                }
+            }
+        }
+        
+        return majority; // we assume that the majority element always exists in the array
+    }
+};
+```
