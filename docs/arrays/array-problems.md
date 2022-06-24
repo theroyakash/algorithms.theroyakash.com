@@ -363,3 +363,133 @@ public:
     }
 };
 ```
+
+## Rotate Array
+[Problem on Leetcode $\to$](https://leetcode.com/problems/rotate-array/)
+### Problem Statement
+Given an array, rotate the array to the right by k steps, where k is non-negative in constant space and linear time.
+### Examples
+```
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+```
+
+```
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+```
+### Several approaches with C++ code
+Not so much of an optimized approach, will fetch you a TLE. But for understanding it is a great apporach. We convert the `k` rotation problem into a subproblem of `rotationOnce()` for k times. We implement the `rotationOnce()` subroutine like this:
+
+- See the last element, store it in `last` variable.
+- then for element of index starting from $\text{last} - 2$ down to $0$ swap it with the next element, to shift it by one,
+- at last swap the first element ($0^{th}$ index element with the `last` variable).
+- This is how you rotate by one element.
+- Do this K times to solve the problem. Total time complexity is $O(kn)$, so we'll get TLE in the compiler. This is a polynomial in $n$ and $k$. But $k$ can be $2^n$ so overall this is not efficient. We can reduce the number of subroutine calls down to $k \text{mod} n$ but if $n$ is large enough and $k$ is almost $n$ then the problem of TLE again occurs.
+
+**Here is a code using this approach**
+```cpp
+class Solution {
+private:
+    void rotateOnce(vector<int>& nums) {
+        int last = nums.back();
+        int size = nums.size();
+        
+        for (int i=size-2; i>=0; i--) {
+            nums[i+1] = nums[i];
+        }
+        
+        nums[0] = last;
+    }
+public:
+    void rotate(vector<int>& nums, int k) {
+        int rotations = k % nums.size();
+        while(rotations) {
+            rotateOnce(nums);
+            rotations--;
+        }
+    }
+};
+```
+
+The code here will not run in a reasonable amount of time for a sufficiently large input size. So we have to design some better algorithms.
+
+#### Using Extra space (a faster algorithm in linear time)
+Instead of using the rotate once subroutine we can store all the last k elements in some temporary array, then instead of shifting one element once to the right and putting the last element to the front we can
+
+- push those elements k step ahead
+- put last k elements to the front of the array.
+
+This way the time complexity becomes linear time in $O(n + k)$. This does not give TLE. But this takes $O(k)$ extra space.
+
+```cpp
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+        int size = nums.size();
+        
+        vector<int> temp(nums.end()-k, nums.end());
+        
+        // for all the elements starting from
+        // size - k - 1 down to 0 write it k space ahead
+        
+        for (int i=size-k-1; i>=0; i--) {
+            nums[i + k] = nums[i];
+        }
+        
+        int start = 0;
+        for (auto t:temp) {
+            nums[start] = t;
+            start++;
+        }
+    }
+};
+```
+
+#### Without extra space and linear time complexity in $n$
+There is a very ingenious solution to the problem. I'll explain this with diagrams and will give you an working C++ code.
+##### Approach
+The approach to get the solution goes like this:
+
+- inplace reverse the array from last to $k$,
+- then inplace reverse the array from start to `size - k`
+- now reverse the whole array.
+
+##### Dry run on some example
+**Example array**
+![image](../images/k-rot-example.png)
+**Dry run on that example**
+![image](../images/Krot-dryrun.png)
+
+##### Code
+```cpp
+class Solution {
+private:
+    void inplace_reverse(vector<int>& nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+public:
+    void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+        int size = nums.size();
+        
+        inplace_reverse(nums, size-k, size-1);
+        inplace_reverse(nums, 0, size-k-1);
+        inplace_reverse(nums, 0, size-1);
+    }
+};
+```
