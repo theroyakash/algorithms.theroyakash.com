@@ -518,3 +518,49 @@ public:
     }
 };
 ```
+
+## How Many Numbers Are Smaller Than the Current Number
+[Problem on Leetcode $\to$](https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/)
+### Problem Statement
+Given the array nums, for each `nums[i]` find out how many numbers in the array are smaller than it. That is, for each `nums[i]` you have to count the number of valid `j`'s such that `j != i` and `nums[j] < nums[i]`.
+
+Return the answer in an array.
+
+### Approach
+The most straight forward approach is to implement this by sorting and binary searching the lower bound for each element in the array. First we sort the array. The amount of element that is lower than each element in the array is actually equal to the lowerbound on the sorted array.
+
+### Code
+```cpp
+class Solution {
+private:
+    int lower_bound(vector<int> &nums, int target) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        int middle = start + (end - start) / 2;
+        
+        while (start < end) {
+            if (nums[middle] == target) end = middle;
+            if (nums[middle] < target) start = middle + 1;
+            if (nums[middle] > target) end = middle - 1;
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return start;
+    }
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        vector<int> v(nums.begin(), nums.end());
+        vector<int> answers;
+        sort(v.begin(), v.end());
+        
+        for (int i:nums) {
+            int lb = lower_bound(v, i);
+            answers.push_back(lb);
+        }
+        
+        return answers;
+    }
+};
+```
