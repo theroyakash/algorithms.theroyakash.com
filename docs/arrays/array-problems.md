@@ -3,6 +3,31 @@ title: Problems on arrays
 ---
 
 # Problems on arrays
+## Single Number
+[Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
+### Problem Statement
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+### Approach
+If the problem was given in a sorted array we can implement this [binary search approach](https://algorithms.theroyakash.com/binary-search/problems/#single-element-in-a-sorted-array). But here the array is not sorted. We can use a dictionary but it'll take more space.
+
+Only other way of solving this problem is to use XOR operations. For each element in the array if we XOR them with each other we can find the odd one out.
+
+### Code
+```cpp
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int start = nums.front();
+        for (int i=1; i<nums.size(); i++) {
+            start ^= nums[i];
+        }
+        
+        return start;
+    }
+};
+```
+
 ## Dutch National Flag Partitioning
 
 ### Problem Statement
