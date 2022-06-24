@@ -565,3 +565,32 @@ public:
     }
 };
 ```
+
+## Sort Array By Parity
+[Problem on Leetcode $\to$](https://leetcode.com/problems/sort-array-by-parity/)
+### Problem Statement
+Given an integer array nums, move all the even integers at the beginning of the array followed by all the odd integers.
+
+### Approach
+We'll use the in-place gathering algorithm to gather all the even numbers at the begining of the array. The in-place gathering algorithm is explained in the following video. It's a super useful gathering algorithm that gathers elements of an array based on some condition. In the video I have explained two different scenarios where this gathering algorithm can be used.
+
+### Code
+```cpp
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        int even = 0;
+        // gathering all the even integers
+        for (int i=0; i<nums.size(); i++) {
+            if (nums[i] % 2 == 0) {
+                int temp = nums[i];
+                nums[i] = nums[even];
+                nums[even] = temp;
+                even++;
+            }
+        }
+        
+        return nums;
+    }
+};
+```
