@@ -529,6 +529,7 @@ Return the answer in an array.
 ### Approach
 The most straight forward approach is to implement this by sorting and binary searching the lower bound for each element in the array. First we sort the array. The amount of element that is lower than each element in the array is actually equal to the lowerbound on the sorted array.
 
+Using a non comparison based sorting algorithm we can reduce the time complexity even further down to $O(n)$.
 ### Code
 ```cpp
 class Solution {
