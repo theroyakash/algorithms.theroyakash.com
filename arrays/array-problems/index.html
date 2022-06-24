@@ -882,6 +882,88 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#majority-element" class="md-nav__link">
+    Majority Element
+  </a>
+  
+    <nav class="md-nav" aria-label="Majority Element">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_6" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_4" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boyer-moore-algorithm" class="md-nav__link">
+    Boyer Moore Algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-algorithm-on-the-example" class="md-nav__link">
+    Running the algorithm on the example
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the algorithm on the example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iteration-1-to-4" class="md-nav__link">
+    Iteration 1 to 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-5-to-8" class="md-nav__link">
+    Iteration 5 to 8
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-9-and-10" class="md-nav__link">
+    Iteration 9 and 10
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_4" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1875,6 +1957,88 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#majority-element" class="md-nav__link">
+    Majority Element
+  </a>
+  
+    <nav class="md-nav" aria-label="Majority Element">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_6" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_4" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boyer-moore-algorithm" class="md-nav__link">
+    Boyer Moore Algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-algorithm-on-the-example" class="md-nav__link">
+    Running the algorithm on the example
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the algorithm on the example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iteration-1-to-4" class="md-nav__link">
+    Iteration 1 to 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-5-to-8" class="md-nav__link">
+    Iteration 5 to 8
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iteration-9-and-10" class="md-nav__link">
+    Iteration 9 and 10
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_4" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2163,6 +2327,60 @@
 <a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">l1</span><span class="o">^</span><span class="n">l2</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="majority-element">Majority Element</h2>
+<p><a href="https://leetcode.com/problems/majority-element/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_6">Problem Statement</h3>
+<p>Given an array nums of size n, return the majority element.</p>
+<p>The majority element is the element that appears more than <span class="arithmatex">\(\lfloor\frac{n}{2}\rfloor\)</span> times. You may assume that the majority element always exists in the array.</p>
+<h3 id="approach_4">Approach</h3>
+<ul>
+<li>One approach is to use a dictionary to implement a counter for each element. Then find what is <span class="arithmatex">\(\gt \lfloor\frac{n}{2}\rfloor\)</span>, but it'll take extra <span class="arithmatex">\(O(n)\)</span> space. So we need to find a new approach.</li>
+<li>There is an algorithm called boyer moore majority voting algorithm, using that we can easily find the majority element in the array.</li>
+</ul>
+<h3 id="boyer-moore-algorithm">Boyer Moore Algorithm</h3>
+<p>Boyer–Moore majority vote algorithm can find the majority of a sequence of elements using linear time and constant space if exists. The returned result may not be the majority element (if not exists), so we have to do an additional check if the indicated element indeed the majority element.</p>
+<p>The algorithm goes like this:
+- Initialize an element majority and a counter <code>counter</code> with <code>counter = 0</code>
+- For each element x of the input sequence:
+    - If <code>counter = 0</code>, then assign majority as x and <code>counter = 1</code>
+    - If you encounter next the same element as the majority element you increment the counter.
+    - Otherwise decrease the counter and no change to the majority element.
+- at the end return the <code>majority</code> variable. It may be or may not be the majority element (if it doesn't exists) then we need check if that is the majority element with just a single pass.</p>
+<h3 id="example_1">Example</h3>
+<p>Let's run the algorithm on an example to see how this is working
+<img alt="image" src="../../images/majority-example.png" /></p>
+<h3 id="running-the-algorithm-on-the-example">Running the algorithm on the example</h3>
+<h4 id="iteration-1-to-4">Iteration 1 to 4</h4>
+<p><img alt="image" src="../../images/majority-example%20iter%201-4.png" /></p>
+<h4 id="iteration-5-to-8">Iteration 5 to 8</h4>
+<p><img alt="image" src="../../images/majority-example%20iter%205-8.png" /></p>
+<h4 id="iteration-9-and-10">Iteration 9 and 10</h4>
+<p><img alt="image" src="../../images/majority-example%20iter%209-10.png" /></p>
+<p>At the very end the majority variable may or may not contains the majority element. We need check if that is the majority element with  a single pass on the array to count up the number of occurrences of the element indicated in majority variable.</p>
+<h3 id="code_4">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">majorityElement</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">majority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">:</span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">                </span><span class="n">majority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">                </span><span class="n">counter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">majority</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">                    </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">                    </span><span class="n">counter</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">majority</span><span class="p">;</span><span class="w"> </span><span class="c1">// we assume that the majority element always exists in the array</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
