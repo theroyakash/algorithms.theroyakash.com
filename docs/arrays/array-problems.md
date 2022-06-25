@@ -707,3 +707,49 @@ public:
     }
 };
 ```
+
+## Sort colors
+[Problem on Leetcode $\to$](https://leetcode.com/problems/sort-colors/)
+### Problem Statement
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+You must solve this problem without using the library's sort function.
+
+### Approach
+This problem is the prime example where we should be using the in-place grouping algorithm. Using that we first group zeros with condition elements being less than $1$ to the left of the array and then group 2's with condition elements being greater than $1$ to the right of the array. All the ones would be sandwitched between 0s and 2s.
+
+This is how the array becomes sorted without the usage of sorting function.
+### Code
+```cpp
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        
+        int hinge = 1; // make hinge at 1 to group all < 1 and > 1 elements.
+        int small = 0;
+        
+        // inplace grouping of zeros
+        for (int i=0; i<nums.size(); i++) {
+            if (nums[i] < hinge) {
+                int temp = nums[i];
+                nums[i] = nums[small];
+                nums[small] = temp;
+                small++;
+            }
+        }
+        
+        // inplace grouping of all 2s
+        int larger = nums.size() - 1;
+        for (int j=nums.size()-1; j>=0; j--) {
+            if (nums[j] > hinge) {
+                int temp = nums[j];
+                nums[j] = nums[larger];
+                nums[larger] = temp;
+                larger--;
+            }
+        }
+    }
+};
+```
