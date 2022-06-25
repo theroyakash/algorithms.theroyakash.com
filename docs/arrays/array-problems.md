@@ -1,8 +1,21 @@
 ---
 title: Problems on arrays
 ---
-
 # Problems on arrays
+## Questions discussed
+- [Single Number](#single-number)
+- [Dutch National Flag Partitioning](#dutch-national-flag-partitioning)
+- [String Compression Problem](#string-compression-problem)
+- [Best Time to Buy and Sell Stock](#best-time-to-buy-and-sell-stock)
+- [Best Time to Buy and Sell Stock II](#best-time-to-buy-and-sell-stock-ii)
+- [Insert Interval](#insert-interval)
+- [Missing Number](#missing-number)
+- [Majority Element](#majority-element)
+- [Rotate Array](#rotate-array)
+- [How Many Numbers Are Smaller Than the Current Number](#how-many-numbers-are-smaller-than-the-current-number)
+- [Sort Array By Parity](#sort-array-by-parity)
+- [Replace Elements with Greatest Element on Right Side](#replace-elements-with-greatest-element-on-right-side)
+
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
 ### Problem Statement

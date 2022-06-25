@@ -60,12 +60,12 @@ The following table is meant to represent the amount of problems has a full anal
 | [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $10$                                           |
 | [Heap Problems](https://algorithms.theroyakash.com/heaps/problems/)                                  | $5$                                            |
 | [2 Heap Problems](https://algorithms.theroyakash.com/2heaps/problems/)                               | $2$ problem scheduled to be added              |
-| [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $3$, More are scheduled to be added            |
+| [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $12$, More are scheduled to be added            |
 | [Array + Sliding window concept Problems](https://algorithms.theroyakash.com/arrays/sliding-window/) | $4$                                            |
 | [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
 | Dynamic Programming                                                                                  | Not started yet                                |
 | **Total problems scheduled to be added**                                                             | $10$                                           |
-| **Total Number of Problems with Full analysis**                                                      | $72$ problems with **FULL** analysis           |
+| **Total Number of Problems with Full analysis**                                                      | $88$ problems with **FULL** analysis           |
 
 ## Also Coming Soon
 
