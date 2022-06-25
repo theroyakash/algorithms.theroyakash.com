@@ -644,6 +644,7 @@ Explanation:
 - This will return the reverse of the intended result. At the end we'll reverese the elements in the array in-place.
 
 ### Code
+**Extra space solution**
 ```cpp
 class Solution {
 public:
@@ -662,6 +663,34 @@ public:
         std::reverse(answer.begin(), answer.end());
         
         return answer;
+    }
+};
+```
+**BUT** the problem says we should use an inplace solution. So it is a but difficult to come up with an inplace solution but here we go, feel free to analyze this solution step by step to feel how it is working?
+
+```cpp
+class Solution {
+public:
+    vector<int> replaceElements(vector<int>& arr) {
+        int _max = -1;
+        
+        int back = arr.back();
+        
+        for (int i=arr.size()-1; i>0; i--) {
+            // update with the max we've seen so far
+            arr[i] = _max;
+
+            // check if the current element is max or not?
+            _max = std::max(back, _max);
+
+            // as we're updating `a[i]` we should hold the value
+            // in `back` variable and go left to the array
+            back = arr[i - 1];
+        }
+        
+        arr[0] = _max;
+        
+        return arr;
     }
 };
 ```
