@@ -594,3 +594,74 @@ public:
     }
 };
 ```
+## Replace Elements with Greatest Element on Right Side
+[Problem on Leetcode $\to$](https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/)
+### Problem Statement
+Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.
+
+After doing so, return the array.
+
+### Example
+```
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+Explanation: 
+- index 0 --> the greatest element to the right of index 0 is index 1 (18).
+- index 1 --> the greatest element to the right of index 1 is index 4 (6).
+- index 2 --> the greatest element to the right of index 2 is index 4 (6).
+- index 3 --> the greatest element to the right of index 3 is index 4 (6).
+- index 4 --> the greatest element to the right of index 4 is index 5 (1).
+- index 5 --> there are no elements to the right of index 5, so we put -1.
+```
+
+### Approach
+- One approach is to for each element find the maximum element from that element to the last of the aray, obviously this will take $O(n^2)$ time which is not optimal.
+    ```cpp
+    class Solution {
+    public:
+        vector<int> replaceElements(vector<int>& arr) {
+            vector<int> answer;
+            
+            int _max = -1;
+            
+            for (int i=0; i<arr.size();i++) {
+                if (_max == arr[i])
+                    _max = -1;
+                
+                // find the max from it's right
+                for (int j=i + 1; j<arr.size(); j++) {
+                    _max = std::max(_max, arr[j]);
+                }
+                
+                answer.push_back(_max);
+            }
+            
+            return answer;  
+        }
+    };
+    ```
+- Instead we'll use an ingenious way, we'll travel from the last to the begining of the array, first we'll make the maximum element to the right as $-1$, then we'll record the maximum element so far and go left to the beginning of the array.
+- This will return the reverse of the intended result. At the end we'll reverese the elements in the array in-place.
+
+### Code
+```cpp
+class Solution {
+public:
+    vector<int> replaceElements(vector<int>& arr) {
+        vector<int> answer;
+        
+        int _max = -1;
+        answer.push_back(_max);
+        
+        _max = arr.back();
+        for (int i=arr.size() - 2; i>=0; i--) {
+            answer.push_back(_max);
+            _max = std::max(_max, arr[i]);
+        }
+        
+        std::reverse(answer.begin(), answer.end());
+        
+        return answer;
+    }
+};
+```
