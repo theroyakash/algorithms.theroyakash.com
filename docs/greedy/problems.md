@@ -1,1 +1,2 @@
 # Greedy Problems
+Greedy algorithms are algorithms that follows the problem-solving heuristic of making the locally optimal choice at each stage. You can not go back on your decisions once you've taken it.
