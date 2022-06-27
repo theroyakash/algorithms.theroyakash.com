@@ -15,6 +15,8 @@ title: Problems on arrays
 - [How Many Numbers Are Smaller Than the Current Number](#how-many-numbers-are-smaller-than-the-current-number)
 - [Sort Array By Parity](#sort-array-by-parity)
 - [Replace Elements with Greatest Element on Right Side](#replace-elements-with-greatest-element-on-right-side)
+- [Sort Colors](#sort-colors)
+- [Set matrix zeros](#set-matrix-zeros)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -749,6 +751,53 @@ public:
                 nums[larger] = temp;
                 larger--;
             }
+        }
+    }
+};
+```
+
+## Set matrix zeros
+### Problem Statement
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's. You must do it in place.
+
+### Example
+```
+Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+Output: [[1,0,1],[0,0,0],[1,0,1]]
+```
+
+### Approach
+- Do stuffs
+### Code
+```cpp
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        // setting 2 indicators
+        // one for rows to be updated
+        // one for columns to be updated
+        
+        vector<int> r;
+        vector<int> c;
+        
+        for (int i=0; i<matrix.size(); i++) {
+            for (int j=0; j<matrix[0].size(); j++) {
+                if(matrix[i][j] == 0) {
+                    r.push_back(i);
+                    c.push_back(j);
+                }
+            }
+        }
+        
+        // set zeros
+        for (auto row:r) {
+            for (int c=0; c<matrix[row].size(); c++)
+                matrix[row][c] = 0;
+        }
+        
+        for (auto col:c) {
+            for (int r=0; r<matrix.size(); r++)
+                matrix[r][col] = 0;
         }
     }
 };
