@@ -1329,6 +1329,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#leaders-in-an-array" class="md-nav__link">
+    Leaders in an array
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaders in an array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_1" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_4" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_4" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-memory-complexity" class="md-nav__link">
+    Time and memory complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1615,6 +1663,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#leaders-in-an-array" class="md-nav__link">
+    Leaders in an array
+  </a>
+  
+    <nav class="md-nav" aria-label="Leaders in an array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_1" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_4" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_4" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-and-memory-complexity" class="md-nav__link">
+    Time and memory complexity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1859,6 +1955,63 @@
 <a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<h2 id="leaders-in-an-array">Leaders in an array</h2>
+<p><a href="https://www.codingninjas.com/codestudio/problems/leaders-in-an-array_873144?leftPanelTab=0">Problem on Coding Ninjas <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_1">Problem Statement</h3>
+<p>Given a sequence of numbers. Find all leaders in sequence. An element is a leader if it is strictly greater than all the elements on its right side.</p>
+<h3 id="example">Example</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>The given sequence is [13, 14, 3, 8, 2]
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>13 Not a leader because on the right side 14 is greater than 13.
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>14 lt is a leader because no one greater element in the right side.
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>3 Not a leader because on the right side 8 are greater than 3.
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>8 It is a leader because no one greater element on the right side.
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>2 It is a leader because it is the rightmost element in a sequence.
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>Hence there are 3 leaders in the above sequence which are 14, 8, 2.
+</code></pre></div>
+<h3 id="approach_4">Approach</h3>
+<ul>
+<li>We'll traverse the array from right to left, set the max as the last element</li>
+<li>push the last element on the answer, then go forward</li>
+<li>if we find any element that is greater than the <code>current_max</code> means it is a leader because it is greater than anything we've seen from its right,</li>
+<li>else just go backward without doing anything.</li>
+<li>At last in-place reverse the vector to get the result.</li>
+</ul>
+<h3 id="code_4">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">reverse_vector</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">start</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="n">v</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">end</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="n">v</span><span class="p">[</span><span class="n">end</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="n">start</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="n">end</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">findLeaders</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">elements</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="c1">// Write your code here.</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">leaders</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">current_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elements</span><span class="p">.</span><span class="n">back</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">    </span><span class="n">leaders</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">current_max</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">elements</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">current_max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">            </span><span class="n">current_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">            </span><span class="n">leaders</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">    </span><span class="n">reverse_vector</span><span class="p">(</span><span class="n">leaders</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">leaders</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="time-and-memory-complexity">Time and memory complexity</h3>
+<p>It takes total <span class="arithmatex">\(O(N)\)</span> time and no extra space to run.</p>
 
               
 
