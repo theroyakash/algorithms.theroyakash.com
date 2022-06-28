@@ -935,4 +935,4 @@ class Solution{
 };
 ```
 
-Using this code passes 100 / 117 testcases in the [gfg platform](https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#). So we need to **optimize** this furthur.
+Using this code passes 100 / 117 testcases in the [gfg platform](https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#). So we need to **optimize** this further.
