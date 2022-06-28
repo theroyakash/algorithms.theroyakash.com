@@ -196,3 +196,42 @@ This is a slight modification of the previous problem, find all valid combinatio
 - Each number is used at most once.
 
 Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
+
+### Approach
+Similar to the last problem we'll continue with a recursive approach and use a shared data structure `b` to keep track of the combinations.
+
+### Code
+```cpp
+class Solution {
+private:
+    vector<vector<int>> answer;
+    
+    void build(int k, int target, int sum, int index, vector<int>& candidates) {
+        
+        // shared data structure across recursion
+        static vector<int> b;
+        
+        if (index > candidates.size() - 1) return;
+        
+        if (sum < target) {
+            b.push_back(candidates[index]);
+            build(k, target, sum+candidates[index], index+1, candidates);
+
+            b.pop_back();
+            build(k, target, sum, index+1, candidates);
+        }
+        
+        if (sum == target and b.size() == k) {
+            vector<int> lvl(b);
+            answer.push_back(lvl);
+        }
+    }
+    
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int> candidates = {1,2,3,4,5,6,7,8,9,10};
+        build(k, n, 0, 0, candidates);
+        return answer;
+    }
+};
+```
