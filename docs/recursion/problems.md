@@ -190,6 +190,7 @@ public:
 
 [Find the problem on Leetcode $\to$](https://leetcode.com/problems/combination-sum-iii/)
 
+### Problem Statement
 This is a slight modification of the previous problem, find all valid combinations of k numbers that sum up to n such that the following conditions are true:
 
 - Only numbers 1 through 9 are used.
@@ -198,7 +199,20 @@ This is a slight modification of the previous problem, find all valid combinatio
 Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
 
 ### Approach
-Similar to the last problem we'll continue with a recursive approach and use a shared data structure `b` to keep track of the combinations.
+Similar to the last problem we'll continue with a recursive approach and use a shared data structure `b` to keep track of the combinations. The code will be the almost same as the previous problem but we'll include the answer if and only if the size of the answer is equal to `k` according to the question specifications.
+
+For candidates the question says they are $1 \to 9$, but we'll include $10$ because the following test case will fail if we don't include $10$. Figure out why on your own. (Hint: draw the recursion tree)
+
+```
+TEST CASE FAILURE:
+target = 45
+k = 9
+
+ACTUAL RESULT SHOULD BE RETURENED:
+[1,2,3,4,5,6,7,8,9]
+
+Failure: fails to return the result if the candidates are {1 to 9}
+```
 
 ### Code
 ```cpp
