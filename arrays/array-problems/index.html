@@ -1318,6 +1318,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#count-the-number-of-inversions-in-an-array" class="md-nav__link">
+    Count the number of inversions in an array
+  </a>
+  
+    <nav class="md-nav" aria-label="Count the number of inversions in an array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_15" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples_3" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brute-force-approach" class="md-nav__link">
+    Brute force Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-for-this-approach" class="md-nav__link">
+    Code for this approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2747,6 +2795,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#count-the-number-of-inversions-in-an-array" class="md-nav__link">
+    Count the number of inversions in an array
+  </a>
+  
+    <nav class="md-nav" aria-label="Count the number of inversions in an array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_15" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples_3" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraints" class="md-nav__link">
+    Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brute-force-approach" class="md-nav__link">
+    Brute force Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-for-this-approach" class="md-nav__link">
+    Code for this approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3546,6 +3642,69 @@
 </code></pre></div>
 <h3 id="time-and-memory-complexity">Time and memory complexity</h3>
 <p>It takes total <span class="arithmatex">\(O(N)\)</span> time and no extra space to run.</p>
+<h2 id="count-the-number-of-inversions-in-an-array">Count the number of inversions in an array</h2>
+<p><a href="https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#">Find the problem on GeeksForGeeks <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_15">Problem Statement</h3>
+<p>Given an array of integers. Find the Inversion Count in the array. </p>
+<p>Inversion Count: For an array, inversion count indicates how far (or close) the array is from being sorted. If array is already sorted then the inversion count is 0. If an array is sorted in the reverse order then the inversion count is the maximum.</p>
+<p>Formally, two elements <code>a[i]</code> and <code>a[j]</code> form an inversion if <code>a[i] &gt; a[j]</code> and <code>i &lt; j</code>.</p>
+<h3 id="examples_3">Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Input: N = 5, arr[] = {2, 4, 1, 3, 5}
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>Output: 3
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>Explanation: The sequence 2, 4, 1, 3, 5 
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>has three inversions (2, 1), (4, 1), (4, 3).
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>Input: N = 5
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>arr[] = {2, 3, 4, 5, 6}
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>Output: 0
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>Explanation: As the sequence is already 
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>sorted so there is no inversion count.
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>Input: N = 3, arr[] = {10, 10, 10}
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>Output: 0
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>Explanation: As all the elements of array 
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>are same, so there is no inversion count.
+</code></pre></div>
+<h3 id="constraints">Constraints</h3>
+<ul>
+<li>Expected Time Complexity: <span class="arithmatex">\(O(n \log n)\)</span>.</li>
+<li>Expected Auxiliary Space: <span class="arithmatex">\(O(n)\)</span></li>
+</ul>
+<h3 id="brute-force-approach">Brute force Approach</h3>
+<ul>
+<li>First we'll traverse from the end of the array to the first,</li>
+<li>for each element from <span class="arithmatex">\(\text{last} \to \text{first}\)</span> we'll check what is the number of elements that are greater than this element, these are the inversions.</li>
+<li>This will obviously take <span class="arithmatex">\(O(n^2)\)</span> time complexity which will result in some TLE for larger testcases.</li>
+</ul>
+<h3 id="code-for-this-approach">Code for this approach</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="c1">// arr[]: Input Array</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span><span class="c1">// N : Size of the Array arr[]</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">    </span><span class="c1">// Function to count inversions in the array.</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">inversionCount</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">        </span><span class="c1">// Your Code Here</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">inversions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">t</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="n">end</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="w">                    </span><span class="n">inversions</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="w">            </span><span class="n">end</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a>
+<a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">inversions</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<p>Using this code passes 100 / 117 testcases in the <a href="https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#">gfg platform</a>. So we need to <strong>optimize</strong> this furthur.</p>
 
               
 
