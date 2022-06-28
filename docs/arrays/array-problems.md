@@ -802,3 +802,68 @@ public:
     }
 };
 ```
+
+## Leaders in an array
+[Problem on Coding Ninjas $\to$](https://www.codingninjas.com/codestudio/problems/leaders-in-an-array_873144?leftPanelTab=0)
+
+### Problem Statement
+Given a sequence of numbers. Find all leaders in sequence. An element is a leader if it is strictly greater than all the elements on its right side.
+
+### Example
+```
+The given sequence is [13, 14, 3, 8, 2]
+
+13 Not a leader because on the right side 14 is greater than 13.
+14 lt is a leader because no one greater element in the right side.
+3 Not a leader because on the right side 8 are greater than 3.
+8 It is a leader because no one greater element on the right side.
+2 It is a leader because it is the rightmost element in a sequence.
+Hence there are 3 leaders in the above sequence which are 14, 8, 2.
+```
+
+### Approach
+- We'll traverse the array from right to left, set the max as the last element
+- push the last element on the answer, then go forward
+- if we find any element that is greater than the `current_max` means it is a leader because it is greater than anything we've seen from its right,
+- else just go backward without doing anything.
+- At last in-place reverse the vector to get the result.
+
+
+### Code
+
+```cpp
+void reverse_vector(vector<int>&v) {
+    int start = 0;
+    int end = v.size() - 1;
+    
+    while (start < end) {
+        int temp = v[start];
+        v[start] = v[end];
+        v[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+vector<int> findLeaders(vector<int> &elements, int n) {
+    // Write your code here.
+    vector<int> leaders;
+    
+    int current_max = elements.back();
+    leaders.push_back(current_max);
+    
+    for (int i=elements.size() - 2; i >= 0; i--) {
+        if (elements[i] > current_max) {
+            current_max = elements[i];
+            leaders.push_back(elements[i]);
+        }
+    }
+    
+    reverse_vector(leaders);
+    
+    return leaders;
+}
+```
+
+### Time and memory complexity
+It takes total $O(N)$ time and no extra space to run.
