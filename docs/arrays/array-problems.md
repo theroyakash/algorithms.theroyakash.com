@@ -867,3 +867,72 @@ vector<int> findLeaders(vector<int> &elements, int n) {
 
 ### Time and memory complexity
 It takes total $O(N)$ time and no extra space to run.
+
+## Count the number of inversions in an array
+[Find the problem on GeeksForGeeks $\to$](https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#)
+### Problem Statement
+Given an array of integers. Find the Inversion Count in the array. 
+
+Inversion Count: For an array, inversion count indicates how far (or close) the array is from being sorted. If array is already sorted then the inversion count is 0. If an array is sorted in the reverse order then the inversion count is the maximum.
+
+Formally, two elements `a[i]` and `a[j]` form an inversion if `a[i] > a[j]` and `i < j`.
+
+### Examples
+```
+Input: N = 5, arr[] = {2, 4, 1, 3, 5}
+Output: 3
+Explanation: The sequence 2, 4, 1, 3, 5 
+has three inversions (2, 1), (4, 1), (4, 3).
+
+
+Input: N = 5
+arr[] = {2, 3, 4, 5, 6}
+Output: 0
+Explanation: As the sequence is already 
+sorted so there is no inversion count.
+
+
+Input: N = 3, arr[] = {10, 10, 10}
+Output: 0
+Explanation: As all the elements of array 
+are same, so there is no inversion count.
+```
+
+### Constraints
+- Expected Time Complexity: $O(n \log n)$.
+- Expected Auxiliary Space: $O(n)$
+
+### Brute force Approach
+- First we'll traverse from the end of the array to the first,
+- for each element from $\text{last} \to \text{first}$ we'll check what is the number of elements that are greater than this element, these are the inversions.
+- This will obviously take $O(n^2)$ time complexity which will result in some TLE for larger testcases.
+
+### Code for this approach
+```cpp
+class Solution{
+  public:
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    // Function to count inversions in the array.
+    long long int inversionCount(long long arr[], long long N) {
+        // Your Code Here
+        
+        long long int inversions = 0;
+        long long int start = 0;
+        long long int end = N - 1;
+        
+        while (end > start) {
+            for (int t=end - 1; t>=0; t--) {
+                if (arr[t] > arr[end]) {
+                    inversions++;
+                }
+            }
+            end--;
+        }
+        
+        return inversions;
+    }
+};
+```
+
+Using this code passes 100 / 117 testcases in the [gfg platform](https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#). So we need to **optimize** this furthur.
