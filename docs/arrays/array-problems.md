@@ -15,8 +15,10 @@ title: Problems on arrays
 - [How Many Numbers Are Smaller Than the Current Number](#how-many-numbers-are-smaller-than-the-current-number)
 - [Sort Array By Parity](#sort-array-by-parity)
 - [Replace Elements with Greatest Element on Right Side](#replace-elements-with-greatest-element-on-right-side)
-- [Sort Colors](#sort-colors)
+- [Sort colors](#sort-colors)
 - [Set matrix zeros](#set-matrix-zeros)
+- [Leaders in an array](#leaders-in-an-array)
+- [Count the number of inversions in an array](#count-the-number-of-inversions-in-an-array)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -907,7 +909,7 @@ are same, so there is no inversion count.
 - for each element from $\text{last} \to \text{first}$ we'll check what is the number of elements that are greater than this element, these are the inversions.
 - This will obviously take $O(n^2)$ time complexity which will result in some TLE for larger testcases.
 
-### Code for this approach
+#### Code for this approach
 ```cpp
 class Solution{
   public:
@@ -936,3 +938,67 @@ class Solution{
 ```
 
 Using this code passes 100 / 117 testcases in the [gfg platform](https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#). So we need to **optimize** this further.
+
+### A More optimized approach
+The following is a more optimized solution to find the number of inversions in the array, which takes a but lesser time so that we don't get any TLEs.
+
+The number of inversions is a measure of how **unsorted** the array really is. So using some sorting properties we must derive at the number of inversions. It is also should be noted that in a sorted array the number of inversions is $0$.
+
+We'll use merge sort to do this. During the merge sort we'll run some subroutine that'll calculate the number of inversions. This will take $O(n \log n)$ time which is faster than $O(n^2)$. So understanding the merge sort is a critical component solving this problem.
+
+## Rotate Image
+[Problem On Leetcode $\to$](https://leetcode.com/problems/rotate-image/)
+
+### Problem Statement
+You are given an $N \times N$ 2D matrix representing an image, rotate the image by $90°$ degrees (clockwise).
+
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+### Approach
+- This is essentially equivalent to a in-place transpose of the matrix
+- then inplace reversal of each row of the matrix.
+
+### Code
+```cpp
+class Solution {
+private:
+    void transposeSubroutine(vector<vector<int>>& matrix) {
+        int end = matrix.size();
+        
+        for (int i=0; i<end; i++) {
+            for (int j = i; j<end; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+    
+    void in_place_reversal(vector<vector<int>>& matrix, int row) {
+        int start = 0;
+        int end = matrix[row].size() - 1;
+        
+        while(start < end) {
+            int temp = matrix[row][start];
+            matrix[row][start] = matrix[row][end];
+            matrix[row][end] = temp;
+            
+            start++;
+            end--;
+        }
+    }
+    
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        // rotating by 90* is essentially
+        // computing the transpose of the matrix
+        // then reversing all the arrays
+        transposeSubroutine(matrix);
+        
+        // for each row do a inplace reversal
+        for (int i=0; i<matrix.size(); i++) {
+            in_place_reversal(matrix, i);
+        }
+    }
+};
+```
