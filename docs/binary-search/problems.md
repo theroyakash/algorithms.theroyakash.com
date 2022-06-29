@@ -440,7 +440,7 @@ int minDiffElement(vector<int> &v, int target) {
 ### Time and space complexity
 No extra space is required, so $O(1)$ space and total of $O(\lg n)$ time is required for binary search.
 
-## Search in a sorted matrix
+## Search in a sorted 2D matrix
 [Similar Problem on Leetcode $\to$](https://leetcode.com/problems/search-a-2d-matrix/)
 
 ### Problem Statement
