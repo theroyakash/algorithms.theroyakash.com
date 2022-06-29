@@ -1352,11 +1352,58 @@
     Brute force Approach
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Brute force Approach">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#code-for-this-approach" class="md-nav__link">
     Code for this approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-more-optimized-approach" class="md-nav__link">
+    A More optimized approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotate-image" class="md-nav__link">
+    Rotate Image
+  </a>
+  
+    <nav class="md-nav" aria-label="Rotate Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_16" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_13" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_13" class="md-nav__link">
+    Code
   </a>
   
 </li>
@@ -2829,11 +2876,58 @@
     Brute force Approach
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Brute force Approach">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#code-for-this-approach" class="md-nav__link">
     Code for this approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-more-optimized-approach" class="md-nav__link">
+    A More optimized approach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotate-image" class="md-nav__link">
+    Rotate Image
+  </a>
+  
+    <nav class="md-nav" aria-label="Rotate Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_16" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_13" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_13" class="md-nav__link">
+    Code
   </a>
   
 </li>
@@ -2876,8 +2970,10 @@
 <li><a href="#how-many-numbers-are-smaller-than-the-current-number">How Many Numbers Are Smaller Than the Current Number</a></li>
 <li><a href="#sort-array-by-parity">Sort Array By Parity</a></li>
 <li><a href="#replace-elements-with-greatest-element-on-right-side">Replace Elements with Greatest Element on Right Side</a></li>
-<li><a href="#sort-colors">Sort Colors</a></li>
+<li><a href="#sort-colors">Sort colors</a></li>
 <li><a href="#set-matrix-zeros">Set matrix zeros</a></li>
+<li><a href="#leaders-in-an-array">Leaders in an array</a></li>
+<li><a href="#count-the-number-of-inversions-in-an-array">Count the number of inversions in an array</a></li>
 </ul>
 <h2 id="single-number">Single Number</h2>
 <p><a href="https://leetcode.com/problems/single-number/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
@@ -3678,7 +3774,7 @@
 <li>for each element from <span class="arithmatex">\(\text{last} \to \text{first}\)</span> we'll check what is the number of elements that are greater than this element, these are the inversions.</li>
 <li>This will obviously take <span class="arithmatex">\(O(n^2)\)</span> time complexity which will result in some TLE for larger testcases.</li>
 </ul>
-<h3 id="code-for-this-approach">Code for this approach</h3>
+<h4 id="code-for-this-approach">Code for this approach</h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="c1">// arr[]: Input Array</span>
@@ -3705,6 +3801,63 @@
 <a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>Using this code passes 100 / 117 testcases in the <a href="https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#">gfg platform</a>. So we need to <strong>optimize</strong> this further.</p>
+<h3 id="a-more-optimized-approach">A More optimized approach</h3>
+<p>The following is a more optimized solution to find the number of inversions in the array, which takes a but lesser time so that we don't get any TLEs.</p>
+<p>The number of inversions is a measure of how <strong>unsorted</strong> the array really is. So using some sorting properties we must derive at the number of inversions. It is also should be noted that in a sorted array the number of inversions is <span class="arithmatex">\(0\)</span>.</p>
+<p>We'll use merge sort to do this. During the merge sort we'll run some subroutine that'll calculate the number of inversions. This will take <span class="arithmatex">\(O(n \log n)\)</span> time which is faster than <span class="arithmatex">\(O(n^2)\)</span>. So understanding the merge sort is a critical component solving this problem.</p>
+<h2 id="rotate-image">Rotate Image</h2>
+<p><a href="https://leetcode.com/problems/rotate-image/">Problem On Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_16">Problem Statement</h3>
+<p>You are given an <span class="arithmatex">\(N \times N\)</span> 2D matrix representing an image, rotate the image by <span class="arithmatex">\(90°\)</span> degrees (clockwise).</p>
+<p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p>
+<h3 id="approach_13">Approach</h3>
+<ul>
+<li>This is essentially equivalent to a in-place transpose of the matrix</li>
+<li>then inplace reversal of each row of the matrix.</li>
+</ul>
+<h3 id="code_13">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">transposeSubroutine</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">matrix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;</span><span class="n">end</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">                </span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="w">                </span><span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">in_place_reversal</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">start</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a><span class="w">            </span><span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">end</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a><span class="w">            </span><span class="n">matrix</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">end</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>
+<a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a><span class="w">            </span><span class="n">start</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a><span class="w">            </span><span class="n">end</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-26" name="__codelineno-32-26" href="#__codelineno-32-26"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-27" name="__codelineno-32-27" href="#__codelineno-32-27"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-28" name="__codelineno-32-28" href="#__codelineno-32-28"></a>
+<a id="__codelineno-32-29" name="__codelineno-32-29" href="#__codelineno-32-29"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-32-30" name="__codelineno-32-30" href="#__codelineno-32-30"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">rotate</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">matrix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-31" name="__codelineno-32-31" href="#__codelineno-32-31"></a><span class="w">        </span><span class="c1">// rotating by 90* is essentially</span>
+<a id="__codelineno-32-32" name="__codelineno-32-32" href="#__codelineno-32-32"></a><span class="w">        </span><span class="c1">// computing the transpose of the matrix</span>
+<a id="__codelineno-32-33" name="__codelineno-32-33" href="#__codelineno-32-33"></a><span class="w">        </span><span class="c1">// then reversing all the arrays</span>
+<a id="__codelineno-32-34" name="__codelineno-32-34" href="#__codelineno-32-34"></a><span class="w">        </span><span class="n">transposeSubroutine</span><span class="p">(</span><span class="n">matrix</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-32-35" name="__codelineno-32-35" href="#__codelineno-32-35"></a>
+<a id="__codelineno-32-36" name="__codelineno-32-36" href="#__codelineno-32-36"></a><span class="w">        </span><span class="c1">// for each row do a inplace reversal</span>
+<a id="__codelineno-32-37" name="__codelineno-32-37" href="#__codelineno-32-37"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">matrix</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-38" name="__codelineno-32-38" href="#__codelineno-32-38"></a><span class="w">            </span><span class="n">in_place_reversal</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-32-39" name="__codelineno-32-39" href="#__codelineno-32-39"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-40" name="__codelineno-32-40" href="#__codelineno-32-40"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-41" name="__codelineno-32-41" href="#__codelineno-32-41"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
 
               
 
