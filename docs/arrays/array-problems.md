@@ -955,7 +955,7 @@ You are given an $N \times N$ 2D matrix representing an image, rotate the image 
 You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
 
 ### Approach
-- This is essentially equivalent to a in-place transpose of the matrix
+- This is essentially equivalent to an in-place transpose of the matrix
 - then inplace reversal of each row of the matrix.
 
 ### Code
@@ -999,6 +999,80 @@ public:
         for (int i=0; i<matrix.size(); i++) {
             in_place_reversal(matrix, i);
         }
+    }
+};
+```
+
+## Product of Array Except Self
+[Problem on Leetcode $\to$](https://leetcode.com/problems/product-of-array-except-self/)
+### Problem Statement
+Given an integer array nums, return an array answer such that `answer[i]` is equal to the product of all the elements of nums except `nums[i]`.
+
+### Example
+```
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+```
+
+### Approach using division operator
+We can easily come up with a $O(n)$ solution with $O(1)$ memory complexity by just multiplying all the numbers of the array and divide them by the element at the current index. We should create provisions to handle **Divide By Zero** cases which you can see in the code below.
+
+### Code using division operation
+```cpp
+class Solution {
+private:
+    int findProductExceptIndex(vector<int>& nums, int index) {
+        int product = 1;
+        for (int i=0; i<nums.size(); i++) {
+            if (i != index) {
+                product *= nums[i];
+            }
+        }
+        
+        return product;
+    }
+
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> result;
+        int prod = 1;
+        
+        int zero_count = 0;
+        
+        for (int i=0; i<nums.size(); i++) {
+            // to check if all are zero
+            if (nums[i] == 0) zero_count++;
+            
+            // find the product of all
+            prod *= nums[i];
+        }
+        
+        if (zero_count == nums.size()) {
+            // if all are zero
+            // directly return so no other computation is done
+            vector<int> v(zero_count, 0);
+            return v;
+        }
+        
+        for (int j=0; j<nums.size(); j++) {
+            if (prod == 0) {
+                if (nums[j] == 0) {
+                    // if this element is zero
+                    // then find the product except self
+                    // brutally
+                    result.push_back(findProductExceptIndex(nums, j));
+                } else {
+                    result.push_back(0);
+                }
+            } else {
+                result.push_back(prod / nums[j]);
+            }
+        }
+        
+        return result;
     }
 };
 ```
