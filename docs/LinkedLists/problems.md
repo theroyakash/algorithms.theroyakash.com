@@ -7,6 +7,23 @@ tags:
 ---
 
 # :chains: Linked List problems
+
+**Questions discussed**
+
+- [Implement Linked list and write `reverse()`](#implement-linked-list-and-write-reverse)
+- [Problem Statement](#problem-statement)
+- [Middle of the Linked List](#middle-of-the-linked-list)
+- [Merge 2 sorted lists](#merge-2-sorted-lists)
+- [Delete Node in a Linked List](#delete-node-in-a-linked-list)
+- [Remove Nth Node From End of List](#remove-nth-node-from-end-of-list)
+- [Add Two Numbers Given as LinkedLists](#add-two-numbers-given-as-linkedlists)
+- [Intersection of Two Linked Lists](#intersection-of-two-linked-lists)
+- [Detect a cycle in linked list](#detect-a-cycle-in-linked-list)
+- [Palindrome Linked list](#palindrome-linked-list)
+- [Find the starting point of cycle in linked list](#find-the-starting-point-of-cycle-in-linked-list)
+- [Given the head of a linked list, rotate the list to the right by k places](#given-the-head-of-a-linked-list-rotate-the-list-to-the-right-by-k-places)
+- [Copy List with Random Pointer](#copy-list-with-random-pointer)
+
 ## Implement Linked list and write `reverse()`
 ## Problem Statement
 Implement Linked list and write `reverse()` method that reverse the list in-place.

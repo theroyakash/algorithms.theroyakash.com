@@ -5,6 +5,30 @@ title: Binary Search Problems
 # :material-cloud-search: Binary Search problems
 Binary search problems are really useful because they run in sublinear time. We'll be solving the following problems in order to master this
 
+**Questions discussed**
+
+- [Binary Search implementation in C++](#binary-search-implementation-in-c)
+- [Binary Search on Reverse Sorted Array](#binary-search-on-reverse-sorted-array)
+- [Order agnostic search](#order-agnostic-search)
+- [First and Last occurrence of an Element](#first-and-last-occurrence-of-an-element)
+- [Count of an Element in a Sorted Array](#count-of-an-element-in-a-sorted-array)
+- [Number of Times a Sorted array is Rotated](#number-of-times-a-sorted-array-is-rotated)
+- [Find an Element in a Rotated Sorted Array](#find-an-element-in-a-rotated-sorted-array)
+- [Search Insert Position](#search-insert-position)
+- [Single Element in a Sorted Array](#single-element-in-a-sorted-array)
+- [Minimum Difference Element in a Sorted Array](#minimum-difference-element-in-a-sorted-array)
+- [Search in a sorted 2D matrix](#search-in-a-sorted-2d-matrix)
+- [Search in a sorted matrix but not `inter-row-wise` sorted](#search-in-a-sorted-matrix-but-not-inter-row-wise-sorted)
+- [Search for Range](#search-for-range)
+- [Next alphabetical element](#next-alphabetical-element)
+- [Find position of an element in an Infinite Sorted Array](#find-position-of-an-element-in-an-infinite-sorted-array)
+- [Index of First 1 in a Binary Sorted Infinite Array](#index-of-first-1-in-a-binary-sorted-infinite-array)
+- [Binary Search on Answer Concept](#binary-search-on-answer-concept)
+- [Peak Element](#peak-element)
+- [Find maximum element in Bitonic Array](#find-maximum-element-in-bitonic-array)
+- [Search An Element in Bitonic Array](#search-an-element-in-bitonic-array)
+- [Allocate minimum number of pages](#allocate-minimum-number-of-pages)
+
 ## Binary Search implementation in C++
 Binary search is really easy to implement. Main goal is to divide the search space into 2 partitions (`bi`) and then based on the criteria search only in one partition.
 

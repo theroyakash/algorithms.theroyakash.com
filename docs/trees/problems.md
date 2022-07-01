@@ -1,5 +1,26 @@
 # :material-graph: Tree Problems
 
+**Questions discussed**
+
+- [Traversal problems](#traversal-problems)
+- [Balanced Binary Tree](#balanced-binary-tree)
+- [Branch Sum Problem](#branch-sum-problem)
+- [Invert a binary tree](#invert-a-binary-tree)
+- [Iterative In Order Traversal](#iterative-in-order-traversal)
+- [Minimum Depth of a Binary Tree](#minimum-depth-of-a-binary-tree)
+- [Connect Level Order Siblings](#connect-level-order-siblings)
+- [Binary Tree Path Sum](#binary-tree-path-sum)
+- [Count All Paths for a Sum](#count-all-paths-for-a-sum)
+- [Traceout All Paths for a Sum](#traceout-all-paths-for-a-sum)
+- [Validate a Binary Search Tree](#validate-a-binary-search-tree)
+- [Find Kth Largest value in the binary search tree](#find-kth-largest-value-in-the-binary-search-tree)
+- [Find the total number of Binary Search Trees possible](#find-the-total-number-of-binary-search-trees-possible)
+- [Same Binary Search Tree](#same-binary-search-tree)
+- [Binary Search Tree Iterator](#binary-search-tree-iterator)
+- [Count Complete Tree Nodes](#count-complete-tree-nodes)
+- [Deepest Leaves Sum](#deepest-leaves-sum)
+- [Sum of Nodes with Even-Valued Grandparent](#sum-of-nodes-with-even-valued-grandparent)
+
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
 Let's don't waste time and finish the "confusing" topic of pre order, post order and in order traversal on binary trees. Most of my friends tell me that they often forget how each traversal works and ask me how to remember them. Well, here you go

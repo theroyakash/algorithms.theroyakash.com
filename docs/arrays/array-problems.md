@@ -19,6 +19,8 @@ title: Problems on arrays
 - [Set matrix zeros](#set-matrix-zeros)
 - [Leaders in an array](#leaders-in-an-array)
 - [Count the number of inversions in an array](#count-the-number-of-inversions-in-an-array)
+- [Rotate Image](#rotate-image)
+- [Product of Array Except Self](#product-of-array-except-self)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)

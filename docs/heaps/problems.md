@@ -8,6 +8,14 @@ tags:
 
 # :material-family-tree: Heap Problems
 
+**Questions discussed**
+
+- [Kth Largest Element in an Array (Medium)](#kth-largest-element-in-an-array-medium)
+- [Find all K Largest Elements in the array](#find-all-k-largest-elements-in-the-array)
+- [Sort a K Sorted array](#sort-a-k-sorted-array)
+- [Find K Closest Elements (Medium)](#find-k-closest-elements-medium)
+- [Top K Frequent Elements (Medium)](#top-k-frequent-elements-medium)
+
 ## [Kth Largest Element in an Array (Medium)](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
 ### Problem Statement
