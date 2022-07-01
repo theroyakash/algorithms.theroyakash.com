@@ -1076,3 +1076,66 @@ public:
     }
 };
 ```
+
+### Code for without the division approach
+```cpp
+class Solution {
+private:
+    
+    void reverse_vector(vector<int>& nums) {
+        int start = 0;
+        int end = nums.size() - 1;
+        
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    
+    void prefixProd(vector<int>& nums, vector<int>&prefix) {
+        int prod = 1;
+        prefix.push_back(1);
+        for (auto i:nums) {
+            prefix.push_back(prod*i);
+            prod = prefix.back();
+        }
+    }
+    
+    void postfixProd(vector<int>& nums, vector<int>&postfix) {
+        int prod = 1;
+        for (int i=nums.size() - 1; i>=0; i--) {
+            postfix.push_back(prod*nums[i]);
+            prod = postfix.back();
+        }
+        
+        // reverse subroutine at the end to get the actual answer
+        reverse_vector(postfix);
+        postfix.push_back(1);
+    }
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> productExceptSelfOrder;
+        vector<int> prefix;
+        vector<int> postfix;
+        
+        // build prefix and postfix products
+        prefixProd(nums, prefix);
+        postfixProd(nums, postfix);
+        
+        // now that we have both the prefix products and postfix products
+        // it'll be easy to find the productExceptSelfOrder
+        
+        for (int i=0; i<postfix.size() - 1; i++) {
+            int preprod = prefix[i];
+            int postprod = postfix[i+1];
+            
+            productExceptSelfOrder.push_back(preprod * postprod);
+        }
+        
+        return productExceptSelfOrder;
+    }
+};
+```
