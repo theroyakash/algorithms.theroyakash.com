@@ -1502,6 +1502,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#container-with-most-water" class="md-nav__link">
+    Container With Most Water
+  </a>
+  
+    <nav class="md-nav" aria-label="Container With Most Water">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_19" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_15" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_15" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3115,6 +3156,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#container-with-most-water" class="md-nav__link">
+    Container With Most Water
+  </a>
+  
+    <nav class="md-nav" aria-label="Container With Most Water">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_19" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_15" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_15" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3156,6 +3238,7 @@
 <li><a href="#rotate-image">Rotate Image</a></li>
 <li><a href="#product-of-array-except-self">Product of Array Except Self</a></li>
 <li><a href="#two-sum-ii---input-array-is-sorted">Two Sum II - Input Array Is Sorted</a></li>
+<li><a href="#container-with-most-water">Container With Most Water</a></li>
 </ul>
 <h2 id="single-number">Single Number</h2>
 <p><a href="https://leetcode.com/problems/single-number/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
@@ -4207,8 +4290,8 @@
 <p>The solution must use only constant extra space.</p>
 <h3 id="approach_14">Approach</h3>
 <ul>
-<li>Our approach will use a two pointer solution. We'll put a pointer <code>start</code> at <span class="arithmatex">\(0\)</span> and <code>end</code> at the end of the array.</li>
-<li>Next we'll see if <code>sum &lt; target</code>, we must try to add some element greater than the <code>array[start]</code> so that our sum reaches target. As the array is already sorted in non-decreasing order we'll increase the start by <span class="arithmatex">\(1\)</span>.</li>
+<li>Our approach will use a two pointer solution. We'll put a pointer <code>start</code> at 0 and <code>end</code> at the end of the array.</li>
+<li>Next we'll see if <code>sum &lt; target</code>, we must try to add some element greater than the <code>array[start]</code> so that our sum reaches target. As the array is already sorted in non-decreasing order we'll move start by 1 to increment the sum upto target,</li>
 <li>If <code>sum &gt; target</code> means we overshoot the sum, so to reduce the sum down to target we'll decrement <code>end</code> by 1.</li>
 </ul>
 <h3 id="code_14">Code</h3>
@@ -4243,6 +4326,45 @@
 <a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="container-with-most-water">Container With Most Water</h2>
+<p><a href="https://leetcode.com/problems/container-with-most-water/">Find the problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_19">Problem Statement</h3>
+<p>You are given an integer array height of length <span class="arithmatex">\(n\)</span>. There are n vertical lines drawn such that the two endpoints of the ith line are <code>(i, 0)</code> and (<code>i</code>, <code>height[i]</code>).</p>
+<p>Find two lines that together with the x-axis form a container, such that the container contains the most water.</p>
+<p>Return the maximum amount of water a container can store.</p>
+<p>Notice that you may not slant the container.</p>
+<h3 id="example_6">Example</h3>
+<p><img alt="image" src="../../images/max-area-water.jpeg" />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>Input: height = [1,8,6,2,5,4,8,3,7]
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>Output: 49
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7].
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>In this case, the max area of water (blue section) the container can contain is 49.
+</code></pre></div></p>
+<h3 id="approach_15">Approach</h3>
+<ul>
+<li>[will be added soon]</li>
+</ul>
+<h3 id="code_15">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxArea</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">height</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">start</span><span class="p">],</span><span class="w"> </span><span class="n">height</span><span class="p">[</span><span class="n">end</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="w">            </span><span class="n">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">),</span><span class="w"> </span><span class="n">water</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a>
+<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">height</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="n">start</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">height</span><span class="p">[</span><span class="n">end</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-39-15" name="__codelineno-39-15" href="#__codelineno-39-15"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-39-16" name="__codelineno-39-16" href="#__codelineno-39-16"></a>
+<a id="__codelineno-39-17" name="__codelineno-39-17" href="#__codelineno-39-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">water</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-39-18" name="__codelineno-39-18" href="#__codelineno-39-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-39-19" name="__codelineno-39-19" href="#__codelineno-39-19"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
