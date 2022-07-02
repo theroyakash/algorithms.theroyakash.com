@@ -3,6 +3,7 @@ title: Problems on arrays
 ---
 # Problems on arrays
 ## Questions discussed
+- [Questions discussed](#questions-discussed)
 - [Single Number](#single-number)
 - [Dutch National Flag Partitioning](#dutch-national-flag-partitioning)
 - [String Compression Problem](#string-compression-problem)
@@ -1138,6 +1139,38 @@ public:
         }
         
         return productExceptSelfOrder;
+    }
+};
+```
+
+### A Better in-place solution (most optimized)
+
+```cpp
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> answer;
+        
+        int prod = 1;
+        answer.push_back(1);
+        for (int i=0; i<nums.size(); i++) {
+            answer.push_back(prod * nums[i]);
+            prod = answer.back();
+        }
+        
+        answer.pop_back();
+        
+        // our answer now holds all the prefix
+        // now instead of creating a new postfix array
+        // just do the postfix in place
+        
+        prod = 1;
+        for (int j=nums.size() - 1; j >=1; j--) {
+            prod*= nums[j];
+            answer[j - 1] *= prod;
+        }
+        
+        return answer;
     }
 };
 ```
