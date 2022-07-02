@@ -22,6 +22,7 @@ title: Problems on arrays
 - [Count the number of inversions in an array](#count-the-number-of-inversions-in-an-array)
 - [Rotate Image](#rotate-image)
 - [Product of Array Except Self](#product-of-array-except-self)
+- [Two Sum II - Input Array Is Sorted](#two-sum-ii---input-array-is-sorted)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1171,6 +1172,51 @@ public:
         }
         
         return answer;
+    }
+};
+```
+
+## Two Sum II - Input Array Is Sorted
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+### Problem Statement
+Given a **1-indexed array** of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be `numbers[index1]` and `numbers[index2]` where $1 \le$ `index1` < `index2` $\leq$ `numbers.length`.
+
+Return the indices of the two numbers, `index1` and `index2`, added by one as an integer array `[index1, index2]` of length 2.
+
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+
+The solution must use only constant extra space.
+
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int start = 0;
+        int end = numbers.size() - 1;
+        
+        int sum = numbers[start] + numbers[end];
+        
+        if (sum == target) {
+            vector<int> v = {start + 1, end + 1};
+            return v;
+        }
+        
+        while (sum != target and start < end) {
+            if (sum == target) break;
+            if (sum < target) {
+                start++;
+            }
+            
+            if (sum > target) {
+                end--;
+            }
+            
+            sum = numbers[start] + numbers[end];
+        }
+        
+        
+        vector<int> v = {start+1, end+1};
+        return v;
     }
 };
 ```
