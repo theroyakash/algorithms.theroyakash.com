@@ -23,6 +23,7 @@ title: Problems on arrays
 - [Rotate Image](#rotate-image)
 - [Product of Array Except Self](#product-of-array-except-self)
 - [Two Sum II - Input Array Is Sorted](#two-sum-ii---input-array-is-sorted)
+- [Container With Most Water](#container-with-most-water)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1223,6 +1224,52 @@ public:
         
         vector<int> v = {start+1, end+1};
         return v;
+    }
+};
+```
+
+## Container With Most Water
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/container-with-most-water/)
+### Problem Statement
+You are given an integer array height of length $n$. There are n vertical lines drawn such that the two endpoints of the ith line are `(i, 0)` and (`i`, `height[i]`).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+### Example
+![image](../images/max-area-water.jpeg)
+```
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7].
+In this case, the max area of water (blue section) the container can contain is 49.
+```
+
+### Approach
+- [will be added soon]
+
+### Code
+```cpp
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int start = 0;
+        int end = height.size() - 1;
+        
+        int water = 0;
+        
+        while (start < end) {
+            int h = std::min(height[start], height[end]);
+            water = std::max(h * (end - start), water);
+            
+            while(start < end and height[start] <= h) start++;
+            while(start < end and height[end] <= h) end--;
+        }
+        
+        return water;
     }
 };
 ```

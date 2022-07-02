@@ -22,7 +22,7 @@ This blind problems are a curated set of problems by a facebook engineer and is 
 !!! danger "Heap"
 
     - Merge K Sorted Lists
-    - Top K Frequent Elements
+    - [Top K Frequent Elements](https://algorithms.theroyakash.com/heaps/problems#top-k-frequent-elements)
     - Find Median from Data Stream
 
 !!! tip "Tree"
@@ -65,16 +65,16 @@ This blind problems are a curated set of problems by a facebook engineer and is 
 
 !!! important "Array"
 
-    - Two Sum
+    - Two Sum II
     - Best Time to Buy and Sell Stock
     - Contains Duplicate
-    - Product of Array Except Self
+    - [Product of Array Except Self](https://algorithms.theroyakash.com/arrays/array-problems/#product-of-array-except-self)
     - Maximum Subarray
     - Maximum Product Subarray
     - Find Minimum in Rotated Sorted Array
     - Search in Rotated Sorted Array
     - 3 Sum
-    - Container With Most Water
+    - [Container With Most Water](https://algorithms.theroyakash.com/arrays/array-problems/#two-sum-ii-input-array-is-sorted)
 
 !!! danger "Dynamic Programming"
 
