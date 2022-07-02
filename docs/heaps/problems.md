@@ -15,6 +15,7 @@ tags:
 - [Sort a K Sorted array](#sort-a-k-sorted-array)
 - [Find K Closest Elements (Medium)](#find-k-closest-elements-medium)
 - [Top K Frequent Elements (Medium)](#top-k-frequent-elements-medium)
+- [Top K Frequent Elements](#top-k-frequent-elements)
 
 ## [Kth Largest Element in an Array (Medium)](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
@@ -229,4 +230,69 @@ Output: [1]
 ### Code
 ```cpp
 
+```
+
+## Top K Frequent Elements
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/top-k-frequent-elements/)
+
+### Problem Statement
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order
+
+### Example
+```
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+```
+
+```
+Input: nums = [1,12,2,34,124,124,12,31,23,123,12,312,3,123,123,123,12,31,23,123,123]
+and k = 5
+Output: [123,12,23,31,124]
+```
+
+### Approach
+- First we should make an unordered map to find the frequency of all the elements. We do not get that information by just looking at the elements of the array.
+- After that once we have the frequency of all the elements, we'll push elements on to a min heap of size $K$ based on the frequency of those elements.
+- Making the size of the min heap limited to size $K$ helps to keep track only the k most frequent elements, once we have a **less frequent** element, as it'll on the top of the min heap, we'll perform a heap pop.
+
+### Code
+```cpp
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        // first count all the elements and their occurences
+        unordered_map<int, int> map;
+        
+        for (auto i:nums){
+            if(map.find(i) == map.end()) {
+                map.insert({i, 1});
+            } else {
+                map[i]++;
+            }
+        }
+        
+        // now that we have all the counts we'll do a quick heap implementation
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
+    
+        for (auto it=map.begin(); it!=map.end(); it++) {
+            minHeap.push({
+                it->second, it->first
+            });
+            
+            if (minHeap.size() > k) {
+                minHeap.pop();
+            }
+        }
+        
+        // at the end we have top k elements in the minHeap
+        vector<int> answer;
+        
+        while(!minHeap.empty()) {
+            answer.push_back(minHeap.top().second);
+            minHeap.pop();
+        }
+        
+        return answer;
+    }
+};
 ```
