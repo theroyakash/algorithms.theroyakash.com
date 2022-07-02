@@ -1188,8 +1188,8 @@ The tests are generated such that there is exactly one solution. You may not use
 The solution must use only constant extra space.
 
 ### Approach
-- Our approach will use a two pointer solution. We'll put a pointer `start` at $0$ and `end` at the end of the array.
-- Next we'll see if `sum < target`, we must try to add some element greater than the `array[start]` so that our sum reaches target. As the array is already sorted in non-decreasing order we'll increase the start by $1$.
+- Our approach will use a two pointer solution. We'll put a pointer `start` at 0 and `end` at the end of the array.
+- Next we'll see if `sum < target`, we must try to add some element greater than the `array[start]` so that our sum reaches target. As the array is already sorted in non-decreasing order we'll move start by 1 to increment the sum upto target,
 - If `sum > target` means we overshoot the sum, so to reduce the sum down to target we'll decrement `end` by 1.
 
 ### Code
