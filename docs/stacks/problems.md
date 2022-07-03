@@ -849,47 +849,6 @@ Given a binary matrix $\mathcal{M}$ find out what is the maximum area of the rec
 - Then we call the `MAH()` algorithm implemented in the previous question.
 - Then we find the maximum accross all levels.
 
-## Rain water trapping
-
-[Same Problem on Leetcode $\to$](https://leetcode.com/problems/trapping-rain-water/)
-
-### Problem Statement
-Given $N$ non-negative integers representing an elevation map where the width of each bar is $1$, compute how much water it can trap after raining.
-
-### Example
-![image](https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png)
-
-```text
-Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
-Output: 6
-
-Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
-```
-
-
-### Explainer
-<figure markdown>
-  ![Image title](../images/rainwatertrapping.jpeg)
-  <figcaption>Rain Water Trapping Explainer</figcaption>
-</figure>
-
-### Approach
-- For each building figure out how much water can be trapped on top of its roof.
-- For all buildings add the water trapped on top of its roof.
-- Return the total.
-- To calculate how much water can be trapped on top of its roof, look left and see what is the largest building and look right and see what is the largest building. Get the smallest of those two. That should be the height of water on top of the building.
-
-<figure markdown>
-  ![Image title](../images/rainwatereplain2.jpeg)
-  <figcaption>Rain Water Trapping Approach Explainer</figcaption>
-</figure>
-
-### Solution
-- For each building find the maximum height on both left and right sides [using heaps],
-- then take the minimum of those heights $\to$ that should be the water height at that location. 
-- Subtract the height of the building from it to get how much water is stored on top of the building.
-- For each building add up all the water stored on top of the roof.
-- Return the sum as the total water stored in the system.
 
 ## The Skyline problem
 

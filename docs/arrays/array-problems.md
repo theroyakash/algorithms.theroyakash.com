@@ -22,8 +22,9 @@ title: Problems on arrays
 - [Count the number of inversions in an array](#count-the-number-of-inversions-in-an-array)
 - [Rotate Image](#rotate-image)
 - [Product of Array Except Self](#product-of-array-except-self)
-- [Two Sum II - Input Array Is Sorted](#two-sum-ii---input-array-is-sorted)
+- [Two Sum II Input Array Is Sorted](#two-sum-ii-input-array-is-sorted)
 - [Container With Most Water](#container-with-most-water)
+- [Rain water trapping](#rain-water-trapping)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1177,7 +1178,7 @@ public:
 };
 ```
 
-## Two Sum II - Input Array Is Sorted
+## Two Sum II Input Array Is Sorted
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 ### Problem Statement
 Given a **1-indexed array** of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be `numbers[index1]` and `numbers[index2]` where $1 \le$ `index1` < `index2` $\leq$ `numbers.length`.
@@ -1267,6 +1268,113 @@ public:
             
             while(start < end and height[start] <= h) start++;
             while(start < end and height[end] <= h) end--;
+        }
+        
+        return water;
+    }
+};
+```
+
+## Rain water trapping
+
+[Same Problem on Leetcode $\to$](https://leetcode.com/problems/trapping-rain-water/)
+
+### Problem Statement
+Given $N$ non-negative integers representing an elevation map where the width of each bar is $1$, compute how much water it can trap after raining.
+
+### Example
+![image](https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png)
+
+```text
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+```
+
+
+### Explainer
+<figure markdown>
+  ![Image title](../images/rainwatertrapping.jpeg)
+  <figcaption>Rain Water Trapping Explainer</figcaption>
+</figure>
+
+### Approach
+- For each building figure out how much water can be trapped on top of its roof.
+- For all buildings add the water trapped on top of its roof.
+- Return the total.
+- To calculate how much water can be trapped on top of its roof, look left and see what is the largest building and look right and see what is the largest building. Get the smallest of those two. That should be the height of water on top of the building.
+
+<figure markdown>
+  ![Image title](../images/rainwatereplain2.jpeg)
+  <figcaption>Rain Water Trapping Approach Explainer</figcaption>
+</figure>
+
+### Solution
+- For each building find the maximum height on both left and right sides,
+- then take the minimum of those heights $\to$ that should be the water height at that location.
+- Subtract the height of the building from it to get how much water is stored on top of the building.
+- For each building add up all the water stored on top of the roof.
+- Return the sum as the total water stored in the system.
+
+### Code
+```cpp
+class Solution {
+private:
+    void _reverse(vector<int> &v) {
+        int start = 0;
+        int end = v.size() - 1;
+        
+        while (start < end) {
+            int temp = v[start];
+            v[start] = v[end];
+            v[end] = temp;
+            
+            start++;
+            end--;
+        }
+    }
+    
+public:
+    int trap(vector<int>& height) {
+        // for each index find the maximum boundary to the left
+        vector<int> left;
+        int currentMaxToLeft = 0;
+        
+        for (auto i:height) {
+            if (i > currentMaxToLeft) {
+                left.push_back(currentMaxToLeft);
+                currentMaxToLeft = i;
+            } else {
+                left.push_back(currentMaxToLeft);
+            }
+        }
+        
+        // for each index find the maximum boundary to the right
+        vector<int> right;
+        int currentMaxToRight = 0;
+        
+        for (int i=height.size() - 1; i>=0; i--) {
+            if (height[i] > currentMaxToRight) {
+                right.push_back(currentMaxToRight);
+                currentMaxToRight = height[i];
+            } else {
+                right.push_back(currentMaxToRight);
+            }
+        }
+        
+        _reverse(right); // reverse to sortout the order
+        
+        // based on the left max and right max we find the minimum among this two
+        // (lower bound), then find the water on top of the building.
+        
+        int water = 0;
+        
+        for (int i=0; i<height.size() - 1; i++) {
+            // limiting height = min of left max and right max
+            int limiter = std::min(left[i], right[i]);
+            int waterOnTheBuilding = limiter - height[i];
+            if (waterOnTheBuilding > 0) water += waterOnTheBuilding;
         }
         
         return water;
