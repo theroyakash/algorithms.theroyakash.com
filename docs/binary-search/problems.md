@@ -20,6 +20,7 @@ Binary search problems are really useful because they run in sublinear time. We'
 - [Search in a sorted 2D matrix](#search-in-a-sorted-2d-matrix)
 - [Search in a sorted matrix but not `inter-row-wise` sorted](#search-in-a-sorted-matrix-but-not-inter-row-wise-sorted)
 - [Search for Range](#search-for-range)
+- [Koko Eating Bananas](#koko-eating-bananas)
 - [Next alphabetical element](#next-alphabetical-element)
 - [Find position of an element in an Infinite Sorted Array](#find-position-of-an-element-in-an-infinite-sorted-array)
 - [Index of First 1 in a Binary Sorted Infinite Array](#index-of-first-1-in-a-binary-sorted-infinite-array)
@@ -722,6 +723,103 @@ public:
     }
 };
 ```
+## Koko Eating Bananas
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/koko-eating-bananas/)
+### Problem Statement
+Koko loves to eat bananas. There are n piles of bananas, the ith pile has `piles[i]` bananas. The guards have gone and will come back in `h` hours.
+
+Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+
+Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+
+Return the minimum integer k such that she can eat all the bananas within h hours.
+
+### Examples
+```
+Input: piles = [3,6,7,11], h = 8
+Output: 4
+
+Input: piles = [30,11,23,4,20], h = 5
+Output: 30
+
+Input: piles = [30,11,23,4,20], h = 6
+Output: 23
+```
+
+### Code
+```cpp
+class Solution {
+private:
+    pair<bool, int> finishableCheck(vector<int> &piles, int k, int h) {
+        // check finishability with k bananas per hour
+        // and given h hours to play time
+        // retruns finishable or not and finish time
+        int eatableTime = 0;
+        for (auto l:piles) {
+            eatableTime += l/k + (l % k == 0 ? 0 : 1);
+        }
+        pair<bool, int> p;
+        p.second = eatableTime;
+        
+        
+        if (eatableTime > h) {
+            p.first = false;
+            return p;
+        }
+        
+        p.first = true;
+        return p;
+    }
+    
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        
+        if (piles.size() == 1) {
+            return ceil((double) piles[0] / (double)h);
+        }
+        
+        // [piles of banana]
+        // [213 45 5 6 7 7 8]
+        
+        // total available time is h hours
+        // banana eating speed = k
+        
+        // lowest possible value for k is 1
+        // eat at least min(piles[i]) banana per hour.
+        int lo = 1;
+        
+        // and highest possible banana per hour
+        // should be = piles[i] for i piles[i] is maximum
+        int hi = piles[0];
+        for (int i:piles) {
+            if (i > hi) hi = i;
+        }
+        
+        int middle = lo + (hi - lo) / 2;
+        
+        while (lo < hi) {
+            
+            // now check for middle if this satisfies the
+            // eating banana pile every hour
+            // and finishing before guards comes back
+            
+            cout << "From " << lo << " to " << hi << ": ";
+            
+            pair<bool, int> p = finishableCheck(piles, middle, h);
+            if (p.first == true) hi = middle;
+            if (p.first == false and p.second > h) {
+                lo = middle + 1;
+            }
+            
+            cout << " middle: " << middle << " p.first = " << p.first << " p.second = " << p.second << endl;
+            middle = lo + (hi - lo) / 2;
+        }
+        
+        return hi;
+    }
+};
+```
+
 ## Next alphabetical element
 ## Find position of an element in an Infinite Sorted Array
 ## Index of First 1 in a Binary Sorted Infinite Array
