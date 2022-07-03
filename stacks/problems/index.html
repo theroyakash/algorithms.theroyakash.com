@@ -1170,54 +1170,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rain-water-trapping" class="md-nav__link">
-    Rain water trapping
-  </a>
-  
-    <nav class="md-nav" aria-label="Rain water trapping">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problem-statement_7" class="md-nav__link">
-    Problem Statement
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explainer" class="md-nav__link">
-    Explainer
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#approach_6" class="md-nav__link">
-    Approach
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#the-skyline-problem" class="md-nav__link">
     The Skyline problem
   </a>
@@ -1226,7 +1178,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement_8" class="md-nav__link">
+  <a href="#problem-statement_7" class="md-nav__link">
     Problem Statement
   </a>
   
@@ -1246,7 +1198,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement_9" class="md-nav__link">
+  <a href="#problem-statement_8" class="md-nav__link">
     Problem Statement
   </a>
   
@@ -1267,7 +1219,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#approach_7" class="md-nav__link">
+  <a href="#approach_6" class="md-nav__link">
     Approach
   </a>
   
@@ -2226,54 +2178,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rain-water-trapping" class="md-nav__link">
-    Rain water trapping
-  </a>
-  
-    <nav class="md-nav" aria-label="Rain water trapping">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problem-statement_7" class="md-nav__link">
-    Problem Statement
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explainer" class="md-nav__link">
-    Explainer
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#approach_6" class="md-nav__link">
-    Approach
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#the-skyline-problem" class="md-nav__link">
     The Skyline problem
   </a>
@@ -2282,7 +2186,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement_8" class="md-nav__link">
+  <a href="#problem-statement_7" class="md-nav__link">
     Problem Statement
   </a>
   
@@ -2302,7 +2206,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-statement_9" class="md-nav__link">
+  <a href="#problem-statement_8" class="md-nav__link">
     Problem Statement
   </a>
   
@@ -2323,7 +2227,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#approach_7" class="md-nav__link">
+  <a href="#approach_6" class="md-nav__link">
     Approach
   </a>
   
@@ -3148,63 +3052,26 @@ Each method should be done in <span class="arithmatex">\(\mathcal{O}(1)\)</span>
 <li>Then we call the <code>MAH()</code> algorithm implemented in the previous question.</li>
 <li>Then we find the maximum accross all levels.</li>
 </ul>
-<h2 id="rain-water-trapping">Rain water trapping</h2>
-<p><a href="https://leetcode.com/problems/trapping-rain-water/">Same Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
-<h3 id="problem-statement_7">Problem Statement</h3>
-<p>Given <span class="arithmatex">\(N\)</span> non-negative integers representing an elevation map where the width of each bar is <span class="arithmatex">\(1\)</span>, compute how much water it can trap after raining.</p>
-<h3 id="example">Example</h3>
-<p><img alt="image" src="https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png" /></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>Output: 6
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
-</code></pre></div>
-<h3 id="explainer">Explainer</h3>
-<figure>
-<p><img alt="Image title" src="../../images/rainwatertrapping.jpeg" />
-  </p>
-<figcaption>Rain Water Trapping Explainer</figcaption>
-</figure>
-<h3 id="approach_6">Approach</h3>
-<ul>
-<li>For each building figure out how much water can be trapped on top of its roof.</li>
-<li>For all buildings add the water trapped on top of its roof.</li>
-<li>Return the total.</li>
-<li>To calculate how much water can be trapped on top of its roof, look left and see what is the largest building and look right and see what is the largest building. Get the smallest of those two. That should be the height of water on top of the building.</li>
-</ul>
-<figure>
-<p><img alt="Image title" src="../../images/rainwatereplain2.jpeg" />
-  </p>
-<figcaption>Rain Water Trapping Approach Explainer</figcaption>
-</figure>
-<h3 id="solution">Solution</h3>
-<ul>
-<li>For each building find the maximum height on both left and right sides [using heaps],</li>
-<li>then take the minimum of those heights <span class="arithmatex">\(\to\)</span> that should be the water height at that location. </li>
-<li>Subtract the height of the building from it to get how much water is stored on top of the building.</li>
-<li>For each building add up all the water stored on top of the roof.</li>
-<li>Return the sum as the total water stored in the system.</li>
-</ul>
 <h2 id="the-skyline-problem">The Skyline problem</h2>
 <p><a href="https://leetcode.com/problems/the-skyline-problem/">Same Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
-<h3 id="problem-statement_8">Problem Statement</h3>
+<h3 id="problem-statement_7">Problem Statement</h3>
 <p>A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively.</p>
 <h2 id="score-of-parentheses">Score of Parentheses</h2>
 <p><a href="https://leetcode.com/problems/score-of-parentheses/">Problem on leetcode <span class="arithmatex">\(\to\)</span></a></p>
-<h3 id="problem-statement_9">Problem Statement</h3>
+<h3 id="problem-statement_8">Problem Statement</h3>
 <p>Given a balanced parentheses string s, return the score of the string
 - "()" has score 1,
 - AB has score A + B, where A and B are balanced parentheses strings,
 - (A) has score 2 * A, where A is a balanced parentheses string.</p>
 <h3 id="examples_4">Examples</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Input: s = &quot;()&quot;
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>Output: 1
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>Input: s = &quot;(())&quot;
-<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>Output: 2
-<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>Input: s = &quot;()()&quot;
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>Output: 2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>Input: s = &quot;()&quot;
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>Output: 1
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>Input: s = &quot;(())&quot;
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>Output: 2
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>Input: s = &quot;()()&quot;
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>Output: 2
 </code></pre></div>
 <h3 id="constraints_2">Constraints</h3>
 <ul>
@@ -3212,42 +3079,42 @@ Each method should be done in <span class="arithmatex">\(\mathcal{O}(1)\)</span>
 <li><code>s</code> consists of only <code>'('</code> and <code>')'</code>.</li>
 <li><code>s</code> is always a balanced parentheses string.</li>
 </ul>
-<h3 id="approach_7">Approach</h3>
+<h3 id="approach_6">Approach</h3>
 <ul>
 <li>Using recursion because seems like a recursive problem with pattern of <code>return (what is inside of(what is inside of (what is inside)))</code>.</li>
 </ul>
 <h3 id="c-code">C++ code</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">globalTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scoreOfParentheses</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="w">        </span><span class="c1">// Using recursion bcz seems like a recursive problem</span>
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="w">        </span><span class="c1">// return (what is inside of(what is inside of (what is inside)))</span>
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">globalTracker</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span><span class="w"></span>
-<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">globalTracker</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a><span class="w">            </span><span class="n">globalTracker</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">globalTracker</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>
-<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;(&#39;</span><span class="p">){</span><span class="w"></span>
-<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;)&#39;</span><span class="p">){</span><span class="w"></span>
-<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a><span class="w">                    </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a><span class="w">                    </span><span class="n">globalTracker</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="w">                    </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">scoreOfParentheses</span><span class="p">(</span><span class="n">s</span><span class="p">));</span><span class="w"></span>
-<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a>
-<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a>
-<a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-33-30" name="__codelineno-33-30" href="#__codelineno-33-30"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-33-31" name="__codelineno-33-31" href="#__codelineno-33-31"></a><span class="p">};</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">globalTracker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scoreOfParentheses</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="w">        </span><span class="c1">// Using recursion bcz seems like a recursive problem</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="w">        </span><span class="c1">// return (what is inside of(what is inside of (what is inside)))</span>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">globalTracker</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">globalTracker</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="w">            </span><span class="n">globalTracker</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">globalTracker</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;(&#39;</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;)&#39;</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a><span class="w">                    </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="w">                    </span><span class="n">globalTracker</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a><span class="w">                    </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">scoreOfParentheses</span><span class="p">(</span><span class="n">s</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-26" name="__codelineno-32-26" href="#__codelineno-32-26"></a>
+<a id="__codelineno-32-27" name="__codelineno-32-27" href="#__codelineno-32-27"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-28" name="__codelineno-32-28" href="#__codelineno-32-28"></a>
+<a id="__codelineno-32-29" name="__codelineno-32-29" href="#__codelineno-32-29"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-32-30" name="__codelineno-32-30" href="#__codelineno-32-30"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-32-31" name="__codelineno-32-31" href="#__codelineno-32-31"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
