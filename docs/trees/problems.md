@@ -20,6 +20,7 @@
 - [Count Complete Tree Nodes](#count-complete-tree-nodes)
 - [Deepest Leaves Sum](#deepest-leaves-sum)
 - [Sum of Nodes with Even-Valued Grandparent](#sum-of-nodes-with-even-valued-grandparent)
+- [Same Tree](#same-tree)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1083,6 +1084,49 @@ public:
         }
         
         return sum;
+    }
+};
+```
+
+## Same Tree
+[Problem on Leetcode $\to$](https://leetcode.com/problems/same-tree/)
+### Problem Statement
+Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+### Example
+```
+Input: p = [1,2,3], q = [1,2,3]
+Output: true
+```
+
+### Approach
+- We'll go through both the tree with a simultaneous in-order traversal, if we find any incorrect order we'll report false.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if (not p and not q) return true;
+        
+        if (p and q) {
+            return (p->val == q->val) and isSameTree(p->left, q->left) and isSameTree(p->right, q->right);
+        }
+        
+        return false;
     }
 };
 ```
