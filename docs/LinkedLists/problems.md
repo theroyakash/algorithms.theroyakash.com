@@ -23,6 +23,7 @@ tags:
 - [Find the starting point of cycle in linked list](#find-the-starting-point-of-cycle-in-linked-list)
 - [Given the head of a linked list, rotate the list to the right by k places](#given-the-head-of-a-linked-list-rotate-the-list-to-the-right-by-k-places)
 - [Copy List with Random Pointer](#copy-list-with-random-pointer)
+- [Merge k Sorted Lists](#merge-k-sorted-lists)
 
 ## Implement Linked list and write `reverse()`
 ## Problem Statement
@@ -1326,3 +1327,121 @@ public:
 ### Time and Memory complexity
 - We are traversing the list 2 times so $O(\mathcal{N})$ time and
 - we are using a map with max of $\mathcal{N}$ elements so $O(\mathcal{N})$ memory complexity.
+
+
+## Merge k Sorted Lists
+### Problem Statement
+You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+
+Merge all the linked-lists into one sorted linked-list and return it.
+
+### Example
+```
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Input: lists = []
+Output: []
+
+Input: lists = [[]]
+Output: []
+```
+
+### Approach
+- To merge $K$ sorted list we'll use a subroutine merge $2$ sorted list.
+- Using that `merge2list` subroutine will merge like the merge sort algorithm, and the result will be a sorted list.
+- To merge 2 sorted list you should watch the explaination [here](https://algorithms.theroyakash.com/LinkedLists/problems/#merge-2-sorted-lists).
+
+### Code
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+private:
+    ListNode* merge2list(ListNode* head1, ListNode* head2) {
+        if (!head1) return head2;
+        if (!head2) return head1;
+        
+        ListNode* l1;
+        ListNode* l2;
+        
+        if (head1->val <= head2->val) {
+            l1 = head1;
+            l2 = head2;
+        }
+        
+        if (head1->val > head2->val) {
+            l1 = head2;
+            l2 = head1;
+        }
+        
+        ListNode* dummy = new ListNode();
+        ListNode* temp = dummy;
+        
+        while (l1 and l2) {
+            if (l1->val < l2->val) {
+                temp->next = l1;
+                l1 = l1->next;
+            } else if (l1->val >= l2->val) {
+                temp->next = l2;
+                l2 = l2->next;
+            }
+            temp = temp->next;
+        }
+        
+        if (!l1) temp->next = l2;
+        if (!l2) temp->next = l1;
+        
+        return dummy->next;
+    }
+
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        // call mergeSubRoutine on 2 lists
+        // until mergeAll results to 1 list only
+        if (lists.size() == 0) return nullptr;
+        if (lists.size() == 1) return lists[0];
+        
+        while (lists.size() > 1) {
+            vector<ListNode*> temp;
+            for (int i=0; i<lists.size(); i+=2) {
+                
+                // take up 2 lists to merge
+                ListNode* l1 = lists[i];
+                ListNode* l2;
+                
+                if (i+1 > lists.size() - 1) {
+                    l2 = nullptr;
+                } else {
+                    l2 = lists[i+1];
+                }
+                
+                temp.push_back(merge2list(l1, l2));
+            }
+            
+            // now in temp we have all the 2 merged lists
+            // we should update the lists as the temp
+            lists = temp;
+        }
+        
+        // at the end all are merged so we've only one list, so return it
+        return lists[0];
+    }
+};
+```
