@@ -3993,9 +3993,9 @@
 <li>We have to solve this using a recursive approach, otherwise, the problem will become too complicated to solve because then you also have to keep track of the call stack.</li>
 <li>In recursion, we'll assume we have a <code>leftEnd</code> and <code>rightEnd</code> after the recursion, for any given root of the binary tree <code>leftEnd</code> is the flattened <code>root-&gt;left</code> of that root.</li>
 <li>Now as per the problem statement we set the following three<ul>
-<li>leftEnd-&gt;right = root-&gt;right;</li>
-<li>root-&gt;right = root-&gt;left;</li>
-<li>root-&gt;left = nullptr;</li>
+<li><code>leftEnd-&gt;right = root-&gt;right;</code></li>
+<li><code>root-&gt;right = root-&gt;left;</code></li>
+<li><code>root-&gt;left = nullptr;</code></li>
 </ul>
 </li>
 <li>and now at the end, we return the <code>__End</code>, which is used recursively to connect the flattened binary tree. We'll return the <code>rightEnd</code> if possible else the <code>leftEnd</code> or <code>root</code>.</li>
