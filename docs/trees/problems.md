@@ -1145,9 +1145,9 @@ Given the root of a binary tree, flatten the tree into a "linked list":
 - We have to solve this using a recursive approach, otherwise, the problem will become too complicated to solve because then you also have to keep track of the call stack.
 - In recursion, we'll assume we have a `leftEnd` and `rightEnd` after the recursion, for any given root of the binary tree `leftEnd` is the flattened `root->left` of that root.
 - Now as per the problem statement we set the following three
-    - leftEnd->right = root->right;
-    - root->right = root->left;
-    - root->left = nullptr;
+    - `leftEnd->right = root->right;`
+    - `root->right = root->left;`
+    - `root->left = nullptr;`
 - and now at the end, we return the `__End`, which is used recursively to connect the flattened binary tree. We'll return the `rightEnd` if possible else the `leftEnd` or `root`.
 
 
