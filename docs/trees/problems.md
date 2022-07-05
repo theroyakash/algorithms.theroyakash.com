@@ -21,6 +21,7 @@
 - [Deepest Leaves Sum](#deepest-leaves-sum)
 - [Sum of Nodes with Even-Valued Grandparent](#sum-of-nodes-with-even-valued-grandparent)
 - [Same Tree](#same-tree)
+- [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1127,6 +1128,65 @@ public:
         }
         
         return false;
+    }
+};
+```
+
+## Flatten Binary Tree to Linked List
+[Find Problem on Leetcode $\to$](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
+### Problem Statement
+Given the root of a binary tree, flatten the tree into a "linked list":
+
+- The "linked list" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
+- The "linked list" should be in the same order as a pre-order traversal of the binary tree.
+
+### Approach
+- We have to solve this using a recursive approach, otherwise the problem will become too complicated to solve beacuse then you also have to keep track of the call stack.
+- In recursion we'll assume we have a `leftEnd` and `rightEnd` after the recursion, for any given root of the binary tree `leftEnd` is the flattened `root->left` of that root.
+- Now as per the problem statement we set the following three
+    - leftEnd->right = root->right;
+    - root->right = root->left;
+    - root->left = nullptr;
+- and now at the end we return the `__End`, that is used recursively to connect the flattened binary tree. We'll return the `rightEnd` if possible else the `leftEnd` or `root`.
+
+![image](../images/flatten%20a%20tree.png)
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    TreeNode* recursive_descent(TreeNode* root) {
+        if (root) {
+            TreeNode* leftEnd = recursive_descent(root->left);
+            TreeNode* rightEnd = recursive_descent(root->right);
+            
+            if (root->left) {
+                leftEnd->right = root->right;
+                root->right = root->left;
+                root->left = nullptr;
+            }
+            
+            if (rightEnd) return rightEnd;
+            else if (not rightEnd and leftEnd) return leftEnd;
+            else return root;
+        }
+        
+        return nullptr;
+    }
+public:
+    void flatten(TreeNode* root) {
+        recursive_descent(root);
     }
 };
 ```
