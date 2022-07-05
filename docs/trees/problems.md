@@ -22,6 +22,7 @@
 - [Sum of Nodes with Even-Valued Grandparent](#sum-of-nodes-with-even-valued-grandparent)
 - [Same Tree](#same-tree)
 - [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
+- [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1141,13 +1142,14 @@ Given the root of a binary tree, flatten the tree into a "linked list":
 - The "linked list" should be in the same order as a pre-order traversal of the binary tree.
 
 ### Approach
-- We have to solve this using a recursive approach, otherwise the problem will become too complicated to solve beacuse then you also have to keep track of the call stack.
-- In recursion we'll assume we have a `leftEnd` and `rightEnd` after the recursion, for any given root of the binary tree `leftEnd` is the flattened `root->left` of that root.
+- We have to solve this using a recursive approach, otherwise, the problem will become too complicated to solve because then you also have to keep track of the call stack.
+- In recursion, we'll assume we have a `leftEnd` and `rightEnd` after the recursion, for any given root of the binary tree `leftEnd` is the flattened `root->left` of that root.
 - Now as per the problem statement we set the following three
     - leftEnd->right = root->right;
     - root->right = root->left;
     - root->left = nullptr;
-- and now at the end we return the `__End`, that is used recursively to connect the flattened binary tree. We'll return the `rightEnd` if possible else the `leftEnd` or `root`.
+- and now at the end, we return the `__End`, which is used recursively to connect the flattened binary tree. We'll return the `rightEnd` if possible else the `leftEnd` or `root`.
+
 
 ![image](../images/flatten%20a%20tree.png)
 
@@ -1187,6 +1189,60 @@ private:
 public:
     void flatten(TreeNode* root) {
         recursive_descent(root);
+    }
+};
+```
+
+## Lowest Common Ancestor of a Binary Search Tree
+### Problem Statement
+Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+### Approach
+- We'll use a simple recursive technique to find the lowest common ancestor, if the node `p` and node `q` are in different subtrees from a certain root, then it is must that the root is the lowest common ancestor.
+- If we find the both the node `p` and node `q` are in the same subtree, we'll recursively descent into that subtree in search for the lowest common ancestor.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+class Solution {
+    bool findOnSubTree(TreeNode* root, TreeNode* q) {
+
+        if (root) {
+            return findOnSubTree(root->left, q) or (root->val == q->val) or findOnSubTree(root->right, q);
+        }
+        
+        return false;
+    }
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        // check if both in the same tree or not?
+        // recursively go to that subtree only
+        if (findOnSubTree(root->left, p) and findOnSubTree(root->left, q)) {
+            return lowestCommonAncestor(root->left, p , q);
+        } else if (findOnSubTree(root->right, p) and findOnSubTree(root->right, q)) {
+            return lowestCommonAncestor(root->right, p , q);
+        }
+        
+        // now check if both are in different subtree or not?
+        if (findOnSubTree(root->left, p) and findOnSubTree(root->right, q)) {
+            return root;
+        } else if (findOnSubTree(root->right, p) and findOnSubTree(root->left, q)) {
+            return root;
+        }
+        
+        // base case all must have the ancestor root
+        return root;
     }
 };
 ```
