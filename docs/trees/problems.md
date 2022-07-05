@@ -1246,3 +1246,29 @@ public:
     }
 };
 ```
+
+### Another approach
+We can also take on the fact that we have a binary search tree, so we can say that if we start at the root node of the tree then if p and q value both are less than the root we search in the left subtree and if p and q value both are greater than the root node we search in the right subtree. Any case other than that, means values have split between left and right subtrees from that position, that means this is the lowest common ancestor. So return that.
+
+### Code for this approach
+```cpp
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        TreeNode* current = root;
+        
+        while (current) {
+            if (p->val < current->val and q->val < current->val) {
+                current = current->left;
+            } else if (p->val > current->val and q->val > current->val) {
+                current = current->right;
+            } else {
+                return current;
+            }
+        }
+        
+        // base case of all
+        return root;
+    }
+};
+```
