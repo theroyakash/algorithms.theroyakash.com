@@ -24,6 +24,7 @@ tags:
 - [Given the head of a linked list, rotate the list to the right by k places](#given-the-head-of-a-linked-list-rotate-the-list-to-the-right-by-k-places)
 - [Copy List with Random Pointer](#copy-list-with-random-pointer)
 - [Merge k Sorted Lists](#merge-k-sorted-lists)
+- [Reverse Nodes in k-Group](#reverse-nodes-in-k-group)
 
 ## Implement Linked list and write `reverse()`
 ## Problem Statement
@@ -1442,6 +1443,79 @@ public:
         
         // at the end all are merged so we've only one list, so return it
         return lists[0];
+    }
+};
+```
+
+## Reverse Nodes in k-Group
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+### Problem Statement
+Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.
+
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+
+You may not alter the values in the list's nodes, only nodes themselves may be changed.
+### Example
+![image](../images/reverse_ex1.jpeg)
+```
+Input: head = [1,2,3,4,5], k = 2
+Output: [2,1,4,3,5]
+```
+### Approach
+- We'll find the $k^{th}$ node from the head of the list and then reverse it in-place, let's call it a group
+- We'll then jump k places to reverse the next group, until we find the last group where there is remaining $\geq 0 \text{ and} \leq k$ elements. Then we stop there.
+
+### Code
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+private:
+    ListNode* kth(ListNode* head, int k) {
+        while (head and k > 0) {
+            head = head->next;
+            k--;
+        }
+        
+        return head;
+    }
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        auto dummy = new ListNode(0, head);
+        
+        auto prevEnd = dummy;
+        
+        while (true) {
+            auto kthNode = kth(prevEnd, k);
+            if (not kthNode) break;
+            auto groupNext = kthNode->next;
+            
+            // we have the head and the kth node
+            // so we should reverse it
+            auto prev = groupNext;
+            auto current = prevEnd->next;
+            
+            while (current!=groupNext) {
+                auto temp = current->next;
+                current->next = prev;
+                prev = current;
+                current = temp;
+            }
+            
+            auto temp = prevEnd->next;
+            prevEnd->next = kthNode;
+            prevEnd = temp;
+        }
+        
+        return dummy->next;
     }
 };
 ```
