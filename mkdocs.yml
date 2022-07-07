@@ -33,6 +33,7 @@ nav:
     - Graphs:
       - Graph Usage: graph/usage.md
       - BFS and DFS: graph/bfs-dfs.md
+      - Graph Standard Problems: graph/standard-problems.md
       - Graph Problems: graph/problems.md
     - Heaps:
       - Heaps Introduction, STL: ./heaps/heap-pq.md
