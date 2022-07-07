@@ -41,6 +41,9 @@ class Solution {
 private:
     void dfs(vector<vector<char>> &grid, int i, int j, int r, int c) {
         if (i< 0 || i >= r || j<0 || j >= c || grid[i][j] == '0') {
+            // if the dfs subroutine goes out of bounds,
+            // or we find water during the traversal to find landmasses
+            // we return
             return;
         }
         
