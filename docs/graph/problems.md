@@ -4,6 +4,7 @@
 
 - [Number of Islands](#number-of-islands)
 - [Clone Graph](#clone-graph)
+- [Max Area of Island](#max-area-of-island)
 
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
@@ -149,6 +150,73 @@ public:
         }
         
         return map[node];
+    }
+};
+```
+
+## Max Area of Island
+You are given an $M \times N$ binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+
+The area of an island is the number of cells with a value 1 in the island.
+
+Return the maximum area of an island in grid. If there is no island, return $0$.
+
+### Examples
+<figure markdown>
+![iamge](../images/maxarea1-grid.jpeg){ width="400" }
+</figure>
+
+```
+Input:
+Upper image as a 2-d grid
+
+Output: 6
+Explanation: The answer is not 11, because the island must be connected 4-directionally.
+```
+
+```
+Input: grid = [[0,0,0,0,0,0,0,0]]
+Output: 0
+```
+
+### Approach
+- We'll modify the previous problem [Number of Islands](#number-of-islands) to count the size of the island during the DFS instead of just doing nothing.
+- This way we can find the size of the Islands during the DFS, we'll keep track of the max-size we've seen so far.
+
+### Code
+```cpp
+class Solution {
+private:
+    int dfs(vector<vector<int>>& grid, int i, int j, int r, int c) {
+        if (i < 0 or j <0 or i >=r or j >=c or grid[i][j] == 0) {
+            return 0;
+        }
+        
+        grid[i][j] = 0;
+        
+        return 1 + dfs(grid, i+1, j, r, c) + dfs(grid, i-1, j, r, c) + dfs(grid, i, j + 1, r, c) + dfs(grid, i, j - 1, r, c);
+    }
+    
+public:
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int maxSize = 0;
+        int numberOfIsland = 0;
+        
+        int rows = grid.size();
+        int cols = grid[0].size();
+        
+        for (int i=0; i<rows; i++) {
+            for (int j=0; j<cols; j++) {
+                if (grid[i][j] == 1) {
+                    int size = dfs(grid, i, j, rows, cols);
+                    maxSize = std::max(maxSize, size);
+                    numberOfIsland++;
+                }
+            }
+        }
+        
+        if (numberOfIsland == 0) return 0;
+        return maxSize;
     }
 };
 ```
