@@ -1,5 +1,9 @@
 # Graph standard problems
 
+**Questions Discussed**
+- [Number of Islands](#number-of-islands)
+- [Clone Graph](#clone-graph)
+
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
 ### Problem Statement
@@ -75,6 +79,76 @@ public:
         }
         
         return islandCount;
+    }
+};
+```
+
+## Clone Graph
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/clone-graph/)
+### Problem Statement
+Given a reference of a node in a connected undirected graph. Return a deep copy (clone) of the graph.
+
+### Approach
+- We'll create a `unordered_map` to store the mapping between new and old nodes in the graph.
+- Then we'll run a BFS algorithm on the graph to find new nodes and connect them to their corrospoding neighbors.
+
+**The following** is a working code example for this apporach.
+
+### Code
+```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> neighbors;
+    Node() {
+        val = 0;
+        neighbors = vector<Node*>();
+    }
+    Node(int _val) {
+        val = _val;
+        neighbors = vector<Node*>();
+    }
+    Node(int _val, vector<Node*> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+*/
+
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if (not node) return nullptr;
+        
+        unordered_map<Node*, Node*> map;
+        
+        // create a node corrospoding to the starting node
+        map[node] = new Node(node->val);
+        
+        queue<Node*> q;
+        q.push(node);
+        
+        while (!q.empty()) {
+            Node* current = q.front();
+            q.pop();
+            
+            // for all neighbor of current check if we visited that or not?
+            // if we don't visit we enter it in the map
+            for (int i=0; i< current->neighbors.size(); i++) {
+                auto neighbor = current->neighbors[i];
+                
+                if (map.find(neighbor) == map.end()) {
+                    map[neighbor] = new Node(neighbor->val);
+                    q.push(neighbor);
+                }
+                
+                map[current]->neighbors.push_back(map[neighbor]);
+            }
+        }
+        
+        return map[node];
     }
 };
 ```
