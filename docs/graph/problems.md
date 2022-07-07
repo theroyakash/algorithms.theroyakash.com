@@ -1,6 +1,7 @@
 # Graph standard problems
 
 **Questions Discussed**
+
 - [Number of Islands](#number-of-islands)
 - [Clone Graph](#clone-graph)
 
@@ -136,15 +137,14 @@ public:
             
             // for all neighbor of current check if we visited that or not?
             // if we don't visit we enter it in the map
-            for (int i=0; i< current->neighbors.size(); i++) {
-                auto neighbor = current->neighbors[i];
-                
-                if (map.find(neighbor) == map.end()) {
-                    map[neighbor] = new Node(neighbor->val);
-                    q.push(neighbor);
+            for(auto nbr:current->neighbors) {
+                if (map.find(nbr) == map.end()) {
+                    map[nbr] = new Node(nbr->val);
+                    q.push(nbr);
                 }
                 
-                map[current]->neighbors.push_back(map[neighbor]);
+                // add the newly created neighbor on the map[current] neighbors
+                map[current]->neighbors.push_back(map[nbr]);
             }
         }
         
