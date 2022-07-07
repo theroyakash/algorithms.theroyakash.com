@@ -1163,6 +1163,7 @@ public:
 };
 ```
 ## Given the head of a linked list, rotate the list to the right by k places
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/rotate-list/)
 ### Problem Statement
 Given the head of a linked list, rotate the list to the right by k places.
 
@@ -1241,6 +1242,69 @@ public:
         head->next = nullptr;
         
         return newHead;
+    }
+};
+```
+
+### Another Approach
+- We get hold of the last node and the size of the list,
+- Rotating k times to the right means rotating $\text{size} - k$ times to the left,
+- Once we have that, rotating left is as easy as the following
+    - Set markers on start and end of the list,
+    - Set new head as the `head->next`,
+    - Set `end->next` as the node previously at the start of the list,
+    - Set new end as this node, and
+    - Set new `end->next` as `nullptr`
+- This is how we can easily rotate the list.
+
+### C++ Code
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+private:
+    int sizeOf(ListNode* head) {
+        int size = 0;
+        while(head) {
+            head = head->next;
+            size++;
+        }
+        return size;
+    }
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (not head or not head->next) return head;
+        
+        int size = sizeOf(head);
+        
+        // k times rotate to the right means size - k  times rotate to left
+        int rotations = size - (k % size);
+        
+        // set the end pointer
+        ListNode* end = head;
+        while (end->next) end = end->next;
+        
+        while (rotations > 0) {
+            ListNode* tempHead = head;
+            head = head->next;
+            ListNode* tempEnd = end;
+            
+            end->next = tempHead;
+            tempHead->next = nullptr;
+            end = tempHead;
+            
+            rotations--;
+        }
+        
+        return head;
     }
 };
 ```
