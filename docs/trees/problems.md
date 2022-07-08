@@ -23,6 +23,7 @@
 - [Same Tree](#same-tree)
 - [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
 - [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
+- [Maximum Product of Splitted Binary Tree](#maximum-product-of-splitted-binary-tree)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1269,6 +1270,84 @@ public:
         
         // base case of all
         return root;
+    }
+};
+```
+
+## Maximum Product of Splitted Binary Tree
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/)
+### Problem Statement
+Given the root of a binary tree, split the binary tree into two subtrees by removing one edge such that the product of the sums of the subtrees is maximized.
+
+Return the maximum product of the sums of the two subtrees. Since the answer may be too large, return it modulo $10^9 + 7$.
+
+Note that you need to maximize the answer before taking the mod and not after taking it.
+
+### Examples
+![iamge](../images/Maximum%20Product%20of%20Splitted%20Binary%20Tree.png)
+```
+Input: root = [1,2,3,4,5,6]
+Output: 110
+Explanation: Remove the red edge and get 2 binary trees with sum 11 and 10. Their product is 110 (11*10)
+```
+
+![image](../image/../images/Maximum%20Product%20of%20Splitted%20Binary%20Tree%202.png)
+```
+Input: root = [1,null,2,3,4,null,null,5,6]
+Output: 90
+Explanation: Remove the red edge and get 2 binary trees with sum 15 and 6.Their product is 90 (15*6)
+```
+
+### Approach
+- We'll find the sum in each of the subtrees. If we know the sum of a subtree, the answer is `max( (total_sum - subtree_sum) * subtree_sum)` in each node.
+- To find the `total_sum` we run a subroutine `helper()` that'll find the sum with post order traversal.
+- At the end keep track of the max of `max( (total_sum - subtree_sum) * subtree_sum)` for each of the subtrees for every node.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    int M = 1e9 + 7;
+    long long max_prod = 0;
+    
+    int helper(TreeNode* root) {
+        int total = 0;
+        if (not root) return 0;
+        total += root->val + helper(root->left) + helper(root->right);
+        
+        return total;
+    }
+    
+    int subroutine(TreeNode* root, int total) {
+        if (not root) return 0;
+        int sum = root->val;
+        int left = subroutine(root->left, total);
+        int right = subroutine(root->right, total);
+        
+        sum = sum + left + right;
+        
+        max_prod = std::max(max_prod, (left*1LL) * ((total - left)*1LL));
+        max_prod = std::max(max_prod, (right*1LL) * ((total - right)*1LL));
+        
+        return sum;
+    }
+
+public:
+    int maxProduct(TreeNode* root) {
+        int total = helper(root);
+        subroutine(root, total);
+        return max_prod % M;
     }
 };
 ```
