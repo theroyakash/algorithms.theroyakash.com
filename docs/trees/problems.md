@@ -118,7 +118,51 @@ graph LR
 
 #### Code
 ```cpp
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        
+        vector<vector<int>> v;
+        
+        if (!root) return v;
+        
+        queue<pair<TreeNode*, int>> q;
+        
+        int depth = 1;
+        q.push({root, depth});
+        
+        while(!q.empty()){
+            TreeNode* front = q.front().first;
+            int depth = q.front().second;
+            
+            q.pop();
+            
+            if (depth > v.size()) {
+                vector<int> v1;
+                v1.push_back(front->val);
+                v.push_back(v1);
+            } else if (depth == v.size()) {
+                v[depth - 1].push_back(front->val);
+            }
+            
+            if (front->left) q.push({front->left, depth+1});
+            if (front->right) q.push({front->right, depth+1});
+        }
+        
+        return v;
+    }
+};
 ```
 
 ## Balanced Binary Tree
