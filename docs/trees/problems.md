@@ -3,6 +3,7 @@
 **Questions discussed**
 
 - [Traversal problems](#traversal-problems)
+- [N-ary Tree Preorder Traversal](#n-ary-tree-preorder-traversal)
 - [Balanced Binary Tree](#balanced-binary-tree)
 - [Branch Sum Problem](#branch-sum-problem)
 - [Invert a binary tree](#invert-a-binary-tree)
@@ -161,6 +162,72 @@ public:
         }
         
         return v;
+    }
+};
+```
+## N-ary Tree Preorder Traversal
+[Problem on Leetcode $\to$](https://leetcode.com/problems/n-ary-tree-preorder-traversal/)
+### Problem Statement
+Given the root of an n-ary tree, return the preorder traversal of its nodes' values. Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value (See examples)
+
+### Example
+<figure markdown>
+![iamge](../images/narytreeexample.png){ width="400" }
+</figure>
+```
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [1,3,5,6,2,4]
+```
+<figure markdown>
+![image](../images/narytreeexample2.png){ width="400" }
+</figure>
+
+```
+Input: 
+root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
+```
+
+### Approach
+- We know the approach to find the preorder traversal of a binary tree, there we'd do the root, then left then right
+- Instead here we'll do the root, then first from the left, then second from the left and so on until we reach n'th children of the root. So the coding should be pretty simple as following
+
+### Code
+```cpp
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector<Node*> children;
+
+    Node() {}
+
+    Node(int _val) {
+        val = _val;
+    }
+
+    Node(int _val, vector<Node*> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+private:
+    vector<int> order;
+public:
+    vector<int> preorder(Node* root) {
+        if (root) {
+            order.push_back(root->val);
+            
+            for (auto tr:root->children) {
+                preorder(tr);
+            }
+        }
+        
+        return order;
     }
 };
 ```
