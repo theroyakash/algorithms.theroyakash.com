@@ -1887,6 +1887,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trim-a-binary-search-tree" class="md-nav__link">
+    Trim a Binary Search Tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Trim a Binary Search Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_19" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_8" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_19" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_17" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3235,6 +3276,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trim-a-binary-search-tree" class="md-nav__link">
+    Trim a Binary Search Tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Trim a Binary Search Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_19" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_8" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_19" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_17" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3280,6 +3362,7 @@
 <li><a href="#lowest-common-ancestor-of-a-binary-search-tree">Lowest Common Ancestor of a Binary Search Tree</a></li>
 <li><a href="#maximum-product-of-splitted-binary-tree">Maximum Product of Splitted Binary Tree</a></li>
 <li><a href="#count-good-nodes-in-binary-tree">Count Good Nodes in Binary Tree</a></li>
+<li><a href="#trim-a-binary-search-tree">Trim a Binary Search Tree</a></li>
 </ul>
 <h2 id="traversal-problems">Traversal problems</h2>
 <h3 id="inorder-preorder-and-postorder-traversal">Inorder, preorder, and postorder traversal</h3>
@@ -4635,6 +4718,74 @@
 <a id="__codelineno-33-31" name="__codelineno-33-31" href="#__codelineno-33-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">good_node_counter</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-33-32" name="__codelineno-33-32" href="#__codelineno-33-32"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-33-33" name="__codelineno-33-33" href="#__codelineno-33-33"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="trim-a-binary-search-tree">Trim a Binary Search Tree</h2>
+<p><a href="https://leetcode.com/problems/trim-a-binary-search-tree/">Find the Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_19">Problem Statement</h3>
+<p>Given the root of a binary search tree and the lowest and highest boundaries as low and high, trim the tree so that all its elements lies in [low, high]. Trimming the tree should not change the relative structure of the elements that will remain in the tree (i.e., any node's descendant should remain a descendant). It can be proven that there is a unique answer.</p>
+<p>Return the root of the trimmed binary search tree. Note that the root may change depending on the given bounds.</p>
+<h3 id="example_8">Example</h3>
+<figure>
+<p><img alt="image" src="../../images/trim1.jpeg" width="400" /></p>
+</figure>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Input: root = [1,0,2], low = 1, high = 2
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>Output: [1,null,2]
+</code></pre></div>
+<figure>
+<p><img alt="image" src="../../images/trim2.jpeg" width="400" /></p>
+</figure>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>Input: root = [3,0,4,null,2,null,null,1], low = 1, high = 3
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>Output: [3,2,null,1]
+</code></pre></div>
+<h3 id="approach_19">Approach</h3>
+<p>We'll do a recursive descent into the binary search tree. As it is a binary search tree we can find the way to go down the recursion based on the values at the current node.</p>
+<p>Few of the moves that we'll be taking during the recursion are the following</p>
+<ul>
+<li>If some <code>root-&gt;left-&gt;val</code> is less than the low means that the current node's left child should become the current node's left's right child (making all the <code>left-&gt;left-&gt;right&amp;left</code> invalid because they will be less than the lower bound on the binary search tree). Even then there can be a problem that the new <code>left</code> of the current node is out of bounds again. So we recursively call the function on that same node again.</li>
+<li>After this when we are done correcting the <code>node</code> there may be a chance that some of the children are not corrected yet, so we recursively call the function on the left children <code>trimBST(root-&gt;left, low, high);</code>.</li>
+<li>We symmatically solve the right children.</li>
+<li>This is how we solved the left and the right children but we didn't solved the current root yet. To solve this we'll do a simple recursive return from the left or the right depending upon the value at the root node.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">low</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w">    </span>
+</code></pre></div></li>
+</ul>
+<h3 id="code_17">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="cm">/**</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="cm"> * Definition for a binary tree node.</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="cm"> * struct TreeNode {</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="cm"> *     int val;</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="cm"> *     TreeNode *left;</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="cm"> *     TreeNode *right;</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="cm"> *     TreeNode() : val(0), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="cm"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="cm"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}</span>
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="cm"> * };</span>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="cm"> */</span><span class="w"></span>
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a><span class="w">    </span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">trimBST</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>
+<a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">low</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a><span class="w">            </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a><span class="w">            </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a>
+<a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a><span class="w">        </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>
+<a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a><span class="w">            </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a><span class="w">            </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a>
+<a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a><span class="w">        </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a>
+<a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">low</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-37-32" name="__codelineno-37-32" href="#__codelineno-37-32"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-37-33" name="__codelineno-37-33" href="#__codelineno-37-33"></a>
+<a id="__codelineno-37-34" name="__codelineno-37-34" href="#__codelineno-37-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-37-35" name="__codelineno-37-35" href="#__codelineno-37-35"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-37-36" name="__codelineno-37-36" href="#__codelineno-37-36"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
