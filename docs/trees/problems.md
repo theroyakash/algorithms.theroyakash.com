@@ -24,6 +24,7 @@
 - [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
 - [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
 - [Maximum Product of Splitted Binary Tree](#maximum-product-of-splitted-binary-tree)
+- [Count Good Nodes in Binary Tree](#count-good-nodes-in-binary-tree)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1348,6 +1349,68 @@ public:
         int total = helper(root);
         subroutine(root, total);
         return max_prod % M;
+    }
+};
+```
+
+## Count Good Nodes in Binary Tree
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/count-good-nodes-in-binary-tree/)
+### Problem Statement
+Given a binary tree root, a node X in the tree is named **good** if in the path from root to X there are no nodes with a value greater than X.
+
+Return the number of **good** nodes in the binary tree.
+
+### Example
+<figure markdown>
+![image](../images/goodNodesInBT.png){ width="300" }
+</figure>
+```
+Input: root = [3,1,4,3,null,1,5]
+Output: 4
+Explanation: Nodes in blue are good.
+Root Node (3) is always a good node.
+Node 4 -> (3,4) is the maximum value in the path starting from the root.
+Node 5 -> (3,4,5) is the maximum value in the path
+Node 3 -> (3,1,3) is the maximum value in the path.
+```
+
+### Approach
+- We'll send a `maxSeen` so far variable down with the recursive calls. If we find a node with value greater or equal to the current node we'll increment the counter of **good** notes.
+- At last we'll return the `good_node_counter` global variable.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    int good_node_counter = 0;
+    
+    void recursive_subroutine(TreeNode* root, int maxSeen) {
+        if (not root) return;
+        
+        if (root->val >= maxSeen) {
+            good_node_counter++;
+        }
+        
+        maxSeen = std::max(maxSeen, root->val);
+        
+        recursive_subroutine(root->left, maxSeen);
+        recursive_subroutine(root->right, maxSeen);
+    }
+public:
+    int goodNodes(TreeNode* root) {
+        recursive_subroutine(root, root->val);
+        return good_node_counter;
     }
 };
 ```
