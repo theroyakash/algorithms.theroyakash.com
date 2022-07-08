@@ -26,6 +26,7 @@
 - [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
 - [Maximum Product of Splitted Binary Tree](#maximum-product-of-splitted-binary-tree)
 - [Count Good Nodes in Binary Tree](#count-good-nodes-in-binary-tree)
+- [Trim a Binary Search Tree](#trim-a-binary-search-tree)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1522,6 +1523,85 @@ public:
     int goodNodes(TreeNode* root) {
         recursive_subroutine(root, root->val);
         return good_node_counter;
+    }
+};
+```
+
+## Trim a Binary Search Tree
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/trim-a-binary-search-tree/)
+### Problem Statement
+Given the root of a binary search tree and the lowest and highest boundaries as low and high, trim the tree so that all its elements lies in [low, high]. Trimming the tree should not change the relative structure of the elements that will remain in the tree (i.e., any node's descendant should remain a descendant). It can be proven that there is a unique answer.
+
+Return the root of the trimmed binary search tree. Note that the root may change depending on the given bounds.
+
+### Example
+<figure markdown>
+![image](../images/trim1.jpeg){ width="400" }
+</figure>
+```
+Input: root = [1,0,2], low = 1, high = 2
+Output: [1,null,2]
+```
+
+<figure markdown>
+![image](../images/trim2.jpeg){ width="400" }
+</figure>
+
+```
+Input: root = [3,0,4,null,2,null,null,1], low = 1, high = 3
+Output: [3,2,null,1]
+```
+
+### Approach
+We'll do a recursive descent into the binary search tree. As it is a binary search tree we can find the way to go down the recursion based on the values at the current node.
+
+Few of the moves that we'll be taking during the recursion are the following
+
+- If some `root->left->val` is less than the low means that the current node's left child should become the current node's left's right child (making all the `left->left->right&left` invalid because they will be less than the lower bound on the binary search tree). Even then there can be a problem that the new `left` of the current node is out of bounds again. So we recursively call the function on that same node again.
+- After this when we are done correcting the `node` there may be a chance that some of the children are not corrected yet, so we recursively call the function on the left children `trimBST(root->left, low, high);`.
+- We symmatically solve the right children.
+- This is how we solved the left and the right children but we didn't solved the current root yet. To solve this we'll do a simple recursive return from the left or the right depending upon the value at the root node.
+    ```cpp
+    if (root->val < low) return trimBST(root->right, low, high);
+    if (root->val > high) return trimBST(root->left, low, high);    
+    ```
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if (not root) return root;
+        
+        if (root->left and root->left->val < low) {
+            root->left = root->left->right;
+            trimBST(root, low, high);
+        }
+        
+        trimBST(root->left, low, high);
+        
+        if (root->right and root->right->val > high) {
+            root->right = root->right->left;
+            trimBST(root, low, high);
+        }
+        
+        trimBST(root->right, low, high);
+        
+        if (root->val < low) return trimBST(root->right, low, high);
+        if (root->val > high) return trimBST(root->left, low, high);
+        
+        return root;
     }
 };
 ```
