@@ -25,6 +25,7 @@ title: Problems on arrays
 - [Two Sum II Input Array Is Sorted](#two-sum-ii-input-array-is-sorted)
 - [Container With Most Water](#container-with-most-water)
 - [Rain water trapping](#rain-water-trapping)
+- [Two Sum IV](#two-sum-iv)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1378,6 +1379,70 @@ public:
         }
         
         return water;
+    }
+};
+```
+
+## Two Sum IV
+### Problem Statement
+Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
+
+### Example
+```
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
+```
+
+### Approach
+- We've previously solved the problem [Two sum II](https://algorithms.theroyakash.com/arrays/array-problems/#two-sum-ii-input-array-is-sorted) where the input is sorted.
+- Using 2 pointer approach we easily solved the problem, similar to that here if we do an inorder traversal we'll also get a sorted array,
+- So the approach works like that, we first traverse in-order then use a 2 pointer approach to solve the 2 sum problem.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    vector<int> inOrder;
+    void build(TreeNode* root) {
+        if (root) {
+            build(root->left);
+            inOrder.push_back(root->val);
+            build(root->right);
+        }
+    }
+public:
+    bool findTarget(TreeNode* root, int k) {
+        build(root);
+        
+        // now 2 Sum II on the sorted list inOrder
+        int start = 0;
+        int end = inOrder.size() - 1;
+        
+        int sum = inOrder[start] + inOrder[end];
+        while (start < end) {
+            if (sum < k) {
+                start++;
+            } else if (sum > k) {
+                end--;
+            } else if (sum == k) {
+                return true;
+            }
+            
+            sum = inOrder[start] + inOrder[end];
+        }
+        
+        return false;
     }
 };
 ```
