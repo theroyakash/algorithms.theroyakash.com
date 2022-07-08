@@ -1805,6 +1805,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#count-good-nodes-in-binary-tree" class="md-nav__link">
+    Count Good Nodes in Binary Tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Count Good Nodes in Binary Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_17" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_17" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_15" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3071,6 +3112,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#count-good-nodes-in-binary-tree" class="md-nav__link">
+    Count Good Nodes in Binary Tree
+  </a>
+  
+    <nav class="md-nav" aria-label="Count Good Nodes in Binary Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_17" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_6" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_17" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_15" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3114,6 +3196,7 @@
 <li><a href="#flatten-binary-tree-to-linked-list">Flatten Binary Tree to Linked List</a></li>
 <li><a href="#lowest-common-ancestor-of-a-binary-search-tree">Lowest Common Ancestor of a Binary Search Tree</a></li>
 <li><a href="#maximum-product-of-splitted-binary-tree">Maximum Product of Splitted Binary Tree</a></li>
+<li><a href="#count-good-nodes-in-binary-tree">Count Good Nodes in Binary Tree</a></li>
 </ul>
 <h2 id="traversal-problems">Traversal problems</h2>
 <h3 id="inorder-preorder-and-postorder-traversal">Inorder, preorder, and postorder traversal</h3>
@@ -4307,6 +4390,63 @@
 <a id="__codelineno-28-43" name="__codelineno-28-43" href="#__codelineno-28-43"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">max_prod</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">M</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-28-44" name="__codelineno-28-44" href="#__codelineno-28-44"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-28-45" name="__codelineno-28-45" href="#__codelineno-28-45"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="count-good-nodes-in-binary-tree">Count Good Nodes in Binary Tree</h2>
+<p><a href="https://leetcode.com/problems/count-good-nodes-in-binary-tree/">Find the problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_17">Problem Statement</h3>
+<p>Given a binary tree root, a node X in the tree is named <strong>good</strong> if in the path from root to X there are no nodes with a value greater than X.</p>
+<p>Return the number of <strong>good</strong> nodes in the binary tree.</p>
+<h3 id="example_6">Example</h3>
+<figure>
+<p><img alt="image" src="../../images/goodNodesInBT.png" width="300" /></p>
+</figure>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Input: root = [3,1,4,3,null,1,5]
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>Output: 4
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>Explanation: Nodes in blue are good.
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>Root Node (3) is always a good node.
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>Node 4 -&gt; (3,4) is the maximum value in the path starting from the root.
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>Node 5 -&gt; (3,4,5) is the maximum value in the path
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>Node 3 -&gt; (3,1,3) is the maximum value in the path.
+</code></pre></div>
+<h3 id="approach_17">Approach</h3>
+<ul>
+<li>We'll send a <code>maxSeen</code> so far variable down with the recursive calls. If we find a node with value greater or equal to the current node we'll increment the counter of <strong>good</strong> notes.</li>
+<li>At last we'll return the <code>good_node_counter</code> global variable.</li>
+</ul>
+<h3 id="code_15">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="cm">/**</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="cm"> * Definition for a binary tree node.</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="cm"> * struct TreeNode {</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="cm"> *     int val;</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="cm"> *     TreeNode *left;</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="cm"> *     TreeNode *right;</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="cm"> *     TreeNode() : val(0), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="cm"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="cm"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="cm"> * };</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="cm"> */</span><span class="w"></span>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">good_node_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">recursive_subroutine</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxSeen</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">maxSeen</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a><span class="w">            </span><span class="n">good_node_counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a>
+<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="w">        </span><span class="n">maxSeen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">maxSeen</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a>
+<a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a><span class="w">        </span><span class="n">recursive_subroutine</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">maxSeen</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a><span class="w">        </span><span class="n">recursive_subroutine</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">maxSeen</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-30-27" name="__codelineno-30-27" href="#__codelineno-30-27"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-30-28" name="__codelineno-30-28" href="#__codelineno-30-28"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-30-29" name="__codelineno-30-29" href="#__codelineno-30-29"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">goodNodes</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-30-30" name="__codelineno-30-30" href="#__codelineno-30-30"></a><span class="w">        </span><span class="n">recursive_subroutine</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-30-31" name="__codelineno-30-31" href="#__codelineno-30-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">good_node_counter</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-30-32" name="__codelineno-30-32" href="#__codelineno-30-32"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-30-33" name="__codelineno-30-33" href="#__codelineno-30-33"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
