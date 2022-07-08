@@ -2,8 +2,8 @@
 title: Problems on arrays
 ---
 # Problems on arrays
-## Questions discussed
-- [Questions discussed](#questions-discussed)
+**Questions discussed**
+
 - [Single Number](#single-number)
 - [Dutch National Flag Partitioning](#dutch-national-flag-partitioning)
 - [String Compression Problem](#string-compression-problem)
