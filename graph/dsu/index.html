@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://algorithms.theroyakash.com/freebies/">
+        <link rel="canonical" href="https://algorithms.theroyakash.com/graph/dsu/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
-        <title>Freebies - theroyakash algorithms</title>
+        <title>Disjoint Set Implementation - theroyakash algorithms</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
@@ -83,9 +83,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#freebies" class="md-skip">
+        <a href="#disjoint-set-data-structure" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="theroyakash algorithms" class="md-header__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
+    <a href="../.." title="theroyakash algorithms" class="md-header__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -152,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Freebies
+              Disjoint Set Implementation
             
           </span>
         </div>
@@ -228,15 +228,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link md-tabs__link--active">
+      <a href="../.." class="md-tabs__link">
         Getting Started
       </a>
     </li>
@@ -262,7 +260,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../arrays/arrays/" class="md-tabs__link">
+      <a href="../../arrays/arrays/" class="md-tabs__link">
         Linear Data Structures
       </a>
     </li>
@@ -282,7 +280,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../binary-search/intro/" class="md-tabs__link">
+      <a href="../../binary-search/intro/" class="md-tabs__link">
         Searching and Sorting
       </a>
     </li>
@@ -291,6 +289,8 @@
       
         
   
+  
+    
   
 
 
@@ -303,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../trees/implementation/" class="md-tabs__link">
+      <a href="../../trees/implementation/" class="md-tabs__link md-tabs__link--active">
         Tree and Graph based data structures
       </a>
     </li>
@@ -326,7 +326,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../recursion/intro/" class="md-tabs__link">
+      <a href="../../recursion/intro/" class="md-tabs__link">
         Recursion and Dynamic Programming
       </a>
     </li>
@@ -344,7 +344,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../greedy/problems/" class="md-tabs__link">
+      <a href="../../greedy/problems/" class="md-tabs__link">
         Greedy Algorithms
       </a>
     </li>
@@ -372,7 +372,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="theroyakash algorithms" class="md-nav__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
+    <a href="../.." title="theroyakash algorithms" class="md-nav__button md-logo" aria-label="theroyakash algorithms" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -401,14 +401,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
       
       
@@ -431,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -443,86 +441,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Freebies
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../freebies/" class="md-nav__link">
         Freebies
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    C++
-  </a>
-  
-    <nav class="md-nav" aria-label="C++">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#writing-c-output-with-color" class="md-nav__link">
-    Writing C++ Output with color
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usage-with-stdcout" class="md-nav__link">
-    Usage with std::cout
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#algorithms-c" class="md-nav__link">
-    Algorithms C++
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing" class="md-nav__link">
-    Contributing
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -534,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../blind75/" class="md-nav__link">
+      <a href="../../blind75/" class="md-nav__link">
         Blind 75 Problems
       </a>
     </li>
@@ -548,7 +471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stdinout-usage/" class="md-nav__link">
+      <a href="../../stdinout-usage/" class="md-nav__link">
         Standard Input Output
       </a>
     </li>
@@ -648,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrays/arrays/" class="md-nav__link">
+      <a href="../../arrays/arrays/" class="md-nav__link">
         Intro to Arrays
       </a>
     </li>
@@ -662,7 +585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrays/array-problems/" class="md-nav__link">
+      <a href="../../arrays/array-problems/" class="md-nav__link">
         Array Problems
       </a>
     </li>
@@ -676,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arrays/sliding-window/" class="md-nav__link">
+      <a href="../../arrays/sliding-window/" class="md-nav__link">
         Sliding window problems
       </a>
     </li>
@@ -723,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../LinkedLists/stl-usage/" class="md-nav__link">
+      <a href="../../LinkedLists/stl-usage/" class="md-nav__link">
         Linked List STL Usage
       </a>
     </li>
@@ -737,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../LinkedLists/problems/" class="md-nav__link">
+      <a href="../../LinkedLists/problems/" class="md-nav__link">
         Linked List problems
       </a>
     </li>
@@ -817,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stacks/usage/" class="md-nav__link">
+      <a href="../../stacks/usage/" class="md-nav__link">
         Stacks Usage
       </a>
     </li>
@@ -831,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stacks/problems/" class="md-nav__link">
+      <a href="../../stacks/problems/" class="md-nav__link">
         Stack Problems
       </a>
     </li>
@@ -893,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../binary-search/intro/" class="md-nav__link">
+      <a href="../../binary-search/intro/" class="md-nav__link">
         Basics and introduction
       </a>
     </li>
@@ -907,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../binary-search/problems/" class="md-nav__link">
+      <a href="../../binary-search/problems/" class="md-nav__link">
         Binary search problems
       </a>
     </li>
@@ -927,12 +850,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -981,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../trees/implementation/" class="md-nav__link">
+      <a href="../../trees/implementation/" class="md-nav__link">
         Tree Implementation
       </a>
     </li>
@@ -995,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../trees/problems/" class="md-nav__link">
+      <a href="../../trees/problems/" class="md-nav__link">
         Tree Problems
       </a>
     </li>
@@ -1014,12 +939,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
       
       
       
@@ -1042,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph/usage/" class="md-nav__link">
+      <a href="../usage/" class="md-nav__link">
         Graph Usage
       </a>
     </li>
@@ -1056,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph/bfs-dfs/" class="md-nav__link">
+      <a href="../bfs-dfs/" class="md-nav__link">
         BFS and DFS
       </a>
     </li>
@@ -1070,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph/standard-problems/" class="md-nav__link">
+      <a href="../standard-problems/" class="md-nav__link">
         Graph Standard Problems
       </a>
     </li>
@@ -1084,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph/problems/" class="md-nav__link">
+      <a href="../problems/" class="md-nav__link">
         Graph Problems
       </a>
     </li>
@@ -1096,11 +1023,113 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../graph/dsu/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Disjoint Set Implementation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Disjoint Set Implementation
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#naive-implementation-of-dsu" class="md-nav__link">
+    Naïve implementation of DSU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apis-to-support" class="md-nav__link">
+    APIs to support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-problems-on-leetcode-that-uses-disjoint-set-structure" class="md-nav__link">
+    Some Problems on Leetcode that uses Disjoint Set Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Some Problems on Leetcode that uses Disjoint Set Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redundant-connection" class="md-nav__link">
+    Redundant Connection
+  </a>
+  
+    <nav class="md-nav" aria-label="Redundant Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1145,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../heaps/heap-pq/" class="md-nav__link">
+      <a href="../../heaps/heap-pq/" class="md-nav__link">
         Heaps Introduction, STL
       </a>
     </li>
@@ -1159,7 +1188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../heaps/problems/" class="md-nav__link">
+      <a href="../../heaps/problems/" class="md-nav__link">
         Heap Problems
       </a>
     </li>
@@ -1173,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2heaps/problems/" class="md-nav__link">
+      <a href="../../2heaps/problems/" class="md-nav__link">
         Two Heaps Problems
       </a>
     </li>
@@ -1254,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../recursion/intro/" class="md-nav__link">
+      <a href="../../recursion/intro/" class="md-nav__link">
         Recursion Introduction
       </a>
     </li>
@@ -1268,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../recursion/problems/" class="md-nav__link">
+      <a href="../../recursion/problems/" class="md-nav__link">
         Recursion, Backtracking, Subset Pattern
       </a>
     </li>
@@ -1315,7 +1344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dp/intro/" class="md-nav__link">
+      <a href="../../dp/intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -1329,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dp/knapsack/" class="md-nav__link">
+      <a href="../../dp/knapsack/" class="md-nav__link">
         Knapsack Pattern
       </a>
     </li>
@@ -1384,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../greedy/problems/" class="md-nav__link">
+      <a href="../../greedy/problems/" class="md-nav__link">
         Greedy Problems
       </a>
     </li>
@@ -1425,23 +1454,59 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    C++
+  <a href="#naive-implementation-of-dsu" class="md-nav__link">
+    Naïve implementation of DSU
   </a>
   
-    <nav class="md-nav" aria-label="C++">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apis-to-support" class="md-nav__link">
+    APIs to support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-problems-on-leetcode-that-uses-disjoint-set-structure" class="md-nav__link">
+    Some Problems on Leetcode that uses Disjoint Set Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Some Problems on Leetcode that uses Disjoint Set Structure">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#writing-c-output-with-color" class="md-nav__link">
-    Writing C++ Output with color
+  <a href="#redundant-connection" class="md-nav__link">
+    Redundant Connection
+  </a>
+  
+    <nav class="md-nav" aria-label="Redundant Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    Problem Statement
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#usage-with-stdcout" class="md-nav__link">
-    Usage with std::cout
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    Code
   </a>
   
 </li>
@@ -1450,18 +1515,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#algorithms-c" class="md-nav__link">
-    Algorithms C++
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing" class="md-nav__link">
-    Contributing
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1483,60 +1539,144 @@
 
 
 
-<h1 id="freebies"><img alt="🎊" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f38a.svg" title=":confetti_ball:" /> Freebies</h1>
-<p>Here are things that you get for free if you wish to work in Python.</p>
+<h1 id="disjoint-set-data-structure">Disjoint Set Data Structure</h1>
+<p><strong>Table of Contents</strong></p>
 <ul>
-<li><a href="https://github.com/theroyakash/AKDSFramework">AKDSFramework</a>, a Purely written in Python library containing implementations of various data structures. See documentations <a href="https://docs.akdsframework.theroyakash.com/">here <span class="arithmatex">\(\to\)</span></a>.</li>
-<li>Benchmarking decorator: Use an one line import to profile any python function, <code>from AKDSFramework.applications.decorators import benchmark</code>. More on this here in this <a href="https://publications.theroyakash.com/benchmark-your-python-program">blog post <span class="arithmatex">\(\to\)</span></a>.</li>
-<li>A Python based caching decorator, to use in Dynamic Programming problems. More on this here in this <a href="https://publications.theroyakash.com/cache-your-code">blog post <span class="arithmatex">\(\to\)</span></a>.</li>
-<li>A big O analyser, find it <a href="https://publications.theroyakash.com/introducing-an-efficient-big-o-analyzer">here <span class="arithmatex">\(\to\)</span></a>. It works with most of the python programs but is not a good fit for more complex functions.</li>
-<li><a href="https://github.com/theroyakash/tinyds">TinyDS</a>, small and simple pythonic implementations for most of your coding problems that are asked in SDE I or II interviews at FAANGs that you will be able to implement on the spot if asked.</li>
+<li><a href="#naïve-implementation-of-dsu">Naïve implementation of DSU</a></li>
+<li><a href="#apis-to-support">APIs to support</a></li>
+<li><a href="#some-problems-on-leetcode-that-uses-disjoint-set-structure">Some Problems on Leetcode that uses Disjoint Set Structure</a></li>
 </ul>
-<h2 id="c">C++</h2>
+<h2 id="naive-implementation-of-dsu">Naïve implementation of DSU</h2>
+<p>One of the naïve implementation for DSU is to use an array. Here for a Leetcode problem I've shown an implementation of DSU that do not use rank-path compression optimizations, just plain and simple implementation of DSU with array.</p>
+<h2 id="apis-to-support">APIs to support</h2>
 <ul>
-<li>I actually now prefer to solve algorithm problems in C++ now, so AKDSFramework alternative is here for C++. <a href="https://github.com/theroyakash/tinydscpp">Click to get it on Github <span class="arithmatex">\(\to\)</span></a>.</li>
-<li>How to use the <code>stdin</code> and <code>stdout</code> and take input from files and write output to text files to quickly submit solutions to online coding platforms. <a href="/stdinout-usage">Here is an article with that information</a>.</li>
+<li><code>find(int i)</code> to find the parent of some node <code>i</code></li>
+<li><code>makeUnion(int i, int j)</code> to create a union of two nodes <code>i</code> and <code>j</code>.</li>
+<li>The following is a simple implementation of DSU that implements the upper 2 APIs.</li>
 </ul>
-<h3 id="writing-c-output-with-color">Writing C++ Output with color</h3>
-<p>Distinguishing C++ output inside the terminal is a hard job. Use the following color pallette to distinguish the outputs.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define RESET &quot;\033[0m&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#define BLACK &quot;\033[30m&quot;              </span><span class="cm">/* Black */</span><span class="cp"></span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#define RED &quot;\033[31m&quot;                </span><span class="cm">/* Red */</span><span class="cp"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#define GREEN &quot;\033[32m&quot;              </span><span class="cm">/* Green */</span><span class="cp"></span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#define YELLOW &quot;\033[33m&quot;             </span><span class="cm">/* Yellow */</span><span class="cp"></span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cp">#define BLUE &quot;\033[34m&quot;               </span><span class="cm">/* Blue */</span><span class="cp"></span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#define MAGENTA &quot;\033[35m&quot;            </span><span class="cm">/* Magenta */</span><span class="cp"></span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cp">#define CYAN &quot;\033[36m&quot;               </span><span class="cm">/* Cyan */</span><span class="cp"></span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cp">#define WHITE &quot;\033[37m&quot;              </span><span class="cm">/* White */</span><span class="cp"></span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cp">#define BOLDBLACK &quot;\033[1m\033[30m&quot;   </span><span class="cm">/* Bold Black */</span><span class="cp"></span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cp">#define BOLDRED &quot;\033[1m\033[31m&quot;     </span><span class="cm">/* Bold Red */</span><span class="cp"></span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cp">#define BOLDGREEN &quot;\033[1m\033[32m&quot;   </span><span class="cm">/* Bold Green */</span><span class="cp"></span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="cp">#define BOLDYELLOW &quot;\033[1m\033[33m&quot;  </span><span class="cm">/* Bold Yellow */</span><span class="cp"></span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cp">#define BOLDBLUE &quot;\033[1m\033[34m&quot;    </span><span class="cm">/* Bold Blue */</span><span class="cp"></span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="cp">#define BOLDMAGENTA &quot;\033[1m\033[35m&quot; </span><span class="cm">/* Bold Magenta */</span><span class="cp"></span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="cp">#define BOLDCYAN &quot;\033[1m\033[36m&quot;    </span><span class="cm">/* Bold Cyan */</span><span class="cp"></span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="cp">#define BOLDWHITE &quot;\033[1m\033[37m&quot;   </span><span class="cm">/* Bold White */</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">DSU</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsuArray</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">DSU</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="n">dsuArray</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getArray</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dsuArray</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dsuArray</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">makeUnion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">parent_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">parent_j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parent_i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parent_j</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="c1">// find all occurences of parent_j</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="c1">// set to parent_i to make the Union</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">dsuArray</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dsuArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parent_j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">                </span><span class="n">dsuArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent_i</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
-<h3 id="usage-with-stdcout">Usage with <code>std::cout</code></h3>
-<p>Everytime you use any of the color you must reset the color from the terminal like the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">BOLDCYAN</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RESET</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span><span class="w"></span>
+<h2 id="some-problems-on-leetcode-that-uses-disjoint-set-structure">Some Problems on Leetcode that uses Disjoint Set Structure</h2>
+<h3 id="redundant-connection">Redundant Connection</h3>
+<h4 id="problem-statement">Problem Statement</h4>
+<p>In this problem, a tree is an undirected graph that is connected and has no cycles.</p>
+<p>You are given a graph that started as a tree with n nodes labeled from 1 to n, with one additional edge added. The added edge has two different vertices chosen from 1 to <code>n</code>, and was not an edge that already existed. The graph is represented as an array edges of length <code>n</code> where <code>edges[i] = [ai, bi]</code> indicates that there is an edge between nodes ai and bi in the graph.</p>
+<p>Return an edge that can be removed so that the resulting graph is a tree of n nodes. If there are multiple answers, return the answer that occurs last in the input.</p>
+<h4 id="example">Example</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Output: [1,4]
 </code></pre></div>
-<h2 id="algorithms-c">Algorithms C++</h2>
-<p>C++ Algorithms is a simple data structure implementation library that you can remember to implement in an interview setting.</p>
-<h2 id="contributing">Contributing</h2>
-<p>There is some open positions for contribution in <strong>AKDSFramework</strong> <strong>tinyds</strong>, and <strong>C++ Algorithms</strong> projects. If you are willing to work open source please reach out to me at <a href="mailto:hey@theroyakash.com">hey@theroyakash.com</a>.</p>
-<div class="admonition warning important">
-<p class="admonition-title">Warning</p>
-<p>Note that I am currently a masters student in computer science, so I won't be able to provide financial reimbursement for any of the contributions done for the project. If that does not bother you, please reach out.</p>
-</div>
+<h4 id="approach">Approach</h4>
+<ul>
+<li>We'll use a DSU to add the edges in the DSU until we get a cycle.</li>
+<li>When we get a cycle, we'll add it to the answer, this will be the edge that we need to return.</li>
+</ul>
+<h4 id="code">Code</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">DSU</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dsuArray</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">DSU</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="n">dsuArray</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getArray</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dsuArray</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dsuArray</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">makeUnion</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">parent_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">parent_j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parent_i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parent_j</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="c1">// find all occurences of parent_j</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="c1">// set to parent_i to make the Union</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">dsuArray</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dsuArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parent_j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">                </span><span class="n">dsuArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent_i</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">findRedundantConnection</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">edges</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">maxim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="o">:</span><span class="n">edges</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="w">            </span><span class="n">maxim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">maxim</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="w">            </span><span class="n">maxim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">maxim</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">        </span><span class="c1">// number of nodes = maxim now.</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">        </span><span class="c1">// now we create a DSU</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="w">        </span><span class="n">DSU</span><span class="w"> </span><span class="n">dsu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSU</span><span class="p">(</span><span class="n">maxim</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">answer</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">edgePair</span><span class="o">:</span><span class="n">edges</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edgePair</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edgePair</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">possible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dsu</span><span class="p">.</span><span class="n">makeUnion</span><span class="p">(</span><span class="n">edgePair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">edgePair</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">not</span><span class="w"> </span><span class="n">possible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="w">                </span><span class="n">answer</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">edgePair</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="w">                </span><span class="n">answer</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">edgePair</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">answer</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
 
               
 
@@ -1605,7 +1745,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+        <a href="../problems/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Graph Problems" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1614,20 +1754,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Introduction
+              Graph Problems
             </div>
           </div>
         </a>
       
       
         
-        <a href="../blind75/" class="md-footer__link md-footer__link--next" aria-label="Next: Blind 75 Problems" rel="next">
+        <a href="../../heaps/heap-pq/" class="md-footer__link md-footer__link--next" aria-label="Next: Heaps Introduction, STL" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Blind 75 Problems
+              Heaps Introduction, STL
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1687,12 +1827,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "search.highlight", "search.share", "navigation.top", "navigation.tabs"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "search.highlight", "search.share", "navigation.top", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
