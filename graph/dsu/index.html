@@ -1073,6 +1073,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#union-by-rank-optimization" class="md-nav__link">
+    Union by rank optimization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#some-problems-on-leetcode-that-uses-disjoint-set-structure" class="md-nav__link">
     Some Problems on Leetcode that uses Disjoint Set Structure
   </a>
@@ -1468,6 +1475,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#union-by-rank-optimization" class="md-nav__link">
+    Union by rank optimization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#some-problems-on-leetcode-that-uses-disjoint-set-structure" class="md-nav__link">
     Some Problems on Leetcode that uses Disjoint Set Structure
   </a>
@@ -1544,6 +1558,7 @@
 <ul>
 <li><a href="#naïve-implementation-of-dsu">Naïve implementation of DSU</a></li>
 <li><a href="#apis-to-support">APIs to support</a></li>
+<li><a href="#union-by-rank-optimization">Union by rank optimization</a></li>
 <li><a href="#some-problems-on-leetcode-that-uses-disjoint-set-structure">Some Problems on Leetcode that uses Disjoint Set Structure</a></li>
 </ul>
 <h2 id="naive-implementation-of-dsu">Naïve implementation of DSU</h2>
@@ -1592,6 +1607,9 @@
 <a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<h2 id="union-by-rank-optimization">Union by rank optimization</h2>
+<p><strong>If</strong> you see the <code>makeUnion()</code> API we are setting the parents of <code>parent_j</code> to <code>parent_i</code>. Now if the number of elements in the group of <code>j</code> is higher then there is a chance to optimize the time complexity. We can update the <code>parent_i</code> to <code>parent_j</code> as number of times <code>parent_i</code> is to be updated is much lower.</p>
+<p>This is called <strong>union by rank optimization</strong>. In order to do this we need to have some data structure that'll indicate the size of every group everytime we do an union. Then we can take the smaller group and updated its parents instead of updating the parent of the larger group size.</p>
 <h2 id="some-problems-on-leetcode-that-uses-disjoint-set-structure">Some Problems on Leetcode that uses Disjoint Set Structure</h2>
 <h3 id="redundant-connection">Redundant Connection</h3>
 <h4 id="problem-statement">Problem Statement</h4>
