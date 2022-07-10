@@ -35,6 +35,7 @@ nav:
       - BFS and DFS: graph/bfs-dfs.md
       - Graph Standard Problems: graph/standard-problems.md
       - Graph Problems: graph/problems.md
+      - Disjoint Set Implementation: graph/dsu.md
     - Heaps:
       - Heaps Introduction, STL: ./heaps/heap-pq.md
       - Heap Problems: ./heaps/problems.md
