@@ -4,6 +4,7 @@
 
 - [Naïve implementation of DSU](#naïve-implementation-of-dsu)
 - [APIs to support](#apis-to-support)
+- [Union by rank optimization](#union-by-rank-optimization)
 - [Some Problems on Leetcode that uses Disjoint Set Structure](#some-problems-on-leetcode-that-uses-disjoint-set-structure)
 
 ## Naïve implementation of DSU
@@ -53,6 +54,12 @@ public:
     }
 };
 ```
+
+## Union by rank optimization
+**If** you see the `makeUnion()` API we are setting the parents of `parent_j` to `parent_i`. Now if the number of elements in the group of `j` is higher then there is a chance to optimize the time complexity. We can update the `parent_i` to `parent_j` as number of times `parent_i` is to be updated is much lower.
+
+This is called **union by rank optimization**. In order to do this we need to have some data structure that'll indicate the size of every group everytime we do an union. Then we can take the smaller group and updated its parents instead of updating the parent of the larger group size.
+
 
 ## Some Problems on Leetcode that uses Disjoint Set Structure
 
