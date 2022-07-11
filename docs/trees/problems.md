@@ -27,6 +27,7 @@
 - [Maximum Product of Splitted Binary Tree](#maximum-product-of-splitted-binary-tree)
 - [Count Good Nodes in Binary Tree](#count-good-nodes-in-binary-tree)
 - [Trim a Binary Search Tree](#trim-a-binary-search-tree)
+- [Binary Tree Right Side View](#binary-tree-right-side-view)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1602,6 +1603,92 @@ public:
         if (root->val > high) return trimBST(root->left, low, high);
         
         return root;
+    }
+};
+```
+
+## Binary Tree Right Side View
+[Find the problem on leetcode $\to$](https://leetcode.com/problems/binary-tree-right-side-view/)
+### Problem Statement
+Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+### Example
+<figure markdown>
+![image](../images/bt-rightview.jpeg){ width="300" }
+</figure>
+
+```
+Input: root = [1,2,3,null,5,null,4]
+Output: [1,3,4]
+```
+
+```
+Input: root = [1,null,3]
+Output: [1,3]
+```
+
+```
+Input: root = []
+Output: []
+```
+
+### Approach
+- If you look closely to the example above, you can see that the right side view is the right most node of the tree for each level,
+- armed with that knowledge you can travel level by level using a level order traversal, then find what is the last node of that level, you return that value.
+- At the worst case the Binary Tree is skewed so at most $O(N)$ space and time is required to find the right view of that tree.
+- The following is the code example that implements this approach.
+
+### Code
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+class Solution {
+public:
+    vector<int> answer;
+    vector<int> rightSideView(TreeNode* root) {
+        
+        if (not root) return answer;
+        
+        vector<vector<int>> levelOrder;
+        
+        queue<pair<TreeNode*, int>> q;
+        
+        q.push({root, 1});
+        
+        while (!q.empty()) {
+            TreeNode* front = q.front().first;
+            int depth = q.front().second;
+            
+            q.pop();
+            
+            if (front->left) q.push({front->left, depth+1});
+            if (front->right) q.push({front->right, depth+1});
+            
+            if (depth > levelOrder.size()) {
+                vector<int> v;
+                v.push_back(front->val);
+                levelOrder.push_back(v);
+            } else if (depth == levelOrder.size()){
+                levelOrder[depth-1].push_back(front->val);
+            }
+        }
+        
+        for (int i=0; i<levelOrder.size(); i++) {
+            vector<int> lvl = levelOrder[i];
+            answer.push_back(lvl[lvl.size() - 1]);
+        }
+        
+        return answer;
     }
 };
 ```
