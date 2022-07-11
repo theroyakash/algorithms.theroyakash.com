@@ -347,25 +347,24 @@ Output: [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]
 ```cpp
 class Solution {
 private:
-    void dfs(vector<vector<char>>& board, vector<vector<bool>>& visited, int i, int j, int r, int c) {
-        
-        visited[i][j] = true;
+    void dfs(vector<vector<char>>& board, int i, int j, int r, int c) {
+
         board[i][j] = 'N';
         
-        if (i>0 and board[i-1][j] == 'O' and not visited[i-1][j]) {
-            dfs(board, visited, i-1, j, r, c);
+        if (i>0 and board[i-1][j] == 'O') {
+            dfs(board, i-1, j, r, c);
         }
         
-        if (i<r-1 and board[i+1][j] == 'O' and not visited[i+1][j]) {
-            dfs(board, visited, i+1, j, r, c);
+        if (i<r-1 and board[i+1][j] == 'O') {
+            dfs(board, i+1, j, r, c);
         }
         
-        if (j>0 and board[i][j-1] == 'O' and not visited[i][j-1]) {
-            dfs(board, visited, i, j-1, r, c);
+        if (j>0 and board[i][j-1] == 'O') {
+            dfs(board, i, j-1, r, c);
         }
         
-        if (j<c-1 and board[i][j+1] == 'O' and not visited[i][j+1]) {
-            dfs(board, visited, i, j+1, r, c);
+        if (j<c-1 and board[i][j+1] == 'O') {
+            dfs(board, i, j+1, r, c);
         }
     }
     
@@ -381,19 +380,19 @@ public:
         int rows = board.size();
         int cols = board[0].size();
         
-        vector<vector<bool>> visited(rows, vector<bool>(cols));
+        // vector<vector<bool>> visited(rows, vector<bool>(cols));
         
         // run dfs at all the positions of O at the boundaries
         // col wise
         for (int i=0; i<rows; i++) {
             // 0th column
             if (board[i][0] == 'O') {
-                dfs(board, visited, i, 0, rows, cols);
+                dfs(board, i, 0, rows, cols);
             }
             
             // cols-1th column
             if (board[i][cols-1] == 'O') {
-                dfs(board, visited, i, cols-1, rows, cols);
+                dfs(board, i, cols-1, rows, cols);
             }
         }
         
@@ -401,11 +400,11 @@ public:
         for (int j=1; j<cols-1; j++) {
             // 1st row because 0,0 is already done
             if (board[0][j] == 'O') {
-                dfs(board, visited, 0, j, rows, cols);
+                dfs(board, 0, j, rows, cols);
             }
             
             if (board[rows-1][j] == 'O') {
-                dfs(board, visited, rows-1, j, rows, cols);
+                dfs(board, rows-1, j, rows, cols);
             }
         }
         
