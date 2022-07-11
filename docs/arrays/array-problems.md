@@ -366,6 +366,7 @@ The majority element is the element that appears more than $\lfloor\frac{n}{2}\r
 Boyer–Moore majority vote algorithm can find the majority of a sequence of elements using linear time and constant space if exists. The returned result may not be the majority element (if not exists), so we have to do an additional check if the indicated element indeed the majority element.
 
 The algorithm goes like this:
+
 - Initialize an element majority and a counter `counter` with `counter = 0`
 - For each element x of the input sequence:
     - If `counter = 0`, then assign majority as x and `counter = 1`

@@ -5,6 +5,7 @@
 - [Number of Islands](#number-of-islands)
 - [Clone Graph](#clone-graph)
 - [Max Area of Island](#max-area-of-island)
+- [Pacific Atlantic Water Flow](#pacific-atlantic-water-flow)
 
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
@@ -217,6 +218,100 @@ public:
         
         if (numberOfIsland == 0) return 0;
         return maxSize;
+    }
+};
+```
+
+## Pacific Atlantic Water Flow
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+### Problem Statement
+There is an $m \times n$ rectangular island that borders both the Pacific Ocean and Atlantic Ocean. The Pacific Ocean touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges.
+
+The island is partitioned into a grid of square cells. You are given an $m \times n$ integer matrix heights where `heights[r][c]` represents the height above sea level of the cell at coordinate $(r, c)$.
+
+The island receives a lot of rain, and the rain water can flow to neighboring cells directly north, south, east, and west if the neighboring cell's height is less than or equal to the current cell's height. Water can flow from any cell adjacent to an ocean into the ocean.
+
+Return a 2D list of grid coordinates result where `result[i] = [ri, ci]` denotes that rain water can flow from cell $(r_i, c_i)$ to both the Pacific and Atlantic oceans.
+
+### Example
+<figure markdown>
+![waterflow-grid](../images/waterflow-grid.jpeg)
+</figure>
+
+```
+Input: heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]
+Output: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+```
+
+```
+Input: heights = [[2,1],[1,2]]
+Output: [[0,0],[0,1],[1,0],[1,1]]
+```
+
+### Approach
+- We'll use DFS to solve this problem with a reverse approach.
+- First instead of searching from where the water can flow to ocean we'll check from ocean what is the **reverse** of the path through which the water is flowing.
+- Naturally water flows from top height to bottom height, here we'll do the opposite where we'll check if the neighbors height is greater than the current height we'll travel (because we're searching the reverse of the waterflow's path),
+- Now all columns of row $0$ and all the rows of column $0$ has the pacific water, we'll draw a DFS to find where the water can go using our customized DFS algorithm.
+- Similarly we'll do this for the atlantic ocean.
+- Now we'll check where the water from both can reach, we'll return that in the answers array.
+
+### Code
+```cpp
+class Solution {
+private:
+    vector<vector<int>> flowCoordinates;
+    
+    void dfs(vector<vector<int>>& heights, vector<vector<bool>> &visited, int i, int j, int r, int c) {
+        
+        visited[i][j] = true;
+        
+        if (i>0 and not visited[i-1][j] and heights[i][j] <= heights[i-1][j]) {
+            dfs(heights, visited, i-1,j,r,c);
+        }
+        
+        if (i<r-1 and not visited[i+1][j] and heights[i][j] <= heights[i+1][j]) {
+            dfs(heights, visited, i+1,j,r,c);
+        }
+        
+        if (j>0 and heights[i][j] <= heights[i][j-1] and not visited[i][j-1]) {
+            dfs(heights, visited, i,j-1,r,c);
+        }
+        
+        if (j<c-1 and heights[i][j] <= heights[i][j+1] and not visited[i][j+1]) {
+            dfs(heights, visited, i,j+1,r,c);
+        }
+    }
+    
+public:
+    vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
+        int rows = heights.size();
+        int cols = heights[0].size();
+        
+        vector<vector<bool>> pacific(rows, vector<bool>(cols));
+        vector<vector<bool>> atlantic(rows, vector<bool>(cols));
+        
+        for (int i=0;i<rows;i++) {
+            dfs(heights, pacific, i, 0, rows, cols);
+            dfs(heights, atlantic, i, cols-1, rows, cols);
+        }
+        
+        for (int i=0; i<cols; i++) {
+            dfs(heights, pacific, 0, i, rows, cols);
+            dfs(heights, atlantic, rows-1, i, rows, cols);
+        }
+        
+        // now check for some (i, j) both pacific and altantic shows true
+        
+        for (int i=0; i<rows; i++) {
+            for (int j=0;j<cols;j++) {
+                if (pacific[i][j] and atlantic[i][j]) {
+                    flowCoordinates.push_back({i, j});
+                }
+            }
+        }
+        
+        return flowCoordinates;
     }
 };
 ```
