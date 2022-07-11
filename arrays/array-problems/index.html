@@ -3749,13 +3749,17 @@
 </ul>
 <h3 id="boyer-moore-algorithm">Boyer Moore Algorithm</h3>
 <p>Boyer–Moore majority vote algorithm can find the majority of a sequence of elements using linear time and constant space if exists. The returned result may not be the majority element (if not exists), so we have to do an additional check if the indicated element indeed the majority element.</p>
-<p>The algorithm goes like this:
-- Initialize an element majority and a counter <code>counter</code> with <code>counter = 0</code>
-- For each element x of the input sequence:
-    - If <code>counter = 0</code>, then assign majority as x and <code>counter = 1</code>
-    - If you encounter next the same element as the majority element you increment the counter.
-    - Otherwise decrease the counter and no change to the majority element.
-- at the end return the <code>majority</code> variable. It may be or may not be the majority element (if it doesn't exists) then we need check if that is the majority element with just a single pass.</p>
+<p>The algorithm goes like this:</p>
+<ul>
+<li>Initialize an element majority and a counter <code>counter</code> with <code>counter = 0</code></li>
+<li>For each element x of the input sequence:<ul>
+<li>If <code>counter = 0</code>, then assign majority as x and <code>counter = 1</code></li>
+<li>If you encounter next the same element as the majority element you increment the counter.</li>
+<li>Otherwise decrease the counter and no change to the majority element.</li>
+</ul>
+</li>
+<li>at the end return the <code>majority</code> variable. It may be or may not be the majority element (if it doesn't exists) then we need check if that is the majority element with just a single pass.</li>
+</ul>
 <h3 id="example_1">Example</h3>
 <p>Let's run the algorithm on an example to see how this is working
 <img alt="image" src="../../images/majority-example.png" /></p>
