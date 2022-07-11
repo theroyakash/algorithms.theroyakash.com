@@ -6,6 +6,7 @@
 - [Clone Graph](#clone-graph)
 - [Max Area of Island](#max-area-of-island)
 - [Pacific Atlantic Water Flow](#pacific-atlantic-water-flow)
+- [Surrounded Regions](#surrounded-regions)
 
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
@@ -312,6 +313,108 @@ public:
         }
         
         return flowCoordinates;
+    }
+};
+```
+
+## Surrounded Regions
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/surrounded-regions/)
+### Problem Statement
+Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.
+
+A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+### Example
+<figure markdown>
+![xocapturegrid](../images/xocapturegrid.jpeg){ width="400" }
+</figure>
+
+```
+Input: 
+board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+Output: [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
+```
+**Explanation:** Surrounded regions should not be on the border, which means that any 'O' on the border of the board are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' on the border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected horizontally or vertically.
+
+### Approach
+- We'll use the approach from the previous problem. We'll do a quick reverse thinking, see we should not capture regions that are on the border so what we'll do is use a DFS to quickly capture the regions that surrounds the border with some other alphabet "N" let's say.
+- These can be achieved by running DFS on the "O" at the row $0$, **last row** and column $0$ and at the **last column**.
+- So we'll run dfs at all the positions of "O" at the boundaries,
+- then we'll capture all the regions that are left out **"not in the border"**.
+- Then we'll convert the "N"s into "O"s.
+
+### Code
+```cpp
+class Solution {
+private:
+    void dfs(vector<vector<char>>& board, vector<vector<bool>>& visited, int i, int j, int r, int c) {
+        
+        visited[i][j] = true;
+        board[i][j] = 'N';
+        
+        if (i>0 and board[i-1][j] == 'O' and not visited[i-1][j]) {
+            dfs(board, visited, i-1, j, r, c);
+        }
+        
+        if (i<r-1 and board[i+1][j] == 'O' and not visited[i+1][j]) {
+            dfs(board, visited, i+1, j, r, c);
+        }
+        
+        if (j>0 and board[i][j-1] == 'O' and not visited[i][j-1]) {
+            dfs(board, visited, i, j-1, r, c);
+        }
+        
+        if (j<c-1 and board[i][j+1] == 'O' and not visited[i][j+1]) {
+            dfs(board, visited, i, j+1, r, c);
+        }
+    }
+    
+public:
+    void solve(vector<vector<char>>& board) {
+        // capture everything except an unsurrounded region
+        // if some O is there at the row 0, n-1 and col 0, n-1
+        // we'll not be able to capture it.
+        
+        // run a dfs on each of the area in row 0, n-1 and col 0, n-1
+        // to not capture it and marking it as N
+        
+        int rows = board.size();
+        int cols = board[0].size();
+        
+        vector<vector<bool>> visited(rows, vector<bool>(cols));
+        
+        // run dfs at all the positions of O at the boundaries
+        // col wise
+        for (int i=0; i<rows; i++) {
+            // 0th column
+            if (board[i][0] == 'O') {
+                dfs(board, visited, i, 0, rows, cols);
+            }
+            
+            // cols-1th column
+            if (board[i][cols-1] == 'O') {
+                dfs(board, visited, i, cols-1, rows, cols);
+            }
+        }
+        
+        // run row wise at col = 0 and rows-1
+        for (int j=1; j<cols-1; j++) {
+            // 1st row because 0,0 is already done
+            if (board[0][j] == 'O') {
+                dfs(board, visited, 0, j, rows, cols);
+            }
+            
+            if (board[rows-1][j] == 'O') {
+                dfs(board, visited, rows-1, j, rows, cols);
+            }
+        }
+        
+        for (int i=0; i<rows; i++) {
+            for (int j=0; j<cols; j++) {
+                if (board[i][j] == 'O') board[i][j] = 'X';
+                if (board[i][j] == 'N') board[i][j] = 'O';
+            }
+        }
     }
 };
 ```
