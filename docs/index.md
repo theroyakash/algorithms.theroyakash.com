@@ -35,7 +35,7 @@ This material categorizes coding interview problems into a set of **8 patterns**
 ## Content overview
 
 1. [Sliding Window Pattern](/arrays/sliding-window/), more is being added.
-2. Arrays and Strings (Coming soon)
+2. [Arrays](https://algorithms.theroyakash.com/arrays/array-problems/) and Strings (Coming soon)
 3. [Recursion overview](/recursion/intro/) and [recursion problems (more) coming soon](/recursion/problems/)
 4. [Linked lists overview](/LinkedLists/stl-usage/) and [problems](/LinkedLists/problems/)
 5. [Stacks overview](/stacks/usage/) and [stack problems](/stacks/problems/) and Queues (coming soon)
@@ -43,8 +43,8 @@ This material categorizes coding interview problems into a set of **8 patterns**
 7. [Trees overview](/trees/implementation/) and [tree problem](/trees/problems/)
 8. [Graphs overview](/graph/usage/), [graph bfs and dfs](/graph/bfs-dfs/) and [Graph Problems](/graph/problems/),
 9. [Heaps overview](/heaps/heap-pq/) and [heap problems](/heaps/problems/) and [2 heaps problems](/2heaps/problems/).
-10. Bit Manipulation (With C/C++) (coming soon)
-11. Sorting and Searching (coming soon)
+10. [Greedy algorithms](https://algorithms.theroyakash.com/greedy/problems/)
+11. Bit Manipulation (With C/C++) (coming soon)
 12. Dynamic Programming (coming soon)
 
 ## Problem Counter
