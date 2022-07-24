@@ -544,6 +544,7 @@ public:
 ```
 
 ## Search in a sorted matrix but not `inter-row-wise` sorted
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/search-a-2d-matrix-ii/)
 ### Problem Statement
 The problem statement is almost identical similar but the rule _first integer of each row is greater than the last integer of the previous row_ does **NOT** apply here.
 
@@ -559,6 +560,94 @@ $M_B = \begin{bmatrix}
 Input = MB and target = 3
 Output: true
 ```
+
+### Approaches
+1. We can do a row wise binary search to find the element, that'll take $O(\text{|rows|} \lg \text{|cols|})$ time to complete.
+2. Otherwise we can also implement a linear time algorithm to find the element. This will be much faster than the log approach.
+    - Here we'll do the followings, first we'll start from the first row and last column of the matrix
+    - then if we find the element is $\geq$ than the target means it'll be available only at a lower row than the current row.
+    ![image](../images/targetsearch2dm.png)
+    - Here target is **16** and **15** is at the first row and last column of the matrix. So we should go down by one row.
+    - At the second row we see **19** that is greater than the target $16$ so we should go left by one column because $16$ can not be present below $19$ in the last column.
+    - This is how we find the element.
+
+### Code
+#### CODE WITH BINARY SEARCH
+```cpp
+class Solution {
+private:
+    bool rowWiseSearch(vector<vector<int>>& matrix, int row, int target) {
+        int start = 0;
+        int end = matrix[row].size() - 1;
+        
+        int middle = start + (end - start) / 2;
+        
+        while (start <= end) {
+            if(matrix[row][middle] == target) return true;
+            if (matrix[row][middle] > target) end = middle - 1;
+            if (matrix[row][middle] < target) start = middle + 1;
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        return false;
+    }
+
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        int rows = matrix.size();
+        
+        for (int i=0; i<rows; i++) {
+            bool found = rowWiseSearch(matrix, i, target);
+            if (found == true) return true;
+        }
+        
+        return false;
+    }
+};
+```
+
+#### CODE WITH MATRIX-LINEAR SEARCH
+```cpp
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        // base case: 1x1 matrix
+        if (matrix.size() == 1) {
+            if (matrix[0].size() == 1) return matrix[0][0] == target;
+        }
+        
+        // base case: numbers out of bounds
+        if (target < matrix[0][0] or target > matrix[matrix.size() - 1][matrix[0].size() - 1]) {
+            return false;
+        }
+        
+        
+        int rows = matrix.size();
+        int cols = matrix[0].size();
+        
+        int i = rows - 1;
+        int j = 0;
+        
+        while(i>=0 and j<cols) {
+            if (matrix[i][j] == target) return true;
+            
+            if (matrix[i][j] < target) {
+                j++;
+            } else {
+                i--;
+            }
+        }
+        
+        return false;
+    }
+};
+```
+
+### Time Complexity
+The matrix linear search takes $O(\text{|rows|} + \text{|cols|})$ time because at worst case we'll reach to last row and first column of the matrix.
 
 ## Search for Range
 [Problem on Leetcode $\to$](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
