@@ -27,6 +27,10 @@ Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 ```
 
+### Approach
+- We'll approach the problem in a reversed order. So we'll start from the end of the array and see if it is possible to reach that place, if we find any place from where we can reach the last index in the next iteration we'll see, that we can reach that index?
+- We'll try to see the updated position is possible or not?
+
 ### Code
 ```cpp
 class Solution {
@@ -38,7 +42,7 @@ public:
         while (index >=0) {
             if (nums[index] + index >= to_reach) {
                 to_reach = index;
-            } 
+            }
             
             index--;
         }
