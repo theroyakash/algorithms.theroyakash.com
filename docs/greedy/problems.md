@@ -31,9 +31,19 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
 ```cpp
 class Solution {
 public:
-    
     bool canJump(vector<int>& nums) {
+        int to_reach = nums.size() - 1;
+        int index = nums.size() - 1;
         
+        while (index >=0) {
+            if (nums[index] + index >= to_reach) {
+                to_reach = index;
+            } 
+            
+            index--;
+        }
+        
+        return to_reach == 0;
     }
 };
 ```
