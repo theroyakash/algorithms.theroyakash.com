@@ -6,6 +6,7 @@ Greedy algorithms are algorithms that follows the problem-solving heuristic of m
 **Questions solved here**
 
 - [Jump Game](#jump-game)
+- [Jump Game II](#jump-game-ii)
 
 ## Jump Game
 [Find the problem on Leetcode $\to$](https://leetcode.com/problems/jump-game/)
@@ -48,6 +49,68 @@ public:
         }
         
         return to_reach == 0;
+    }
+};
+```
+
+## Jump Game II
+[Find the problem on leetcode $\to$](https://leetcode.com/problems/jump-game-ii/)
+### Problem Statement
+Given similar to the last problem, an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Our goal is to reach the last index in the minimum number of jumps.
+
+We can **assume** that you can **always** reach the last index.
+
+### Example
+```
+Input: nums = [2,3,1,1,4]
+Output: 2
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+```
+
+### Approach
+- We'll do a simple BFS like approach here. We are at first at the first index of the array. We'll see upto where we can reach and save it as level 1.
+- Similarly we'll see from level 1 upto where maximum we can jump to, we'll mark it as level 2.
+- From each level we'll jump to the next level until we reach the last index or cross that.
+- To hold the values of the levels we'll use a `pair<int, int>` whose first element is the lower bound of the current level and second is the upper bound of the current level.
+
+<figure markdown>
+![image](../images/jumpgame2.png)
+</figure>
+
+### C++ Code
+```cpp
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        // base cases
+        if (nums.size() == 1) return 0;
+        
+        int jumpCounter = 0;
+        
+        pair<int, int> level = {1, nums[0]};
+        
+        int index = 1;
+        
+        while (level.second < nums.size() - 1) {
+            // find if you can get out of this level, then find the max
+            // distance you can get out of this level?
+            
+            // this level has bounds from level.first to level.second
+            int maxJumpToTheOutSide = 0;
+            
+            for (int i=0; i<=level.second; i++) {
+                maxJumpToTheOutSide = std::max(maxJumpToTheOutSide, (nums[i] + i));
+            }
+            
+            // jump to that location now
+            level.first = level.second + 1;
+            level.second = maxJumpToTheOutSide;
+            index = level.first;
+            
+            jumpCounter++;
+        }
+        
+        return jumpCounter + 1;
     }
 };
 ```

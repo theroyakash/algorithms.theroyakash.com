@@ -56,7 +56,7 @@ The following table is meant to represent the amount of problems has a full anal
 | [Binary Search (Interview Problems)](/binary-search/problems/)                                       | $22$ |
 | [Tree Problems](https://algorithms.theroyakash.com/trees/problems/)                                  | $26$                                           |
 | [Graph Traversals, BFS, DFS and applications](https://algorithms.theroyakash.com/graph/bfs-dfs/)     | $3$                                            |
-| [Graph Standard Problems](https://algorithms.theroyakash.com/graph/problems/)                       | $4$                                            |
+| [Graph Standard Problems](https://algorithms.theroyakash.com/graph/problems/)                        | $4$                                            |
 | [Graph Interview Problems](https://algorithms.theroyakash.com/graph/problems/)                       | $3$                                            |
 | [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $10$                                           |
 | [Heap Problems](https://algorithms.theroyakash.com/heaps/problems/)                                  | $6$                                            |
@@ -65,7 +65,8 @@ The following table is meant to represent the amount of problems has a full anal
 | [Array + Sliding window concept Problems](https://algorithms.theroyakash.com/arrays/sliding-window/) | $4$                                            |
 | [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
 | Dynamic Programming                                                                                  | Not started yet                                |
-| **Total Number of Problems with Full analysis**                                                      | $120$ problems with **FULL** analysis           |
+| [Greedy Algorithms](https://algorithms.theroyakash.com/greedy/problems/)                             | 2                                              |
+| **Total Number of Problems with Full analysis**                                                      | $122$ problems with **FULL** analysis           |
 
 ## Also Coming Soon
 
