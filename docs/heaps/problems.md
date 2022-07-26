@@ -16,6 +16,7 @@ tags:
 - [Find K Closest Elements (Medium)](#find-k-closest-elements-medium)
 - [Top K Frequent Elements (Medium)](#top-k-frequent-elements-medium)
 - [Top K Frequent Elements](#top-k-frequent-elements)
+- [K Closest Points to Origin](#k-closest-points-to-origin)
 
 ## [Kth Largest Element in an Array (Medium)](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
@@ -293,6 +294,73 @@ public:
         }
         
         return answer;
+    }
+};
+```
+
+## K Closest Points to Origin
+[Find the problem on leetcode $\to$](https://leetcode.com/problems/k-closest-points-to-origin/)
+
+### Problem Statement
+Given an array of points where $\text{points(i)} = [x_i, y_i]$ represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
+
+The distance between two points on the X-Y plane is the Euclidean distance (i.e., $\sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$)
+
+You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
+
+### Approach
+- We'll use max heap to store the distant points from the origin.
+- To know how much distance they are in we'll make some ID system for each of the points, and calculate the distance between that point and the origin then put it in a hash table along with the ID,
+- Now we'll for each entry in the hashtable we'll put the entry in a max heap (with priority being the distance to the origin), if the max heap size if greater than $k$ then we'll pop from the heap,
+- at last we'll get all the point's IDs remaining in the priority queue and return them via a ID to point lookup.
+
+### Code
+```cpp
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        vector<int> origin = {0,1};
+        
+        // make an ID System to identify each of the points
+        // let's say their index in the points array is their ID
+        
+        // making map of point IDs and their distance to the origin
+        // ID -> distance map
+        unordered_map<int, float> distances;
+        
+        for (int i=0; i<points.size(); i++) {
+            float distance = sqrt(points[i][0] * points[i][0] + points[i][1] * points[i][1]);
+            distances.insert({i, distance});
+        }
+        
+        // now make a priority queue to store the order and at last find k closest points
+        // using a max heap we can do that
+        
+        priority_queue<pair<float, int>> pq; // Max Heap
+        
+        for (auto v:distances) {
+            int id = v.first;
+            int distance = v.second;
+            
+            pq.push({v.second, v.first});
+            
+            if (pq.size() > k) {
+                pq.pop();
+            }
+        }
+        
+        // now the last k means the k closest points are remaining in the pq
+        vector<vector<int>> answers;
+        
+        while (not pq.empty()) {
+            auto top = pq.top();
+            pq.pop();
+            
+            vector<int> v = {points[top.second][0], points[top.second][1]};
+            answers.push_back(v);
+        }
+        
+        return answers;
     }
 };
 ```
