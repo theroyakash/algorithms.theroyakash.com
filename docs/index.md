@@ -59,14 +59,14 @@ The following table is meant to represent the amount of problems has a full anal
 | [Graph Standard Problems](https://algorithms.theroyakash.com/graph/problems/)                        | $4$                                            |
 | [Graph Interview Problems](https://algorithms.theroyakash.com/graph/problems/)                       | $3$                                            |
 | [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $10$                                           |
-| [Heap Problems](https://algorithms.theroyakash.com/heaps/problems/)                                  | $6$                                            |
+| [Heap Problems](https://algorithms.theroyakash.com/heaps/problems/)                                  | $7$                                            |
 | [2 Heap Problems](https://algorithms.theroyakash.com/2heaps/problems/)                               | $2$ problem scheduled to be added              |
 | [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $22$            |
 | [Array + Sliding window concept Problems](https://algorithms.theroyakash.com/arrays/sliding-window/) | $4$                                            |
 | [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
 | Dynamic Programming                                                                                  | Not started yet                                |
 | [Greedy Algorithms](https://algorithms.theroyakash.com/greedy/problems/)                             | 2                                              |
-| **Total Number of Problems with Full analysis**                                                      | $122$ problems with **FULL** analysis           |
+| **Total Number of Problems with Full analysis**                                                      | $123$ problems with **FULL** analysis           |
 
 ## Also Coming Soon
 
