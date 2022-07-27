@@ -7,6 +7,7 @@
 - [Max Area of Island](#max-area-of-island)
 - [Pacific Atlantic Water Flow](#pacific-atlantic-water-flow)
 - [Surrounded Regions](#surrounded-regions)
+- [All Paths From Source to Target](#all-paths-from-source-to-target)
 
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
@@ -414,6 +415,80 @@ public:
                 if (board[i][j] == 'N') board[i][j] = 'O';
             }
         }
+    }
+};
+```
+
+## All Paths From Source to Target
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/all-paths-from-source-to-target/)
+### Problem Statement
+Given a directed acyclic graph (DAG) of n nodes labeled from $0$ to node $n - 1$, find all possible paths from node $0$ to node $n - 1$ and return them in any order.
+
+The graph is given as follows: `graph[i]` is a list of all nodes you can visit from node i (i.e., there is a directed edge from node `i` to node `graph[i][j]`).
+
+### Examples
+<figure markdown>
+![image](../images/all_1.jpeg){ width="200" }
+</figure>
+```
+Input: graph = [[1,2],[3],[3],[]]
+Output: [[0,1,3],[0,2,3]]
+Explanation: There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
+```
+
+<figure markdown>
+![image](../images/all_2.jpeg){ width="300" }
+</figure>
+
+```
+Input: graph = [[4,3,1],[3,2,4],[3],[4],[]]
+Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
+```
+
+### Approach
+
+- We'll do a DFS approach, instead of putting the path into the answer when we reach the last node to be reachable we'll put the path when we visit $n-1^{th}$ node because in the question we are asked to find all path from node $0$ to node $n - 1$.
+- Our approach will find all the possible path via DFS recursions. In order to store the path information we'll add an array called `lvl` that is copied and shared to the next recursion level. So for each recursion calls we'll maintain a of the path visited so far called `lvl` that'll be passed to the next level. That is how we'll maintain the path information.
+- At the end we'll return all the paths recorded during the recursion run.
+
+### Code
+```cpp
+class Solution {
+private:
+    set<vector<int>> s;
+    
+    void dfs(vector<vector<int>>& graph, vector<int> lvl, int index) {
+        if (index > graph.size() - 1) return;
+        
+        // stop dfs once there is no where to go
+        if (index == graph.size() - 1) {
+            // return once reached the final destination
+            // final destination is always the n-1 vertex according to the question
+            lvl.push_back(index);  // final destination added
+            s.insert(lvl);  // add this path to the answer set (set for uniqueness)
+            return;
+        }
+        
+        
+        lvl.push_back(index);
+        
+        for (int i=0; i<graph[index].size(); i++) {
+            // no cycle so should not care about the already visited part
+            int nbr = graph[index][i];
+            dfs(graph, lvl, nbr);
+        }
+    }
+    
+public:
+    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
+        vector<int> lvl;
+        dfs(graph, lvl, 0);
+        
+        // add the final destination to all the paths
+        vector<vector<int>> answer;
+        answer.assign(s.begin(), s.end());
+        
+        return answer;
     }
 };
 ```
