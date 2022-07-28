@@ -21,6 +21,7 @@ Binary search problems are really useful because they run in sublinear time. We'
 - [Search in a sorted matrix but not `inter-row-wise` sorted](#search-in-a-sorted-matrix-but-not-inter-row-wise-sorted)
 - [Search for Range](#search-for-range)
 - [Koko Eating Bananas](#koko-eating-bananas)
+- [Time Based Key-Value Store](#time-based-key-value-store)
 - [Next alphabetical element](#next-alphabetical-element)
 - [Find position of an element in an Infinite Sorted Array](#find-position-of-an-element-in-an-infinite-sorted-array)
 - [Index of First 1 in a Binary Sorted Infinite Array](#index-of-first-1-in-a-binary-sorted-infinite-array)
@@ -907,6 +908,162 @@ public:
         return hi;
     }
 };
+```
+## Time Based Key-Value Store
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/time-based-key-value-store/)
+### Problem Statement
+Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+
+**Task** is to implement the TimeMap class,
+
+1. `TimeMap()` Initializes the object of the data structure.
+2. `void set(String key, String value, int timestamp)` Stores the key key with the value value at the given time timestamp.
+3. `String get(String key, int timestamp)` Returns a value such that set was called previously, with `timestamp_prev <= timestamp`. If there are multiple such values, it returns the value associated with the largest `timestamp_prev`. If there are no values, it returns `""`.
+
+### Example
+```
+Input
+["TimeMap", "set", "get", "get", "set", "get", "get"]
+[[], ["foo", "bar", 1], ["foo", 1], ["foo", 3], ["foo", "bar2", 4], ["foo", 4], ["foo", 5]]
+Output
+[null, null, "bar", "bar", null, "bar2", "bar2"]
+```
+**Explaination**
+```
+Explanation
+TimeMap timeMap = new TimeMap();
+timeMap.set("foo", "bar", 1);  // store the key "foo" and value "bar" along with timestamp = 1.
+timeMap.get("foo", 1);         // return "bar"
+timeMap.get("foo", 3);         // return "bar", since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is "bar".
+timeMap.set("foo", "bar2", 4); // store the key "foo" and value "bar2" along with timestamp = 4.
+timeMap.get("foo", 4);         // return "bar2"
+timeMap.get("foo", 5);         // return "bar2"
+```
+
+### Approach #1
+- We'll use a **time-based** map implementation. For each timestamp we'll record all the {key, value} pairs coming in.
+- And return when asked. If the timestamp is not found then we'll see what is the last timestamp for which this key was recorded, we'll return that.
+- To find the last timestamp for which this key was recorded we need to do a linear decrement of the timestamp and check if the key is present or not for every time stamps.
+- Else we can change the design of the map and get a better upper bound on the time complexity. As the times are always in sorted order (time is always increasing), we maybe able to use binary search.
+- For this particular design following is the code.
+
+**Hashtable design**
+
+| timestamp      | unordered_map<Key, Value\>|
+|----------|------------------------|
+| 1   | <"outlaw", "1673"> |
+|    4   |           <"outlaw", 33>          |
+
+### Code for Approach #1
+```cpp
+class TimeMap {
+private:
+    unordered_map<int, unordered_map<string, string>> mp;
+public:
+    TimeMap() {}
+    
+    void set(string key, string value, int timestamp) {
+        mp[timestamp][key] = value;
+    }
+    
+    string get(string key, int timestamp) {
+        // if there is no timestamp for key "key"
+        if (mp.find(timestamp) == mp.end()) {
+            while (timestamp){
+                // go in reverse order of timestamp to find the key if exists before or not?
+                // return the last
+                
+                if (mp[timestamp].find(key) != mp[timestamp].end()) {
+                    return mp[timestamp][key];
+                }
+                timestamp--;
+            }
+        }
+        
+        return mp[timestamp][key];
+    }
+};
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap* obj = new TimeMap();
+ * obj->set(key,value,timestamp);
+ * string param_2 = obj->get(key,timestamp);
+ */
+```
+
+### Approach #2
+The previous design was a bit easier to understand but had a flaw that if we don't find element in the map for some timestamp then we'd have to linearly decrease the timestamps and check for the key, else we'll use a better design.
+
+For each key we'll, maintain a `vector<pair<string, int>>` **value** & time pair. Then if there exists any key and don't exists the asked timestamp we can give back the binary search lower bound from the array.
+
+**Hashtable new design**
+
+| Key      | pair<Value, TimeStamp\>|
+|----------|------------------------|
+| outlaw   | <"1673", 1>, <"33", 4> |
+|    --    |           --           |
+
+Now with this design of the system we can do a simple binary search on the lower bound of the timestamp in $O(\lg N)$ time.
+
+### Code for Approach #2
+```cpp
+class TimeMap {
+private:
+    // hashtable design
+    // unordered_map<key, vector<pair<value, timestamp>>>
+    unordered_map<string, vector<pair<string, int>>> map;
+public:
+    TimeMap() {}
+    
+    void set(string key, string value, int timestamp) {
+        if (map.find(key) == map.end()) {
+            // there doesn't exists a key, first time the key has come up
+            // so add this
+            vector<pair<string, int>> v= {{value, timestamp}};
+            map.insert({key,v});
+        } else {
+            // means key is inserted at a before timestamp than now
+            // this becomes naturally sorted with the timestamps
+            map[key].push_back({value, timestamp});
+        }        
+    }
+    
+    string get(string key, int timestamp) {        
+        // we assume key is already present before making a query
+        // we also have a time stamp
+        // so we'll do a binary search on the timestamp to get the result at the given time stamp
+        // else we'll return the lower bound on the timestamp
+        
+        int start = 0;
+        int end = map[key].size() - 1;
+        
+        // basecase
+        // query is at the timestamp far before first key to be registered
+
+        int middle = start + (end - start) / 2;
+        
+        // O(lg n) compare
+        while (start <= end) {
+            if (map[key][middle].second == timestamp) return map[key][middle].first;
+            if (map[key][middle].second > timestamp) end = middle - 1;
+            if (map[key][middle].second < timestamp) start = middle + 1;
+            
+            middle = start + (end - start) / 2;
+        }
+        
+        if (end == - 1) return "";
+        
+        return map[key][end].first;
+    }
+};
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap* obj = new TimeMap();
+ * obj->set(key,value,timestamp);
+ * string param_2 = obj->get(key,timestamp);
+ */
 ```
 
 ## Next alphabetical element
