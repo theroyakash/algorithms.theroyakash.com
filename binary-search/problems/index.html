@@ -1342,6 +1342,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#time-based-key-value-store" class="md-nav__link">
+    Time Based Key-Value Store
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Based Key-Value Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_6" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-1" class="md-nav__link">
+    Approach #1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-for-approach-1" class="md-nav__link">
+    Code for Approach #1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-2" class="md-nav__link">
+    Approach #2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-for-approach-2" class="md-nav__link">
+    Code for Approach #2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-alphabetical-element" class="md-nav__link">
     Next alphabetical element
   </a>
@@ -2392,6 +2447,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#time-based-key-value-store" class="md-nav__link">
+    Time Based Key-Value Store
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Based Key-Value Store">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_6" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-1" class="md-nav__link">
+    Approach #1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-for-approach-1" class="md-nav__link">
+    Code for Approach #1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach-2" class="md-nav__link">
+    Approach #2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-for-approach-2" class="md-nav__link">
+    Code for Approach #2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-alphabetical-element" class="md-nav__link">
     Next alphabetical element
   </a>
@@ -2483,6 +2593,7 @@
 <li><a href="#search-in-a-sorted-matrix-but-not-inter-row-wise-sorted">Search in a sorted matrix but not <code>inter-row-wise</code> sorted</a></li>
 <li><a href="#search-for-range">Search for Range</a></li>
 <li><a href="#koko-eating-bananas">Koko Eating Bananas</a></li>
+<li><a href="#time-based-key-value-store">Time Based Key-Value Store</a></li>
 <li><a href="#next-alphabetical-element">Next alphabetical element</a></li>
 <li><a href="#find-position-of-an-element-in-an-infinite-sorted-array">Find position of an element in an Infinite Sorted Array</a></li>
 <li><a href="#index-of-first-1-in-a-binary-sorted-infinite-array">Index of First 1 in a Binary Sorted Infinite Array</a></li>
@@ -3296,6 +3407,177 @@
 <a id="__codelineno-21-68" name="__codelineno-21-68" href="#__codelineno-21-68"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">hi</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-21-69" name="__codelineno-21-69" href="#__codelineno-21-69"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-21-70" name="__codelineno-21-70" href="#__codelineno-21-70"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="time-based-key-value-store">Time Based Key-Value Store</h2>
+<p><a href="https://leetcode.com/problems/time-based-key-value-store/">Find the problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_6">Problem Statement</h3>
+<p>Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.</p>
+<p><strong>Task</strong> is to implement the TimeMap class,</p>
+<ol>
+<li><code>TimeMap()</code> Initializes the object of the data structure.</li>
+<li><code>void set(String key, String value, int timestamp)</code> Stores the key key with the value value at the given time timestamp.</li>
+<li><code>String get(String key, int timestamp)</code> Returns a value such that set was called previously, with <code>timestamp_prev &lt;= timestamp</code>. If there are multiple such values, it returns the value associated with the largest <code>timestamp_prev</code>. If there are no values, it returns <code>""</code>.</li>
+</ol>
+<h3 id="example_3">Example</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Input
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>[&quot;TimeMap&quot;, &quot;set&quot;, &quot;get&quot;, &quot;get&quot;, &quot;set&quot;, &quot;get&quot;, &quot;get&quot;]
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>[[], [&quot;foo&quot;, &quot;bar&quot;, 1], [&quot;foo&quot;, 1], [&quot;foo&quot;, 3], [&quot;foo&quot;, &quot;bar2&quot;, 4], [&quot;foo&quot;, 4], [&quot;foo&quot;, 5]]
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>Output
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>[null, null, &quot;bar&quot;, &quot;bar&quot;, null, &quot;bar2&quot;, &quot;bar2&quot;]
+</code></pre></div>
+<strong>Explaination</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Explanation
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>TimeMap timeMap = new TimeMap();
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>timeMap.set(&quot;foo&quot;, &quot;bar&quot;, 1);  // store the key &quot;foo&quot; and value &quot;bar&quot; along with timestamp = 1.
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>timeMap.get(&quot;foo&quot;, 1);         // return &quot;bar&quot;
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>timeMap.get(&quot;foo&quot;, 3);         // return &quot;bar&quot;, since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is &quot;bar&quot;.
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>timeMap.set(&quot;foo&quot;, &quot;bar2&quot;, 4); // store the key &quot;foo&quot; and value &quot;bar2&quot; along with timestamp = 4.
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>timeMap.get(&quot;foo&quot;, 4);         // return &quot;bar2&quot;
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>timeMap.get(&quot;foo&quot;, 5);         // return &quot;bar2&quot;
+</code></pre></div></p>
+<h3 id="approach-1">Approach #1</h3>
+<ul>
+<li>We'll use a <strong>time-based</strong> map implementation. For each timestamp we'll record all the {key, value} pairs coming in.</li>
+<li>And return when asked. If the timestamp is not found then we'll see what is the last timestamp for which this key was recorded, we'll return that.</li>
+<li>To find the last timestamp for which this key was recorded we need to do a linear decrement of the timestamp and check if the key is present or not for every time stamps.</li>
+<li>Else we can change the design of the map and get a better upper bound on the time complexity. As the times are always in sorted order (time is always increasing), we maybe able to use binary search.</li>
+<li>For this particular design following is the code.</li>
+</ul>
+<p><strong>Hashtable design</strong></p>
+<table>
+<thead>
+<tr>
+<th>timestamp</th>
+<th>unordered_map&lt;Key, Value></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>&lt;"outlaw", "1673"&gt;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>&lt;"outlaw", 33&gt;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="code-for-approach-1">Code for Approach #1</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">TimeMap</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">mp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="n">TimeMap</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">        </span><span class="n">mp</span><span class="p">[</span><span class="n">timestamp</span><span class="p">][</span><span class="n">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="w">        </span><span class="c1">// if there is no timestamp for key &quot;key&quot;</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mp</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">mp</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">timestamp</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">                </span><span class="c1">// go in reverse order of timestamp to find the key if exists before or not?</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="w">                </span><span class="c1">// return the last</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mp</span><span class="p">[</span><span class="n">timestamp</span><span class="p">].</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">mp</span><span class="p">[</span><span class="n">timestamp</span><span class="p">].</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">mp</span><span class="p">[</span><span class="n">timestamp</span><span class="p">][</span><span class="n">key</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="w">                </span><span class="n">timestamp</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mp</span><span class="p">[</span><span class="n">timestamp</span><span class="p">][</span><span class="n">key</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>
+<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a><span class="cm">/**</span>
+<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a><span class="cm"> * Your TimeMap object will be instantiated and called as such:</span>
+<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a><span class="cm"> * TimeMap* obj = new TimeMap();</span>
+<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a><span class="cm"> * obj-&gt;set(key,value,timestamp);</span>
+<a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a><span class="cm"> * string param_2 = obj-&gt;get(key,timestamp);</span>
+<a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a><span class="cm"> */</span><span class="w"></span>
+</code></pre></div>
+<h3 id="approach-2">Approach #2</h3>
+<p>The previous design was a bit easier to understand but had a flaw that if we don't find element in the map for some timestamp then we'd have to linearly decrease the timestamps and check for the key, else we'll use a better design.</p>
+<p>For each key we'll, maintain a <code>vector&lt;pair&lt;string, int&gt;&gt;</code> <strong>value</strong> &amp; time pair. Then if there exists any key and don't exists the asked timestamp we can give back the binary search lower bound from the array.</p>
+<p><strong>Hashtable new design</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>pair&lt;Value, TimeStamp></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>outlaw</td>
+<td>&lt;"1673", 1&gt;, &lt;"33", 4&gt;</td>
+</tr>
+<tr>
+<td>--</td>
+<td>--</td>
+</tr>
+</tbody>
+</table>
+<p>Now with this design of the system we can do a simple binary search on the lower bound of the timestamp in <span class="arithmatex">\(O(\lg N)\)</span> time.</p>
+<h3 id="code-for-approach-2">Code for Approach #2</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">TimeMap</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="c1">// hashtable design</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span><span class="c1">// unordered_map&lt;key, vector&lt;pair&lt;value, timestamp&gt;&gt;&gt;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">map</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="n">TimeMap</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">            </span><span class="c1">// there doesn&#39;t exists a key, first time the key has come up</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">            </span><span class="c1">// so add this</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">            </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">v</span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">timestamp</span><span class="p">}};</span><span class="w"></span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">            </span><span class="n">map</span><span class="p">.</span><span class="n">insert</span><span class="p">({</span><span class="n">key</span><span class="p">,</span><span class="n">v</span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">            </span><span class="c1">// means key is inserted at a before timestamp than now</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">            </span><span class="c1">// this becomes naturally sorted with the timestamps</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="w">            </span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">timestamp</span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">        </span><span class="p">}</span><span class="w">        </span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="w">        </span><span class="c1">// we assume key is already present before making a query</span>
+<a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a><span class="w">        </span><span class="c1">// we also have a time stamp</span>
+<a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a><span class="w">        </span><span class="c1">// so we&#39;ll do a binary search on the timestamp to get the result at the given time stamp</span>
+<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a><span class="w">        </span><span class="c1">// else we&#39;ll return the lower bound on the timestamp</span>
+<a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a>
+<a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-30" name="__codelineno-25-30" href="#__codelineno-25-30"></a>
+<a id="__codelineno-25-31" name="__codelineno-25-31" href="#__codelineno-25-31"></a><span class="w">        </span><span class="c1">// basecase</span>
+<a id="__codelineno-25-32" name="__codelineno-25-32" href="#__codelineno-25-32"></a><span class="w">        </span><span class="c1">// query is at the timestamp far before first key to be registered</span>
+<a id="__codelineno-25-33" name="__codelineno-25-33" href="#__codelineno-25-33"></a>
+<a id="__codelineno-25-34" name="__codelineno-25-34" href="#__codelineno-25-34"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-35" name="__codelineno-25-35" href="#__codelineno-25-35"></a>
+<a id="__codelineno-25-36" name="__codelineno-25-36" href="#__codelineno-25-36"></a><span class="w">        </span><span class="c1">// O(lg n) compare</span>
+<a id="__codelineno-25-37" name="__codelineno-25-37" href="#__codelineno-25-37"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-25-38" name="__codelineno-25-38" href="#__codelineno-25-38"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">middle</span><span class="p">].</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">middle</span><span class="p">].</span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-39" name="__codelineno-25-39" href="#__codelineno-25-39"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">middle</span><span class="p">].</span><span class="n">second</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-40" name="__codelineno-25-40" href="#__codelineno-25-40"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">middle</span><span class="p">].</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">middle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-41" name="__codelineno-25-41" href="#__codelineno-25-41"></a>
+<a id="__codelineno-25-42" name="__codelineno-25-42" href="#__codelineno-25-42"></a><span class="w">            </span><span class="n">middle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-43" name="__codelineno-25-43" href="#__codelineno-25-43"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-25-44" name="__codelineno-25-44" href="#__codelineno-25-44"></a>
+<a id="__codelineno-25-45" name="__codelineno-25-45" href="#__codelineno-25-45"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-46" name="__codelineno-25-46" href="#__codelineno-25-46"></a>
+<a id="__codelineno-25-47" name="__codelineno-25-47" href="#__codelineno-25-47"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">map</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">end</span><span class="p">].</span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-25-48" name="__codelineno-25-48" href="#__codelineno-25-48"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-25-49" name="__codelineno-25-49" href="#__codelineno-25-49"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-25-50" name="__codelineno-25-50" href="#__codelineno-25-50"></a>
+<a id="__codelineno-25-51" name="__codelineno-25-51" href="#__codelineno-25-51"></a><span class="cm">/**</span>
+<a id="__codelineno-25-52" name="__codelineno-25-52" href="#__codelineno-25-52"></a><span class="cm"> * Your TimeMap object will be instantiated and called as such:</span>
+<a id="__codelineno-25-53" name="__codelineno-25-53" href="#__codelineno-25-53"></a><span class="cm"> * TimeMap* obj = new TimeMap();</span>
+<a id="__codelineno-25-54" name="__codelineno-25-54" href="#__codelineno-25-54"></a><span class="cm"> * obj-&gt;set(key,value,timestamp);</span>
+<a id="__codelineno-25-55" name="__codelineno-25-55" href="#__codelineno-25-55"></a><span class="cm"> * string param_2 = obj-&gt;get(key,timestamp);</span>
+<a id="__codelineno-25-56" name="__codelineno-25-56" href="#__codelineno-25-56"></a><span class="cm"> */</span><span class="w"></span>
 </code></pre></div>
 <h2 id="next-alphabetical-element">Next alphabetical element</h2>
 <h2 id="find-position-of-an-element-in-an-infinite-sorted-array">Find position of an element in an Infinite Sorted Array</h2>
