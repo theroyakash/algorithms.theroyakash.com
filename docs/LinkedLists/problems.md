@@ -38,51 +38,75 @@ Using variables we'll reverse the list in $O(N)$ time and $O(1)$ space.
 
 ```cpp
 #include <iostream>
-
-using std::cout;
-using std::endl;
-using std::vector;
+#include <vector>
+using namespace std;
 
 template <class T>
-class LinkedListNode {
+class Node {
 public:
     T data;
-    LinkedListNode<T> *next;
+    Node<T>* next;
+
+    Node(T value) {
+        data = value;
+        next = nullptr;
+    }
 };
 
 template <class T>
 class LinkedList {
 private:
-    LinkedListNode<T> *head;
-    LinkedListNode<T> *end;
-    int classPriveSize;
-
+    int size;
 public:
+    Node<T>* head;
+    Node<T>* end;
+
     LinkedList() {
-        head = NULL;
-        end = NULL;
-        classPriveSize = 0;
+        head = nullptr;
+        end = nullptr;
     }
 
     ~LinkedList() {
-        Clear();
+        // delete each and every node that is allocated
+        while (head) {
+            Node<T>* temp = head->next;
+            delete(head);
+            head = temp;
+        }
     }
 
-    void push_back(T value) {
-        if (classPriveSize == 0) {
-            LinkedListNode<T> *newNode = new LinkedListNode<T>;
-            newNode->data = value;
-            newNode->next = NULL;
+    void push_front(T value) {
+        Node<T>* newNode = new Node<T>(value);
+
+        if (not head and not end) {
             head = newNode;
             end = newNode;
         } else {
-            LinkedListNode<T> *newNode = new LinkedListNode<T>;
-            newNode->data = value;
-            newNode->next = NULL;
+            newNode->next = head;
+            head = newNode;
+        }
+
+        size++;
+    }
+
+    void push_back(T value) {
+        Node<T>* newNode = new Node<T>(value);
+
+        if (not head and not end) {
+            head = newNode;
+            end = newNode;
+        } else {
             end->next = newNode;
             end = newNode;
         }
-        classPriveSize++;
+    }
+
+    void out() const{
+        Node<T>* traveller = head;
+        while (traveller) {
+            cout << traveller->data << " ";
+            traveller = traveller->next;
+        }
     }
 
     T front() {
