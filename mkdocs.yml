@@ -19,6 +19,7 @@ nav:
       - Linked Lists:
         - Linked List STL Usage: ./LinkedLists/stl-usage.md
         - Linked List problems: ./LinkedLists/problems.md
+    - Hashing: ./hashing/problems.md
     - Stacks, Queues:
       - Stacks:
         - Stacks Usage: ./stacks/usage.md
