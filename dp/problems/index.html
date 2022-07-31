@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://algorithms.theroyakash.com/dp/intro/">
+        <link rel="canonical" href="https://algorithms.theroyakash.com/dp/problems/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Introduction - theroyakash algorithms</title>
+        <title>Problems - theroyakash algorithms</title>
       
     
     
@@ -152,7 +152,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Problems
             
           </span>
         </div>
@@ -1266,12 +1266,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Introduction
+          Problems
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Introduction
+        Problems
       </a>
       
         
@@ -1320,6 +1320,40 @@
         
           <li class="md-nav__item">
   <a href="#code" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frog-jump" class="md-nav__link">
+    Frog Jump
+  </a>
+  
+    <nav class="md-nav" aria-label="Frog Jump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_1" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_1" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
     Code
   </a>
   
@@ -1481,6 +1515,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#frog-jump" class="md-nav__link">
+    Frog Jump
+  </a>
+  
+    <nav class="md-nav" aria-label="Frog Jump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_1" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_1" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1505,6 +1573,7 @@
 <p>Table of Contents</p>
 <ul>
 <li><a href="#climbing-stairs">Climbing Stairs</a></li>
+<li><a href="#frog-jump">Frog Jump</a></li>
 </ul>
 <h2 id="climbing-stairs">Climbing Stairs</h2>
 <p><a href="https://leetcode.com/problems/climbing-stairs/">Find the Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
@@ -1544,6 +1613,41 @@
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mp</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w"></span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h2 id="frog-jump">Frog Jump</h2>
+<p><a href="https://www.codingninjas.com/codestudio/problems/frog-jump_3621012">Find the Problem on Codestudio</a></p>
+<h3 id="problem-statement_1">Problem Statement</h3>
+<p>There is a frog on the 1st step of an <span class="arithmatex">\(N\)</span> stairs long staircase. The frog wants to reach the <span class="arithmatex">\(N^{th}\)</span> stair. <code>HEIGHT[]</code> is the height of the (i+1)th stair.If Frog jumps from ith to jth stair, the energy lost in the jump is given by <code>HEIGHT[i-1] - HEIGHT[j-1]</code>. </p>
+<p>In the Frog is on ith staircase, he can jump either to <span class="arithmatex">\((i+1)^{th}\)</span> stair or to <span class="arithmatex">\((i+2)^{th}\)</span> stair. Your task is to find the minimum total energy used by the frog to reach from 1st stair to <span class="arithmatex">\(N^{th}\)</span> stair.</p>
+<h3 id="approach_1">Approach</h3>
+<ul>
+<li>We'll be using normal Dynamic Programming approach. We'll manually hard code the cost of moving for 0th (index which is 0) and 1st index (which is <span class="arithmatex">\(\text{heights[0] - heights[1]}\)</span>).</li>
+<li>Then for each <span class="arithmatex">\(i\)</span> we'll see the result for <span class="arithmatex">\(i-1\)</span> and <span class="arithmatex">\(i-2\)</span> and select the step that uses less energy.</li>
+<li>We update the energy lost at step <span class="arithmatex">\(i\)</span> then go to step <span class="arithmatex">\(i+1\)</span>.</li>
+<li>We don't have to store the <span class="arithmatex">\([0 \to i]\)</span> step costs because we are using only <span class="arithmatex">\(i-1\)</span> and <span class="arithmatex">\(i-2\)</span> values at any given <span class="arithmatex">\(i\)</span>. So a <span class="arithmatex">\(2\)</span> element array or a <code>pair&lt;int, int&gt;</code> is enough.</li>
+</ul>
+<h3 id="code_1">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">frogJump</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">heights</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">// Write your code here.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">energy_lost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">store</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">store</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">store</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">heights</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">oneStepCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">twoStepCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="mi">-2</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">energyLostNow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">oneStepCost</span><span class="p">,</span><span class="w"> </span><span class="n">twoStepCost</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">store</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">store</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">energyLostNow</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
               
