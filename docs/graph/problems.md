@@ -8,6 +8,7 @@
 - [Pacific Atlantic Water Flow](#pacific-atlantic-water-flow)
 - [Surrounded Regions](#surrounded-regions)
 - [All Paths From Source to Target](#all-paths-from-source-to-target)
+- [Course Schedule](#course-schedule)
 
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
@@ -489,6 +490,105 @@ public:
         answer.assign(s.begin(), s.end());
         
         return answer;
+    }
+};
+```
+
+## Course Schedule
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/course-schedule/)
+### Problem Statement
+There are a total of numCourses courses you have to take, labeled from $0$ to $\text{numCourses} - 1$. You are given an array prerequisites where `prerequisites[i]` = ($a_i, b_i$) indicates that you must take course $b_i$ first if you want to take course $a_i$.
+
+For example, the pair ($0,1$) indicates that to take course $0$ you have to first take course $1$. Return true if you can finish all courses. Otherwise, return false.
+
+### Approach
+If you look carefully it is a problem of finding cycle in a graph or finding the topological sort of the graph. If the graph is a DAG then only all the courses can be completed. If there is a cycle in the graph then to take course $a$ you have to take $b$ and to take $b$ you have to take $a$, which is not possible.
+
+So we have to find a cycle in the graph if we find a cycle then the course are not possible to complete. Now in order to find the cycle in the graph we can use DFS by coloring the vertices.
+
+Following is a efficient implementation of DFS and cycle finding algorithm along with a custom definition for graph and solution to the leetcode problem.
+
+### Code
+```cpp
+enum class Color{
+    black, red, grey
+};
+
+class Graph {
+private:
+    vector<vector<int>> adj_list;
+    int graph_size;
+    bool has_cycle = false;
+public:
+    Graph(int V) {
+        graph_size = V;
+        for (int i=0; i<V; i++) {
+            vector<int> v;
+            adj_list.push_back(v);
+        }
+    }
+    
+    void add_edge(int source, int destination) {
+        // directed edge only
+        adj_list[source].push_back(destination);
+    }
+    
+    void dfsSubRoutine(unordered_map<int, Color>&color, int nodeID) {
+        // do coloring of the edges
+        // color grey means not visited
+        // color red means visited and not fully explored
+        // color black means visited and fully explored
+        
+        if (color[nodeID] == Color::red) {
+            has_cycle = true;
+            return;
+        } else if (color[nodeID] == Color::grey){
+            color[nodeID] = Color::red;
+            for (int nbr:adj_list[nodeID]) {
+                dfsSubRoutine(color, nbr);
+            }
+        }
+        
+        color[nodeID] = Color::black;
+        return;
+    }
+    
+    bool hasCycle() {
+        // run a DFS algorithm and check if there is a cycle or not?
+        // check if some node is previously visited or not?
+        // if some neighbor is neighbor previously visited 
+        // then return true;
+        // means there is cycle
+        
+        unordered_map<int, Color> color;
+        for (int i=0; i<graph_size; i++) color[i] = Color::grey;
+        
+        for (int i = 0; i<graph_size; i++) {
+            // for all component of the graph run the subroutine
+            if (color[i] == Color::grey) dfsSubRoutine(color, i);
+        }
+        
+        return has_cycle;
+    }
+};
+
+class Solution {
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        // courseID = {0 .. n-1}
+        // preReq[i] = {to Take i, must have taken j}
+        // naïve cycle detection
+        // if the graph is a DAG then only a solution is possible but otherwise
+        // for any cycle if you have to take a then take b
+        // if you have to take b then before you take a
+        
+        Graph g = Graph(numCourses);
+        
+        for (auto courses:prerequisites) {
+            g.add_edge(courses[1], courses[0]);
+        }
+        
+        return not g.hasCycle();
     }
 };
 ```
