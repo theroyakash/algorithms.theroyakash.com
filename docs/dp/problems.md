@@ -8,6 +8,7 @@ Table of Contents
 - [Climbing Stairs](#climbing-stairs)
 - [Frog Jump](#frog-jump)
 - [House Robber](#house-robber)
+- [House Robber II](#house-robber-ii)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -131,12 +132,15 @@ What are the decisions you need to make before you can make a move at location $
 ### Code
 ```cpp
 class Solution {
-private:
-    int max_profit = INT_MIN;
 public:
     int rob(vector<int>& nums) {
-        if (nums.size() == 1) return nums[0];
-        if (nums.size() == 2) return std::max(nums[0], nums[1]);
+
+        int size = nums.size();
+
+        // base cases are trivially solvable
+        if (size == 1) return nums[0];
+        if (size == 2) return std::max(nums[0], nums[1]);
+        if (size == 3) return std::max(std::max(nums[0], nums[2]), nums[1]);
         
         pair<int, int> profits;
         profits.first = nums[0];
@@ -144,12 +148,74 @@ public:
         
         for (int i=2; i<nums.size(); i++) {
             int max_profit_possible = std::max(profits.first + nums[i], profits.second);
-            max_profit = std::max(max_profit, max_profit_possible);
             profits.first = profits.second;
-            profits.second = max_profit;
+            profits.second = max_profit_possible;
         }
         
         return profits.second;
+    }
+};
+```
+
+## House Robber II
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/house-robber-ii)
+### Problem Statement
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are **arranged in a circle**. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and **it will automatically contact the police if two adjacent houses were broken into on the same night**.
+
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+### Approach
+The approach is similar to the last problem, there the last house was not connected to the first house. What we'll do in the problem is considering the first ($0^{th}$) house we'll calculate the profits, and not considering the first ($0^{th}$) house we'll calculate the profits, the we'll return the maximum.
+
+If we consider the first ($0^{th}$) house then we should never consider the last house so we ignore the last house. For the case when we do not consider the first ($0^{th}$) house, we must ignore the first ($0^{th}$) house explicitly. To do that we set `profits[0] = 0` and `profits[1] = nums[1]`, this forces the algorithm to drop the first ($0^{th}$) house.
+
+We'll also force the algorithm to take the first ($0^{th}$) house by setting `profits[0] = nums[0]` and `profits[1] = nums[0]`.
+
+### Code
+```cpp
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        
+        int size = nums.size();
+        
+        // base cases trivially solvable
+        if (size == 1) return nums[0];
+        if (size == 2) return std::max(nums[0], nums[1]);
+        if (size == 3) return std::max(std::max(nums[0], nums[2]), nums[1]);
+        
+        // forcing the algorithm to take the 0th house
+        pair<int, int> profits;
+        profits.first = nums[0];
+        profits.second = nums[0];
+        
+        // profits considering 0th index
+        // if we consider the 0th index then we can not rob the last index
+        // so we run the algorithm till size - 2
+        for (int i=2; i<=size-2; i++) {
+            int max_profit_so_far = std::max(profits.first + nums[i], profits.second);
+            int temp = profits.second;
+            profits.second = max_profit_so_far;
+            profits.first = temp;
+        }
+        
+        // profits not considering the 1st index
+        // forcing algorithm to not take the 0th house
+        pair<int, int> profits2;
+        profits2.first = 0;
+        profits2.second = nums[1];
+        
+        // profits not considering 0th index
+        // if we do not consider the 0th index then we can rob the last index
+        // so we run the algorithm till the last index
+        for (int i=2; i<size; i++) {
+            int max_profit_so_far = std::max(profits2.first + nums[i], profits2.second);
+            int temp = profits2.second;
+            profits2.second = max_profit_so_far;
+            profits2.first = temp;
+        }
+        
+        return std::max(profits.second, profits2.second);
     }
 };
 ```
