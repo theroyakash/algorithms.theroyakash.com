@@ -55,6 +55,9 @@ public:
 };
 ```
 
+### Time Complexity
+The algorithm runs in $O(N)$ time and with `O(N)` memory from the `unordered_map` and also takes extra auxiliary space due to recursive implementation.
+
 ## Frog Jump
 [Find the Problem on Codestudio](https://www.codingninjas.com/codestudio/problems/frog-jump_3621012)
 ### Problem Statement
@@ -92,6 +95,9 @@ int frogJump(int n, vector<int> &heights) {
     return store.second;
 }
 ```
+
+### Time Complexity
+The algorithm runs in $O(N)$ time and with no extra memory.
 
 ## House Robber
 [Find the problem on Leetcode $\to$](https://leetcode.com/problems/house-robber/)
@@ -157,6 +163,9 @@ public:
 };
 ```
 
+### Time Complexity
+The algorithm runs in $O(N)$ time and with no extra memory.
+
 ## House Robber II
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/house-robber-ii)
 ### Problem Statement
@@ -219,3 +228,6 @@ public:
     }
 };
 ```
+
+### Time Complexity
+The algorithm runs in $O(N)$ time and with no extra memory.
