@@ -29,18 +29,18 @@ This material categorizes coding interview problems into a set of **8 patterns**
 
 ## Content overview
 
-1. [Sliding Window Pattern](/arrays/sliding-window/), more is being added.
-2. Arrays and Strings (Coming soon)
-3. [Recursion overview](/recursion/intro/) and [recursion problems (more) coming soon](/recursion/problems/)
-4. [Linked lists overview](/LinkedLists/stl-usage/) and [problems](/LinkedLists/problems/)
-5. [Stacks overview](/stacks/usage/) and [stack problems](/stacks/problems/) and Queues (coming soon)
-6. [Binary Search overview](/bss/) and [Problems (more coming soon)](/otherbinarysearch-problems/)
-7. [Trees overview](/trees/implementation/) and [tree problem](/trees/problems/)
-8. [Graphs overview](/graph/usage/), [graph bfs and dfs](/graph/bfs-dfs/) and [Graph Problems](/graph/problems/),
-9. [Heaps overview](/heaps/heap-pq/) and [heap problems](/heaps/problems/) and [2 heaps problems](/2heaps/problems/).
-10. Bit Manipulation (With C/C++) (coming soon)
-11. Sorting and Searching (coming soon)
-12. Dynamic Programming (coming soon)
+1. [Sliding Window Pattern](https://algorithms.theroyakash.com/arrays/sliding-window/), more is being added.
+2. [Arrays](https://algorithms.theroyakash.com/arrays/array-problems/) and Strings (Coming soon)
+3. [Recursion overview](https://algorithms.theroyakash.com/recursion/intro/) and [recursion problems (more) coming soon](https://algorithms.theroyakash.com/recursion/problems/)
+4. [Linked lists overview](https://algorithms.theroyakash.com/LinkedLists/stl-usage/) and [problems](https://algorithms.theroyakash.com/LinkedLists/problems/)
+5. [Stacks overview](https://algorithms.theroyakash.com/stacks/usage/) and [stack problems](https://algorithms.theroyakash.com/stacks/problems/) and Queues (coming soon)
+6. [Binary Search overview](https://algorithms.theroyakash.com/binary-search/intro/) and [Problems (more coming soon)](https://algorithms.theroyakash.com/binary-search/problems/)
+7. [Trees overview](https://algorithms.theroyakash.com/trees/implementation/) and [tree problem](/trees/problems/)
+8. [Graphs overview](https://algorithms.theroyakash.com/graph/usage/), [graph bfs and dfs](https://algorithms.theroyakash.com/graph/bfs-dfs/) and [Graph Problems](https://algorithms.theroyakash.com/graph/problems/),
+9. [Heaps overview](https://algorithms.theroyakash.com/heaps/heap-pq/) and [heap problems](https://algorithms.theroyakash.com/heaps/problems/) and [2 heaps problems](https://algorithms.theroyakash.com/2heaps/problems/).
+10. [Greedy algorithms](https://algorithms.theroyakash.com/greedy/problems/)
+11. [Dynamic Programming](https://algorithms.theroyakash.com/dp/problems/)
+12.  Bit Manipulation (With C/C++) (coming soon)
 
 ## Problem Counter
 The following table is meant to represent the amount of problems has a full analysis in the website. Maybe incorrectly represented upto 1-2 problems.
@@ -59,7 +59,7 @@ The following table is meant to represent the amount of problems has a full anal
 | [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $22$            |
 | [Array + Sliding window concept Problems](https://algorithms.theroyakash.com/arrays/sliding-window/) | $4$                                            |
 | [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
-| Dynamic Programming                                                                                  | Not started yet                                |
+| [Dynamic Programming](https://algorithms.theroyakash.com/dp/problems/)                                                                                  | $4$                                |
 | [Greedy Algorithms](https://algorithms.theroyakash.com/greedy/problems/)                             | 2                                              |
 | **Total Number of Problems with Full analysis**                                                      | $123$ problems with **FULL** analysis           |
 
