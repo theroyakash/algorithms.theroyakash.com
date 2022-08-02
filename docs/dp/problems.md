@@ -1,5 +1,5 @@
 # :material-train-car-passenger: Dynamic programming
-There is a famous quote saying that "**those who don't remember the past are condemned to repeat it**". This quoute very much synchronize with the meaning of dynamic programming. What in dynamic programming you do is you calculate and remember the calculation, if and when the same calculation is encountered again, instead of recomputing it you fetch the data this reducing computing time.
+There is a famous quote saying that "**those who don't remember the past are condemned to repeat it**". This quote very much synchronizes with the meaning of dynamic programming. What in dynamic programming you do is you calculate and remember the calculation, if and when the same calculation is encountered again, instead of recomputing it you fetch the data this reducing computing time.
 
 There are several problems where you are required to calculate something multiple times and if you _cache_ the data then you can avoid computation multiple times. Let's see some of the problems where you need to cache some result to avoid multiple computations.
 
@@ -7,6 +7,7 @@ Table of Contents
 
 - [Climbing Stairs](#climbing-stairs)
 - [Frog Jump](#frog-jump)
+- [House Robber](#house-robber)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -89,4 +90,66 @@ int frogJump(int n, vector<int> &heights) {
     
     return store.second;
 }
+```
+
+## House Robber
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/house-robber/)
+### Problem Statement
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+### Examples
+```
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+```
+
+### Approach
+We'll be using a DP apporach to solve this problem, the main objective is to come up with some recursive solution standing at the $i^{th}$ location. So let's build an intuition around that,
+
+For location $i = 0$ you only can rob the $0^{th}$ house, and standing at the $1^{st}$ house you can either rob the $0^{th}$ house and skip the $1^{st}$ house or skip the $0^{th}$ house and rob the $1^{st}$ house whichever gives more profit. So we'll do the following, we'll indicate for index $i -1$ a map `m` which will show what could have been the maximum profit we could make till $i-1$ index.
+
+Depending upon the choice at index $i$ we'll update the maximum profit we can make till this location $i$.
+
+What are the decisions you need to make before you can make a move at location $i$? The question can be answered by looking at the $i-1^{th}$ location see what is the maximum you can make till $i-1$. Then you either skip this location and make a move at the next location or make a move at this location and skip the next location. Take whatever maximizes the profit.
+
+- So profit till $0$ will be `nums[0]`
+- profits till $1$ will be `std::max(nums[0], nums[1])`
+- Profits at location $2$ will be the following
+    - Either you take the profit from the $0^{th}$ index and rob the $2^{nd}$ location
+    - or you take the profit till the $1^{st}$ location and skip the second location.
+- $\forall x \in [0, \text{nums.size})$ we'll see what is maximum between the following two `profits[i-1]` and `profits[i-2] + nums[i]`. We'll take the maximum and put in the profits map or array.
+
+### Code
+```cpp
+class Solution {
+private:
+    int max_profit = INT_MIN;
+public:
+    int rob(vector<int>& nums) {
+        if (nums.size() == 1) return nums[0];
+        if (nums.size() == 2) return std::max(nums[0], nums[1]);
+        
+        pair<int, int> profits;
+        profits.first = nums[0];
+        profits.second = std::max(nums[0], nums[1]);
+        
+        for (int i=2; i<nums.size(); i++) {
+            int max_profit_possible = std::max(profits.first + nums[i], profits.second);
+            max_profit = std::max(max_profit, max_profit_possible);
+            profits.first = profits.second;
+            profits.second = max_profit;
+        }
+        
+        return profits.second;
+    }
+};
 ```
