@@ -1364,6 +1364,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#house-robber" class="md-nav__link">
+    House Robber
+  </a>
+  
+    <nav class="md-nav" aria-label="House Robber">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_2" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_2" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_2" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1549,6 +1590,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#house-robber" class="md-nav__link">
+    House Robber
+  </a>
+  
+    <nav class="md-nav" aria-label="House Robber">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-statement_2" class="md-nav__link">
+    Problem Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_2" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_2" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1568,12 +1650,13 @@
 
 
 <h1 id="dynamic-programming"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7H3c-1.1 0-2 .9-2 2v8h1a2 2 0 1 0 4 0h12a2 2 0 1 0 4 0h1V9a2 2 0 0 0-2-2M7 12H3V9h4v3m8 0H9V9h6v3m6 0h-4V9h4v3Z"/></svg></span> Dynamic programming</h1>
-<p>There is a famous quote saying that "<strong>those who don't remember the past are condemned to repeat it</strong>". This quoute very much synchronize with the meaning of dynamic programming. What in dynamic programming you do is you calculate and remember the calculation, if and when the same calculation is encountered again, instead of recomputing it you fetch the data this reducing computing time.</p>
+<p>There is a famous quote saying that "<strong>those who don't remember the past are condemned to repeat it</strong>". This quote very much synchronizes with the meaning of dynamic programming. What in dynamic programming you do is you calculate and remember the calculation, if and when the same calculation is encountered again, instead of recomputing it you fetch the data this reducing computing time.</p>
 <p>There are several problems where you are required to calculate something multiple times and if you <em>cache</em> the data then you can avoid computation multiple times. Let's see some of the problems where you need to cache some result to avoid multiple computations.</p>
 <p>Table of Contents</p>
 <ul>
 <li><a href="#climbing-stairs">Climbing Stairs</a></li>
 <li><a href="#frog-jump">Frog Jump</a></li>
+<li><a href="#house-robber">House Robber</a></li>
 </ul>
 <h2 id="climbing-stairs">Climbing Stairs</h2>
 <p><a href="https://leetcode.com/problems/climbing-stairs/">Find the Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
@@ -1648,6 +1731,61 @@
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="house-robber">House Robber</h2>
+<p><a href="https://leetcode.com/problems/house-robber/">Find the problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<h3 id="problem-statement_2">Problem Statement</h3>
+<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</p>
+<h3 id="examples">Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Input: nums = [1,2,3,1]
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Output: 4
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Total amount you can rob = 1 + 3 = 4.
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Input: nums = [2,7,9,3,1]
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Output: 12
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Total amount you can rob = 2 + 9 + 1 = 12.
+</code></pre></div>
+<h3 id="approach_2">Approach</h3>
+<p>We'll be using a DP apporach to solve this problem, the main objective is to come up with some recursive solution standing at the <span class="arithmatex">\(i^{th}\)</span> location. So let's build an intuition around that,</p>
+<p>For location <span class="arithmatex">\(i = 0\)</span> you only can rob the <span class="arithmatex">\(0^{th}\)</span> house, and standing at the <span class="arithmatex">\(1^{st}\)</span> house you can either rob the <span class="arithmatex">\(0^{th}\)</span> house and skip the <span class="arithmatex">\(1^{st}\)</span> house or skip the <span class="arithmatex">\(0^{th}\)</span> house and rob the <span class="arithmatex">\(1^{st}\)</span> house whichever gives more profit. So we'll do the following, we'll indicate for index <span class="arithmatex">\(i -1\)</span> a map <code>m</code> which will show what could have been the maximum profit we could make till <span class="arithmatex">\(i-1\)</span> index.</p>
+<p>Depending upon the choice at index <span class="arithmatex">\(i\)</span> we'll update the maximum profit we can make till this location <span class="arithmatex">\(i\)</span>.</p>
+<p>What are the decisions you need to make before you can make a move at location <span class="arithmatex">\(i\)</span>? The question can be answered by looking at the <span class="arithmatex">\(i-1^{th}\)</span> location see what is the maximum you can make till <span class="arithmatex">\(i-1\)</span>. Then you either skip this location and make a move at the next location or make a move at this location and skip the next location. Take whatever maximizes the profit.</p>
+<ul>
+<li>So profit till <span class="arithmatex">\(0\)</span> will be <code>nums[0]</code></li>
+<li>profits till <span class="arithmatex">\(1\)</span> will be <code>std::max(nums[0], nums[1])</code></li>
+<li>Profits at location <span class="arithmatex">\(2\)</span> will be the following<ul>
+<li>Either you take the profit from the <span class="arithmatex">\(0^{th}\)</span> index and rob the <span class="arithmatex">\(2^{nd}\)</span> location</li>
+<li>or you take the profit till the <span class="arithmatex">\(1^{st}\)</span> location and skip the second location.</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(\forall x \in [0, \text{nums.size})\)</span> we'll see what is maximum between the following two <code>profits[i-1]</code> and <code>profits[i-2] + nums[i]</code>. We'll take the maximum and put in the profits map or array.</li>
+</ul>
+<h3 id="code_2">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_profit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INT_MIN</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rob</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">profits</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="n">profits</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">profits</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">max_profit_possible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">profits</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">profits</span><span class="p">.</span><span class="n">second</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="n">max_profit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">max_profit</span><span class="p">,</span><span class="w"> </span><span class="n">max_profit_possible</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">            </span><span class="n">profits</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">profits</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">            </span><span class="n">profits</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_profit</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">profits</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
               
