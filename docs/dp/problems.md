@@ -9,6 +9,7 @@ Table of Contents
 - [Frog Jump](#frog-jump)
 - [House Robber](#house-robber)
 - [House Robber II](#house-robber-ii)
+- [Longest Palindromic Substring](#longest-palindromic-substring)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -231,3 +232,116 @@ public:
 
 ### Time Complexity
 The algorithm runs in $O(N)$ time and with no extra memory.
+
+## Longest Palindromic Substring
+[Find the problem on leetcode $\to$](https://leetcode.com/problems/longest-palindromic-substring/)
+### Problem Statement
+Given a string s, return the longest palindromic substring in s.
+### Examples
+```
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+
+Input: s = "cbbd"
+Output: "bb"
+```
+
+### Approach
+- We'll make a 2D array called `dp`, now for each entry $(i, j)$ in `dp` shows whether from $i \to j$ is a palindromic substring or not and what is the size of that pallindrome?
+- First for all entries $(i, j)$ in `dp` such that $i = j$ is a palindromic substring because one character word is always a pallindrome.
+- Now we'll move diagonally right next from the main diagonal. Look at the below picture to understand how are we moving?
+    ![image](../images/longest-pallindrome.png)
+- So we need to design the for loops accordingly. If we look closely to the change of $(i, j)$ we'll see that each time $i$ start from $0$ and $j$ starts from $i + \text{some number}$, that some number is increasing by $1$ every iteration.
+- First iteration $i$ starts from $0$ and $j$ starts from $i + 1$ and then in the next iteration $i$ again starts from $0$ and $j$ starts from $i + 2$ and so on. So we can design the for loops accordingly.
+- Now standing at some location $(i, j)$ meaning looking at the string from $i \to j$ we need to decide whether it is a pallindrome or not? If the characters $s[i] = s[j]$ means it is a pallindrome if and only if the substring $s[i+1 \, \to \, j-1]$ is a palindrome. this item $s[i+1 \, \to \, j-1]$ can be reused to avoid further computation.
+
+### Code
+```cpp
+class Solution {
+private:
+    int max_length = INT_MIN;
+    pair<int, int> indexOfMax;
+public:
+    string longestPalindrome(string s) {
+        
+        int size = s.size();
+        
+        // base cases are trivially solvable
+        if (size == 1) return s;
+        if (size == 2) {
+            if (s[0] == s[1]) return s;
+        }
+        
+        if (size == 3) {
+            if (s[0] == s[2]) return s;
+        }
+        
+        // our storage is dp of size n x n
+        vector<vector<int>> dp(size, vector<int>(size, 0));
+
+        // all the size one character is a pallindrome so mark 1
+        for (int i=0; i<size; i++) {
+            dp[i][i] = 1;
+        }
+        
+        // now we update the following pattern
+        // 00 11 22 33 44 .. done
+        // 10 21 32 43 54 .. 
+
+        for (int diff = 1; diff<size; diff++) {
+            for (int i=0, j=i+diff; j<size; i++, j++) {
+                if (s[i] == s[j]) {
+                    // means the last 2 elements are similar
+                    if (std::abs(i - j) == 1) {
+                        // means there is no extra element b/w
+                        // s[i] and s[j] they are together
+                        // so from i to j it is pallindrome
+                        dp[i][j] = 2;
+
+                        if (dp[i][j] > max_length) {
+                            indexOfMax.first = i;
+                            indexOfMax.second = j;     
+                            max_length = dp[i][j];
+                        }
+
+                    } else {
+                        // means there is some elements b/w i and j
+                        // check they are pallindrome or not?
+                        if (dp[i+1][j-1] != 0) {
+
+                            dp[i][j] = dp[i+1][j-1] + 2;
+
+                            if (dp[i][j] > max_length) {
+                                indexOfMax.first = i;
+                                indexOfMax.second = j;
+
+                                max_length = dp[i][j];
+                            }
+
+                        } else {
+                            dp[i][j] = 0;
+                        }
+                    }
+                } else {
+                    // means it is not pallindrome
+                    dp[i][j] = 0;
+                }
+            }
+        }        
+        
+        // max size of the pallindrome is stored at indexOfMax;
+        // the pallindrome is starting from indexOfMax.first to indexOfMax.second;
+        // return this
+        
+        vector<char> result;
+        for (int i=indexOfMax.first; i<=indexOfMax.second; i++) {
+            result.push_back(s[i]);
+        }
+        
+        string s1(result.begin(), result.end());
+        
+        return s1;
+    }
+};
+```
