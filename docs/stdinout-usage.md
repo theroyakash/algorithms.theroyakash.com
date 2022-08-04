@@ -5,11 +5,21 @@ In some of the problems in SDE 1 and SDE 2 online coding rounds, you have to tak
 
 Here is an example of how we can write all inputs to a text file and then run our algorithms.
 
-You must add 2 files called "input.txt" and "output.txt" in the same directory and add these 2 lines of code in the `main()`
+You must add 2 files called "input.txt" and "output.txt" in the same directory add the function in the code, then in the `main()` function just call the function `fileIO()` to have the input taken from input.txt and the output written to output.txt.
 
 ```cpp
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+void fileIO() {
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+}
+
+int main() {
+
+    fileIO();
+
+    // ... YOUR CODE ...
+    return 0;
+}
 ```
 
 ### Input
