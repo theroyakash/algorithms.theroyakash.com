@@ -10,6 +10,7 @@ Table of Contents
 - [House Robber](#house-robber)
 - [House Robber II](#house-robber-ii)
 - [Longest Palindromic Substring](#longest-palindromic-substring)
+- [Palindromic Substrings](#palindromic-substrings)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -342,6 +343,70 @@ public:
         string s1(result.begin(), result.end());
         
         return s1;
+    }
+};
+```
+
+## Palindromic Substrings
+Given a string s, return the number of palindromic substrings in it. A string is a palindrome when it reads the same backward as forward. A substring is a contiguous sequence of characters within the string.
+
+### Example 1
+```
+Input: s = "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+
+Input: s = "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+```
+
+### Approach
+- The solution is almost similar to the last problem where we were required to find the longest size of the pallindrome, for that we constructed a two dimensional array `dp` to store for all possible values of $(i, j)$ if there exists a pallindrome or not?
+- Then we found what is the maximum of them and returned it.
+- But where we are required to find the number of such palindromic sub-strings. So our `dp` array indicates for each $(i, j)$ such that $i<j$ $\exists$ a pallindrome between $s[i \to j]$. So if we count the number of non zero entries in the `dp` array we'll find the number of possible substrings in the string.
+
+![iamge](../images/numberofsubstring.png)
+
+As we can see every non zero entry in the array `dp` shows us a unique substring that is a pallindrome between $i \to j$.
+
+### Code
+```cpp
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int size = s.size();
+        vector<vector<int>> dp(size, vector<int>(size, 0));
+        
+        for (int i=0; i<size; i++) {
+            dp[i][i] = 1;
+        }
+        
+        // go over the dp array to get the dp matrix sorted
+        for (int diff = 1; diff<size; diff++) {
+            for(int i=0, j=i+diff; j<size; i++, j++) {
+                if (s[i] == s[j]) {
+                    if (std::abs(i - j) == 1) {
+                        dp[i][j] = 2;
+                    } else {
+                        if (dp[i+1][j-1] != 0) dp[i][j] = dp[i+1][j-1] + 2;
+                        else dp[i][j] = 0;
+                    }
+                } else {
+                    dp[i][j] = 0;
+                }
+            }
+        }
+        
+        // check how many entries are non zero
+        int counter = 0;
+        for (int i=0; i<size; i++) {
+            for (int j=0; j<size; j++) {
+                if (dp[i][j] != 0) counter++;
+            }
+        }
+        
+        return counter;
     }
 };
 ```
