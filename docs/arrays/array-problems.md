@@ -1385,6 +1385,7 @@ public:
 ```
 
 ## Two Sum IV
+[Find the problem on leetcode $\to$](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)
 ### Problem Statement
 Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
 
