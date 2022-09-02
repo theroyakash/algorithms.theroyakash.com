@@ -603,6 +603,37 @@ public:
 
 In this approach, instead of storing the level wise ordering in a vector of vectors, we simply link the nodes as we go by just keeping one reference to the previously processed node. But still we have to keep the queue in order to run the BFS. So the extra space is actually needed which is $\text{MAX(WIDTH of TREE)}$.
 
+#### Code for this approach
+- We'll enqueue next level nodes in right to left order, then connect them with each other.
+```cpp
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (not root) return nullptr;
+        queue<Node*> q;
+        q.push(root);
+        
+        while (not q.empty()) {
+            Node* right = nullptr;
+            int queue_size = q.size();
+
+            for (int i=queue_size; i>0; i--) {
+                Node* front = q.front();
+                front->next = right;
+                right = front;
+                q.pop();
+                
+                // add the siblings in reverse order
+                if (front->right) q.push(front->right);
+                if (front->left) q.push(front->left);
+            }
+        }
+        
+        return root;
+    }
+};
+```
+
 ## Binary Tree Path Sum
 ### Problem Statement
 Given a binary tree and a number ‘S’, find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.
