@@ -148,7 +148,7 @@ public:
         // base cases are trivially solvable
         if (size == 1) return nums[0];
         if (size == 2) return std::max(nums[0], nums[1]);
-        if (size == 3) return std::max(std::max(nums[0], nums[2]), nums[1]);
+        if (size == 3) return std::max(nums[0] + nums[2], nums[1]);
         
         pair<int, int> profits;
         profits.first = nums[0];
@@ -193,7 +193,7 @@ public:
         // base cases trivially solvable
         if (size == 1) return nums[0];
         if (size == 2) return std::max(nums[0], nums[1]);
-        if (size == 3) return std::max(std::max(nums[0], nums[2]), nums[1]);
+        if (size == 3) return std::max(nums[0] + nums[2], nums[1]);
         
         // forcing the algorithm to take the 0th house
         pair<int, int> profits;
