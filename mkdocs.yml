@@ -9,6 +9,7 @@ nav:
     - Introduction: index.md
     - Freebies: freebies.md
     - Blind 75 Problems: ./blind75.md
+    - CSES Problem Set: ./cses.md
     - Standard Input Output: ./stdinout-usage.md
   - Linear Data Structures:
     - Arrays, Strings and Linked Lists:
