@@ -44,53 +44,53 @@ public:
     vector<vector<long long int>> capacity;
     int source;
     int sink;
- 
+
     int getSink() {
         return sink;
     }
- 
+
     void setSink(int id) {
         sink = id;
     }
- 
+
     int getSource() {
         return source;
     }
- 
+
     void setSource(int id) {
         source = id;
     }
- 
+
     Graph(int n) {
         for (int i = 0; i < n; i++) {
             vector<int> v;
             adj_list.push_back(v);
- 
+
             vector<long long int> caprow(n, 0);
             capacity.push_back(caprow);
         }
     }
- 
+
     void add_directed_edge(int from, int to, long long int cap) {
         adj_list[from].push_back(to);
         capacity[from][to] += cap;
     }
- 
+
     long long int bfs(vector<int> &parent) {
         // find an augmenting path from s->t and return the path in
         // parent vector
         std::fill(parent.begin(), parent.end(), -1);
         parent[source] = -2;
- 
+
         queue<pair<int, long long int>> q;
         q.push({source, LONG_MAX});
- 
+
         while (not q.empty()) {
             int front = q.front().first;
             long long int flow = q.front().second;
- 
+
             q.pop();
- 
+
             for (int nbr : adj_list[front]) {
                 // if there is no parent discovered before and there exists a flow
                 if (parent[nbr] == -1 and capacity[front][nbr]) {
@@ -99,13 +99,13 @@ public:
                     long long int new_flow = std::min(flow, capacity[front][nbr]);
                     if (nbr == sink)
                         return new_flow;
- 
+
                     // otherwise push onto queue with updated flow
                     q.push({nbr, new_flow});
                 }
             }
         }
- 
+
         // there exists no s->t path so return 0 flow
         return 0;
     }
@@ -114,52 +114,52 @@ public:
         long long int flow = 0;
         vector<int> parent(adj_list.size(), 0);
         long long int newflow = 0;
- 
+
         // backtrace to s via the parent array and use the
         // augmenting path to augment the flow
- 
+
         while (true) {
             newflow = bfs(parent);
             if (not newflow)
                 break;
- 
+
             int current = sink;
             flow += newflow;
- 
+
             // otherwise through the augmenting path do the flow
             while (current != source) {
                 int prev = parent[current];
                 // augment the flow
                 capacity[prev][current] -= newflow;
                 capacity[current][prev] += newflow;
- 
+
                 current = prev;
             }
         }
- 
+
         return flow;
     }
 };
- 
+
 int main() {
     int vertex, edges;
     cin >> vertex >> edges;
     Graph g(vertex + 1);
- 
+
     g.setSource(1);
     g.setSink(vertex);
- 
+
     while (edges--) {
         int from, to;
         long long int capacity;
         cin >> from >> to >> capacity;
- 
+
         g.add_directed_edge(from, to, capacity);
         g.add_directed_edge(to,  from, 0);
     }
- 
+
     long long int maxflow = g.findMaxFlow();
- 
+
     cout << maxflow << endl;
 }
 ```
