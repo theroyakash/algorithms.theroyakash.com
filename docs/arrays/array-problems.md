@@ -1572,9 +1572,6 @@ private:
     
 public:
     bool isValidSudoku(vector<vector<char>>& board) {
-        // cout << columnCorrect(board);
-        // cout << rowCorrect(board);
-        // cout << gridCorrect(board);
         return columnCorrect(board) and rowCorrect(board) and gridCorrect(board);
     }
 };
