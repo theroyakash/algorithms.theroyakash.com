@@ -26,6 +26,7 @@ title: Problems on arrays
 - [Container With Most Water](#container-with-most-water)
 - [Rain water trapping](#rain-water-trapping)
 - [Two Sum IV](#two-sum-iv)
+- [Valid Sudoku](#valid-sudoku)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1445,6 +1446,136 @@ public:
         }
         
         return false;
+    }
+};
+```
+
+## Valid Sudoku
+### Problem Statement
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+- Each row must contain the digits 1-9 without repetition.
+- Each column must contain the digits 1-9 without repetition.
+- Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+**Note** A Sudoku board (partially filled) could be valid but is not necessarily solvable. Only the filled cells need to be validated according to the mentioned rules.
+
+### Approach
+- We'll have three subroutine first will find whether all the rows are filled with different digits,
+- second will find whether all the columns are filled with different digits,
+- Third will find out for each of the $3*3$ grid if all the elements are unique.
+    - First 2 cases are trivially solvable by traversing the board horizontally and vertically.
+    - The main challenge comes when we need to check for individual $3*3$ grids. To do that I find what is the mid point for each of the $3*3$ grids. These are $\{(1,1), (1,4), (1,7), \dots\}$ with 0 based indexing. Sitting at the mid point I do a little detour via the `detour` function to cover the whole $3*3$ grid and check for the uniqueness of the values.
+- At the end our solution to the problem becomes true if it is `columnCorrect` and `rowCorrect` and `gridCorrect`. Hence the following code:
+
+### Code
+```cpp
+class Solution {
+private:
+    
+    unordered_map<char, bool> getTraveller() {
+        unordered_map<char, bool> traveller;
+        for (int i=1; i<=9; i++) {
+            char c = i + '0';
+            traveller[c] = false;
+        }
+        
+        return traveller;
+    }
+    
+    bool columnCorrect(vector<vector<char>>& board) {
+        for (int i=0; i<9; i++) {
+            unordered_map<char, bool> traveller = getTraveller();
+            for (int j=0; j<9; j++) {
+                if (board[j][i] != '.') {
+                    if (traveller[board[j][i]]) {
+                        return false;
+                    } else {
+                        traveller[board[j][i]] = true;
+                    }
+                }
+           }
+        }
+        
+        return true;
+    }
+    
+    bool rowCorrect(vector<vector<char>>& board) {
+        // for each of the row create a traveller
+        // mark if some thing is not visited from 1-9
+        // else if already visited return false
+        for (int i=0; i<9; i++) {
+            unordered_map<char, bool> traveller = getTraveller();
+            for (int j=0; j<9; j++) {
+                if (board[i][j] != '.') {
+                    if (not traveller[board[i][j]]) {
+                        traveller[board[i][j]] = true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    pair<int, int> getMidFromGridIndex(int gridIndex) {
+        // all the grids are indexed 0-8. For a given grid number
+        // this returns the mid point of the grid
+        int row = (gridIndex/3)* 3 + 1;
+        int col = (gridIndex % 3) * 3 + 1;
+        return {row, col};
+    }
+    
+    void detour(vector<vector<char>>& board, int row, int col, int limit, unordered_map<char, bool> &traveller, bool &possible) {
+        /* Recursive detour and check for the 3*3 grid as this [row-col] begin middle*/
+        if (limit > 1) return;
+        
+        char valueHere = board[row][col];
+        
+        if (traveller[valueHere] and valueHere != '.') {
+            possible = false;
+            return;
+        }
+        
+        traveller[valueHere] = true;
+        
+        detour(board, row+1, col, limit+1, traveller, possible);
+        detour(board, row, col-1, limit+1, traveller, possible);
+        detour(board, row, col+1, limit+1, traveller, possible);
+        detour(board, row-1, col, limit+1, traveller, possible);
+        
+        detour(board, row+1, col+1, limit+1, traveller, possible);
+        detour(board, row+1, col-1, limit+1, traveller, possible);
+        detour(board, row-1, col-1, limit+1, traveller, possible);
+        detour(board, row-1, col+1, limit+1, traveller, possible);
+    }
+    
+    bool gridCorrect(vector<vector<char>>& board) {
+        // there is total of 9 grids, we need to check all of the grids
+        for (int gridID=0; gridID<9; gridID++) {
+            pair<int, int> midPoint = getMidFromGridIndex(gridID);
+            
+            // create a new traveller
+            unordered_map<char, bool> traveller = getTraveller();
+            bool possible = true;
+            
+            detour(board, midPoint.first, midPoint.second, 0, traveller, possible);
+            
+            // if not possible then return false other wise go to the next grid
+            if (not possible) return false;
+        }
+        
+        return true;
+    }
+    
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        // cout << columnCorrect(board);
+        // cout << rowCorrect(board);
+        // cout << gridCorrect(board);
+        return columnCorrect(board) and rowCorrect(board) and gridCorrect(board);
     }
 };
 ```
