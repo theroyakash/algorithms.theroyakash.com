@@ -11,6 +11,7 @@ Table of Contents
 - [House Robber II](#house-robber-ii)
 - [Longest Palindromic Substring](#longest-palindromic-substring)
 - [Palindromic Substrings](#palindromic-substrings)
+- [Minimizing Coins](#minimizing-coins)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -409,4 +410,85 @@ public:
         return counter;
     }
 };
+```
+
+## Minimizing Coins
+[Find the problem on CSES $\to$](https://cses.fi/problemset/task/1634/)
+
+### Problem Statement
+Consider a money system consisting of $n$ coins. Each coin has a positive integer value. Your task is to produce a sum of money $x$ using the available coins in such a way that the number of coins is minimal.
+
+For example, if the coins are $\{1,5,7\}$ and the desired sum is $11$ an optimal solution is $5+5+1$ which requires $3$ coins.
+
+**Input Format** The first input line has two integers n and x: the number of coins and the desired sum of money. The second line has n distinct integers $c_1,c_2,\dots,c_n$ the value of each coin.
+
+**Output Format** Print one integer: the minimum number of coins. If it is not possible to produce the desired sum, print -1.
+
+### Example
+
+**Input:**
+```
+3 11
+1 5 7
+```
+**Output:**
+```
+3
+```
+
+### Apporach
+We need to build a $\text{dp}$ vector. $\text{dp[}i\text{]}$ will indicate minimum number of coins that will be required to get the value $i$. So trivially $\text{dp}[0] = 0$.
+
+Now from $1 \to \text{target}$ we'll check what is the minimum number of coins that will be required to get that value. If we look closely then we'll find that for any given $i$: $\text{dp[}i\text{]} = \text{Min(dp[i], dp[i - coin])}$ for each of the coins in the coin bag.
+
+Hence the solution below:
+
+### C++ Code
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+
+int findMinNumberOfCoins(vector<int> &coinStore, int target) {
+    vector<int> dp(target + 1, 1e9); // dp[i] is the minimum number of coins to get target i
+    dp[0] = 0;                       // to get 0 as target we need 0 coins <- base case
+
+    for (int i = 1; i <= target; i++) {
+        // loop over all the coins
+        for (auto coin : coinStore) {
+            if (i - coin < 0) {
+                break;
+            }
+ 
+            dp[i] = std::min(dp[i], dp[i - coin] + 1);
+        }
+    }
+
+    return (dp[target] == 1e9) ? -1 : dp[target];
+}
+
+int main() {
+    // have coins, and a target
+    // find what is the min coins to take for the target
+
+    int coins, target;
+    cin >> coins >> target;
+    
+    vector<int> coinStore;
+
+    while (coins--) {
+        int coin;
+        std::cin >> coin;
+        coinStore.push_back(coin);
+    }
+
+    std::sort(coinStore.begin(), coinStore.end());
+    cout << findMinNumberOfCoins(coinStore, target) << endl;
+    return 0;
+}
 ```

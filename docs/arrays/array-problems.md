@@ -1461,6 +1461,9 @@ Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be val
 **Note** A Sudoku board (partially filled) could be valid but is not necessarily solvable. Only the filled cells need to be validated according to the mentioned rules.
 
 ### Approach
+
+<div style="position: relative; padding-bottom: 56.60377358490566%; height: 0;"><iframe src="https://www.loom.com/embed/7f30a78118b9400088905535aae986f4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 - We'll have three subroutine first will find whether all the rows are filled with different digits,
 - second will find whether all the columns are filled with different digits,
 - Third will find out for each of the $3*3$ grid if all the elements are unique.
