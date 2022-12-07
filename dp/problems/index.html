@@ -1601,6 +1601,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#coin-combinations-i" class="md-nav__link">
+    Coin Combinations I
+  </a>
+  
+    <nav class="md-nav" aria-label="Coin Combinations I">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approach_6" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_6" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2005,6 +2032,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#coin-combinations-i" class="md-nav__link">
+    Coin Combinations I
+  </a>
+  
+    <nav class="md-nav" aria-label="Coin Combinations I">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#approach_6" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_6" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2036,6 +2090,7 @@
 <li><a href="#longest-palindromic-substring">Longest Palindromic Substring</a></li>
 <li><a href="#palindromic-substrings">Palindromic Substrings</a></li>
 <li><a href="#minimizing-coins">Minimizing Coins</a></li>
+<li><a href="#coin-combinations-i">Coin Combinations I</a></li>
 </ul>
 <h2 id="climbing-stairs">Climbing Stairs</h2>
 <p><a href="https://leetcode.com/problems/climbing-stairs/">Find the Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
@@ -2417,7 +2472,17 @@
 </code></pre></div></p>
 <h3 id="apporach">Apporach</h3>
 <p>We need to build a <span class="arithmatex">\(\text{dp}\)</span> vector. <span class="arithmatex">\(\text{dp[}i\text{]}\)</span> will indicate minimum number of coins that will be required to get the value <span class="arithmatex">\(i\)</span>. So trivially <span class="arithmatex">\(\text{dp}[0] = 0\)</span>.</p>
-<p>Now from <span class="arithmatex">\(1 \to \text{target}\)</span> we'll check what is the minimum number of coins that will be required to get that value. If we look closely then we'll find that for any given <span class="arithmatex">\(i\)</span>: <span class="arithmatex">\(\text{dp[}i\text{]} = \text{Min(dp[i], dp[i - coin])}\)</span> for each of the coins in the coin bag.</p>
+<p>Now from <span class="arithmatex">\(1 \to \text{target}\)</span> we'll check what is the minimum number of coins that will be required to get that value. If we look closely then we'll find that for any given <span class="arithmatex">\(i\)</span>: <span class="arithmatex">\(\text{dp[}i\text{]} = \text{Min(dp[i], dp[i - coin])}\)</span> for each of the coins in the coin bag. So mathematically we can write</p>
+<div class="arithmatex">\[
+dp[i] =
+\left\{
+    \begin{array}{ll}
+        \infty  &amp; \mbox{if } i &lt; 0 \\
+        0 &amp; \mbox{if } i = 0 \\
+        \text{min}_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c] + 1 &amp; \mbox{if } i &gt; 0
+    \end{array}
+\right.
+\]</div>
 <p>Hence the solution below:</p>
 <h3 id="c-code">C++ Code</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
@@ -2466,6 +2531,71 @@
 <a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">findMinNumberOfCoins</span><span class="p">(</span><span class="n">coinStore</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="coin-combinations-i">Coin Combinations I</h2>
+<p><a href="https://cses.fi/problemset/task/1635/">Find the problem on CSES <span class="arithmatex">\(\to\)</span></a></p>
+<p>Consider a money system consisting of n coins. Each coin has a positive integer value. Your task is to calculate the number of distinct ways you can produce a money sum x using the available coins.</p>
+<p>For example, if the coins are <span class="arithmatex">\(\{2,3,5\}\)</span> and the desired sum is 9 then there are <span class="arithmatex">\(8\)</span> ways.</p>
+<h3 id="approach_6">Approach</h3>
+<p>Suppose <span class="arithmatex">\(dp[i]\)</span> is such that it defines to get <span class="arithmatex">\(i\)</span> value how many ways there is? So trivially <span class="arithmatex">\(dp[0] = 1\)</span> for any given set of coins <span class="arithmatex">\(c_1, \dots c_n\)</span>. Now for any <span class="arithmatex">\(i \in \mathbb{N}\)</span>, <span class="arithmatex">\(dp[i]\)</span> should be defined as follows</p>
+<div class="arithmatex">\[
+dp[i] =
+\left\{
+    \begin{array}{ll}
+        0  &amp; \mbox{if } i &lt; 0 \\
+        1 &amp; \mbox{if } i = 0 \\
+        \displaystyle\sum_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c] &amp; \mbox{if } i &gt; 0 \text{ and }  i - c &gt; 0
+    \end{array}
+\right.
+\]</div>
+<p>Let's see why <span class="arithmatex">\(\displaystyle\sum_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c]\)</span> holds. For the target <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(i &gt; 0\)</span> the number of ways to get to <span class="arithmatex">\(i\)</span> is number of ways to get to <span class="arithmatex">\(i-c\)</span> for each of the coins in <span class="arithmatex">\(\{c_1, c_2, \dots, c_n\}\)</span>. Hence we get the sum. The following is a code example working with this idea.</p>
+<h3 id="code_6">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MOD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="mf">1e9</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">findNumberOfWaysToGetTarget</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">coinStore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dp</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// set all to 0 first, dp[i] represents ways to get i target via coinStore</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                               </span><span class="c1">// base case only 1 way to get 0 with {coinStore}</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">coin</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">coinStore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">coin</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">                </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">coin</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">                </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">MOD</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dp</span><span class="p">[</span><span class="n">target</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="kt">void</span><span class="w"> </span><span class="nf">fileIO</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">    </span><span class="n">freopen</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">    </span><span class="n">freopen</span><span class="p">(</span><span class="s">&quot;output.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stdout</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">number_of_coins</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">coins</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">number_of_coins</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">number_of_coins</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">coin</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="w">        </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">coin</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="w">        </span><span class="n">coins</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">coin</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a>
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">findNumberOfWaysToGetTarget</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">coins</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a>
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 
