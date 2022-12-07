@@ -659,6 +659,9 @@ You are given an integer n. On each step, you may subtract one of the digits fro
 Suppose the given number is 27, then the optimal number of digit removal is 5. The optimal solution is the following $27 \rightarrow 20 \rightarrow 18 \rightarrow 10 \rightarrow 9 \rightarrow 0$.
 
 ### Approach
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5JipxDAzD98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 We'll do a recursive apporach on this problem, the intuition for the recursive solution is really easy to understand. For a given number $i$, we'll first find out what are the individual digits of this number. Then what we do is find out recursivly what is the minimum number of removals required accoss all the (number - digit) + 1.
 
 For example what we do is for $27$ we'll find out what is minimum between $27 - 7$ and $27 - 2$ then add $1$. We have to make sure that we don't do this for digit $0$. Hence the solution is the following.
