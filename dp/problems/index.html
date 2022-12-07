@@ -2924,6 +2924,8 @@ dp[i] =
 <h3 id="example_2">Example</h3>
 <p>Suppose the given number is 27, then the optimal number of digit removal is 5. The optimal solution is the following <span class="arithmatex">\(27 \rightarrow 20 \rightarrow 18 \rightarrow 10 \rightarrow 9 \rightarrow 0\)</span>.</p>
 <h3 id="approach_8">Approach</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5JipxDAzD98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <p>We'll do a recursive apporach on this problem, the intuition for the recursive solution is really easy to understand. For a given number <span class="arithmatex">\(i\)</span>, we'll first find out what are the individual digits of this number. Then what we do is find out recursivly what is the minimum number of removals required accoss all the (number - digit) + 1.</p>
 <p>For example what we do is for <span class="arithmatex">\(27\)</span> we'll find out what is minimum between <span class="arithmatex">\(27 - 7\)</span> and <span class="arithmatex">\(27 - 2\)</span> then add <span class="arithmatex">\(1\)</span>. We have to make sure that we don't do this for digit <span class="arithmatex">\(0\)</span>. Hence the solution is the following.</p>
 <h3 id="code_8">Code</h3>
