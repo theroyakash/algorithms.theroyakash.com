@@ -12,6 +12,7 @@ Table of Contents
 - [Longest Palindromic Substring](#longest-palindromic-substring)
 - [Palindromic Substrings](#palindromic-substrings)
 - [Minimizing Coins](#minimizing-coins)
+- [Coin Combinations I](#coin-combinations-i)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -439,7 +440,18 @@ For example, if the coins are $\{1,5,7\}$ and the desired sum is $11$ an optimal
 ### Apporach
 We need to build a $\text{dp}$ vector. $\text{dp[}i\text{]}$ will indicate minimum number of coins that will be required to get the value $i$. So trivially $\text{dp}[0] = 0$.
 
-Now from $1 \to \text{target}$ we'll check what is the minimum number of coins that will be required to get that value. If we look closely then we'll find that for any given $i$: $\text{dp[}i\text{]} = \text{Min(dp[i], dp[i - coin])}$ for each of the coins in the coin bag.
+Now from $1 \to \text{target}$ we'll check what is the minimum number of coins that will be required to get that value. If we look closely then we'll find that for any given $i$: $\text{dp[}i\text{]} = \text{Min(dp[i], dp[i - coin])}$ for each of the coins in the coin bag. So mathematically we can write
+
+$$
+dp[i] =
+\left\{
+	\begin{array}{ll}
+		\infty  & \mbox{if } i < 0 \\
+		0 & \mbox{if } i = 0 \\
+        \text{min}_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c] + 1 & \mbox{if } i > 0
+	\end{array}
+\right.
+$$
 
 Hence the solution below:
 
@@ -489,6 +501,79 @@ int main() {
 
     std::sort(coinStore.begin(), coinStore.end());
     cout << findMinNumberOfCoins(coinStore, target) << endl;
+    return 0;
+}
+```
+
+## Coin Combinations I
+[Find the problem on CSES $\to$](https://cses.fi/problemset/task/1635/)
+
+Consider a money system consisting of n coins. Each coin has a positive integer value. Your task is to calculate the number of distinct ways you can produce a money sum x using the available coins.
+
+For example, if the coins are $\{2,3,5\}$ and the desired sum is 9 then there are $8$ ways.
+
+### Approach
+Suppose $dp[i]$ is such that it defines to get $i$ value how many ways there is? So trivially $dp[0] = 1$ for any given set of coins $c_1, \dots c_n$. Now for any $i \in \mathbb{N}$, $dp[i]$ should be defined as follows
+
+$$
+dp[i] =
+\left\{
+	\begin{array}{ll}
+		0  & \mbox{if } i < 0 \\
+		1 & \mbox{if } i = 0 \\
+        \displaystyle\sum_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c] & \mbox{if } i > 0 \text{ and }  i - c > 0
+	\end{array}
+\right.
+$$
+
+Let's see why $\displaystyle\sum_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c]$ holds. For the target $i$ and $i > 0$ the number of ways to get to $i$ is number of ways to get to $i-c$ for each of the coins in $\{c_1, c_2, \dots, c_n\}$. Hence we get the sum. The following is a code example working with this idea.
+
+### Code
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int MOD = (int)1e9 + 7;
+
+long long int findNumberOfWaysToGetTarget(int target, vector<long long int> &coinStore) {
+    vector<long long int> dp(target + 1, 0); // set all to 0 first, dp[i] represents ways to get i target via coinStore
+    dp[0] = 1;                               // base case only 1 way to get 0 with {coinStore}
+
+    for (int i = 1; i <= target; i++) {
+        for (int coin : coinStore) {
+            if (i - coin >= 0) {
+                dp[i] += dp[i - coin];
+                dp[i] = dp[i] % MOD;
+            }
+        }
+    }
+
+    return dp[target];
+}
+
+void fileIO() {
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+}
+
+int main() {
+
+    int number_of_coins, target;
+    vector<long long int> coins;
+
+    cin >> number_of_coins >> target;
+
+    while (number_of_coins--) {
+        long long int coin;
+        cin >> coin;
+        coins.push_back(coin);
+    }
+
+    cout << findNumberOfWaysToGetTarget(target, coins) << endl;
+
     return 0;
 }
 ```
