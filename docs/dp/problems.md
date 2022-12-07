@@ -14,6 +14,7 @@ Table of Contents
 - [Minimizing Coins](#minimizing-coins)
 - [Coin Combinations I](#coin-combinations-i)
 - [Coin Combinations II](#coin-combinations-ii)
+- [Removing Digits](#removing-digits)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -581,6 +582,8 @@ int main() {
 
 ## Coin Combinations II
 
+[Find the problem on CSES $\to$](https://cses.fi/problemset/task/1636)
+
 ### Problem Statement
 Same as the above problem statement but here we need to find unique solutions.
 
@@ -640,6 +643,71 @@ int main() {
     }
 
     cout << findNumberOfWaysToGetTarget(target, coins) << endl;
+
+    return 0;
+}
+```
+
+## Removing Digits
+[Find the problem on CSES $\to$](https://cses.fi/problemset/task/1637)
+
+### Problem Statement
+You are given an integer n. On each step, you may subtract one of the digits from the number. How many steps are required to make the number equal to $0$.
+
+### Example
+Suppose the given number is 27, then the optimal number of digit removal is 5. The optimal solution is the following $27 \rightarrow 20 \rightarrow 18 \rightarrow 10 \rightarrow 9 \rightarrow 0$.
+
+### Approach
+We'll do a recursive apporach on this problem, the intuition for the recursive solution is really easy to understand. For a given number $i$, we'll first find out what are the individual digits of this number. Then what we do is find out recursivly what is the minimum number of removals required accoss all the (number - digit) + 1.
+
+For example what we do is for $27$ we'll find out what is minimum between $27 - 7$ and $27 - 2$ then add $1$. We have to make sure that we don't do this for digit $0$. Hence the solution is the following.
+
+### Code
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+vector<int> getIndividualDigits(int number) {
+    vector<int> digits;
+
+    while (number > 0) {
+        digits.push_back(number % 10);
+        number /= 10;
+    }
+
+    return digits;
+}
+
+int findMinimumNumberOfSubtractions(int number, unordered_map<int, int> &store) {
+    // if already present then find and return
+    if (number == 0) return 0;
+
+    if (store.find(number) != store.end()) {
+        return store[number];
+    }
+
+    vector<int> individualDigits = getIndividualDigits(number);
+    int minimumNumberOfSubtractions = INT_MAX;
+
+    for (auto digit:individualDigits) {
+        if (digit) minimumNumberOfSubtractions = std::min(findMinimumNumberOfSubtractions(number - digit, store), minimumNumberOfSubtractions);
+    }
+    store[number] = minimumNumberOfSubtractions + 1;
+    return store[number];
+}
+
+int main() {
+
+    int number;
+    cin >> number;
+    unordered_map<int, int> store;
+
+    cout << findMinimumNumberOfSubtractions(number, store);
 
     return 0;
 }
