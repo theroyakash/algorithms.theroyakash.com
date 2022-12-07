@@ -74,7 +74,7 @@ See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see mor
 ## Who am I?
 ![Image title](https://images.unsplash.com/photo-1595254771206-5bded301347a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80)
 
-I go by theroyakash on the internet. I am a computer scientist, a masters student in computer science from **Indian Institute of Technology (IIT) Madras**, with research in **high-performance algorithms**, **data structures**, **distributed systems**, and beyond. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
+I go by theroyakash on the internet. I am a computer scientist, a masters student in computer science from **Indian Institute of Technology (IIT) Madras**, with research in **high-performance algorithms**, **data structures**, **distributed systems**, and beyond. I am an upcoming software engineering intern at Amazon India. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
 
 
 ## Other links
