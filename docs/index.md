@@ -82,7 +82,7 @@ See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see mor
   <figcaption>This is me!</figcaption>
 </figure>
 
-I go by theroyakash on the internet. I am a computer scientist, a masters student in computer science from **Indian Institute of Technology (IIT) Madras**, with research in **high-performance algorithms**, **data structures**, **distributed systems**, and beyond. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
+I go by theroyakash on the internet. I am a computer scientist, a masters student in computer science from **Indian Institute of Technology (IIT) Madras**, with research in **high-performance algorithms**, **data structures**, **distributed systems**, and beyond. I am an upcoming software engineering intern at Amazon India. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
 
 
 ## Other links
