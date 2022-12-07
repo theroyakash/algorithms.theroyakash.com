@@ -13,6 +13,7 @@ Table of Contents
 - [Palindromic Substrings](#palindromic-substrings)
 - [Minimizing Coins](#minimizing-coins)
 - [Coin Combinations I](#coin-combinations-i)
+- [Coin Combinations II](#coin-combinations-ii)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -544,6 +545,72 @@ long long int findNumberOfWaysToGetTarget(int target, vector<long long int> &coi
 
     for (int i = 1; i <= target; i++) {
         for (int coin : coinStore) {
+            if (i - coin >= 0) {
+                dp[i] += dp[i - coin];
+                dp[i] = dp[i] % MOD;
+            }
+        }
+    }
+
+    return dp[target];
+}
+
+void fileIO() {
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+}
+
+int main() {
+
+    int number_of_coins, target;
+    vector<long long int> coins;
+
+    cin >> number_of_coins >> target;
+
+    while (number_of_coins--) {
+        long long int coin;
+        cin >> coin;
+        coins.push_back(coin);
+    }
+
+    cout << findNumberOfWaysToGetTarget(target, coins) << endl;
+
+    return 0;
+}
+```
+
+## Coin Combinations II
+
+### Problem Statement
+Same as the above problem statement but here we need to find unique solutions.
+
+### Approach
+In the **last problem** we were required to find all possible ways to get to the target, so $dp[i]$ was defining all the possible way we can get to the target $i$. Then we did a traversal over all the coin $c \in \{c_1, c_2, \dots, c_n\}$ and find out $dp[i]$ as $\displaystyle\sum_{c \in \{c_1, c_2, \dots, c_n\}} dp[i - c]$. This way considering coin $c$ we added all the possibilities from $dp[i - c]$.
+
+But here we are required to find all possible ways but those should be unique, meaning $5 + 5 + 1$ is same as $1 + 5 + 5$ and $5 + 1 + 5$. These three are not distinct cases these three are unique cases.
+
+To use only distinct combinations of coins what we can do is loop over all the coins $c \in \{c_1, c_2, \dots, c_n\}$, for each of the coin we set $dp[i]$ as $dp[i] + dp[i-c]$. Thus we'll loop over coins in order $c \in \{c_1,c_2, \dots, c_n\}$ thus using unqiue combinations of coins $\{c_i \mid i \in \{1, \dots, n\}\}$.
+
+### Code
+The code is the exact same as the last problem, with slight changes made to the nesting of the for loops. The outer for loop of target is now inside the loop of coins in the coin store.
+
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+
+using namespace std;
+
+const int MOD = (int)1e9 + 7;
+
+long long int findNumberOfWaysToGetTarget(int target, vector<long long int> &coinStore) {
+    vector<long long int> dp(target + 1, 0); // set all to 0 first, dp[i] represents ways to get i target via coinStore
+    dp[0] = 1;                               // base case only 1 way to get 0 with {coinStore}
+
+    for (int coin : coinStore) {
+        for (int i = 1; i <= target; i++) {
+
             if (i - coin >= 0) {
                 dp[i] += dp[i - coin];
                 dp[i] = dp[i] % MOD;
