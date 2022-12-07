@@ -15,6 +15,7 @@ Table of Contents
 - [Coin Combinations I](#coin-combinations-i)
 - [Coin Combinations II](#coin-combinations-ii)
 - [Removing Digits](#removing-digits)
+- [Grid Paths](#grid-paths)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -708,6 +709,114 @@ int main() {
     unordered_map<int, int> store;
 
     cout << findMinimumNumberOfSubtractions(number, store);
+
+    return 0;
+}
+```
+
+## Grid Paths
+[Find the problem on CSES $\rightarrow$](https://cses.fi/problemset/task/1638/)
+
+### Problem Statement
+Consider an $(n, n)$ grid whose squares may have traps. It is not allowed to move to a square with a trap. Your task is to calculate the number of paths from the upper-left square to the lower-right square. You can only move right or down.
+
+### Example
+We should print the number of paths modulo $10^9 + 7$
+
+#### Input/Output example
+```
+Input:
+4
+....
+.*..
+...*
+*...
+
+Output: 3
+```
+
+### Approach
+We find out a simple recursive equation to find out what is the number of ways to move to $(n, n)$ square.
+
+Suppose we define $dp[i][j]$ as number of ways to move to $(n, n)$ from location $(i, j)$ in the grid. Then our solution is $dp[0][0]$. The base case here is at location $(n, n)$. Then $dp[n][n] = 1$. We can easily see that the solution for any location $(i, j)$ is
+
+$$
+dp[i][j] =
+\left\{
+	\begin{array}{ll}
+		0  & \mbox{if } i, j \text{ is out of bounds of the grid}\\
+        0  & \mbox{if } \text{ grid[i][j] is a * (obstacle)}\\
+		1 & \mbox{if } (i, j) = (n, n) \\
+        dp[i + 1][j] + dp[i][j + 1] & \mbox{Otherwise}
+	\end{array}
+\right.
+$$
+
+Here $dp[i + 1][j] + dp[i][j + 1]$ denotes number of ways to get from position $(i + 1, j)$ to $(n, n)$ and $(i, j + 1)$ to $(n, n)$ if $(i, j)$ is within the grid bounds, 0 otherwise.
+
+### Code
+```cpp
+#include <iostream>
+#include <string>
+
+long long MOD = 1e9 + 7;
+
+using std::cout;
+using std::endl;
+
+int main() {
+
+    int size;
+    std::cin >> size;
+
+    int grid[size][size];
+
+    int row = 0;
+    while (row < size) {
+        int col = 0;
+        while (col < size) {
+            char block;
+            std::cin >> block;
+
+            if (block == '.') {
+                grid[row][col] = 0;
+            } else {
+                grid[row][col] = 1;
+            }
+
+            col++;
+        }
+
+        row++;
+    }
+
+    long long int dp[size][size];
+
+    if (grid[size - 1][size - 1] == 0) {
+        dp[size - 1][size - 1] = 1; // trivial to go from size:size to size:size
+    } else {
+        cout << 0 << endl;
+        // exit program
+        return 0;
+    }
+
+    for (int r = size - 1; r >= 0; r--) {
+        for (int c = size - 1; c >= 0; c--) {
+            if ((r == size - 1 and c == size - 1))
+                continue;
+
+            long long int down = (r + 1 >= size) ? 0 : dp[r + 1][c];
+            long long int right = (c + 1 >= size) ? 0 : dp[r][c + 1];
+
+            dp[r][c] = down + right;
+            dp[r][c] = dp[r][c] % MOD;
+
+            if (grid[r][c])
+                dp[r][c] = 0;
+        }
+    }
+
+    cout << dp[0][0] << endl;
 
     return 0;
 }
