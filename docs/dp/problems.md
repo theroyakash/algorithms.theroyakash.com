@@ -717,6 +717,26 @@ int main() {
 }
 ```
 
+### Iterative version of the algorithm
+```cpp
+int findMinimumNumberOfSubtractionsIterative(int number) {
+    vector<int> dp(number+1, 0);
+    dp[0] = 0;
+
+    for (int i=1; i<=number; i++) {
+        vector<int> individualDigits = getIndividualDigits(i);
+        int minNumberOfSubtractions = INT_MAX;
+        for (int d: individualDigits) {
+            if (d) minNumberOfSubtractions = std::min(minNumberOfSubtractions, dp[i - d]);
+        }
+
+        dp[i] = minNumberOfSubtractions + 1;
+    }
+
+    return dp[number];
+}
+```
+
 ## Grid Paths
 [Find the problem on CSES $\rightarrow$](https://cses.fi/problemset/task/1638/)
 
