@@ -16,6 +16,7 @@ Table of Contents
 - [Coin Combinations II](#coin-combinations-ii)
 - [Removing Digits](#removing-digits)
 - [Grid Paths](#grid-paths)
+- [Minimum Path Sum](#minimum-path-sum)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -843,4 +844,81 @@ int main() {
 
     return 0;
 }
+```
+
+## Minimum Path Sum
+[Find the Problem on Leetcode $\to$](https://leetcode.com/problems/minimum-path-sum/description/)
+
+### Problem Statement
+Given a $(m, n)$ grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+
+**Note:** You can only move either down or right at any point in time.
+
+### Example
+```
+Input: 
+grid = 
+[
+    [1,3,1],
+    [1,5,1],
+    [4,2,1]
+]
+
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+```
+
+```
+Input: grid = 
+[
+    [1,2,3],
+    [4,5,6]
+]
+
+Output: 12
+```
+
+### Approach
+The approach is similar to the last problem. We'll go from $(0, 0) \to (m, n)$ location of the grid row by row and column by column. For any given location $(i, j)$ we'll define a store $dp[i][j]$ such that $dp[i][j]$ indicates what is the minimum path sum to reach location $(i, j)$. Hence the solution should be $dp[m - 1][n - 1]$.
+
+Our recurrence relation is the following
+
+$$
+dp[i][j] =
+\left\{
+	\begin{array}{ll}
+		0  & \mbox{if } i = 0, j = 0\\
+        10^9 \text{ or } \infty  & \mbox{if } (i,j) \text{ is out of bounds}\\
+        \min(dp[i - 1][j], dp[i][j - 1]) + \text{grid}[i][j]& \mbox{Otherwise}
+	\end{array}
+\right.
+$$
+
+### Code
+```cpp
+class Solution {
+public:
+    int minPathSum(vector<vector<int>> &grid) {
+        int rows = grid.size();
+        int cols = grid[0].size();
+
+        int dp[rows][cols];
+        memset(dp, 0, sizeof(dp));
+
+        dp[0][0] = grid[0][0];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (not i and not j) continue;
+                
+                int left = (j - 1 >= 0) ? dp[i][j-1] : 1e9;
+                int up = (i - 1 >= 0) ? dp[i-1][j] : 1e9;
+
+                dp[i][j] = std::min(left, up) + grid[i][j];
+            }
+        }
+
+        return dp[rows - 1][cols - 1];
+    }
+};
 ```
