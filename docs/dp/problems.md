@@ -17,6 +17,7 @@ Table of Contents
 - [Removing Digits](#removing-digits)
 - [Grid Paths](#grid-paths)
 - [Minimum Path Sum](#minimum-path-sum)
+- [Longest increasing subsequence](#longest-increasing-subsequence)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -919,6 +920,69 @@ public:
         }
 
         return dp[rows - 1][cols - 1];
+    }
+};
+```
+
+## Longest increasing subsequence
+- [Find the problem on Leetcode $\to$](https://leetcode.com/problems/longest-increasing-subsequence/description/)
+- [Find the problem on CSES $\to$](https://cses.fi/problemset/task/1145)
+
+### Problem Statement
+Given an integer array nums, return the length of the longest strictly increasing subsequence.
+
+### Example
+```
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+
+Input: nums = [0,1,0,3,2,3]
+Output: 4
+
+Input: nums = [7,7,7,7,7,7,7]
+Output: 1
+```
+### $O(N^2)$ approach
+We define $dp[i]$ as the length of the longest increasing subsequence till the index $i$. So trivially we can compute $dp[i]$ as the following, and our solution becomes $dp[n-1]$ where $n$ is the number of elements. But this $O(N^2)$ approach will not be accepted
+
+$$
+dp[i] =
+\left\{
+	\begin{array}{ll}
+		1  & \mbox{if } i = 0\\
+        \max_{j \in \{0, i - 1\}}dp[j] + 1  & \mbox{Otherwise}
+	\end{array}
+\right.
+$$
+
+### Code
+```cpp
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int size = nums.size();
+        vector<int> dp(size, 1);
+
+        dp[0] = 1;
+
+        for (int i = 1; i<size; i++) {
+            // from j = i-1 till 0 what is the max then add 1
+
+            for (int j = i -1; j >= 0; j--) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = std::max(dp[i], dp[j] + 1);
+                }
+            }
+        }
+
+        // find max accoss all dp[i]
+        int sol = dp[0];
+        for (int i=1; i<size; i++) {
+            sol = std::max(dp[i], sol);
+        }
+
+        return sol;
     }
 };
 ```
