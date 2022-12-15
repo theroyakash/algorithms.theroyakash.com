@@ -27,6 +27,7 @@ title: Problems on arrays
 - [Rain water trapping](#rain-water-trapping)
 - [Two Sum IV](#two-sum-iv)
 - [Valid Sudoku](#valid-sudoku)
+- [Sort the Array](#sort-the-array)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1578,4 +1579,127 @@ public:
         return columnCorrect(board) and rowCorrect(board) and gridCorrect(board);
     }
 };
+```
+
+## Sort the Array
+[Find the problem on Codeforces $\to$](https://codeforces.com/problemset/problem/451/B)
+
+### Problem Statement
+Being a programmer, you like arrays a lot. For your birthday, your friends have given you an array a consisting of $n$ distinct integers.
+
+Unfortunately, the size of a is too small. You want a bigger array! Your friends agree to give you a bigger array, but only if you are able to answer the following question correctly: is it possible to sort the array $a$ (in increasing order) by reversing exactly one segment of $a$? See definitions of segment and reversing in the notes.
+
+**Input**
+The first line of the input contains an integer $n (1 \leq n \leq 10^5)$ — the size of array $a$.
+
+The second line contains n distinct space-separated integers: $a[1], a[2], ..., a[n] (1 \leq a[i] \leq 10^9)$.
+
+**Output**
+Print "yes" or "no" (without quotes), depending on the answer.
+
+
+If your answer is "yes", then also print two space-separated integers denoting start and end (start must not be greater than end) indices of the segment to be reversed. If there are multiple ways of selecting these indices, print any of them.
+
+### Examples
+```
+Input:
+3
+3 2 1
+
+Output:
+yes
+1 3
+
+Explain: You can reverse the entire array to get [1, 2, 3], which is sorted.
+```
+
+### Approach
+- Find one decreasing-increasing segment. Then check if first element of decreasing segment is less than first element of the increasing segment. Then it is possible to reverse the decreasing segment and get the sorted order.
+- If there is more than one increasing and decreasing segment, then it is not possible.
+- Otherwise it is possible to reverse the decreasing segment and get the sorted order.
+
+### Code
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int findFirstDecrementPoint(vector<int> &numbers) {
+    for (int i = 0; i < numbers.size() - 1; i++) {
+        if (numbers[i] > numbers[i + 1]) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+bool moreThanOneIncrementDecrementSegment(int firstIncrementPoint, vector<int> &numbers) {
+    for (int i = firstIncrementPoint + 1; i < numbers.size() - 1; i++) {
+        if (numbers[i] > numbers[i + 1]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+pair<pair<int, int>, string> findIfSortingPossible(vector<int> &numbers) {
+    int firstDecrementPoint = findFirstDecrementPoint(numbers);
+
+    if (firstDecrementPoint == -1) {
+        return {{1, 1}, "yes"};
+    }
+
+    // from this firstDecrement point find what is the first increment point
+    int firstIncrementPoint = -1;
+    for (int i = firstDecrementPoint; i < numbers.size() - 1; i++) {
+        if (numbers[i] < numbers[i + 1]) {
+            // this is the first increment point
+            firstIncrementPoint = i;
+            break;
+        }
+    }
+
+    if (firstIncrementPoint == -1) {
+        // all are decreasing, there is no increment point later
+        // so check if last number is > the number at decrement point;
+        if (firstDecrementPoint == 0) {
+            // this means the entire array is reversing
+            return {{1, numbers.size()}, "yes"};
+        } else if (numbers.back() > numbers[firstDecrementPoint - 1]) {
+            // this means here reversing decrement segment is possible
+            return {{firstDecrementPoint + 1, numbers.size()}, "yes"};
+        }
+    } else {
+        if (moreThanOneIncrementDecrementSegment(firstIncrementPoint, numbers)) {
+            return {{0, 0}, "no"};
+        }
+        if (numbers[firstIncrementPoint + 1] > numbers[firstDecrementPoint]) {
+            return {{firstDecrementPoint + 1, firstIncrementPoint + 1}, "yes"};
+        }
+    }
+
+    return {{0, 0}, "no"};
+}
+
+int main() {
+    int size;
+    cin >> size;
+
+    vector<int> numbers(size);
+
+    for (int i = 0; i < size; i++) {
+        cin >> numbers[i];
+    }
+
+    pair<pair<int, int>, string> answer = findIfSortingPossible(numbers);
+
+    cout << answer.second << endl;
+    if (answer.first.first)
+        cout << answer.first.first << " " << answer.first.second << endl;
+
+    return 0;
+}
 ```
