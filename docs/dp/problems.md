@@ -18,6 +18,7 @@ Table of Contents
 - [Grid Paths](#grid-paths)
 - [Minimum Path Sum](#minimum-path-sum)
 - [Longest increasing subsequence](#longest-increasing-subsequence)
+- [Edit distance](#edit-distance)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -985,4 +986,113 @@ public:
         return sol;
     }
 };
+```
+
+## Edit distance
+- [Find the problem on Leetcode $\to$](https://leetcode.com/problems/edit-distance/)
+- [Find the problem on CSES Problem Set $\to$](https://cses.fi/problemset/task/1639)
+
+### Problem Statement
+The edit distance between two strings is the minimum number of operations required to transform one string into the other.
+
+The allowed operations are:
+- Add one character to the string.
+- Remove one character from the string.
+- Replace one character in the string.
+
+For example, the edit distance between LOVE and MOVIE is 2, because you can first replace L with M, and then add I.
+
+Your task is to calculate the edit distance between two strings.
+
+**Input**
+
+The first input line has a string that contains n characters between A–Z. The second input line has a string that contains m characters between A–Z.
+
+**Output**
+
+Print one integer: the edit distance between the strings.
+
+### Approach
+So we need to find the recurrence relation to solve this question. What we'd do is the following, we define $dp[i][j]$ as the following, $dp[i][j]$ is the minimum edit distance to go from string one [0 $\dots$ i] to string two [0 $\dots$ j].
+
+Given this we can say the following recurrence based on the following conditions
+
+- If we add one character to string one then $dp[i][j]$ becomes $dp[i][j - 1] + 1$. We are adding one character to string one so $1$ and as we are adding one character to string we need to consider $dp[i][j-1]$ because $j^{\text{th}}$ character in string two would match with the character at i in string one then we need to move $j$ one to the left.
+- If we remove one character from string one then $dp[i][j]$ becomes $dp[i - 1][j] + 1$. We are removing one character from string one so $1$ and removing one character from string one would mean that we need to check for the $(i - 1)^{\text{th}}$ character in the first string with $j^{\text{th}}$ character in the second string.
+- Otherwise if both are matching then we don't need to remove anything. If they are not matching and we replace then the cost becomes $dp[i-1][j - 1] + 1$ if we replace the $i^{\text{th}}$ character in string one, otherwise $dp[i-1][j - 1] + 0$.
+- For base cases if string one or string two is empty then simply return the size of the other string.
+
+So in summary the following is the recurrence relation
+
+$$
+dp[i][j] =
+\left\{
+	\begin{array}{ll}
+        0 & \mbox{if } i \& j = 0\\
+        j & \mbox{if } i = 0\\
+        i & \mbox{if } j = 0\\
+        \min(dp[i-1][j-1], dp[i][j-1], dp[i-1][j])  & \mbox{Otherwise}
+	\end{array}
+\right.
+$$
+
+### Code
+```cpp
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+using std::vector;
+
+int findMinimumEditDistace(string s1, string s2) {
+    int s1Size = s1.size();
+    int s2Size = s2.size();
+
+    // dynamic programming storage
+    // dp[i][j] defines what is the minimum edit distance to convert
+    // from s1[0..i] to s2[0..j]
+    int dp[s1Size + 1][s2Size + 1];
+
+    memset(dp, 0, sizeof dp);
+
+    // base cases
+    for (int j = 0; j <= s2Size; j++) {
+        // all entries in dp[0][j] for j in (0 to s2.size())
+        dp[0][j] = j;
+    }
+
+    for (int i = 0; i <= s1Size; i++) {
+        // all entries in dp[0][j] for j in (0 to s2.size())
+        dp[i][0] = i;
+    }
+
+    for (int i = 1; i <= s1Size; i++) {
+        for (int j = 1; j <= s2Size; j++) {
+            int costForRemovingLastFromS1 = dp[i - 1][j] + 1;
+            int costForInsertingOneAtS1 = dp[i][j - 1] + 1;
+            int costForReplacingAtLast = dp[i - 1][j - 1] + ((s1[i - 1] == s2[j - 1]) ? 0 : 1);
+
+            dp[i][j] = std::min(costForRemovingLastFromS1, costForReplacingAtLast);
+            dp[i][j] = std::min(costForInsertingOneAtS1, dp[i][j]);
+        }
+    }
+
+    return dp[s1Size][s2Size];
+}
+
+int main() {
+    string s1;
+    string s2;
+
+    cin >> s1;
+    cin >> s2;
+
+    cout << findMinimumEditDistace(s1, s2);
+
+    return 0;
+}
 ```
