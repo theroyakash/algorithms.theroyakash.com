@@ -3,7 +3,7 @@ There is a famous quote saying that "**those who don't remember the past are con
 
 There are several problems where you are required to calculate something multiple times and if you _cache_ the data then you can avoid computation multiple times. Let's see some of the problems where you need to cache some result to avoid multiple computations.
 
-Table of Contents
+**Table of Contents**
 
 - [Climbing Stairs](#climbing-stairs)
 - [Frog Jump](#frog-jump)

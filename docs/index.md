@@ -5,13 +5,13 @@ description: Materials for FAANG and top startup's coding interview preparation 
 
 <h1 align="center">
   <br>
-  <a href="https://algorithms.theroyakash.com/"><img src="./images/theroyakashalgorithms.001.png" alt="AKDSFramework" width="800"></a>
+  <a href="https://algorithms.theroyakash.com/"><img src="./images/theroyakashalgorithms.001.png" alt="theroyakash algorithms" width="800"></a>
   <br>
   theroyakash algorithms
   <br>
 </h1>
 
-<h4 align="center">Materials for FAANG and top startup coding interview and running notes on that. Made by <a href="https://theroyakash.com">theroyakash</a>.</h4>
+<h4 align="center">Materials for FAANG and top startup coding interview and running notes on that. Made by <a href="https://www.theroyakash.com">theroyakash</a>.</h4>
 
 <p align="center">
   <a href="https://algorithms.theroyakash.com/">Getting started</a> •
@@ -71,7 +71,7 @@ The following table is meant to represent the amount of problems has a full anal
 ## Also Coming Soon
 
 Few more freebies coming soon
-- Distributed Systems Book (expected 2023 Summer).
+- Distributed Systems Book (expected 2025 Summer).
 
 ## Other Products
 See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see more products available for free to use.
@@ -87,6 +87,7 @@ I go by theroyakash on the internet. I am a computer scientist, a masters studen
 
 ## Other links
 - Visit my website [here](https://theroyakash.com/).
+- More about me [here](https://theroyakash.com/about)
 - My [Github](https://github.com/theroyakash),
 - [More about me](https://theroyakash.com/about/),
 - [Send me an email](mailto:hey@theroyakash.com).

@@ -10,6 +10,20 @@ tags:
 
 # :material-stack-overflow: Stack Problems
 
+**Problem Index**
+
+- [Nearest greater to right or Next Largest Element](#nearest-greater-to-right-or-next-largest-element)
+- [Next Greater Element I](#next-greater-element-i)
+- [Nearest greater to left (NGEle)](#nearest-greater-to-left-ngele)
+- [Nearest smaller to left (NSEle)](#nearest-smaller-to-left-nsele)
+- [Minimum Stack with extra space](#minimum-stack-with-extra-space)
+- [Stock Span Problem](#stock-span-problem)
+- [Maximum Area Histogram](#maximum-area-histogram)
+- [Max Area Rectangle under binary matrix](#max-area-rectangle-under-binary-matrix)
+- [The Skyline problem](#the-skyline-problem)
+- [Score of Parentheses](#score-of-parentheses)
+
+
 Patterns of questions when to use a stacks.
 
 !!! note important "Using Same concept"
@@ -159,6 +173,75 @@ console.print(NGE([3, 2, 1, 0, 2, 4, 2, 6, 9]))
 console.print(NGE([3, 2, 11, -0.4, 2, 4, 2, 6, 91]))
 ```
 
+## Next Greater Element I
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/next-greater-element-i/description/)
+### Problem Statement
+The next greater element of some element $x$ in an array is the first greater element that is to the right of $x$ in the same array.
+
+You are given two distinct `0`-indexed integer arrays `nums1` and `nums2`, where `nums1` is a subset of `nums2`.
+
+For each `0 <= i < nums1.length`, find the index j such that `nums1[i] == nums2[j]` and determine the next greater element of `nums2[j]` in `nums2`. If there is no next greater element, then the answer for this query is $-1$.
+
+Return an array ans of length nums1.length such that `ans[i]` is the next greater element as described above.
+
+### Example
+```
+Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
+Output: [-1,3,-1]
+Explanation: The next greater element for each value of nums1 is as follows:
+- 4 is underlined in nums2 = [1,3,4,2]. There is no next greater element, so the answer is -1.
+- 1 is underlined in nums2 = [1,3,4,2]. The next greater element is 3.
+- 2 is underlined in nums2 = [1,3,4,2]. There is no next greater element, so the answer is -1.
+
+
+Input: nums1 = [2,4], nums2 = [1,2,3,4]
+Output: [3,-1]
+Explanation: The next greater element for each value of nums1 is as follows:
+- 2 is underlined in nums2 = [1,2,3,4]. The next greater element is 3.
+- 4 is underlined in nums2 = [1,2,3,4]. There is no next greater element, so the answer is -1.
+```
+
+### Approach
+We'll use the up above technique (usage of stacks) to find the next greater element to the right.
+
+### Code
+```cpp
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        std::unordered_map<int, int> nge;
+        vector<int> stack;
+        
+        int last = nums2.back();
+        stack.push_back(last);
+        nge[last] = -1;
+
+        int size = nums2.size();
+
+        for (int i = size - 2; i >= 0; i--) {
+            while (not stack.empty() and nums2[i] > stack.back()) {
+                stack.pop_back();
+            }
+
+            if (stack.empty()) {
+                nge[nums2[i]] = -1;
+            } else if (nums2[i] < stack.back()) {
+                nge[nums2[i]] = stack.back();
+            }
+            
+            stack.push_back(nums2[i]);
+        }
+
+        vector<int> answer;
+
+        for (int i:nums1) {
+            answer.push_back(nge[i]);
+        }
+
+        return answer;
+    }
+};
+```
 
 ## Nearest greater to left (NGEle)
 ### Problem statement
