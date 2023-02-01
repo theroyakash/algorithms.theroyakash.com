@@ -1732,6 +1732,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#greatest-common-divisor-of-strings" class="md-nav__link">
+    Greatest Common Divisor of Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="Greatest Common Divisor of Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_9" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_20" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_20" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3628,6 +3662,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#greatest-common-divisor-of-strings" class="md-nav__link">
+    Greatest Common Divisor of Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="Greatest Common Divisor of Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_9" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#approach_20" class="md-nav__link">
+    Approach
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_20" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3675,6 +3743,7 @@
 <li><a href="#two-sum-iv">Two Sum IV</a></li>
 <li><a href="#valid-sudoku">Valid Sudoku</a></li>
 <li><a href="#sort-the-array">Sort the Array</a></li>
+<li><a href="#greatest-common-divisor-of-strings">Greatest Common Divisor of Strings</a></li>
 </ul>
 <h2 id="single-number">Single Number</h2>
 <p><a href="https://leetcode.com/problems/single-number/">Problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
@@ -5207,6 +5276,95 @@ Print "yes" or "no" (without quotes), depending on the answer.</p>
 <a id="__codelineno-46-80" name="__codelineno-46-80" href="#__codelineno-46-80"></a>
 <a id="__codelineno-46-81" name="__codelineno-46-81" href="#__codelineno-46-81"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-46-82" name="__codelineno-46-82" href="#__codelineno-46-82"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="greatest-common-divisor-of-strings">Greatest Common Divisor of Strings</h2>
+<p><a href="https://leetcode.com/problems/greatest-common-divisor-of-strings/description/">Find the problem on Leetcode <span class="arithmatex">\(\to\)</span></a></p>
+<p>For two strings <code>s</code> and <code>t</code>, we say "<code>t</code> divides s<code>" if and only if</code>s = t + ... + t<code>(i.e.,</code>t` is concatenated with itself one or more times).</p>
+<p>Given two strings <code>str1</code> and <code>str2</code>, return the largest string <code>x</code> such that <code>x</code> divides both <code>str1</code> and <code>str2</code>.</p>
+<h3 id="example_9">Example</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>Input: str1 = &quot;ABCABC&quot;, str2 = &quot;ABC&quot;
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>Output: &quot;ABC&quot;
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>Input: str1 = &quot;ABABAB&quot;, str2 = &quot;ABAB&quot;
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>Output: &quot;AB&quot;
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a>Input: str1 = &quot;LEET&quot;, str2 = &quot;CODE&quot;
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a>Output: &quot;&quot;
+</code></pre></div>
+<h3 id="approach_20">Approach</h3>
+<ul>
+<li>Find all the prefix of the shorter string,</li>
+<li>Then for each of the prefixes find if that is both a valid divisor of <code>str1</code> and <code>str2</code>. Find the greatest common divisor using loops.</li>
+</ul>
+<h3 id="code_20">Code</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">findPrefixes</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">pref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a><span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prefixes</span><span class="p">;</span>
+<a id="__codelineno-48-7" name="__codelineno-48-7" href="#__codelineno-48-7"></a>
+<a id="__codelineno-48-8" name="__codelineno-48-8" href="#__codelineno-48-8"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-9" name="__codelineno-48-9" href="#__codelineno-48-9"></a><span class="w">            </span><span class="n">pref</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<a id="__codelineno-48-10" name="__codelineno-48-10" href="#__codelineno-48-10"></a><span class="w">            </span><span class="n">prefixes</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pref</span><span class="p">);</span>
+<a id="__codelineno-48-11" name="__codelineno-48-11" href="#__codelineno-48-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-48-12" name="__codelineno-48-12" href="#__codelineno-48-12"></a>
+<a id="__codelineno-48-13" name="__codelineno-48-13" href="#__codelineno-48-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">prefixes</span><span class="p">;</span>
+<a id="__codelineno-48-14" name="__codelineno-48-14" href="#__codelineno-48-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-48-15" name="__codelineno-48-15" href="#__codelineno-48-15"></a>
+<a id="__codelineno-48-16" name="__codelineno-48-16" href="#__codelineno-48-16"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">validDivisor</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-17" name="__codelineno-48-17" href="#__codelineno-48-17"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-48-18" name="__codelineno-48-18" href="#__codelineno-48-18"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<a id="__codelineno-48-19" name="__codelineno-48-19" href="#__codelineno-48-19"></a>
+<a id="__codelineno-48-20" name="__codelineno-48-20" href="#__codelineno-48-20"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-48-21" name="__codelineno-48-21" href="#__codelineno-48-21"></a>
+<a id="__codelineno-48-22" name="__codelineno-48-22" href="#__codelineno-48-22"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-23" name="__codelineno-48-23" href="#__codelineno-48-23"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prefix</span><span class="p">[</span><span class="n">index</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-24" name="__codelineno-48-24" href="#__codelineno-48-24"></a><span class="w">                </span><span class="n">index</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-48-25" name="__codelineno-48-25" href="#__codelineno-48-25"></a><span class="w">                </span><span class="n">index</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<a id="__codelineno-48-26" name="__codelineno-48-26" href="#__codelineno-48-26"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-27" name="__codelineno-48-27" href="#__codelineno-48-27"></a><span class="w">                </span><span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-48-28" name="__codelineno-48-28" href="#__codelineno-48-28"></a><span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-48-29" name="__codelineno-48-29" href="#__codelineno-48-29"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-48-30" name="__codelineno-48-30" href="#__codelineno-48-30"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-48-31" name="__codelineno-48-31" href="#__codelineno-48-31"></a>
+<a id="__codelineno-48-32" name="__codelineno-48-32" href="#__codelineno-48-32"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-48-33" name="__codelineno-48-33" href="#__codelineno-48-33"></a>
+<a id="__codelineno-48-34" name="__codelineno-48-34" href="#__codelineno-48-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">valid</span><span class="p">;</span>
+<a id="__codelineno-48-35" name="__codelineno-48-35" href="#__codelineno-48-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-48-36" name="__codelineno-48-36" href="#__codelineno-48-36"></a>
+<a id="__codelineno-48-37" name="__codelineno-48-37" href="#__codelineno-48-37"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">gcdOfStrings</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">str1</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">str2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-38" name="__codelineno-48-38" href="#__codelineno-48-38"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<a id="__codelineno-48-39" name="__codelineno-48-39" href="#__codelineno-48-39"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">size2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str2</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<a id="__codelineno-48-40" name="__codelineno-48-40" href="#__codelineno-48-40"></a>
+<a id="__codelineno-48-41" name="__codelineno-48-41" href="#__codelineno-48-41"></a><span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="n">currentCommonDivisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<a id="__codelineno-48-42" name="__codelineno-48-42" href="#__codelineno-48-42"></a>
+<a id="__codelineno-48-43" name="__codelineno-48-43" href="#__codelineno-48-43"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-44" name="__codelineno-48-44" href="#__codelineno-48-44"></a><span class="w">            </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prefixList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findPrefixes</span><span class="p">(</span><span class="n">str1</span><span class="p">);</span>
+<a id="__codelineno-48-45" name="__codelineno-48-45" href="#__codelineno-48-45"></a>
+<a id="__codelineno-48-46" name="__codelineno-48-46" href="#__codelineno-48-46"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">prefix</span><span class="o">:</span><span class="n">prefixList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-47" name="__codelineno-48-47" href="#__codelineno-48-47"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">validForString2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validDivisor</span><span class="p">(</span><span class="n">str2</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">);</span>
+<a id="__codelineno-48-48" name="__codelineno-48-48" href="#__codelineno-48-48"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">validForString1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validDivisor</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">);</span>
+<a id="__codelineno-48-49" name="__codelineno-48-49" href="#__codelineno-48-49"></a>
+<a id="__codelineno-48-50" name="__codelineno-48-50" href="#__codelineno-48-50"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validForString1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">validForString2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-51" name="__codelineno-48-51" href="#__codelineno-48-51"></a><span class="w">                    </span><span class="n">currentCommonDivisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="p">;</span>
+<a id="__codelineno-48-52" name="__codelineno-48-52" href="#__codelineno-48-52"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-48-53" name="__codelineno-48-53" href="#__codelineno-48-53"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-48-54" name="__codelineno-48-54" href="#__codelineno-48-54"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-55" name="__codelineno-48-55" href="#__codelineno-48-55"></a><span class="w">            </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prefixList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findPrefixes</span><span class="p">(</span><span class="n">str1</span><span class="p">);</span>
+<a id="__codelineno-48-56" name="__codelineno-48-56" href="#__codelineno-48-56"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">prefix</span><span class="o">:</span><span class="n">prefixList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-57" name="__codelineno-48-57" href="#__codelineno-48-57"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">validForString2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validDivisor</span><span class="p">(</span><span class="n">str2</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">);</span>
+<a id="__codelineno-48-58" name="__codelineno-48-58" href="#__codelineno-48-58"></a><span class="w">                </span><span class="kt">bool</span><span class="w"> </span><span class="n">validForString1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validDivisor</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">);</span>
+<a id="__codelineno-48-59" name="__codelineno-48-59" href="#__codelineno-48-59"></a>
+<a id="__codelineno-48-60" name="__codelineno-48-60" href="#__codelineno-48-60"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validForString1</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">validForString2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-48-61" name="__codelineno-48-61" href="#__codelineno-48-61"></a><span class="w">                    </span><span class="n">currentCommonDivisor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prefix</span><span class="p">;</span>
+<a id="__codelineno-48-62" name="__codelineno-48-62" href="#__codelineno-48-62"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-48-63" name="__codelineno-48-63" href="#__codelineno-48-63"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-48-64" name="__codelineno-48-64" href="#__codelineno-48-64"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-48-65" name="__codelineno-48-65" href="#__codelineno-48-65"></a>
+<a id="__codelineno-48-66" name="__codelineno-48-66" href="#__codelineno-48-66"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">currentCommonDivisor</span><span class="p">;</span>
+<a id="__codelineno-48-67" name="__codelineno-48-67" href="#__codelineno-48-67"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-48-68" name="__codelineno-48-68" href="#__codelineno-48-68"></a><span class="p">};</span>
 </code></pre></div>
 
 
