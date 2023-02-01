@@ -28,6 +28,7 @@ title: Problems on arrays
 - [Two Sum IV](#two-sum-iv)
 - [Valid Sudoku](#valid-sudoku)
 - [Sort the Array](#sort-the-array)
+- [Greatest Common Divisor of Strings](#greatest-common-divisor-of-strings)
 
 ## Single Number
 [Problem on Leetcode $\to$](https://leetcode.com/problems/single-number/)
@@ -1702,4 +1703,99 @@ int main() {
 
     return 0;
 }
+```
+
+## Greatest Common Divisor of Strings
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/greatest-common-divisor-of-strings/description/)
+
+For two strings `s` and `t`, we say "`t` divides s`" if and only if `s = t + ... + t` (i.e., `t` is concatenated with itself one or more times).
+
+Given two strings `str1` and `str2`, return the largest string `x` such that `x` divides both `str1` and `str2`.
+
+### Example
+```
+Input: str1 = "ABCABC", str2 = "ABC"
+Output: "ABC"
+
+Input: str1 = "ABABAB", str2 = "ABAB"
+Output: "AB"
+
+Input: str1 = "LEET", str2 = "CODE"
+Output: ""
+```
+
+### Approach
+- Find all the prefix of the shorter string,
+- Then for each of the prefixes find if that is both a valid divisor of `str1` and `str2`. Find the greatest common divisor using loops.
+
+### Code
+```cpp
+class Solution {
+public:
+    vector<string> findPrefixes(string str) {
+        string pref = "";
+        int size = str.size();
+        vector<string> prefixes;
+
+        for (int i = 0; i < size; i++) {
+            pref += str[i];
+            prefixes.push_back(pref);
+        }
+
+        return prefixes;
+    }
+
+    bool validDivisor(string str, string prefix) {
+        bool valid = true;
+        int size = prefix.size();
+
+        int index = 0;
+
+        for (char c:str) {
+            if (c == prefix[index]) {
+                index++;
+                index %= size;
+            } else {
+                valid = false;
+                break;
+            }
+        }
+
+        if (index > 0) valid = false;
+
+        return valid;
+    }
+
+    string gcdOfStrings(string str1, string str2) {
+        int size1 = str1.size();
+        int size2 = str2.size();
+
+        string currentCommonDivisor = "";
+
+        if (size1 < size2) {
+            vector<string> prefixList = findPrefixes(str1);
+
+            for (auto prefix:prefixList) {
+                bool validForString2 = validDivisor(str2, prefix);
+                bool validForString1 = validDivisor(str1, prefix);
+
+                if (validForString1 and validForString2) {
+                    currentCommonDivisor = prefix;
+                }
+            }
+        } else {
+            vector<string> prefixList = findPrefixes(str1);
+            for (auto prefix:prefixList) {
+                bool validForString2 = validDivisor(str2, prefix);
+                bool validForString1 = validDivisor(str1, prefix);
+
+                if (validForString1 and validForString2) {
+                    currentCommonDivisor = prefix;
+                }
+            }
+        }
+
+        return currentCommonDivisor;
+    }
+};
 ```
