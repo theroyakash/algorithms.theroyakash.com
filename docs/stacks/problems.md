@@ -22,6 +22,7 @@ tags:
 - [Max Area Rectangle under binary matrix](#max-area-rectangle-under-binary-matrix)
 - [The Skyline problem](#the-skyline-problem)
 - [Score of Parentheses](#score-of-parentheses)
+- [Implement a stack with single queue](#implement-a-stack-with-single-queue)
 
 
 Patterns of questions when to use a stacks.
@@ -1004,4 +1005,68 @@ public:
         return score;
     }
 };
+```
+
+## Implement a stack with single queue
+Find the problem on [leetcode](https://leetcode.com/problems/implement-stack-using-queues/description/)
+### Problem Statement
+Implement a last-in-first-out (LIFO) stack using only *single* queue. The implemented stack should support all the functions of a normal stack (`push`, `top`, `pop`, and `empty`). Implement the MyStack class
+
+- `void push(int x)` Pushes element $x$ to the top of the stack.
+- `int top()` Returns the element on the top of the stack.
+- `int pop()` Removes the element on the top of the stack and returns it.
+- `boolean empty()` Returns true if the stack is empty, false otherwise.
+
+### Apporach
+It is easy to implement a stack with two queues. But the question requires us to use a single queue for storage. Our apporach will be the following:
+
+Once a value comes to our stack we'll insert it into the internal queue, then from $i \in \{0 \dots size - 1\}$ times we'll take the front of the queue and push it to the back of the queue. Then `pop` from the front of the queue. This will rearange the queue to have the data ordered like a stack.
+
+Thus our `queue.front()` will return the element on the top of the stack and `queue.pop()` will pop the top of the stack.
+
+### Code
+```cpp
+class MyStack {
+public:
+    
+    queue<int> q;
+    int size = 0;
+
+    MyStack() {}
+    
+    void push(int x) {
+        size++;
+        q.push(x);
+
+        for (int i = 0; i < size - 1; i++) {
+            q.push(q.front());
+            q.pop();
+        }
+    }
+    
+    int pop() {
+        int val = q.front();
+        q.pop();
+
+        size--;
+        return val;
+    }
+    
+    int top() {
+        return q.front();
+    }
+    
+    bool empty() {
+        return size == 0;
+    }
+};
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->top();
+ * bool param_4 = obj->empty();
+ */
 ```
