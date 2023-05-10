@@ -18,37 +18,43 @@
 	font-weight: regular;
 }
 
+@font-face {
+	font-family: "Premium Modern";
+	src: url("./Regards.ttf");
+	font-weight: bold;
+}
+
 h1{
-    font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+    font-family: "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
     font-weight: bold;
     letter-spacing: -1px;
 }
 
 h2{
-    font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+    font-family: "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
 	font-weight: bold;
     letter-spacing: -1px;
     font-weight: 700;
 }
 
 h3{
-    font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+    font-family: "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
     letter-spacing: -1px;
 	font-weight: bold;
     font-weight: 500;
 }
 
 h4{
-    font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+    font-family: "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
 	font-weight: bold;
 }
 
 p{
-    font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+    font-family: "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
 }
 
 a{
-    font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+    font-family: "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
     color: #6929C4;
 }
 
@@ -61,9 +67,9 @@ a:visited {
 	color: #6929C4;
 }
 
-body{
+/* body{
     font-family: "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
-}
+} */
 
 
 table th {
