@@ -1587,12 +1587,14 @@
 </ul>
 <h2 id="hamburgers"><a href="https://codeforces.com/contest/371/problem/C">Hamburgers</a></h2>
 <h3 id="problem-statement-revised">Problem Statement (Revised)</h3>
-<p>Find the original problem statement in the codeforces website.
-- To make hamburgers we need a bread, sausage and cheese. We write down the recipe of "Le Hamburger de Polycarpus" as a string of letters 'B' (bread), 'S' (sausage) and 'C' (cheese).
-- The ingredients in the recipe go from bottom to top, for example, recipe "ВSCBS" represents the hamburger where the ingredients go from bottom to top as bread, sausage, cheese, bread and sausage again.
-- We have <span class="arithmatex">\(n_b, n_s, n_c\)</span> many bread-sausage-cheese in the kitchen.
-- We also have access to bread-sausage-cheese in a nearby shop with price tag <span class="arithmatex">\(p_b, p_s, p_c\)</span>.
-- We have total of ₹<span class="arithmatex">\(r\)</span>. With <span class="arithmatex">\(n_b, n_s, n_c\)</span> many bread-sausage-cheese and ₹<span class="arithmatex">\(r\)</span> how many Hamburger we can make using a given recipe.</p>
+<p>Find the original problem statement in the codeforces website.</p>
+<ul>
+<li>To make hamburgers we need a bread, sausage and cheese. We write down the recipe of "Le Hamburger de Polycarpus" as a string of letters 'B' (bread), 'S' (sausage) and 'C' (cheese).</li>
+<li>The ingredients in the recipe go from bottom to top, for example, recipe "ВSCBS" represents the hamburger where the ingredients go from bottom to top as bread, sausage, cheese, bread and sausage again.</li>
+<li>We have <span class="arithmatex">\(n_b, n_s, n_c\)</span> many bread-sausage-cheese in the kitchen.</li>
+<li>We also have access to bread-sausage-cheese in a nearby shop with price tag <span class="arithmatex">\(p_b, p_s, p_c\)</span>.</li>
+<li>We have total of ₹<span class="arithmatex">\(r\)</span>. With <span class="arithmatex">\(n_b, n_s, n_c\)</span> many bread-sausage-cheese and ₹<span class="arithmatex">\(r\)</span> how many Hamburger we can make using a given recipe.</li>
+</ul>
 <h3 id="approach">Approach</h3>
 <ul>
 <li>We do a binary search on the <code>numberOfBurgers</code>. We stop when we find the highest <code>numberOfBurgers</code> feasable to build. This pattern is called binary search on answer.</li>
