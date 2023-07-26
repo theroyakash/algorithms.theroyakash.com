@@ -2,7 +2,99 @@
 
 - Linked list or arrays find something among all contigious sub array of some given size.
 
-## Example problem
+## Inverted Sliding Window [Microsoft OA]
+### Problem Statement
+Suppose $A[n]$ is an array of integers. Identify a $r$ length window such that $A[i] \mid \forall \: i \in [n] \text{ except for } \left[k, k+r \right)$ for some $k \in [n - r]$ has most number of unique elements.
+
+### Approach
+- In first step we calculate the unique elements outside the first window (from $0 \to r - 1$),
+- Next we slide the window to $(1 \to r)$. In this case the unique element map will add the $0^{\text{th}}$ element and remove the $r^{\text{th}}$ element (think of it as the inverted sliding window). We are sliding a window but we are interested outside the window.
+- Following is an illustration as to how this window works. Notice the elements outside the bucket rather than the inside. Which is incoming and which is outgoing.
+
+![../images/inverted-sliding-window.png](../images/inverted-sliding-window.png)
+
+### Code
+```cpp
+#include <climits>
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+int main() {
+    int testcase;
+    cin >> testcase;
+
+    while (testcase--) {
+        int n, r;
+        cin >> n >> r;
+
+        if (n == r) {
+            cout << "0" << endl;
+            break;
+        }
+
+        int a[n];
+
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        unordered_map<int, int> freq;
+
+        int maximumUniqueWindow = INT_MIN;
+
+        // outside first window
+        int index = 0;
+        while (index < n) {
+            if (not(index < r and index >= 0)) {
+                freq[a[index]]++;
+            }
+
+            index++;
+        }
+
+        maximumUniqueWindow = std::max(maximumUniqueWindow, (int)freq.size());
+
+        // for rest of the outside windows
+        int window_start = 1;
+        int window_end = r;
+
+        int maxWindowStart = 0;
+        int maxWindowEnd = r - 1;
+
+        while (window_end < n) {
+            // outgoing + incoming from the outside window
+            int outgoing = a[window_end];
+            int incoming = a[window_start - 1];
+
+            freq[outgoing]--;
+
+            if (not freq[outgoing]) {
+                freq.erase(outgoing);
+            }
+
+            freq[incoming]++;
+
+            int currentsize = freq.size();
+
+            if (currentsize >= maximumUniqueWindow) {
+                maximumUniqueWindow = currentsize;
+
+                maxWindowStart = window_start;
+                maxWindowEnd = window_end;
+            }
+
+            window_start++;
+            window_end++;
+        }
+
+        cout << maximumUniqueWindow << endl;
+    }
+}
+```
+
+## Other problems
 
 `Given an array, find the average of all contiguous subarrays of size ‘K’ in it.`
 

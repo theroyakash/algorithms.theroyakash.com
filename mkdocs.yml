@@ -16,6 +16,7 @@ nav:
       - Arrays:
         - Intro to Arrays: ./arrays/arrays.md
         - Array Problems: ./arrays/array-problems.md
+        - Subarray Problems: ./arrays/subarray.md
         - Sliding window problems: ./arrays/sliding-window.md
       - Linked Lists:
         - Linked List STL Usage: ./LinkedLists/stl-usage.md
@@ -28,6 +29,7 @@ nav:
   - Searching and Sorting:
     - Basics and introduction: ./binary-search/intro.md
     - Binary search problems: ./binary-search/problems.md
+    - Binary search from codeforces: ./binary-search/problems-codeforces.md
   - Tree and Graph based data structures:
     - Trees:
       - Tree Implementation: ./trees/implementation.md
