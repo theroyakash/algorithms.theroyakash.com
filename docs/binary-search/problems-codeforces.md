@@ -10,6 +10,7 @@ This section includes problems from Codeforces (Mostly Div. 2). All the problems
 ## [Hamburgers](https://codeforces.com/contest/371/problem/C)
 ### Problem Statement (Revised)
 Find the original problem statement in the codeforces website.
+
 - To make hamburgers we need a bread, sausage and cheese. We write down the recipe of "Le Hamburger de Polycarpus" as a string of letters 'B' (bread), 'S' (sausage) and 'C' (cheese).
 - The ingredients in the recipe go from bottom to top, for example, recipe "ВSCBS" represents the hamburger where the ingredients go from bottom to top as bread, sausage, cheese, bread and sausage again.
 - We have $n_b, n_s, n_c$ many bread-sausage-cheese in the kitchen.
