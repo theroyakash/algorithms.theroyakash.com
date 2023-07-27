@@ -5,6 +5,7 @@ This section includes problems from Codeforces (Mostly Div. 2). All the problems
 **Problems**
 
 - [Hamburgers](#hamburgers)
+- [Magic Powder 1 \& 2](#magic-powder-1--2)
 
 
 ## [Hamburgers](https://codeforces.com/contest/371/problem/C)
@@ -80,6 +81,83 @@ int main() {
     while (start <= end) {
         long long int mid = start + (end - start) / 2;
         bool possible = isFeasableWithNumberOfBurgers(mid, recipeRatio, kitchen, price, rupees);
+        if (possible) {
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+
+    cout << end << endl;
+
+    return 0;
+}
+```
+
+## Magic Powder 1 & 2
+Find the problem on [codeforces](https://codeforces.com/contest/670/problem/D1)
+### Problem Statement
+Solving problem 670/problem/D2 also solves 670/problem/D1 as D1 is with smaller constraints.
+
+- We have $n$ ingredients that are needed in the following ratio $a[i] \: \forall i \in [n]$. $a[i]$ grams of $i^{\text{th}}$ ingredient is needed to make the cookie.
+- Our kitchen has $b[i] \: \forall i \in [n]$ grams of the $i^{\text{th}}$ element.
+- We also have access to $k$ grams of magic powder that can be used for any element that we are short of.
+- Find the maximum cookie can be made.
+
+### Approach
+Similar to the last problem we find what is the highest amount of cookie that can be made via a binary search on the number of cookies via this `checkIfPossibleToMakeNumberOfCookies()` function.
+
+
+### Code
+```cpp
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+using namespace std;
+
+bool checkIfPossibleToMakeNumberOfCookies(unsigned long long int numberOfCookies,
+                                   unsigned long long int numberOfIngredients,
+                                   unsigned long long int demand[],
+                                   unsigned long long int kitchen[],
+                                   unsigned long long int magicPowder) {
+    unsigned long long int totalDeficiency = 0;
+    for (unsigned long long int i = 0; i < numberOfIngredients; i++) {
+        if (numberOfCookies * demand[i] > kitchen[i]) {
+            totalDeficiency += numberOfCookies * demand[i] - kitchen[i];
+        }
+    }
+
+    if (totalDeficiency > magicPowder) return false;
+
+    return true;
+}
+
+int main() {
+    unsigned long long int ingredients, magicPowder;
+    cin >> ingredients >> magicPowder;
+
+    unsigned long long int demand[ingredients];  // demand
+    unsigned long long int kitchen[ingredients]; // kitchen
+
+    for (unsigned long long int i = 0; i < ingredients; i++) {
+        cin >> demand[i];
+    }
+
+    for (unsigned long long int i = 0; i < ingredients; i++) {
+        cin >> kitchen[i];
+    }
+
+    unsigned long long int start = 1;
+    unsigned long long int end = 1e12;
+
+    while (start <= end) {
+        unsigned long long int mid = start + (end - start) / 2;
+        bool possible = checkIfPossibleToMakeNumberOfCookies(
+            mid, ingredients,
+            demand, kitchen, magicPowder
+        );
+
         if (possible) {
             start = mid + 1;
         } else {
