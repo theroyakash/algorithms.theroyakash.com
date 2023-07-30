@@ -6,6 +6,8 @@ This section includes problems from Codeforces (Mostly Div. 2). All the problems
 
 - [Hamburgers](#hamburgers)
 - [Magic Powder 1 \& 2](#magic-powder-1--2)
+- [Poisoned Dagger](#poisoned-dagger)
+- [Pipeline](#pipeline)
 
 
 ## [Hamburgers](https://codeforces.com/contest/371/problem/C)
@@ -166,6 +168,163 @@ int main() {
     }
 
     cout << end << endl;
+
+    return 0;
+}
+```
+
+## Poisoned Dagger
+### Problem Statement
+- In a game there is a monster. Game is for $100^{500}$ second long. In this game, his character has to kill a dragon. 
+- Player attacks the dragon with a poisoned dagger. The $i^{\text{th}}$ attack is performed at the beginning of the $a[i]$ second from the battle start.
+-  The dagger itself does not deal damage, but it applies a poison effect on the dragon, which deals $1$ damage during each of the next $k$ seconds (starting with the same second when the dragon was stabbed by the dagger). However, if the dragon has already been poisoned, then the dagger updates the poison effect (i.e. cancels the current poison effect and applies a new one).
+
+
+For example, suppose $k = 4$, and Monocarp stabs the dragon during the seconds $2, 4$ and $10$. Then the poison effect is applied at the start of the 2-nd second and deals 1 damage during the $2^{\text{nd}}$ and $3^{\text{rd}}$ seconds; then, at the beginning of the $4^{\text{th}}$ second, the poison effect is reapplied, so it deals exactly $1$ damage during the seconds $4, 5, 6$ and $7$; then, during the $10^{\text{th}}$ second, the poison effect is applied again, and it deals 1 damage during the seconds 10, 11, 12 and 13. In total, the dragon receives 10 damage.
+
+Find the minimum possible value of $k$ (the number of seconds the poison effect lasts) that is enough to deal at least $h$ damage to the dragon.
+
+### Approach
+- Standard Binary Search on Answer.
+- To check feasability we write `findFeasability` method. In there we do a merge interval subroutine for the attack window, then count the total damage done during the entire time. 
+
+### Code
+
+```cpp
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+using namespace std;
+
+bool findFeasability(unsigned long long int k,
+                     unsigned long long int n,
+                     unsigned long long int intervals[],
+                     unsigned long long int h) {
+    // merge intervals
+    vector<vector<unsigned long long int>> startEndIntervals(n);
+
+    for (int i = 0; i < n; i++) {
+        startEndIntervals[i] = {intervals[i], intervals[i] + k - 1};
+    }
+
+    vector<vector<unsigned long long int>> mergedIntervals;
+
+    int i = 0;
+    unsigned long long int last = startEndIntervals.size() - 1;
+
+    while (i < last) {
+        if (startEndIntervals[i][1] >= startEndIntervals[i + 1][0]) {
+            // means there is an overlap
+            startEndIntervals[i + 1][0] = startEndIntervals[i][0];                                        // minimum starting time
+            startEndIntervals[i + 1][1] = std::max(startEndIntervals[i][1], startEndIntervals[i + 1][1]); // maximum
+        } else {
+            mergedIntervals.push_back(startEndIntervals[i]);
+        }
+
+        i++;
+    }
+
+    mergedIntervals.push_back(startEndIntervals[i]); // add the last interval
+
+    // count total damage from the mergedIntervals list
+    unsigned long long int totalDamage = 0;
+    for (auto intervalPair : mergedIntervals) {
+        totalDamage += intervalPair[1] - intervalPair[0] + 1;
+    }
+
+    return totalDamage >= h;
+}
+
+int main() {
+    int testcases;
+    cin >> testcases;
+
+    while (testcases--) {
+        unsigned long long int n, h;
+        cin >> n >> h;
+
+        unsigned long long int a[n];
+
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+
+        unsigned long long int start = 1;
+        unsigned long long int end = 1e19;
+
+        while (start <= end) {
+            unsigned long long int mid = start + (end - start) / 2;
+            bool feasable = findFeasability(mid, n, a, h);
+            if (feasable) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+
+        cout << start << endl;
+    }
+    return 0;
+}
+```
+
+## Pipeline
+
+### Problem Statement
+- We have $n$ houses.
+- We have $2 \dots k$ many $1 \to i$ way splitters.
+- We need to find minimum $j \in \{2 \dots k\}$ such that we have $\geq n$ many pipeline output.
+
+### Approach
+- We need to do a binary search on answer.
+- For feasability condition we do the following
+    - Use $k-1 \to j$ many splitters for $j$ many spitters.
+    - Total output of such usage of splitters is $\binom{k}{2} - \binom{j}{2}$.
+    - Find if $\binom{k}{2} - \binom{j}{2} \geq n$.
+
+
+### Code
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main () {
+    unsigned long long int n, k;
+    cin >> n >> k;
+
+    if (n == 1) {
+        cout << 0 << endl;
+        return 0;
+    }
+
+    if (n <= k) {
+        cout << 1 << endl;
+        return 0;
+    }
+
+    unsigned long long int start = 2;
+    unsigned long long int end = k + 2;
+
+    unsigned long long int maximumSplittedPipes = k*(k + 1) / 2 - k;
+    long long int minimumSplitters = -1;
+
+    while (start <= end) {
+        unsigned long long int mid = start + (end - start) / 2;
+        // use from mid -> k many splitters
+
+        unsigned long long int currentTotalSplit = maximumSplittedPipes - ((mid * (mid - 1) / 2) - mid);
+
+        if (currentTotalSplit >= n) {
+            minimumSplitters = k - mid + 1;
+            start = mid + 1;
+        } else {
+            end = mid - 1;
+        }
+    }
+
+    cout << minimumSplitters << endl;
 
     return 0;
 }

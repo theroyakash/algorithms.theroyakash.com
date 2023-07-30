@@ -26,6 +26,7 @@ nav:
       - Stacks:
         - Stacks Usage: ./stacks/usage.md
         - Stack Problems: ./stacks/problems.md
+    - CP Implementation Problems: ./implementation/problems.md
   - Searching and Sorting:
     - Basics and introduction: ./binary-search/intro.md
     - Binary search problems: ./binary-search/problems.md

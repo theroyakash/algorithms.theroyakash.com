@@ -23,6 +23,7 @@ tags:
 - [The Skyline problem](#the-skyline-problem)
 - [Score of Parentheses](#score-of-parentheses)
 - [Implement a stack with single queue](#implement-a-stack-with-single-queue)
+- [Cd and pwd commands](#cd-and-pwd-commands)
 
 
 Patterns of questions when to use a stacks.
@@ -1069,4 +1070,96 @@ public:
  * int param_3 = obj->top();
  * bool param_4 = obj->empty();
  */
+```
+
+## Cd and pwd commands
+### Problem Statement
+Implement the Unix like `cd` and `pwd` commands.
+- `pwd` of root should return `/`,
+- `cd /home/vasya` will go to `cd /home/vasya`, then if we do `cd /home/theroyakash` it'll go to root and then go to `home` to `theroyakash`,
+- `cd /home/vasya` and then `cd home/theroyakash` sends present working directory to `cd /home/vasya/home/theroyakash`, notice that second `cd` do not start with `/`.
+
+### Approach
+Standard Stack approach.
+
+### Code
+```cpp
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+using namespace std;
+
+/*
+ * Tokenise a string of path to individual folders
+ * eg. /home/theroyakash/go should return <home, theroyakash, go>
+*/
+vector<string> tokenize(string s, char delimeter) {
+    int size = s.size();
+    vector<string> tokens;
+    string current = "";
+
+    for (int i = 0; i < size; i++) {
+        if (s[i] == delimeter and current != "") {
+            tokens.push_back(current);
+            current = "";
+        } else if (s[i] != delimeter){
+            current += s[i];
+        }
+    }
+
+    tokens.push_back(current);
+
+    return tokens;
+}
+
+int main() {
+    int commands;
+    cin >> commands;
+
+    vector<string> stack;
+
+    while (commands--) {
+        string command;
+        cin >> command;
+
+        if (command == "pwd") {
+            if (stack.empty()) {
+                cout << "/" << endl;
+                continue;
+            }
+
+            for (int i = 0; i < stack.size(); i++) {
+                if (i == 0 and stack[i][0] != '/') {
+                    cout << "/";
+                }
+                cout << stack[i] << "/";
+            }
+
+            cout << endl;
+        }
+
+        if (command == "cd") {
+            string directoryString;
+            cin >> directoryString;
+
+            if (directoryString[0] == '/') {
+                stack.clear();
+            }
+
+            vector<string> tokenizedDirectory = tokenize(directoryString, '/');
+
+            for (auto directory : tokenizedDirectory) {
+                // cout << directory << endl;
+
+                if (directory != "..") {
+                    stack.push_back(directory);
+                } else {
+                    stack.pop_back();
+                }
+            }
+        }
+    }
+    return 0;
+}
 ```
