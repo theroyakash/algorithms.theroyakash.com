@@ -6,7 +6,7 @@ These problems discussed below conform to one knapsack pattern. Using solutions 
 
 - [Vanilla $0/1$ Knapsack Problem](#vanilla-01-knapsack-problem)
 - [Subset Sum](#subset-sum)
-- [Equal sum partition](#equal-sum-partition)
+- [Partition Equal Subset Sum](#partition-equal-subset-sum)
 - [Count of Subset sum](#count-of-subset-sum)
 - [Minimum subset sum difference](#minimum-subset-sum-difference)
 - [Target Sum](#target-sum)
@@ -243,7 +243,104 @@ public:
 };
 ```
 
-## Equal sum partition
+### Iterative DP approach
+```cpp
+class Solution{   
+public:
+    vector<vector<bool>> dp;
+    bool isSubsetSum(vector<int>arr, int sum) {
+        int size = arr.size();
+        
+        dp = vector<vector<bool>>(sum + 1, vector<bool>(size + 1, -1));
+        // if sum = 0; then always possible
+        for (int i = 0; i <= size; i++) {
+            dp[0][i] = true;
+        }
+        
+        // > 0 sum and no element is not possible
+        for (int i = 1; i <= sum; i++) {
+            dp[i][0] = false;
+        }
+        
+        for (int i = 1; i <= sum; i++) {
+            for (int j = 1; j <= size; j++) {
+                // dp[i][j] till jth element is it possible to 
+                // get a subset with sum = i;
+                if (arr[j - 1] > i) {
+                    // not possible
+                    dp[i][j] = dp[i][j - 1];
+                } else {
+                    dp[i][j] = dp[i][j - 1] or dp[i - arr[j - 1]][j - 1];
+                }
+            }
+        }
+        
+        return dp[sum][size];
+    }
+};
+```
+
+## Partition Equal Subset Sum
+Find the problem on [Leetcode](https://leetcode.com/problems/partition-equal-subset-sum/description/)
+
+### Problem Statement
+Given an integer array `nums`, return `true` if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or `false` otherwise.
+
+### Examples
+```
+Input: nums = [1,5,11,5]
+Output: true
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+---
+Input: nums = [1,2,3,5]
+Output: false
+Explanation: The array cannot be partitioned into equal sum subsets.
+---
+```
+
+### Approach
+- We have to divide the array into two parts to equal the total sum.
+- If the total sum is odd, then no way we can separate the two arrays.
+- Otherwise, we need to find if there exists a subset with target $= \frac{\text{sum}}{2}$.
+
+### Code
+```cpp
+class Solution {
+private:
+    vector<vector<int>> dp;
+
+    bool recursiveSubroutine(vector<int> &nums, int sum, int i) {
+        int size = nums.size();
+        if (i >= size and sum) return false;
+        if (sum == 0) return true;
+
+        if (dp[sum][i] != -1) return dp[sum][i];
+
+        if (nums[i] > sum) {
+            return dp[sum][i] = recursiveSubroutine(nums, sum, i + 1);
+        }
+        
+        return dp[sum][i] = recursiveSubroutine(nums, sum, i + 1)
+                        or recursiveSubroutine(nums, sum - nums[i], i + 1);
+    }
+
+public:
+    bool canPartition(vector<int>& nums) {
+        int target = 0;
+        for (auto i : nums) target += i;
+        
+        if (target % 2 != 0) return false;
+        else target /= 2;
+        
+        int size = nums.size();
+
+        dp = vector<vector<int>>(target + 1, vector<int>(size + 1, -1));
+
+        return recursiveSubroutine(nums, target, 0);
+    }
+};
+```
+
 ## Count of Subset sum
 ## Minimum subset sum difference
 ## Target Sum
