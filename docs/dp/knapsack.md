@@ -342,6 +342,53 @@ public:
 ```
 
 ## Count of Subset sum
+Find the problem on [GFG](https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1)
+
+### Problem Statement
+Given an array arr[] of non-negative integers and an integer sum, the task is to count all subsets of the given array with a sum equal to a given sum.
+
+### Example
+```
+Input: N = 6, arr[] = {2, 3, 5, 6, 8, 10}
+       sum = 10
+Output: 3
+Explanation: {2, 3, 5}, {2, 8}, {10}
+```
+
+### Approach
+In the last problem we indicated if there exists a sub problem with `isSubsetSum = true`. Now for this problem we simply add true boolean outputs from subproblems. This way we can count how many times true is returned.
+
+### Code
+```cpp
+class Solution{
+public:
+    int MOD = 1e9 + 7;
+    vector<vector<int>> dp;
+    
+	int perfectSum(int arr[], int n, int sum) {
+	    
+	    dp = vector<vector<int>>(n + 1, vector<int>(sum + 1, 0));
+	    
+	    for (int i = 0; i <= n; i++) {
+	        dp[i][0] = 1;
+	    }
+	    
+		for (int i = 1; i <= n; i++) {
+    		for (int j = 0; j <= sum; j++) { // TODO: if we set j = 1..sum there is a problem
+    			if (j - arr[i-1] >= 0) {
+    				dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - arr[i-1]]) % MOD;
+    			} else {
+    				dp[i][j] = dp[i - 1][j]; // dont consider the element
+    			}
+    		}
+    	}
+    	
+	    
+	    return dp[n][sum];
+    }
+};
+```
+
 ## Minimum subset sum difference
 ## Target Sum
 ## Number of subsets with given difference
