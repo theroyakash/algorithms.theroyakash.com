@@ -390,5 +390,59 @@ public:
 ```
 
 ## Minimum subset sum difference
+### Problem Statement
+You are given an array `arr` containing `n` non-negative integers. Your task is to partition this array into two subsets such that the absolute difference between subset sums is minimum. You just need to find the minimum absolute difference considering any valid division of the array elements.
+
+### Approach
+- We need to divide the array into two parts $s_1, s_2$ such that $abs(\sum_{i} s_1[i] - \sum_{i} s_2[i])$ is minimized.
+- For each subset $s_i$, the sum $\sum_{j} s_i[j] \in \left[0, \sum_{i} A[i]\right]$. Where $A$ is the main array.
+- Hence the difference $s_1 - s_2$ becomes $abs(\sum_{i} A[i] - 2s_1)$.
+- Now instead of finding $\displaystyle\min_{\forall s_1, s_2 \in 2^n} abs(s_1, s_2)$ we need to find $\displaystyle\min_{\forall s_1 \in 2^n} abs(2s_1 - \sum_i A[i])$.
+- Now for each of the possible sum $\sum_i s_1[i]$ we find this breaking creates least value of $abs(2s_1 - \sum_i A[i])$.
+- We return the least value.
+
+### Code
+```cpp
+int minSubsetSumDifference(vector<int>& arr, int n) {
+	int minSum = 0;
+	int maxSum = accumulate(arr.begin(), arr.end(), 0);
+
+	int minimumSubsetSumDifference = INT_MAX;
+
+	int size = arr.size();
+	int sum = maxSum;
+	
+	vector<vector<bool>> dp(size + 1, vector<bool>(sum + 1, false));
+
+
+	for(int i = 0; i <= size; i++) {
+		dp[i][0] = true;
+	}
+
+	for(int i = 1; i <= size; i++) {
+		for(int j = 1; j <= sum; j++) {
+
+			if (j - arr[i - 1] >= 0) {
+				dp[i][j] = dp[i - 1][j] or dp[i - 1][j - arr[i - 1]];
+			} else {
+				dp[i][j] = dp[i - 1][j];
+			}
+		}
+	}
+
+
+	for (int i = maxSum / 2; i >= 0; i--) {
+		bool possible = dp[n][i];
+		if (possible) {
+			minimumSubsetSumDifference = std::min(minimumSubsetSumDifference, abs(2*i - maxSum));
+			break;
+		}
+	}
+
+
+	return minimumSubsetSumDifference;
+}
+```
+
 ## Target Sum
 ## Number of subsets with given difference
