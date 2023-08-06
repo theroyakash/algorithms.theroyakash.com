@@ -403,44 +403,53 @@ You are given an array `arr` containing `n` non-negative integers. Your task is 
 
 ### Code
 ```cpp
-int minSubsetSumDifference(vector<int>& arr, int n) {
-	int minSum = 0;
-	int maxSum = accumulate(arr.begin(), arr.end(), 0);
+typedef struct Loc {
+    int i, j;
+} Loc;
 
-	int minimumSubsetSumDifference = INT_MAX;
+int minSubsetSumDifference(vector<int> &arr, int n) {
+    int minSum = 0;
+    int maxSum = accumulate(arr.begin(), arr.end(), 0);
 
-	int size = arr.size();
-	int sum = maxSum;
-	
-	vector<vector<bool>> dp(size + 1, vector<bool>(sum + 1, false));
+    int minimumSubsetSumDifference = INT_MAX;
 
+    int size = arr.size();
+    int sum = maxSum;
 
-	for(int i = 0; i <= size; i++) {
-		dp[i][0] = true;
-	}
+    vector<vector<bool>> dp(size + 1, vector<bool>(sum + 1, false));
 
-	for(int i = 1; i <= size; i++) {
-		for(int j = 1; j <= sum; j++) {
+    for (int i = 0; i <= size; i++) {
+        dp[i][0] = true;
+    }
 
-			if (j - arr[i - 1] >= 0) {
-				dp[i][j] = dp[i - 1][j] or dp[i - 1][j - arr[i - 1]];
-			} else {
-				dp[i][j] = dp[i - 1][j];
-			}
-		}
-	}
+    vector<Loc> locations; // store locations in the last array where
+                           // there is a subset s_1 possible
 
+    for (int i = 1; i <= size; i++) {
+        for (int j = 1; j <= sum; j++) {
 
-	for (int i = maxSum / 2; i >= 0; i--) {
-		bool possible = dp[n][i];
-		if (possible) {
-			minimumSubsetSumDifference = std::min(minimumSubsetSumDifference, abs(2*i - maxSum));
-			break;
-		}
-	}
+            if (j - arr[i - 1] >= 0) {
+                dp[i][j] = dp[i - 1][j] or dp[i - 1][j - arr[i - 1]];
+            } else {
+                dp[i][j] = dp[i - 1][j];
+            }
 
+            if (i == size and dp[i][j] == 1) {
+                Loc loc;
+                loc.i = i;
+                loc.j = j;
+                locations.push_back(loc);
+            }
+        }
+    }
 
-	return minimumSubsetSumDifference;
+    // for each of the s_i find out the difference.
+    for (auto loc : locations) {
+        int i = loc.i, j = loc.j;
+        minimumSubsetSumDifference = std::min(minimumSubsetSumDifference, abs(2 * j - maxSum));
+    }
+
+    return minimumSubsetSumDifference;
 }
 ```
 
