@@ -9,8 +9,8 @@ These problems discussed below conform to one knapsack pattern. Using solutions 
 - [Partition Equal Subset Sum](#partition-equal-subset-sum)
 - [Count of Subset sum](#count-of-subset-sum)
 - [Minimum subset sum difference](#minimum-subset-sum-difference)
-- [Target Sum](#target-sum)
 - [Number of subsets with given difference](#number-of-subsets-with-given-difference)
+- [Target Sum](#target-sum)
 
 
 ## Vanilla $0/1$ Knapsack Problem
@@ -436,8 +436,7 @@ int minSubsetSumDifference(vector<int> &arr, int n) {
 
             if (i == size and dp[i][j] == 1) {
                 Loc loc;
-                loc.i = i;
-                loc.j = j;
+                loc.i = i, loc.j = j;
                 locations.push_back(loc);
             }
         }
@@ -453,5 +452,77 @@ int minSubsetSumDifference(vector<int> &arr, int n) {
 }
 ```
 
-## Target Sum
 ## Number of subsets with given difference
+### Problem Statement
+Given an array $A$ and a difference `diff` = $d$, find the number of subsets that array can be divided into so that each the difference between the two subset is the given $d$.
+
+### Approach
+- We'll re-use the previous concepts in order to solve this problem at hand,
+- We need to break the array into two parts $S_1, S_2$ such a way that $\sum_i S_1[i] - \sum_i S_2[i] = d$ where $d$ is the given difference. We need to find out the number of such pairs $S_1, S_2$.
+- **Observation:** it is also known that $\sum_i S_1[i] + \sum_i S_2[i] = \sum_i A[i]$.
+- If we add the two equation from up above we get the following $2* \sum_i S_1[i] = d + \sum_i A[i]$. Hence $\sum_i S_1[i] = \frac{d + \sum_i A[i]}{2}$
+- Hence the question now becomes from How many $S_1, S_2$ pairs possible for the difference = $d$ to How many subsets possible with $S_1 = j$ for some number $j = \frac{d + \sum_i A[i]}{2}$.
+
+### Code
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Solution {
+public:
+    int MOD = 1e9 + 7;
+    int sumOfArray = 0;
+    vector<vector<int>> dp;
+    
+    int countPartitions(int n, int d, vector<int>& arr) {
+        sumOfArray = 0;
+        for (int i : arr) sumOfArray+=i;
+        
+        int j = (d + sumOfArray) / 2;
+        
+        buildDPTable(n, arr, j);
+        
+        return dp[n][j];
+    }
+    
+    // build the dp table
+    void buildDPTable(int n, vector<int>& arr, int sum) {
+        dp = vector<vector<int>>(n + 1, vector<int>(sum + 1, -1));
+        
+        for (int i = 1; i <= sum ; i++) {
+            dp[0][i] = 0; // no solution for +ve sum and 0 element
+        }
+        
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 1; // empty subset for sum = 0
+        }
+        
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum ; j++) {
+                dp[i][j] = dp[i - 1][j];
+                
+                if (j - arr[i - 1] >= 0) {
+                    dp[i][j] += dp[i - 1][j - arr[i - 1]];
+                }
+            }
+        } 
+    }
+    
+};
+
+int main() {
+    Solution s;
+    int n, d;
+    cin >> n >> d;
+    
+    vector<int> a(n, 0);
+    
+    for (int i = 0; i < n; i++) cin >> a[i];
+    
+    cout << s.countPartitions(n, d, a);
+    
+}
+```
+
+## Target Sum
