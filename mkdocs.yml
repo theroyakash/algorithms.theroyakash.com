@@ -52,6 +52,7 @@ nav:
     - Dynamic Programming:
       - Problems: ./dp/problems.md
       - Knapsack Pattern: ./dp/knapsack.md
+      - Unbounded Knapsack Pattern: ./dp/unbounded-knapsack.md
   - Greedy Algorithms:
     - Greedy Problems: ./greedy/problems.md
 

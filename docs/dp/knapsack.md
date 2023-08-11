@@ -1,10 +1,10 @@
-# :material-bag-personal: Knapsack Pattern
+# :material-bag-personal: Knapsack (0/1) Pattern
 
 These problems discussed below conform to one knapsack pattern. Using solutions to the knapsack problem and a minor modification, you can solve almost all of the following problems. We'll discuss this as we explain the code and the approach to these problems.
 
 **Problems** discussed
 
-- [Vanilla $0/1$ Knapsack Problem](#vanilla-01-knapsack-problem)
+- [Vanilla 0/1 Knapsack Problem](#vanilla-01-knapsack-problem)
 - [Subset Sum](#subset-sum)
 - [Partition Equal Subset Sum](#partition-equal-subset-sum)
 - [Count of Subset sum](#count-of-subset-sum)
@@ -13,7 +13,7 @@ These problems discussed below conform to one knapsack pattern. Using solutions 
 - [Target Sum](#target-sum)
 
 
-## Vanilla $0/1$ Knapsack Problem
+## Vanilla 0/1 Knapsack Problem
 ### Problem statement
 [Find the problem in GFG](https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1).
 
@@ -28,7 +28,7 @@ Suppose $w= [1,3,4,5]$ and $p = [1,4,5,7]$. Now we have $4$ items, and we create
 ![choicediagram](./../images/choicediagram.png)
 
 **Recursive design** should follow the syntax described below
-```cpp
+```cpp linenums="1"
 int knapsack(auto params) {
     /* BASE CONDITION */
     /* Call knapsack(params) on Choice Diagram */
@@ -40,7 +40,7 @@ Transforming the choice diagram into code
 ### Code
 This is a simple recursive solution (not memoized).
 
-```cpp
+```cpp linenums="1"
 class Solution {
     public:
     //Function to return max value that can be put in knapsack of capacity W.
@@ -71,7 +71,7 @@ We now memoize the solution to use the dynamic programming paradigm.
     - First, we need to identify what are the values that are changing,
     - Make a `vector<nested vector<int>>` 1D, 2D. 3D depending upon the number of elements changing.
 
-```cpp
+```cpp linenums="1"
 class Solution {
 public:
     vector<vector<int>> dp;
@@ -112,7 +112,7 @@ public:
 
 
 The following is a top-down approach for $0/1$ knapsack
-```cpp
+```cpp linenums="1"
 class Solution {
     public:
     //Function to return max value that can be put in knapsack of capacity W.
@@ -166,7 +166,7 @@ Explanation: Here there exists a subset with sum = 9, 4+3+2 = 9.
 ```
 
 ### Recursive solution
-```cpp
+```cpp linenums="1"
 class Solution{   
 public:
     bool subSetPossible = false;
@@ -210,7 +210,7 @@ Now all left is to memoize the solution
 - So we'll create a vector `dp` to store existing call results on a particular `sum, i`.
 - We need to change the function signature by returning a `bool` if `dp[`sum][i]` is true. This will solve sub-problems, and using that, we can compute the subset sum optimally using overlapping subproblems.
 
-```cpp
+```cpp linenums="1"
 class Solution{   
 public:
     bool subSetPossible = false;
@@ -244,7 +244,7 @@ public:
 ```
 
 ### Iterative DP approach
-```cpp
+```cpp linenums="1"
 class Solution{   
 public:
     vector<vector<bool>> dp;
@@ -304,7 +304,7 @@ Explanation: The array cannot be partitioned into equal sum subsets.
 - Otherwise, we need to find if there exists a subset with target $= \frac{\text{sum}}{2}$.
 
 ### Code
-```cpp
+```cpp linenums="1"
 class Solution {
 private:
     vector<vector<int>> dp;
@@ -359,7 +359,7 @@ Explanation: {2, 3, 5}, {2, 8}, {10}
 In the last problem we indicated if there exists a sub problem with `isSubsetSum = true`. Now for this problem we simply add true boolean outputs from subproblems. This way we can count how many times true is returned.
 
 ### Code
-```cpp
+```cpp linenums="1"
 class Solution{
 public:
     int MOD = 1e9 + 7;
@@ -402,7 +402,7 @@ You are given an array `arr` containing `n` non-negative integers. Your task is 
 - We return the least value.
 
 ### Code
-```cpp
+```cpp linenums="1"
 typedef struct Loc {
     int i, j;
 } Loc;
@@ -464,7 +464,7 @@ Given an array $A$ and a difference `diff` = $d$, find the number of subsets tha
 - Hence the question now becomes from How many $S_1, S_2$ pairs possible for the difference = $d$ to How many subsets possible with $S_1 = j$ for some number $j = \frac{d + \sum_i A[i]}{2}$.
 
 ### Code
-```cpp
+```cpp linenums="1"
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -526,3 +526,66 @@ int main() {
 ```
 
 ## Target Sum
+[Find the problem on Leetcode $\to$](https://leetcode.com/problems/target-sum/)
+
+### Problem Statement
+You are given an integer array $\textsf{nums}$ and an integer $\textsf{target}$.
+
+You want to build an expression out of nums by adding one of the symbols '+' and '-' before each integer in nums and then concatenate all the integers.
+
+> For example, if $\textsf{nums} = [2, 1]$, you can add a '+' before 2 and a '-' before 1 and concatenate them to build the expression $+2-1$.
+
+Return the number of different expressions that you can build, which evaluates to target.
+
+### Approach
+
+### Code
+```cpp linenums="1"
+class Solution {
+private:
+    int countSubsetSumDifference(vector<int>& nums, int difference) {
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+
+        int target = (sum + difference) / 2;
+        if ((sum + difference) % 2 or sum < difference) return 0;
+        if (target < 0) return 0;
+
+        return findNumberOfSubsetWithTarget(nums, target);
+    }
+
+    int findNumberOfSubsetWithTarget(vector<int>& nums, int sum) {
+        int n = nums.size();
+        vector<vector<int>> dp(n + 1, vector<int>(sum + 1, 0));
+
+        // if sum = 0 then empty set is good
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 1;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= sum; j++) {  // starting from j = 0 because there can be element
+            // 0 that can be added into the subsets to achieve 0 sum.
+
+                if (j - nums[i - 1] >= 0) {
+                    dp[i][j]=dp[i-1][j] + dp[i-1][j-nums[i-1]];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+            }
+        }
+
+        return dp[n][sum];
+    }
+
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        if (nums.size() == 1) {
+            // base case
+            if (abs(nums[0]) == abs(target)) return 1;
+            else return 0;
+        }
+
+        return countSubsetSumDifference(nums, target);
+    }
+};
+```
