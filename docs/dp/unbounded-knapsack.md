@@ -6,8 +6,8 @@ These problems discussed below conform to one knapsack pattern called Unbounded 
 
 - [:material-bag-carry-on: The Unbounded Knapsack Problem](#material-bag-carry-on-the-unbounded-knapsack-problem)
 - [:material-pipe-disconnected: Rod cutting](#material-pipe-disconnected-rod-cutting)
-- [Coin Change](#coin-change)
 - [Coin Change II](#coin-change-ii)
+- [Coin Change I (Unbounded Knapsack Way)](#coin-change-i-unbounded-knapsack-way)
 - [Maximum Ribbon Cut](#maximum-ribbon-cut)
 
 
@@ -101,7 +101,10 @@ public:
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
                 if (i == 1) {
-                    dp[i][j] = j * price[i - 1];
+                    // for required length = j
+                    // with i = 1 lenth pieces
+                    // total profit = j * {1st element price}
+                    dp[i][j] = j * price[0];
                 } else {
                     if (i <= j) {
                         // if the rod size is big enough to
@@ -119,8 +122,64 @@ public:
     }
 };
 ```
-## Coin Change
-
 ## Coin Change II
+Find the problem on [Leetcode $\to$](https://leetcode.com/problems/coin-change-ii/description/)
+
+### Problem Statement
+You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.
+
+Return the number of combinations that make up that amount. If that amount of money cannot be made up by any combination of the coins, return 0.
+
+You may assume that you have an infinite number of each kind of coin. The answer is guaranteed to fit into a signed 32-bit integer.
+
+### Approach
+This is a problem of unbounded knapsack. We have to count number of ways we can place coins to the amount. Think of `amount` as the bag size, and coins are each element with $v$ profit, $v$ is the value of the coin. Similar to unbounded knapsack we can put multiple instances of same coin and fill the bag up i.e, sum up to `amount`.
+
+
+### Code
+```cpp linenums="1" title="Coin Change II"
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+
+        if (amount == 0) return 1;
+
+        int size = coins.size();
+        vector<vector<int>> dp(size + 1, vector<int>(amount + 1, 0));
+
+        for (int i = 0; i <= size; i++) {
+            for (int j = 0; j <= amount; j++) {
+                if (j == 0) {
+                    // one way to select 0 amount from coins [select null set]
+                    dp[i][j] = 1;
+                }
+
+                if (i and j) {
+                    dp[i][j] = dp[i - 1][j];
+                    if (j - coins[i - 1] >= 0) {
+                        dp[i][j] += dp[i][j - coins[i - 1]];
+                    }
+                }
+            }
+        }
+
+        return dp[size][amount];
+    }
+};
+```
+
+## Coin Change I (Unbounded Knapsack Way)
+To solve the problem using most optimal way you can look [🔗 here](https://algorithms.theroyakash.com/dp/problems/#coin-combinations-ii).
+
+Find the problem on [leetcode 🔗](https://leetcode.com/problems/coin-change/description/) and [gfg 🔗](https://practice.geeksforgeeks.org/problems/coin-change2448/1).
+
+### Problem Statement
+You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.
+
+Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return `-1`.
+
+You may assume that you have an infinite number of each kind of coin.
+
+### Approach
 
 ## Maximum Ribbon Cut

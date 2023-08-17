@@ -1380,14 +1380,7 @@ public:
             return lowestCommonAncestor(root->right, p , q);
         }
         
-        // now check if both are in different subtree or not?
-        if (findOnSubTree(root->left, p) and findOnSubTree(root->right, q)) {
-            return root;
-        } else if (findOnSubTree(root->right, p) and findOnSubTree(root->left, q)) {
-            return root;
-        }
-        
-        // base case all must have the ancestor root
+        // both in different sub-tree
         return root;
     }
 };
