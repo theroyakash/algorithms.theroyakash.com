@@ -4,13 +4,14 @@ These problems discussed below conform to one knapsack pattern. Using solutions 
 
 **Problems** discussed
 
-- [Vanilla 0/1 Knapsack Problem](#vanilla-01-knapsack-problem)
-- [Subset Sum](#subset-sum)
-- [Partition Equal Subset Sum](#partition-equal-subset-sum)
-- [Count of Subset sum](#count-of-subset-sum)
-- [Minimum subset sum difference](#minimum-subset-sum-difference)
-- [Number of subsets with given difference](#number-of-subsets-with-given-difference)
-- [Target Sum](#target-sum)
+1. [Vanilla 0/1 Knapsack Problem](#vanilla-01-knapsack-problem)
+1. [Subset Sum](#subset-sum)
+1. [Partition Equal Subset Sum](#partition-equal-subset-sum)
+1. [Count of Subset sum](#count-of-subset-sum)
+1. [Minimum subset sum difference](#minimum-subset-sum-difference)
+1. [Number of subsets with given difference](#number-of-subsets-with-given-difference)
+1. [Target Sum](#target-sum)
+
 
 
 ## Vanilla 0/1 Knapsack Problem
