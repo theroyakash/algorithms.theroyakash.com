@@ -5,20 +5,22 @@ There are several problems where you are required to calculate something multipl
 
 **Table of Contents**
 
-- [Climbing Stairs](#climbing-stairs)
-- [Frog Jump](#frog-jump)
-- [House Robber](#house-robber)
-- [House Robber II](#house-robber-ii)
-- [Longest Palindromic Substring](#longest-palindromic-substring)
-- [Palindromic Substrings](#palindromic-substrings)
-- [Minimizing Coins](#minimizing-coins)
-- [Coin Combinations I](#coin-combinations-i)
-- [Coin Combinations II](#coin-combinations-ii)
-- [Removing Digits](#removing-digits)
-- [Grid Paths](#grid-paths)
-- [Minimum Path Sum](#minimum-path-sum)
-- [Longest increasing subsequence](#longest-increasing-subsequence)
-- [Edit distance](#edit-distance)
+1. [Climbing Stairs](#climbing-stairs)
+1. [Frog Jump](#frog-jump)
+1. [House Robber](#house-robber)
+1. [House Robber II](#house-robber-ii)
+1. [Longest Palindromic Substring](#longest-palindromic-substring)
+1. [Palindromic Substrings](#palindromic-substrings)
+1. [Minimizing Coins](#minimizing-coins)
+1. [Coin Combinations I](#coin-combinations-i)
+1. [Coin Combinations II](#coin-combinations-ii)
+1. [Removing Digits](#removing-digits)
+1. [Grid Paths](#grid-paths)
+1. [Minimum Path Sum](#minimum-path-sum)
+1. [Longest increasing subsequence](#longest-increasing-subsequence)
+1. [Edit distance](#edit-distance)
+1. [Maximize the Profit as the Salesman](#maximize-the-profit-as-the-salesman)
+1. [Maximum Profit in Job Scheduling.](#maximum-profit-in-job-scheduling)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -1096,3 +1098,43 @@ int main() {
     return 0;
 }
 ```
+
+## Maximize the Profit as the Salesman
+The next few questions are a part of Weighted Job Scheduling pattern. This is a famous dynamic programming pattern. Next we'll discuss that.
+
+### Problem Statement
+You are given an integer $n$ representing the number of houses on a number line, numbered from $0$ to $n - 1$.
+
+Additionally, you are given a 2D integer array offers where $\text{offers}[i] = \{\text{start}_i, \text{end}_i, \text{gold}_i\}$ indicating that $i^{\text{th}}$ buyer wants to buy all the houses from $\text{start}_i \to \text{end}_i$ for $\text{gold}_i$ amount of gold.
+
+As a salesman, your goal is to maximize your earnings by strategically selecting and selling houses to buyers.
+
+Return the maximum amount of gold you can earn.
+
+**Note** that different buyers can't buy the same house, and some houses may remain unsold.
+
+### Examples
+```
+Input: n = 5, offers = [[0,0,1],[0,2,2],[1,3,2]]
+Output: 3
+Explanation: There are 5 houses numbered from 0 to 4 and there are 3 purchase offers.
+We sell houses in the range [0,0] to 1st buyer for 1 gold and houses in the range [1,3] to 3rd buyer for 2 golds.
+It can be proven that 3 is the maximum amount of gold we can achieve.
+---
+
+
+Input: n = 5, offers = [[0,0,1],[0,2,10],[1,3,2]]
+Output: 10
+Explanation: There are 5 houses numbered from 0 to 4 and there are 3 purchase offers.
+We sell houses in the range [0,2] to 2nd buyer for 10 golds.
+It can be proven that 10 is the maximum amount of gold we can achieve.
+```
+
+### Approach
+The intuition behind this solution is to sort the offers by their starting positions and then use dynamic programming to compute the maximum profit that can be achieved while considering each offer.
+
+1. We start the process by sorting the offers based on their starting positions. This step ensures that the offers are considered in ascending order of their starting positions.
+1. Create a vector `first` to store the starting positions of each offer. This vector will help in finding the index of the next available offer for each offer.
+
+## Maximum Profit in Job Scheduling.
+

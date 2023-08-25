@@ -6,6 +6,7 @@ We'll discuss few DP on strings problem here, starting with the Longest Common ð
 1. [Longest Common Subsequence](#longest-common-subsequence)
 1. [Printing the Longest Common Subsequence](#printing-the-longest-common-subsequence)
 1. [Longest common substring](#longest-common-substring)
+1. [Longest palindromic sequence](#longest-palindromic-sequence)
 
 
 ## Longest Common Subsequence
@@ -217,6 +218,60 @@ public:
         }
         
         return maxLength;
+    }
+};
+```
+## Longest palindromic sequence
+### Problem Statement
+Given a string s, find the longest palindromic subsequence's length in s.
+
+A **subsequence** is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+### Approach
+Longest palindromic subsequence has the following characteristics
+1. It is pallindrome. Hence it reads same as front to back and back to front.
+1. It is longest.
+
+As it reads same as front to back and back to front, if we reverse the original string the longest palindromic subsequence should remain the same.
+
+Hence if we find the longest common subsequence between the string and its reverse we find the longest palindromic subsequence for the string. Hence the following code.
+
+### Code
+```cpp
+class Solution {
+public:
+    int LCS(string s1, string s2) {
+        int n;
+        n = s1.size();
+
+        int dp[n + 1][n + 1];
+        memset(dp, 0, sizeof(dp));
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (not i or not j) {
+                    dp[i][j] = 0;
+                } else {
+                    if (s1[i - 1] == s2[j - 1]) {
+                        dp[i][j] = 1 + dp[i - 1][j - 1];
+                    } else {
+                        dp[i][j] = std::max(
+                            dp[i - 1][j],
+                            dp[i][j - 1]
+                        );
+                    }
+                }
+            }
+        }
+
+        return dp[n][n];
+    }
+
+    int longestPalindromeSubseq(string s) {
+        string s2 = s;
+        reverse(s2.begin(), s2.end());
+
+        return LCS(s, s2);
     }
 };
 ```
