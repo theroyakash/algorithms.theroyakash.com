@@ -7,6 +7,8 @@ We'll discuss few DP on strings problem here, starting with the Longest Common ð
 1. [Printing the Longest Common Subsequence](#printing-the-longest-common-subsequence)
 1. [Longest common substring](#longest-common-substring)
 1. [Longest palindromic sequence](#longest-palindromic-sequence)
+1. [Minimum number of deletion in a string to make it a palindrome](#minimum-number-of-deletion-in-a-string-to-make-it-a-palindrome)
+1. [Shortest Common Supersequence (Print)](#shortest-common-supersequence-print)
 
 
 ## Longest Common Subsequence
@@ -272,6 +274,108 @@ public:
         reverse(s2.begin(), s2.end());
 
         return LCS(s, s2);
+    }
+};
+```
+## Minimum number of deletion in a string to make it a palindrome
+### Problem Statement
+Given a string `s`, find the minimum deletion from the string required to go to a palindrome.
+
+### Approach
+- The operation we need is simple deletion.
+- Hence if we do minimal deletion we can reach the largest palindromic subsequence.
+- Hence total of $\text{length} - \text{size of longest palindromic subsequence}$ is the amount of deletion needed to a palindromic string.
+
+
+### Code
+```cpp
+class Solution {
+public:
+    int minimumDeletionToMakePalindrome(string s) {
+        string s2 = s;
+        reverse(s2.begin(), s2.end());
+
+        return s.size() - LCS(s, s2);
+    }
+};
+```
+
+## Shortest Common Supersequence (Print)
+Find the problem on leetcode [here](https://leetcode.com/problems/shortest-common-supersequence/description/)
+### Problem Statement
+Given two strings `str1` and `str2`, return the shortest string that has both `str1` and `str2` as subsequences. If there are multiple valid strings, return any of them.
+
+A string `s` is a subsequence of string `t` if deleting some number of characters from `t` (possibly 0) results in the string `s`.
+
+### Approach
+- First of all the size of the SCS is $n + m - \textsf{LCS}(\text{str1, str2})$, that is we add two strings to get the super-sequence and then remove one time $\textsf{LCS}$ because this has been added twice.
+- Similar to printing LCS we will use the DP table for LCS to backtrack and find the actual solution.
+- Here in this case two code-changes are needed. First one is if we are matching two characters we add them in the solution, but when we don't get a match we move either $i - 1$ or $j - 1$ and we need to add those to the shortest super-sequence because it is not appearing on $\textsf{LCS}$.
+- Next is once the while loop stops, it is either because $i$ ran out or $j$ ranout. In case of LCS common sub-sequence of a null string with some random string is null string, but here $\textsf{SCS}(\phi, S) = S$.
+- These are the two code changes needed to print $\textsf{SCS}$.
+
+
+### Code
+```cpp
+class Solution {
+public:
+    void buildDPTableForLCS(vector<vector<int>> &dp, string str1, string str2) {
+        int n = str1.size();
+        int m = str2.size();
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
+                if (not i or not j) {
+                    dp[i][j] = 0;
+                } else {
+                    if (str1[i - 1] == str2[j - 1]) {
+                        dp[i][j] = 1 + dp[i-1][j-1];
+                    } else {
+                        dp[i][j] = std::max(
+                            dp[i - 1][j],
+                            dp[i][j - 1]
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    string shortestCommonSupersequence(string str1, string str2) {
+        int n = str1.size();
+        int m = str2.size();
+
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+        buildDPTableForLCS(dp, str1, str2);
+
+        string s = "";
+        int i = n, j = m;
+        while (i > 0 and j > 0) {
+            if (str1[i - 1] == str2[j - 1]) {
+                s += str1[i - 1];
+                i--; j--;
+            } else {
+                if (dp[i - 1][j] > dp[i][j - 1]) {
+                    s += str1[i-1]; i--;
+                } else {
+                    s += str2[j - 1];
+                    j--;
+                }
+            }
+        }
+
+        while (i > 0) {
+            s += str1[i-1]; i--;
+        }
+        
+        while (j > 0) {
+            s += str2[j - 1];
+            j--;
+        }
+
+        std::reverse(s.begin(), s.end());
+
+        return s;
     }
 };
 ```
