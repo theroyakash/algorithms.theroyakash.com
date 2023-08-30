@@ -9,6 +9,7 @@ There are several problems where you are required to calculate something multipl
 1. [Frog Jump](#frog-jump)
 1. [House Robber](#house-robber)
 1. [House Robber II](#house-robber-ii)
+1. [Maximum Number of Jumps to Reach the Last Index](#maximum-number-of-jumps-to-reach-the-last-index)
 1. [Longest Palindromic Substring](#longest-palindromic-substring)
 1. [Palindromic Substrings](#palindromic-substrings)
 1. [Minimizing Coins](#minimizing-coins)
@@ -20,7 +21,7 @@ There are several problems where you are required to calculate something multipl
 1. [Longest increasing subsequence](#longest-increasing-subsequence)
 1. [Edit distance](#edit-distance)
 1. [Maximize the Profit as the Salesman](#maximize-the-profit-as-the-salesman)
-1. [Maximum Profit in Job Scheduling.](#maximum-profit-in-job-scheduling)
+1. [Maximum Profit in Job Scheduling](#maximum-profit-in-job-scheduling)
 
 ## Climbing Stairs
 [Find the Problem on Leetcode $\to$](https://leetcode.com/problems/climbing-stairs/)
@@ -243,6 +244,70 @@ public:
 
 ### Time Complexity
 The algorithm runs in $O(N)$ time and with no extra memory.
+
+## Maximum Number of Jumps to Reach the Last Index
+You are given a 0-indexed array nums of n integers and an integer target.
+
+You are initially positioned at index 0. In one step, you can jump from index $i$ to any index $j$ such that:
+
+1. $i < j$ and
+1. $\textsf{abs}(\textsf{nums}[i] - \textsf{nums}[j]) \leq \textsf{target}$
+
+### Examples
+
+```
+Input: nums = [1,3,6,4,1,2], target = 2
+Output: 3
+Explanation: To go from index 0 to index n - 1 with the maximum number of jumps, you can perform the following jumping sequence:
+- Jump from index 0 to index 1. 
+- Jump from index 1 to index 3.
+- Jump from index 3 to index 5.
+It can be proven that there is no other jumping sequence that goes from 0 to n - 1 with more than 3 jumps. Hence, the answer is 3. 
+---
+
+
+Input: nums = [1,3,6,4,1,2], target = 3
+Output: 5
+Explanation: To go from index 0 to index n - 1 with the maximum number of jumps, you can perform the following jumping sequence:
+- Jump from index 0 to index 1.
+- Jump from index 1 to index 2.
+- Jump from index 2 to index 3.
+- Jump from index 3 to index 4.
+- Jump from index 4 to index 5.
+It can be proven that there is no other jumping sequence that goes from 0 to n - 1 with more than 5 jumps. Hence, the answer is 5.
+---
+
+
+Input: nums = [1,3,6,4,1,2], target = 0
+Output: -1
+Explanation: It can be proven that there is no jumping sequence that goes from 0 to n - 1. Hence, the answer is -1. 
+```
+
+### Code
+```cpp
+class Solution {
+public:
+    int maximumJumps(vector<int>& nums, int target) {
+        int n = nums.size();
+        int dp[n]; // dp[i] = maximumJumps to reach location i.
+        memset(dp, -1, sizeof(dp));
+
+        dp[0] = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (dp[i] == -1) continue;
+            for (int j = i + 1; j < n; j++) {
+                if (abs(nums[i] - nums[j]) <= target) {
+                    dp[j] = std::max(dp[j], 1 + dp[i]);
+                }
+            }
+        }
+
+        return dp[n - 1];
+    }
+};
+```
+
 
 ## Longest Palindromic Substring
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/longest-palindromic-substring/)
@@ -1136,5 +1201,5 @@ The intuition behind this solution is to sort the offers by their starting posit
 1. We start the process by sorting the offers based on their starting positions. This step ensures that the offers are considered in ascending order of their starting positions.
 1. Create a vector `first` to store the starting positions of each offer. This vector will help in finding the index of the next available offer for each offer.
 
-## Maximum Profit in Job Scheduling.
+## Maximum Profit in Job Scheduling
 

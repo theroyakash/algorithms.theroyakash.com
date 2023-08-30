@@ -9,6 +9,9 @@ We'll discuss few DP on strings problem here, starting with the Longest Common ð
 1. [Longest palindromic sequence](#longest-palindromic-sequence)
 1. [Minimum number of deletion in a string to make it a palindrome](#minimum-number-of-deletion-in-a-string-to-make-it-a-palindrome)
 1. [Shortest Common Supersequence (Print)](#shortest-common-supersequence-print)
+1. [Longest Repeating Subsequence](#longest-repeating-subsequence)
+1. [Wildcard Matching](#wildcard-matching)
+1. [Minimum Insertion Steps to Make a String Palindrome](#minimum-insertion-steps-to-make-a-string-palindrome)
 
 
 ## Longest Common Subsequence
@@ -376,6 +379,188 @@ public:
         std::reverse(s.begin(), s.end());
 
         return s;
+    }
+};
+```
+
+## Longest Repeating Subsequence
+Find the problem on [GeeksForGeeks](https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1).
+
+### Problem Statement
+Given string `str`, find the length of the longest repeating subsequence such that it can be found twice in the given string.
+
+The two identified subsequences $A$ and $B$ can use the same $i^{\text{th}}$ character from string `str` if and only if that ith character has different indices in $A$ and $B$. For example, $A = xax$ and $B = xax$ then the index of first $x$ must be different in the original string for $A$ and $B$.
+
+### Approach
+- Longest repeating subsequence is same as $\textsf{LCS}(S, S)$ except we don't match if two characters are at the same location. For example
+    - If $S = \textsf{AKASH}$ then $A$ is the longest repeating subsequence, we don't consider $K, S, H$ as they are not repeating.
+- Notice the only code changes in the $11^{\text{th}}$ line.
+
+### Code
+```cpp linenums="1" hl_lines="11" title="LongestRepeatingSubsequence.cpp"
+class Solution {
+public:
+    int LCS(string s1, string s2) {
+        int n = s1.size();
+        int m = s2.size();
+        
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+        
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (i!=j and s1[i - 1] == s2[j - 1]) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = std::max(
+                        dp[i - 1][j],
+                        dp[i][j - 1]
+                    );
+                }
+            }
+        }
+        
+        return dp[n][m];
+    }
+    
+    int LongestRepeatingSubsequence(string str){
+        return LCS(str, str);
+    }
+};
+```
+
+## Wildcard Matching
+Find the problem on [Leetcode $\to$](https://leetcode.com/problems/wildcard-matching/)
+
+Given an input string $s$ and a pattern $p$, implement wildcard pattern matching with support for $?$ and $*$ where:
+
+1. $?$ Matches any single character.
+1. $*$ Matches any sequence of characters (including the empty sequence).
+1. The matching should cover the entire input string (not partial).
+
+### Examples
+```
+Input: s = "aa", p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+---
+
+Input: s = "aa", p = "*"
+Output: true
+Explanation: '*' matches any sequence.
+---
+
+Input: s = "cb", p = "?a"
+Output: false
+Explanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.
+```
+
+### Approach
+Similar approach to the $\textsf{LCS}$ problem. A very detailed read-up about the solution is available [here](https://leetcode.com/problems/wildcard-matching/discuss/1001130/C%2B%2B-Clean-and-concise-bottom-up-dp-code-with-detailed-explanation-easy-to-understand.).
+
+### Code
+```cpp
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        // base cases
+        if (p == "*") return true;
+        if (p == "?" and s.size() == 1) {
+            return true;
+        } else if (p == "?" and (s.size() > 1 or s.size() == 0)) {
+            return false;
+        }
+        
+        vector<vector<bool>> dp(s.size() + 1, vector(p.size() + 1, false));
+        
+        dp[0][0] = true;
+        
+        for (int j = 0; j < p.size() && p[j] == '*'; j++) {
+            dp[0][j + 1] = true;
+        }
+        
+        for (int i = 1; i <= s.size(); ++i) {
+            for (int j = 1; j <= p.size(); ++j) {
+                if (s[i - 1] == p[j - 1] || p[j - 1] == '?') {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (p[j - 1] == '*') {
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+                }
+            }
+        }
+
+        return dp[s.size()][p.size()];
+    }
+};
+```
+
+## Minimum Insertion Steps to Make a String Palindrome
+Find the problem on [Leetcode](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/).
+### Problem Statement
+Given a string `s`. In one step you can insert any character at any index of the string.
+
+Return the minimum number of steps to make s palindrome.
+
+A Palindrome String is one that reads the same backward as well as forward.
+
+### Examples
+```
+Input: s = "zzazz"
+Output: 0
+Explanation: The string "zzazz" is already palindrome we do not need any insertions.
+---
+
+Input: s = "mbadm"
+Output: 2
+Explanation: String can be "mbdadbm" or "mdbabdm".
+---
+
+Input: s = "leetcode"
+Output: 5
+Explanation: Inserting 5 characters the string becomes "leetcodocteel".
+```
+
+### Approach
+- This is same as the solution to the number of deletions required to make it a palindrome.
+- The reason for that is, that number is the differential between a random string to a palindrome. Now for each of that character in the differential we add its pair to make it a palindrome will be the minimum insertion required.
+
+For example in the case of $\text{mbadm}$ the $\textsf{LPS} = \text{mam}$. Hence the differential is $bd$. For the first $b$ we add $b$ after $d$ and vice verse. That makes the palindrome as $\textsf{mdbadbm}$.
+
+### Code
+```cpp
+class Solution {
+public:
+    int LCS(string s1, string s2) {
+        int n;
+        n = s1.size();
+
+        int dp[n + 1][n + 1];
+        memset(dp, 0, sizeof(dp));
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (not i or not j) {
+                    dp[i][j] = 0;
+                } else {
+                    if (s1[i - 1] == s2[j - 1]) {
+                        dp[i][j] = 1 + dp[i - 1][j - 1];
+                    } else {
+                        dp[i][j] = std::max(
+                            dp[i - 1][j],
+                            dp[i][j - 1]
+                        );
+                    }
+                }
+            }
+        }
+
+        return dp[n][n];
+    }
+
+    int minInsertions(string s) {
+        string s2 = s;
+        reverse(s2.begin(), s2.end());
+
+        return s.size() - LCS(s, s2);
     }
 };
 ```
