@@ -54,6 +54,7 @@ nav:
       - Knapsack Pattern: ./dp/knapsack.md
       - Unbounded Knapsack Pattern: ./dp/unbounded-knapsack.md
       - DP on Strings: ./dp/dp-on-strings.md
+      - Matrix Chain Multiplication: ./dp/mcm.md
   - Greedy Algorithms:
     - Greedy Problems: ./greedy/problems.md
 
