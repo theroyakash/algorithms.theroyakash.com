@@ -1,6 +1,15 @@
 # Sliding Windows Problem Introduction
 
-- Linked list or arrays find something among all contigious sub array of some given size.
+Pattern: Linked list or arrays find something among all contigious sub array of some given size.
+
+**Problems Discussed**
+
+1. [Inverted Sliding Window \[Microsoft OA\]](#inverted-sliding-window-microsoft-oa)
+1. [Other problems](#other-problems)
+1. [Maximum Sum subarray of size K](#maximum-sum-subarray-of-size-k)
+1. [Smallest subarray with a given sum](#smallest-subarray-with-a-given-sum)
+1. [Longest Substring with K Distinct Characters](#longest-substring-with-k-distinct-characters)
+
 
 ## Inverted Sliding Window [Microsoft OA]
 ### Problem Statement

@@ -53,25 +53,26 @@ The following table is meant to represent the amount of problems has a full anal
 | **Problem Concepts**                                                                                 | **Number of problems with detailed solutions** |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | [Linked List Problems](https://algorithms.theroyakash.com/LinkedLists/problems/)                     | $15$                                           |
-| [Binary Search (Interview Problems)](/binary-search/problems/)                                       | $22$ |
+| [Binary Search (Interview Problems)](/binary-search/problems/)                                       | $27$ |
 | [Tree Problems](https://algorithms.theroyakash.com/trees/problems/)                                  | $26$                                           |
 | [Graph Traversals, BFS, DFS and applications](https://algorithms.theroyakash.com/graph/bfs-dfs/)     | $3$                                            |
 | [Graph Standard Problems](https://algorithms.theroyakash.com/graph/problems/)                        | $4$                                            |
 | [Graph Interview Problems](https://algorithms.theroyakash.com/graph/problems/)                       | $8$                                            |
-| [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $10$                                           |
+| [Stack Problems](https://algorithms.theroyakash.com/stacks/problems/)                                | $12$                                           |
 | [Heap Problems](https://algorithms.theroyakash.com/heaps/problems/)                                  | $7$                                            |
 | [2 Heap Problems](https://algorithms.theroyakash.com/2heaps/problems/)                               | $2$ problem scheduled to be added              |
-| [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $22$            |
+| [Array Problems](https://algorithms.theroyakash.com/arrays/array-problems/)                          | $25$            |
+| [Sliding Windows](https://algorithms.theroyakash.com/arrays/sliding-window/)                          | $5$            |
 | [Array + Sliding window concept Problems](https://algorithms.theroyakash.com/arrays/sliding-window/) | $4$                                            |
 | [Recursion Problems](https://algorithms.theroyakash.com/recursion/problems/)                         | $3$, more will be added soon                   |
-| [Dynamic Programming](https://algorithms.theroyakash.com/dp/problems/)                                                                                  | $11$                                |
+| [Dynamic Programming](https://algorithms.theroyakash.com/dp/problems/)                                                                                  | $39$                                |
 | [Greedy Algorithms](https://algorithms.theroyakash.com/greedy/problems/)                             | 2                                              |
-| **Total Number of Problems with Full analysis**                                                      | $139$ problems with **FULL** analysis           |
+| **Total Number of Problems with Full analysis**                                                      | $180$ problems with **FULL** analysis           |
 
 ## Also Coming Soon
 
 Few more freebies coming soon
-- Distributed Systems Book (expected 2025 Summer).
+- Distributed Systems Book (expected 2027 Summer).
 
 ## Other Products
 See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see more products available for free to use.

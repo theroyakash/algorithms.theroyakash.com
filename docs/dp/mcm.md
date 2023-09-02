@@ -3,6 +3,7 @@
 **Problems Discussed**
 
 1. [:material-matrix: MCM Pattern](#material-matrix-mcm-pattern)
+1. [Partition Array for Maximum Sum](#partition-array-for-maximum-sum)
 
 
 ## :material-matrix: MCM Pattern
@@ -47,6 +48,56 @@ public:
     int matrixMultiplication(int N, int arr[]) {
         vector<vector<int>> dp(N, vector<int> (N, -1));
         return solve(arr, 1, N-1, dp);
+    }
+};
+```
+
+## Partition Array for Maximum Sum
+Find problem on [Leetcode $\to$](https://leetcode.com/problems/partition-array-for-maximum-sum/description/)
+### Problem Statement
+Given an integer array `arr`, partition the array into (contiguous) subarrays of length at most $k$. After partitioning, each subarray has their values changed to become the maximum value of that subarray.
+
+Return the largest sum of the given array after partitioning. Test cases are generated so that the answer fits in a 32-bit integer.
+
+### Example
+```
+Input: arr = [1,15,7,9,2,5,10], k = 3
+Output: 84
+Explanation: arr becomes [15,15,15,9,10,10,10]
+---
+
+Input: arr = [1,4,1,5,7,3,6,1,9,9,3], k = 4
+Output: 83
+```
+
+### Approach
+- Similar to matrix chain multiplication we need to find a breaking point $k$ from start to finish but the size must be within a certain limit.
+- So for each $i$ `max_` will locate the maximum in array $A[i \dots i + k]$ such that $i + k \leq \textsf{limit}$.
+- Each candidate solutions would be $max * (k + 1)$ as we are replacing 
+
+### Code
+```cpp
+class Solution {
+public:
+    int solve(int i, int bound, int n, vector<int>& arr, vector<int>& dp) {
+        if (i >= n) return 0;
+        if (dp[i] != -1) return dp[i];
+
+        int max_ = 0;
+        int solution = 0;
+
+        for (int k = 0; k < bound; k++) {
+            if (i + k >= n) break;
+            max_ = std::max(arr[i + k], max_);
+            solution = std::max(solution, max_ * (k + 1) + solve(i + k + 1, bound, n, arr, dp));
+        }
+
+        return dp[i] = solution;
+    }
+
+    int maxSumAfterPartitioning(vector<int>& arr, int k) {
+        vector<int> dp(arr.size(), -1);
+        return solve(0, k, arr.size(), arr, dp);
     }
 };
 ```
