@@ -4,6 +4,7 @@
 
 1. [:material-matrix: MCM Pattern](#material-matrix-mcm-pattern)
 1. [Partition Array for Maximum Sum](#partition-array-for-maximum-sum)
+1. [Palindrome Partitioning (MCM)](#palindrome-partitioning-mcm)
 
 
 ## :material-matrix: MCM Pattern
@@ -101,3 +102,94 @@ public:
     }
 };
 ```
+
+## Palindrome Partitioning (MCM)
+Find the problem on [Leetcode $\to$](https://leetcode.com/problems/palindrome-partitioning-ii/)
+
+### Problem statement
+Given a string `s`, partition `s` such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of `s`.
+
+### Example
+```
+Input: s = "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+---
+
+Input: s = "a"
+Output: 0
+---
+
+Input: s = "ab"
+Output: 1
+```
+
+### Approach
+- This is a MCM pattern question, because like MCM we need to break and check all possible partition and find the minimum breaking, we discuss couple of apporaches below
+
+**(ONE)** possible approach but raises TLE for very high input size.
+
+- Similar to MCM we check every partition in $i \to k$ and $k + 1 \to j$ where $k \in [n - 1]$. Then we find the minimum number of cuts required for the sub-problem.
+- In each sub-problem `recursive_subroutine(i, j)` we first look whether $s[i \dots j]$ is a palindrome or not? If it is a palindrome we return `0`. To check if some substring $s[i \dots j]$ is palindrome we write this `buildDPTableForPalindromicSubstring` method. This can be done by reusing the question discussed here [Count Number Of Palindromic Substring $\to$](https://algorithms.theroyakash.com/dp/problems/#palindromic-substrings)
+- Next we write the recursive sub-routine and the function `minCut` computes the final value.
+- But shows `TLE` for larger input size.
+
+### Code (TLE)
+```cpp
+class Solution {
+public:
+    void buildDPTableForPalindromicSubstring(string s, vector<vector<int>>& pallindromeLookup) {
+        int size = s.size();
+
+        for (int i=0; i<size; i++) {
+            dp[i][i] = 1;
+        }
+
+        // go over the dp array to get the pallindromeLookup matrix
+        for (int diff = 1; diff<size; diff++) {
+            for(int i=0, j=i+diff; j<size; i++, j++) {
+                if (s[i] == s[j]) {
+                    if (std::abs(i - j) == 1) {
+                        dp[i][j] = 2;
+                    } else {
+                        if (dp[i+1][j-1] != 0) dp[i][j] = dp[i+1][j-1] + 2;
+                        else dp[i][j] = 0;
+                    }
+                } else {
+                    dp[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    int recursive_subroutine(string s, int i, int j, vector<vector<int>> &pallindromeLookup, vector<vector<int>> &dp) {
+        if (pallindromeLookup[i][j]) return 0;
+        if (i >= j) return 0;
+
+        if (dp[i][j] != -1) return dp[i][j];
+
+        int minCuts = INT_MAX;
+        for (int k = i; k < j; k++) {
+            dp[i][k] = recursive_subroutine(s, i, k, pallindromeLookup, dp);
+            dp[k + 1][j] = recursive_subroutine(s, k + 1, j, pallindromeLookup, dp);
+
+            int total = 1 + dp[i][k] + dp[k + 1][j];
+            minCuts = std::min(minCuts, total);
+        }
+
+        return dp[i][j] = minCuts;
+    }
+
+    int minCut(string s) {
+        int size = s.size();
+        vector<vector<int>> pallindromeLookup(size, vector<int>(size, 0));
+        buildDPTableForPalindromicSubstring(s, pallindromeLookup);
+
+        vector<vector<int>> dp(size, vector<int>(size, -1));
+
+        return recursive_subroutine(s, 0, s.size() - 1, pallindromeLookup, dp);
+    }
+};
+```
+
+### Optimized approach
