@@ -101,6 +101,7 @@ public:
 
     int maxProfit(vector<int>& prices) {
         // 'B' enter the day with 'B'(buy) order available. 'N' not available
+        map<int, map<char, int>> dp;
         return std::max(subroutine(prices, 0, 'B', dp), 0);
     }
 };
@@ -307,3 +308,63 @@ public:
 ```
 
 ## Buy and sell stocks with cooldown
+Find the problem on [leetcode $\to$](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/submissions/)
+
+### Problem Statement
+Same as above, find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times, same as [Buy and sell stocks II](#buy-and-sell-stocks-ii)) with the following restrictions:
+
+- After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).
+
+You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+
+### Approach
+We write the same exact code as [Buy and sell stocks II](#buy-and-sell-stocks-ii) and we change the sell to continue from `index + 2` because after a sell we go have one day cooldown.
+
+### Code
+
+```cpp
+class Solution {
+public:
+    int subroutine(vector<int>& prices, int index, char order,
+                   map<int, map<char, int>>& dp) {
+
+        if (index >= prices.size()) return 0;
+        
+        int profit = 0;
+
+        if (dp.find(index) != dp.end()) {
+            if ((*dp.find(index)).second.find(order) != (*dp.find(index)).second.end()) {
+                return dp[index][order];
+            }
+        }
+
+        if (order == 'B') {
+            // we can buy now
+            dp[index + 1]['N'] = subroutine(prices, index + 1, 'N', dp),
+            dp[index + 1]['B'] = subroutine(prices, index + 1, 'B', dp);
+            
+            profit = std::max(
+                dp[index + 1]['N'] - prices[index], // buy today
+                dp[index + 1]['B'] // don't buy
+            );
+        } else {
+            // we have choice to sell
+            dp[index + 2]['B'] = subroutine(prices, index + 2, 'B', dp);
+            dp[index + 1]['N'] = subroutine(prices, index + 1, 'N', dp);
+            
+            profit = std::max(
+                prices[index] + dp[index + 2]['B'], // sell today
+                dp[index + 1]['N']
+            );
+        }
+
+        return dp[index][order] = profit;
+    }
+
+    int maxProfit(vector<int>& prices) {
+        // 'B' enter the day with 'B'(buy) order available. 'N' not available
+        map<int, map<char, int>> dp;
+        return subroutine(prices, 0, 'B', dp);
+    }
+};
+```
