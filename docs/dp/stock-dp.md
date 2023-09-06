@@ -45,6 +45,7 @@ public:
 ```
 
 ## Buy and sell stocks II
+Find the problem on [Leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii)
 ### Problem Statement
 Problem statement is same as the last one but here you can buy multiple times (but not before you sell off first). You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 
@@ -191,6 +192,7 @@ public:
 ```
 
 ## Buy and sell stocks III
+Find the problem on [Leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii)
 ### Problem Statement
 You are given an integer array prices where `prices[i]` is the price of a given stock on the $i^{\text{th}}$ day.
 
@@ -248,6 +250,7 @@ public:
 ```
 
 ## Buy and sell stocks IV
+Find the problem on [Leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv)
 ### Problem statement
 You are given an integer array prices where `prices[i]` is the price of a given stock on the $i^{\text{th}}$ day.
 
