@@ -7,6 +7,7 @@
 1. [Buy and sell stocks III](#buy-and-sell-stocks-iii)
 1. [Buy and sell stocks IV](#buy-and-sell-stocks-iv)
 1. [Buy and sell stocks with cooldown](#buy-and-sell-stocks-with-cooldown)
+1. [Best Time to Buy and Sell Stock with Transaction Fee](#best-time-to-buy-and-sell-stock-with-transaction-fee)
 
 ## Buy and sell stocks I
 Find the problem on [leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
@@ -365,6 +366,65 @@ public:
         // 'B' enter the day with 'B'(buy) order available. 'N' not available
         map<int, map<char, int>> dp;
         return subroutine(prices, 0, 'B', dp);
+    }
+};
+```
+
+## Best Time to Buy and Sell Stock with Transaction Fee
+
+### Problem Statement
+You are given an integer array prices where `prices[i]` is the price of a given stock on the $i^{\text{th}}$ day.
+
+Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.
+
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again)
+
+### Approach
+Same as the [Buy and sell stocks II](#buy-and-sell-stocks-ii) but here we'll pass a new variable called `fee`, and once a buy is done we subtract `fee` from profit.
+
+### Code
+```cpp
+class Solution {
+public:
+    int subroutine(vector<int>& prices, int index, char order,
+                   map<int, map<char, int>>& dp, int fee) {
+
+        if (index >= prices.size()) return 0;
+        
+        int profit = 0;
+
+        if (dp.find(index) != dp.end()) {
+            if ((*dp.find(index)).second.find(order) != (*dp.find(index)).second.end()) {
+                return dp[index][order];
+            }
+        }
+
+        if (order == 'B') {
+            // we can buy now
+            dp[index + 1]['N'] = subroutine(prices, index + 1, 'N', dp, fee),
+            dp[index + 1]['B'] = subroutine(prices, index + 1, 'B', dp, fee);
+            
+            profit = std::max(
+                dp[index + 1]['N'] - prices[index] - fee, // buy today, charge fee once the buy is done
+                dp[index + 1]['B'] // don't buy
+            );
+        } else {
+            // we have choice to sell
+            dp[index + 1]['B'] = subroutine(prices, index + 1, 'B', dp, fee);
+            dp[index + 1]['N'] = subroutine(prices, index + 1, 'N', dp, fee);
+            
+            profit = std::max(
+                prices[index] + dp[index + 1]['B'], // sell today
+                dp[index + 1]['N']
+            );
+        }
+
+        return dp[index][order] = profit;
+    }
+
+    int maxProfit(vector<int>& prices, int fee) {
+        map<int, map<char, int>> dp;
+        return subroutine(prices, 0, 'B', dp, fee);
     }
 };
 ```
