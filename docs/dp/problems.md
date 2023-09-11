@@ -1011,7 +1011,7 @@ Output: 4
 Input: nums = [7,7,7,7,7,7,7]
 Output: 1
 ```
-### $O(N^2)$ approach
+### $O(N^2)$ approach (slow)
 We define $dp[i]$ as the length of the longest increasing subsequence till the index $i$. So trivially we can compute $dp[i]$ as the following, and our solution becomes $dp[n-1]$ where $n$ is the number of elements. But this $O(N^2)$ approach will not be accepted
 
 $$
@@ -1026,33 +1026,108 @@ $$
 
 ### Code
 ```cpp
-class Solution {
-public:
-    int lengthOfLIS(vector<int>& nums) {
-        int size = nums.size();
-        vector<int> dp(size, 1);
-
-        dp[0] = 1;
-
-        for (int i = 1; i<size; i++) {
-            // from j = i-1 till 0 what is the max then add 1
-
-            for (int j = i -1; j >= 0; j--) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = std::max(dp[i], dp[j] + 1);
-                }
-            }
-        }
-
-        // find max accoss all dp[i]
-        int sol = dp[0];
-        for (int i=1; i<size; i++) {
-            sol = std::max(dp[i], sol);
-        }
-
-        return sol;
+#include <iostream>
+#include <vector>
+#include <string.h>
+ 
+using namespace std;
+ 
+void solve() {
+    int n;
+    cin >> n;
+ 
+    int a[n];
+    int dp[n];
+ 
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        dp[i] = 1;
     }
-};
+    
+    int maximumSize = dp[0];
+ 
+    for (int i = 0; i < n; i++) {
+        for (int j = i - 1; j >= 0; j--) {
+            if (a[i] > a[j]) {
+                dp[i] = std::max(dp[i], 1 + dp[j]);
+            }
+            maximumSize = std::max(maximumSize, dp[i]);
+        }
+    }
+ 
+    cout << maximumSize << endl;
+}
+ 
+int main () {
+    int testcases = 1;
+    // cin >> testcases;
+    
+    while (testcases--) {
+        solve();
+    }
+    return 0;
+}
+```
+
+**This** approach is slow to compute, raises `TLE` in CSES. We'll share below an optimized version whose runtime is $O(N \lg N)$.
+
+### $O(N \lg N)$ Approach
+Let's think of building all the possible increasing subsequences. Suppose $A = [2,18,7,20,5,28,15,13,19,9]$.
+
+To build out all of the possible increasing subsequences we process each of the element one by one.
+
+First we see element $2$. Hence our first possible increasing subsequence is $[2]$. Then next is $18$. Hence $[2, 18]$. 
+
+Next element is $7$. Now we can create a new increasing subsequence $[2,7]$. Now we have two increasing subsequences. Next $20$ comes, hence our current increasing subsequences are $[2,7,20]$ and $[2,18,20]$.
+
+We are just required to maintain the highest size of any increasing subsequence. Hence for us $[2,7,20]$ and $[2,18,20]$ are equivalent.
+
+Now the next element is $5$. We need to create a new subsequence $[2, 5]$. If you look closely this $2, 5$ is taking extra memory to store, what if we just update $2, 18, 20$'s $18 \to 5$. Then we can store the value but the current longest increasing subsequence `size` is safe. Once the next $28$ comes we'll add this into the array, this creates currently longest subsequence as $[2, 18, 20, 28]$.
+
+Hence the following code
+
+### Code
+```cpp
+#include <iostream>
+#include <vector>
+#include <string.h>
+ 
+using namespace std;
+ 
+void solve() {
+    int n;
+    cin >> n;
+ 
+    int a[n];
+ 
+    vector<int> dp;
+ 
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+ 
+    for (int i = 0; i < n; i++) {
+        int position = lower_bound(dp.begin(), dp.end(), a[i]) - dp.begin();
+ 
+        if (position == dp.size()) {
+            dp.push_back(a[i]);
+        } else {
+            dp[position] = a[i];
+        }
+    }
+ 
+    cout << dp.size() << endl;
+}
+ 
+int main () {
+    int testcases = 1;
+    // cin >> testcases;
+    
+    while (testcases--) {
+        solve();
+    }
+    return 0;
+}
 ```
 
 ## Edit distance
