@@ -133,3 +133,41 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             }
         }
         ```
+
+??? success "Restaurant Customers"
+    Add each of the starting and ending time in some list. Then do a `+1` for incoming public and a `-1` for the outgoing public. This will store the maximum public present at a given time $t$.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            int n;
+            cin >> n;
+
+            vector<pair<int, int>> time_count;
+
+            for (int i = 0; i < n; i++) {
+                pair<int, int> joining;
+                cin >> joining.first; joining.second = 1;
+
+                pair<int, int> leaving;
+                cin >> leaving.first; leaving.second = -1;
+
+                time_count.push_back(joining);
+                time_count.push_back(leaving);
+            }
+
+            std::sort(time_count.begin(), time_count.end(), [](const auto a, const auto b) {
+                return a.first < b.first;
+            });
+
+            int max_count = INT_MIN;
+            int total_cnt = 0;
+
+            for (auto pairs:time_count) {
+                total_cnt += pairs.second;
+                max_count = std::max(total_cnt, max_count);
+            }
+
+            cout << max_count << endl;
+        }
+        ```
