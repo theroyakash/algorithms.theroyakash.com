@@ -28,9 +28,10 @@ nav:
         - Stack Problems: ./stacks/problems.md
     - CP Implementation Problems: ./implementation/problems.md
   - Searching and Sorting:
-    - Basics and introduction: ./binary-search/intro.md
-    - Binary search problems: ./binary-search/problems.md
-    - Binary search from codeforces: ./binary-search/problems-codeforces.md
+    - Basics and introduction: ./search-sort/intro.md
+    - Binary search problems: ./search-sort/problems.md
+    - Binary search from codeforces: ./search-sort/problems-codeforces.md
+    - Searching and Sorting CSES Editorial: ./search-sort/cses-editorial.md
   - Tree and Graph based data structures:
     - Trees:
       - Tree Implementation: ./trees/implementation.md

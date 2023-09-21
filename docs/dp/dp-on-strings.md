@@ -175,6 +175,42 @@ string findLCS(int n, int m,string &s1, string &s2){
 }
 ```
 
+### Optimization to reduce space
+
+If the question is asked to fetch the lenght of the longest common subsequences, then we do not need to maintain the entire DP table. Seen in this [leetcode problem](https://leetcode.com/problems/longest-common-subsequence/description/) we reduce the usage of $O(N^2)$ table into $2 * O(N)$ tables.
+
+```cpp
+class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        string a = text1;
+        string b = text2;
+
+        int n = a.size();
+        int m = b.size();
+
+        vector<int> current(m + 1, 0);
+        vector<int> prev(m + 1, 0);
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (a[i-1] == b[j - 1]) {
+                    current[j] = 1 + prev[j - 1];
+                } else {
+                    current[j] = std::max(
+                        prev[j], current[j - 1]
+                    );
+                }
+            }
+
+            prev = current;
+        }
+
+        return prev[m];
+    }
+};
+```
+
 ## Longest common substring
 Find the problem on [GeeksForGeeks $\to$](https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1)
 ### Problem Statement

@@ -1,0 +1,135 @@
+# CSES Editorial on Searching and Sorting
+
+This is the CSES Editorial Section on Searching and Sorting problems. Entire Problem list can be found [here](https://cses.fi/problemset/list/).
+
+## Editorials
+
+??? Success "Distinct Numbers"
+    [Problem Link](https://cses.fi/problemset/task/1621).
+
+    Use set to store the distinct numbers. Testcases are designed such a way that the usage of `unordered_set` creates a $O(n^2)$ blow-up. Read [here](https://codeforces.com/blog/entry/62393).
+    
+    ??? danger "Code"
+        ```cpp
+        int main () {
+            int n;
+            cin >> n;
+        
+            set<int> s;
+        
+            for (int i = 0; i < n; i++) {
+                int x;
+                cin >> x;
+        
+                s.insert(x);
+            }
+        
+            cout << s.size() << endl;
+        
+            return 0;
+        }
+        ```
+
+??? Success "Apartments"
+    After sorting both the array, use a two pointer approach, do `j++` `while (j < m and b[j] < a[i] - k)`, then the first element is the apartment matched with `a[i]` if `b[j] <= a[i] + k` still holds true. If that's the case do `j++` to select the next apartment and do `i++` for the next candidate.
+
+    ??? danger "code"
+        ```cpp
+        void solve() {
+            int n, m, k;
+            cin >> n >> m >> k;
+        
+            int a[n];
+            for (int i = 0; i < n; i++) {
+                cin >> a[i];
+            }
+        
+            int b[m];
+            for (int i = 0; i < m; i++) {
+                cin >> b[i];
+            }
+        
+            sort(a, a + n);
+            sort(b, b + m);
+        
+            int assigned = 0;
+        
+            for (int i = 0, j = 0; i < n; i++) {
+                while (j < m and b[j] < a[i] - k) {
+                    j++;
+                }
+        
+                if (j < m and b[j] <= a[i] + k) {
+                    assigned++; j++;
+                }
+            }
+            
+            cout << assigned << endl;
+        }
+        ```
+
+??? success "Ferris Wheel"
+    We need to maximize the number of pairs, then the answer would be $n -$ number of pairs many boats needed. Each boat has $x$ as the total capacity. We start two pointers at $i = 0$ and $j = n - 1$. While we have `while (i < j and (p[i] + p[j] > x)) j--;` then if `i < j` then we can choose two pairs, we do `pairs++` and `j--, i++`. At the end we do `cout << n - pairs << endl;`.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            int n, x;
+            cin >> n >> x;
+            int p[n];
+        
+            for (int i = 0; i < n; i++) {
+                cin >> p[i];
+            }
+        
+            sort(p, p + n);
+        
+            int pairs = 0;
+        
+            for (int i = 0, j = n - 1; i < j;) {
+                // maximize the number of pairs
+                while (i < j and (p[i] + p[j] > x)) j--;
+                if (i >= j) {
+                    break;
+                }
+        
+                pairs++; j--; i++;
+            }
+        
+            cout << n - pairs << endl;
+        }
+        ```
+
+??? success "Concert Tickets"
+    We need multiset to store the ticket values. As soon as some query comes, we need to give output to the `lower_bound` from the set and then remove it from the set. For the `lower_bound` to work properly we need a `multiset<int, greater<int>> h;`.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            int n, m;
+            cin >> n >> m;
+        
+            multiset<int, greater<int>> h;
+        
+            int t[m];
+        
+            for (int i = 0; i < n; i++) {
+                int x; cin >> x; h.insert(x);
+            }
+        
+            for (int i = 0; i < m; i++) {
+                cin >> t[i];
+            }
+        
+            for (int j = 0; j < m; j++) {
+                auto it = h.lower_bound(t[j]);
+        
+                if (it != h.end()) {
+                    cout << *it << endl;
+                    h.erase(it);
+                } else {
+                    cout << -1 << endl;
+                }
+            }
+        }
+        ```
