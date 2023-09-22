@@ -393,3 +393,43 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             std::cout << mxcnt << std::endl;
         }
         ```
+
+??? success "Towers"
+    Use a `multiset` set store each `a[i]`. Find the `lower_bound` on the `a[i]`, then either place on top of a bigger `a[i]` (best is the `lower_bound`), or start out a new tower. There are few edge cases to get rid of which are below
+
+    1. If the element `a[i]` is the largest seen so far then create a new entry in the `multiset`. Can be checked by `if (st.lower_bound(a[i]) == st.end())`,
+    1. If the `lower_bound` is the same as some entry in the `multiset` then create first try to put that into another tower (if possible) otherwise create a new tower. If they are unequal, then we erase entry for `lower_bound(a[i])` and mark new entry for `a[i]`.
+    1. At the end size of the set is the answer.
+
+    ??? danger "Solution"
+    ```cpp
+    void solve() {
+        int n;
+        cin >> n; int a[n];
+    
+        multiset<int> st;
+    
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+    
+            // a[i] is the current cube
+            // either place on top of a bigger a[i]
+            // or start out a new order
+            if (st.lower_bound(a[i]) == st.end()) {
+                st.insert(a[i]);
+            } else {
+                auto lb = st.lower_bound(a[i]);
+                if (*lb == a[i]) {
+                    auto lb1 = st.lower_bound(a[i] + 1);
+                    if (lb1 != st.end()) st.erase(lb1);
+                } else if (*lb != a[i]) {
+                    st.erase(lb);
+                }
+    
+                st.insert(a[i]);
+            }
+        }
+    
+        std::cout << st.size() << std::endl;
+    }
+    ```
