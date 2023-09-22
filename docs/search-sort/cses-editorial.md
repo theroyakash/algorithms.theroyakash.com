@@ -213,3 +213,29 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             std::cout << n - removals << std::endl;
         }
         ```
+
+??? success "Sum of Two Values"
+    Basic two sum - equivalent problem. Create a `map` and store the `<a[i], i>` inside if you don't find `x - a[i]` inside map. Otherwise return `i, map[x - a[i]]` the first time you find it.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            int n, x;
+            cin >> n >> x;
+
+            int a[n];
+            map<int, int> mp;
+
+            for (int i = 0; i < n; i++) {
+                cin >> a[i];
+                if (mp.find(x - a[i]) == mp.end()) {
+                    mp.insert({a[i], i});
+                } else {
+                    cout << i + 1 << " " << mp[x - a[i]] + 1 << endl;
+                    return;
+                }
+            }
+
+            cout << "IMPOSSIBLE" << endl;
+        }
+        ```
