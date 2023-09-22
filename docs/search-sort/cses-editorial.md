@@ -239,3 +239,35 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             cout << "IMPOSSIBLE" << endl;
         }
         ```
+
+??? success "Maximum Subarray Sum"
+    Kedane's algorithm is to be followed for a $O(n)$ submission. There will be some edge cases to sort through.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            long long int n; cin >> n;
+            long long int x[n];
+        
+            long long int sum = 0;
+            long long int max_sum = -1;
+        
+            long long int max_elem = LLONG_MIN;
+        
+            for (long long int i = 0; i < n; i++) {
+                cin >> x[i]; max_elem = std::max(max_elem, x[i]);
+                
+                sum += x[i];
+        
+                if (sum < 0) sum = 0; 
+                max_sum = std::max(sum, max_sum);
+            }
+        
+            if (max_sum == 0) {
+                cout << max_elem << endl;
+                return;
+            }
+        
+            cout << max_sum << endl;
+        }
+        ```
