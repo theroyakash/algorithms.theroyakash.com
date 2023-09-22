@@ -171,3 +171,45 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             cout << max_count << endl;
         }
         ```
+
+??? success "Movie Festival"
+    Simple greedy strategy is enough to solve this. Same problem as interval scheduling on classic algorithms text-books. Sort based on the ending time, then select the earliest finishing movie, and reject conflicting timing movies.
+
+    First we count how many removals we need (removals of conflicting movies). In our approch we sort them via their ending time, then we remove the longer event if there is a conflict. We update the removal counter, at the end $n - \text{removals}$ is our solution.
+    
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+        
+            // classic interval scheduling problem,
+            // sort based on the ending time and choose the maximum
+        
+            unsigned long long int n;
+            cin >> n;
+        
+            pair<unsigned long long int, unsigned long long int> a[n];
+        
+            for (int i = 0; i < n; i++) {
+                cin >> a[i].first >> a[i].second;
+            }
+        
+            std::sort(a, a + n, [](const auto a, const auto b) {
+                return a.second < b.second;
+            });
+        
+            int removals = 0;
+        
+            int i = 0;
+            while (i < n - 1) {
+                if (a[i].second > a[i + 1].first) {
+                    // this is where there is a conflict
+                    a[i + 1] = a[i];
+                    removals++;
+                }
+        
+                i++;
+            }
+        
+            std::cout << n - removals << std::endl;
+        }
+        ```
