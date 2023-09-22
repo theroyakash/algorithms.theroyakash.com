@@ -247,7 +247,6 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
         ```cpp
         void solve() {
             long long int n; cin >> n;
-            long long int x[n];
         
             long long int sum = 0;
             long long int max_sum = -1;
@@ -255,19 +254,110 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             long long int max_elem = LLONG_MIN;
         
             for (long long int i = 0; i < n; i++) {
-                cin >> x[i]; max_elem = std::max(max_elem, x[i]);
+                long long int x; cin >> x;
+                max_elem = std::max(max_elem, x);
                 
-                sum += x[i];
+                sum += x;
         
                 if (sum < 0) sum = 0; 
                 max_sum = std::max(sum, max_sum);
             }
         
-            if (max_sum == 0) {
-                cout << max_elem << endl;
-                return;
+            long long int ans = max_sum ? (max_sum) : max_elem;
+            cout << ans << endl;
+        }
+        ```
+
+??? success "Stick Lengths"
+    It is an well known problem, we need to change everything to median. Then we find out the cost.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            long long int n; cin >> n;
+            long long int p[n];
+            
+        
+            for (int i = 0; i < n; i++) {
+                cin >> p[i];
             }
         
-            cout << max_sum << endl;
+            sort(p, p + n);
+        
+            long long int cost = 0;
+            long long int median = p[n / 2];
+        
+            for (long long int i = n - 1; i >= 0; i--) {
+                cost += abs(median - p[i]);
+            }
+        
+            cout << cost << endl;
+        }
+        ```
+
+??? success "Missing Coin Sum"
+    Maintain a variable called `looking_for` and set it to $1$, to start with. As the array is sorted if the first element is $> 1$ then there is no chance we find $1$, hence $1$ is the smallest answer.
+
+    Then we move on to second element, say the second element is $x \neq 2$, then $2$ must be the smallest answer. Suppose $2$ is present at the second location, then we don't need to look for $3$, hence we update `looking_for += 2 (a[i])`. Suppose the next element is again $2$ then we update the `looking_for` by $2 (a[i])$, hence now we'll be `looking_for` $5$.
+
+    Suppose the next element is $x_{4}$. Suppose $x_4 <$ `looking_for`. That means we don't find this element in the array. So that should be the minimum answer.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            unsigned long long int n; cin >> n;
+
+            unsigned long long int a[n];
+
+            for (int i = 0; i < n; i++) {
+                cin >> a[i];
+            }
+
+            sort(a, a + n);
+
+            unsigned long long int looking_for = 1;
+            for (int i = 0; i < n; i++) {
+                if (looking_for < a[i]) {
+                    cout << looking_for << endl;
+                    return;
+                }
+
+                looking_for += a[i];
+            }
+
+            cout << looking_for << endl;
+        }
+        ```
+
+??? success "Collecting Numbers I"
+    We first store all the element's index as a reverse lookup table. Then we iterate over a variable `currently_looking`. If `currently_looking - 1` is present left of `currently_looking` then we can include in the current run, then we go to `currently_looking + 1`,
+
+    If we find some `currently_looking - 1` is present right of `currently_looking` that means we hit a break. We resume operation from `currently_looking + 1` after updating the correct collection count `collections`.
+
+    ??? danger "Code"
+        ```cpp
+        void solve() {
+            int n;
+            cin >> n;
+            long long int a[n];
+
+            map<long long int, int> mp;
+
+            for (int i = 0; i < n; i++) {
+                cin >> a[i]; mp.insert({a[i], i});
+            }
+
+            int collections = 1;
+            int currently_looking = 2;
+
+            while (currently_looking <= n) {
+                if (mp[currently_looking] < mp[currently_looking - 1]) {
+                    collections++;
+                }
+
+                currently_looking++;
+            }
+
+            cout << collections << endl;
         }
         ```
