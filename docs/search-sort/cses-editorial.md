@@ -361,3 +361,35 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             cout << collections << endl;
         }
         ```
+
+??? success "Playlist"
+    Use a `map<a[i], count(a[i])>` for subarray $a[i \dots j]$ such that all $a[k] \in (i, j)$ is unique. Leaving each `a[i]`, decrease the count from the `map`.
+
+    ??? danger "Solution"
+        ```cpp
+        void solve() {
+            int n;
+            cin >> n;
+
+            int a[n];
+
+            map<int, int> mp;
+
+            for (int i = 0; i < n; i++) {
+                cin >> a[i];
+            }
+
+            int mxcnt = -1;
+            for (int i = 0, j = 0; i < n; i++) {
+                while (j < n and mp[a[j]] < 1) {
+                    mp[a[j]]++;
+                    j++;
+                }
+
+                mxcnt = std::max(mxcnt, j - i);
+                mp[a[i]]--;
+            }
+
+            std::cout << mxcnt << std::endl;
+        }
+        ```
