@@ -159,5 +159,41 @@ Same we try to write the feasability function $f(x)$ and do a binary search on $
 
 ### Code
 ```cpp
+#include <iostream>
+#include <vector>
 
+using namespace std;
+
+int n, x, y, ans = -1;
+
+bool f(long long tb) {
+    long long result = (tb / x) + (tb) / y;
+    return result >= n - 1;
+}
+
+void solve() {
+    cin >> n >> x >> y;
+
+    long long mid, start = 0, end = 1e10;
+    while (start <= end) {
+        mid = (start + end) / 2;
+        if (f(mid)) {
+            ans = mid; end = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+    }
+
+    std::cout << ans + min(x, y) << "\n";
+}
+
+int main () {
+    int testcases = 1;
+    // cin >> testcases;
+
+    while (testcases--) {
+        solve();
+    }
+    return 0;
+}
 ```
