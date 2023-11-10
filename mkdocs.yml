@@ -32,6 +32,7 @@ nav:
     - Searching and Sorting:
       - Basics and introduction: ./search-sort/intro.md
       - Binary search problems: ./search-sort/problems.md
+      - Binary search on answer: ./search-sort/bs-ans.md
       - Binary search from codeforces: ./search-sort/problems-codeforces.md
       - Searching and Sorting CSES Editorial: ./search-sort/cses-editorial.md
   - Trees:

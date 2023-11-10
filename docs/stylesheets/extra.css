@@ -61,7 +61,7 @@
 
 :root{
     --md-text-font: "vv", "Inter";
-	--md-code-font: "mono-b";
+	--md-code-font: "mono";
 }
 
 h1 {
