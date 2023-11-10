@@ -151,6 +151,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://algorithms.theroyakash.com/search-sort/bs-ans/</loc>
+         <lastmod>2023-11-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://algorithms.theroyakash.com/search-sort/cses-editorial/</loc>
          <lastmod>2023-11-10</lastmod>
          <changefreq>daily</changefreq>
