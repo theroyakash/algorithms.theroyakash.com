@@ -2,15 +2,14 @@
 
 **Questions Discussed**
 
-- [Number of Islands](#number-of-islands)
-- [Clone Graph](#clone-graph)
-- [Max Area of Island](#max-area-of-island)
-- [Pacific Atlantic Water Flow](#pacific-atlantic-water-flow)
-- [Surrounded Regions](#surrounded-regions)
-- [All Paths From Source to Target](#all-paths-from-source-to-target)
-- [Course Schedule](#course-schedule)
-- [Download Speed](#download-speed)
-- [Building Roads](#building-roads)
+1. [Number of Islands](#number-of-islands)
+1. [Clone Graph](#clone-graph)
+1. [Max Area of Island](#max-area-of-island)
+1. [Pacific Atlantic Water Flow](#pacific-atlantic-water-flow)
+1. [Surrounded Regions](#surrounded-regions)
+1. [All Paths From Source to Target](#all-paths-from-source-to-target)
+1. [Course Schedule](#course-schedule)
+1. [Download Speed](#download-speed)
 
 ## Number of Islands
 [Find the problem on leetcode $\to$](https://leetcode.com/problems/number-of-islands/)
@@ -762,183 +761,5 @@ int main() {
     long long int maxflow = g.findMaxFlow();
 
     cout << maxflow << endl;
-}
-```
-
-## Building Roads
-[Find the problem here $\to$](https://cses.fi/problemset/task/1666)
-### Problem Statement
-Byteland has $n$ cities, and $m$ roads between them. The goal is to construct new roads so that there is a route between any two cities. Your task is to find out the minimum number of roads required, and also determine which roads should be built.
-
-### Apporach
-- Coming Soon
-
-### Solution
-```cpp
-// https://cses.fi/problemset/task/1666/
-
-#include <algorithm>
-#include <climits>
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-void fileIO() {
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-}
-
-/*
- * Fast Disjoint Set Union Data Structure.
- * has implementation for fast Union and find operation
- */
-class DisjointSetUnion {
-public:
-    int totalVertex;
-    vector<int> parent;
-    vector<int> size;
-
-    DisjointSetUnion(int vertex) {
-        this->totalVertex = vertex;
-        for (int i = 0; i <= vertex; i++) {
-            parent.push_back(i);
-            size.push_back(1);
-        }
-    }
-
-    bool UNION(int u, int v) {
-        int parent_u = FIND(u);
-        int parent_v = FIND(v);
-
-        if (parent_u == parent_v) {
-            return false;
-        }
-
-        if (size[parent_u] < size[parent_v]) {
-            std::swap(parent_u, parent_v);
-        }
-
-        parent[parent_v] = parent_u;
-        size[parent_u] += size[parent_v];
-
-        return true;
-    }
-
-    int FIND(int i) {
-        // recursive find call to find parent
-        if (parent[i] == i) {
-            return i;
-        }
-
-        return parent[i] = FIND(parent[i]);
-    }
-
-    vector<int> idConnectedComponents() {
-        vector<int> components;
-        for (int i = 1; i <= totalVertex; i++) {
-            if (parent[i] == i) {
-                components.push_back(i);
-            }
-        }
-
-        return components;
-    }
-};
-
-class City {
-private:
-    std::vector<std::pair<int, int>> allRequiredRoads;
-
-    std::vector<std::pair<int, int>> roads;
-    int numberOfCities, numberOfRoads;
-
-public:
-    void setRoads(std::vector<std::pair<int, int>> roads) {
-        this->roads = roads;
-    }
-
-    void setNumberOfCities(int numberOfCities) {
-        this->numberOfCities = numberOfCities;
-    }
-
-    void setNumberOfRoads(int numberOfRoads) {
-        this->numberOfRoads = numberOfRoads;
-    }
-
-    void calculateMinimumRequiredRoads() {
-        // MARK: Implemementation
-        DisjointSetUnion dsu = DisjointSetUnion(this->numberOfCities);
-
-        // the number of roads to be added to connect all cities is the number of the disjoint set - 1
-        // connect each of the disjoint set by connecting one city from each of the disjoint set
-        for (auto road : roads) {
-            dsu.UNION(road.first, road.second);
-        }
-
-        // build roads from each one of the connected components.
-
-        vector<int> idOfEachConnectedComponents = dsu.idConnectedComponents();
-        int totalConnectedComponents = idOfEachConnectedComponents.size();
-
-        if (totalConnectedComponents == 1) {
-            return;
-        } else {
-            int index = 0;
-
-            while (index < totalConnectedComponents - 1) {
-                int city1 = idOfEachConnectedComponents[index];
-                int city2 = idOfEachConnectedComponents[index + 1];
-                this->allRequiredRoads.push_back({city1, city2});
-                index += 1;
-            }
-        }
-    }
-
-    std::vector<std::pair<int, int>> getMinimumRequiredRoads() {
-        return this->allRequiredRoads;
-    }
-};
-
-int main() {
-
-    // fileIO();
-
-    int numberOfCities, numberOfRoads;
-
-    // The goal is to construct new roads so that there is a route between any two cities.
-    // total of n cities, and m roads between them
-    // find out the minimum number of roads required, and also determine which roads should be built
-    cin >> numberOfCities >> numberOfRoads;
-
-    int roads = numberOfRoads;
-    std::vector<std::pair<int, int>> allRoads;
-
-    while (roads--) {
-        int from, to;
-        cin >> from >> to;
-
-        allRoads.push_back({from,
-                            to});
-    }
-
-    City city = City();
-
-    city.setNumberOfCities(numberOfCities);
-    city.setNumberOfRoads(numberOfRoads);
-    city.setRoads(allRoads);
-
-    // given all the roads, find out what is the minimum number of new roads required
-    // to connect the city up such that there is a route between any two cities.
-    city.calculateMinimumRequiredRoads();
-
-    std::vector<std::pair<int, int>> minimumRoadSet = city.getMinimumRequiredRoads();
-    cout << minimumRoadSet.size() << endl;
-
-    for (auto city_pair : minimumRoadSet) {
-        cout << city_pair.first << " " << city_pair.second << endl;
-    }
-
-    return 0;
 }
 ```

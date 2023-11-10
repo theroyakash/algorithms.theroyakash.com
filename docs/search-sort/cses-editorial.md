@@ -450,3 +450,6 @@ This is the CSES Editorial Section on Searching and Sorting problems. Entire Pro
             std::cout << v.size() << std::endl;
         }
         ```
+
+??? success "Subarray Sum I, II"
+    We propose one solutions that'll cover both the I and II problems. First we build the perfix sum array. Then for any location $i$ we find if $\text{prefix}[i] - \text{target}$ is present in the map or not? If that is present that means from end of that location $j + 1$ to $i$ there is an sub-array whoose sum is $\text{target}$.

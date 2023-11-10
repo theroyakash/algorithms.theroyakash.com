@@ -27,38 +27,36 @@ nav:
         - Stacks Usage: ./stacks/usage.md
         - Stack Problems: ./stacks/problems.md
     - CP Implementation Problems: ./implementation/problems.md
-  - Searching and Sorting:
-    - Basics and introduction: ./search-sort/intro.md
-    - Binary search problems: ./search-sort/problems.md
-    - Binary search from codeforces: ./search-sort/problems-codeforces.md
-    - Searching and Sorting CSES Editorial: ./search-sort/cses-editorial.md
-  - Tree and Graph based data structures:
-    - Trees:
-      - Tree Implementation: ./trees/implementation.md
-      - Tree Problems: ./trees/problems.md
-    - Graphs:
-      - Graph Usage: graph/usage.md
-      - BFS and DFS: graph/bfs-dfs.md
-      - Graph Standard Problems: graph/standard-problems.md
-      - Graph Problems: graph/problems.md
-      - Disjoint Set Implementation: graph/dsu.md
-    - Heaps:
-      - Heaps Introduction, STL: ./heaps/heap-pq.md
-      - Heap Problems: ./heaps/problems.md
-      - Two Heaps Problems: ./2heaps/problems.md
-  - Recursion and Dynamic Programming:
-    - Recursion:
-      - Recursion Introduction: ./recursion/intro.md
-      - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
-    - Dynamic Programming:
-      - Problems: ./dp/problems.md
-      - Knapsack Pattern: ./dp/knapsack.md
-      - Unbounded Knapsack Pattern: ./dp/unbounded-knapsack.md
-      - DP on Strings: ./dp/dp-on-strings.md
-      - Matrix Chain Multiplication: ./dp/mcm.md
-      - DP on Stocks: ./dp/stock-dp.md
-  - Greedy Algorithms:
+  - Greedy Strategies:
     - Greedy Problems: ./greedy/problems.md
+    - Searching and Sorting:
+      - Basics and introduction: ./search-sort/intro.md
+      - Binary search problems: ./search-sort/problems.md
+      - Binary search from codeforces: ./search-sort/problems-codeforces.md
+      - Searching and Sorting CSES Editorial: ./search-sort/cses-editorial.md
+  - Trees:
+    - Tree Implementation: ./trees/implementation.md
+    - Tree Problems: ./trees/problems.md
+  - Graphs:
+    - Graph Usage: graph/usage.md
+    - BFS and DFS: graph/bfs-dfs.md
+    - Graph Standard Problems: graph/standard-problems.md
+    - Graph Problems: graph/problems.md
+    - Disjoint Set Implementation: graph/dsu.md
+  - Heaps:
+    - Heaps Introduction, STL: ./heaps/heap-pq.md
+    - Heap Problems: ./heaps/problems.md
+    - Two Heaps Problems: ./2heaps/problems.md
+  - Recursion:
+    - Recursion Introduction: ./recursion/intro.md
+    - Recursion, Backtracking, Subset Pattern: ./recursion/problems.md
+  - Dynamic Programming:
+    - Problems: ./dp/problems.md
+    - Knapsack Pattern: ./dp/knapsack.md
+    - Unbounded Knapsack Pattern: ./dp/unbounded-knapsack.md
+    - DP on Strings: ./dp/dp-on-strings.md
+    - Matrix Chain Multiplication: ./dp/mcm.md
+    - DP on Stocks: ./dp/stock-dp.md
 
 theme:
   name: material
@@ -71,8 +69,8 @@ theme:
     - navigation.top
     - navigation.tabs
   palette:
-    primary: white
-    accent: red
+    primary: black
+    accent: blue
   icon:
     repo: fontawesome/brands/git-alt
     admonition:
