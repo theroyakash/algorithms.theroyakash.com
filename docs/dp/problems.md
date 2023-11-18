@@ -149,6 +149,29 @@ What are the decisions you need to make before you can make a move at location $
 - $\forall x \in [0, \text{nums.size})$ we'll see what is maximum between the following two `profits[i-1]` and `profits[i-2] + nums[i]`. We'll take the maximum and put in the profits map or array.
 
 ### Code
+#### Simple Recursive Solution
+```cpp
+class Solution {
+public:
+    int f(int x, vector<int>& dp, vector<int>& a) {
+        if (x < 0) return 0;
+        if (dp[x] != -1) return dp[x];
+
+        return dp[x] = max(
+            a[x] + f(x - 2, dp, a),
+            f(x - 1, dp, a)
+        );
+    }
+
+    int rob(vector<int>& a) {
+        int n = a.size();
+        vector<int> dp(n + 1, -1);
+        return f(n - 1, dp, a);
+    }
+};
+```
+
+#### Iterative Approach
 ```cpp
 class Solution {
 public:
@@ -194,6 +217,41 @@ If we consider the first ($0^{th}$) house then we should never consider the last
 We'll also force the algorithm to take the first ($0^{th}$) house by setting `profits[0] = nums[0]` and `profits[1] = nums[0]`.
 
 ### Code
+
+#### Recursive Solution
+- Simple recursive solution, if we steal the house at $x$ index then we have profit $a[x]$ and we can not steal at $x-1$ hence we call recursion on $x-2$.
+- Else we call on $x-1$, we take the maximum of the two recursions.
+
+```cpp
+#include <bits/stdc++.h> 
+
+int n;
+const int maxn = 1e5;
+long long dp[maxn];
+
+long long f(vector<int>& a, int x, int lb) {
+    if (dp[x] != -1) return dp[x];
+    if (x <= lb) return 0;
+
+    return dp[x] = max(
+        a[x] + f(a, x - 2, lb),
+        f(a, x - 1, lb)
+    );
+}
+
+long long int houseRobber(vector<int>& a) {
+    n = a.size();
+
+    memset(dp, -1, sizeof(dp));
+    long long first = f(a, n - 1, 0); // if we don't steal the 0th house
+    memset(dp, -1, sizeof(dp));
+    long long sec = a[0] + f(a, n - 2, 1); // if we steal the 0th house
+
+    return max(first, sec);
+}
+```
+
+#### Iterative Solution
 ```cpp
 class Solution {
 public:
