@@ -741,33 +741,28 @@ This is how the array becomes sorted without the usage of sorting function.
 ```cpp
 class Solution {
 public:
-    void sortColors(vector<int>& nums) {
-        
-        int hinge = 1; // make hinge at 1 to group all < 1 and > 1 elements.
-        int small = 0;
-        
-        // inplace grouping of zeros
-        for (int i=0; i<nums.size(); i++) {
-            if (nums[i] < hinge) {
-                int temp = nums[i];
-                nums[i] = nums[small];
-                nums[small] = temp;
-                small++;
+    void sortColors(vector<int>& a) {
+        // inplace gathering algorithm
+        // gather all 0 to the left of the array
+        int last = 0;
+        int n = a.size();
+        for (int i = 0; i < n; i++) {
+            if (a[i] == 0) {
+                swap(a[last], a[i]);
+                last++;
             }
         }
-        
-        // inplace grouping of all 2s
-        int larger = nums.size() - 1;
-        for (int j=nums.size()-1; j>=0; j--) {
-            if (nums[j] > hinge) {
-                int temp = nums[j];
-                nums[j] = nums[larger];
-                nums[larger] = temp;
-                larger--;
+
+        // gather all 2 to the right of the array
+        last = n - 1;
+        for (int i = n - 1; i >= 0; --i) {
+            if(a[i] == 2) {
+                swap(a[i], a[last]);
+                --last;
             }
         }
     }
-};
+}
 ```
 
 ## Set matrix zeros
