@@ -215,3 +215,51 @@ we are given an array points representing integer coordinates of some points on 
 
 Return the minimum cost to make all points connected. All points are connected if there is exactly one simple path between any two points.
 
+
+## Dijkstra's Shortest Path algorithm
+Theoretical Reference must be taken from the CLRS book. However we quickly go thorough the basics once
+1. First we say starting node (single source shortest path) has distance 0 and all the other has the distance infinity.
+1. Next we put the node into a priority queue (min heap).
+1. From min heap we collect the top most node, suppose the node is $(u, xc)$ that means we can reach to $u$ with cost $xc$ from some route starting from start.
+1. Now we go to each of the neighbour ($v$), and if the distance to reach $v$ from the starting node is greater than $xc + w(u, v)$ where $w(u, v)$ is the edge cost of $(u, v)$, that means that we can reach to $v$ with a better path through $u$.
+1. Hence we update the `distances[v]` array.
+
+
+### Equivalent C++ Code for the approach above
+```cpp
+std::vector<long long int> dijkstra(
+    int from, 
+    int n,
+    std::vector<std::vector<pair<int, long long int>>>& adj_list) {
+ 
+    std::vector<long long int> dist(n + 1, LLONG_MAX);
+ 
+    dist[from] = 0;
+
+    auto cmp = [](pair<long long int, int> a, pair<long long int, int> b) {
+        return a.first < b.first;
+    };
+
+    set<pair<long long int, int>, decltype(cmp)> st(cmp);
+    st.insert({0, from});
+ 
+    while (not st.empty()) {
+        auto top = *st.begin();
+        st.erase(st.begin());
+ 
+        auto nbrs = adj_list[top.second];
+        for (auto [nbr, nbrcost] : nbrs) {
+            if (dist[nbr] > nbrcost + top.first) {
+                if (dist[nbr] != LLONG_MAX) {
+                    st.erase({dist[nbr], nbr});
+                }
+ 
+                dist[nbr] = nbrcost + top.first;
+                st.insert({dist[nbr], nbr});
+            }
+        }
+    }
+ 
+    return dist;
+}
+```
