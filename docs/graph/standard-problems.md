@@ -218,6 +218,7 @@ Return the minimum cost to make all points connected. All points are connected i
 
 ## Dijkstra's Shortest Path algorithm
 Theoretical Reference must be taken from the CLRS book. However we quickly go thorough the basics once
+
 1. First we say starting node (single source shortest path) has distance 0 and all the other has the distance infinity.
 1. Next we put the node into a priority queue (min heap).
 1. From min heap we collect the top most node, suppose the node is $(u, xc)$ that means we can reach to $u$ with cost $xc$ from some route starting from start.
@@ -226,7 +227,7 @@ Theoretical Reference must be taken from the CLRS book. However we quickly go th
 
 
 ### Equivalent C++ Code for the approach above
-```cpp
+```cpp linenums="1"
 std::vector<long long int> dijkstra(
     int from, 
     int n,
