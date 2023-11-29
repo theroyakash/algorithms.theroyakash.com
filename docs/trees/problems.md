@@ -28,6 +28,7 @@
 1. [Count Good Nodes in Binary Tree](#count-good-nodes-in-binary-tree)
 1. [Trim a Binary Search Tree](#trim-a-binary-search-tree)
 1. [Binary Tree Right Side View](#binary-tree-right-side-view)
+1. [Delete a node from a binary tree](#delete-a-node-from-a-binary-tree)
 
 ## Traversal problems
 ### Inorder, preorder, and postorder traversal
@@ -1713,6 +1714,65 @@ public:
         }
         
         return answer;
+    }
+};
+```
+
+## Delete a node from a binary tree
+Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.
+
+### Approach
+Simple approach, first we need to find where the node is present (we need to delete). When we find the node we call a helper function to remove the node from the tree. This helper function finds the right and puts the left child in the far left of the right child of the root. That is how we remove the nodes.
+
+### Code
+```cpp
+class Solution {
+public:
+    TreeNode* removal(TreeNode* root) {
+        if (root->left == nullptr) return root->right;
+        if (root->right == nullptr) return root->left;
+
+        auto right = root->right;
+        auto left = findMostLeft(root->right);
+
+        left -> left = root -> left;
+
+        return right;
+    }
+
+    TreeNode* findMostLeft(TreeNode* root) {
+        while (root->left) root = root->left;
+        return root;
+    }
+
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if(not root) return root;
+        TreeNode* traveller = root;
+
+        if (traveller->val == key) {
+            return removal(root);
+        }
+
+        while (traveller) {
+            if (traveller->val > key) {
+                // go to left
+                if (traveller -> left != nullptr and traveller -> left -> val == key) {
+                    traveller -> left = removal(traveller->left);
+                    break;
+                } else {
+                    traveller = traveller->left;
+                }
+            } else {
+                if (traveller -> right != nullptr and traveller -> right -> val == key) {
+                    traveller -> right = removal(traveller->right);
+                    break;
+                } else {
+                    traveller = traveller -> right;
+                }
+            }
+        }
+
+        return root;
     }
 };
 ```
