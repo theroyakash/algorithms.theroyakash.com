@@ -901,25 +901,26 @@ We should traverse the tree in-order, so the values encountered are in non desce
 ### Code
 ```cpp
 class Solution {
-private:
-    int treeNodeCount = 1; // starting index is 1
-    int setValue; // should hold the kth smallest value
 public:
-    int kthSmallest(TreeNode* root, int k) {
-        if (root) {
-            kthSmallest(root->left, k);
-            
-            if (treeNodeCount == k) {
-                setValue = root->val; // set the kth smallest value
-            }
-            
-            treeNodeCount++;
-            kthSmallest(root->right, k);
+    int id = 1;
+    int value = -1;
+
+    void f(TreeNode* root, int k) {
+        if (not root) return;
+        f(root->left, k);
+        if(id++ == k) {
+            value = root->val;
+            return;
         }
         
-        return setValue;
+        f(root->right, k);
     }
-};
+
+    int kthSmallest(TreeNode* root, int k) {
+        f(root, k);
+        return value;
+    }
+}
 ```
 
 ### Time and memory complexity
