@@ -28,7 +28,7 @@ description: Materials for FAANG and top startup's coding interview preparation 
 <p align="center">This project is completely free and funded by <a href="https://theroyakash.com">@theroyakash</a> and private sponsors.</p>
 
 ## What is this?
-This material categorizes coding interview problems into a set of **8 patterns**. Each pattern will be a complete tool - consisting of **data structures**, **algorithms**, and **analysis techniques** - to solve a specific category of problems. The goal is to build an understanding of the _underlying pattern_ so that we can apply that pattern to solve other problems.
+This material categorizes coding interview problems into a set of **12 patterns**. Each pattern will be a complete tool - consisting of **data structures**, **algorithms**, and **analysis techniques** - to solve a specific category of problems. The goal is to build an understanding of the _underlying pattern_ so that we can apply that pattern to solve other problems.
 
 **Complete guide and roadmap for SDE I and SDE II algorithm round.**
 
@@ -80,15 +80,15 @@ See the [freebies](https://algorithms.theroyakash.com/freebies/) page to see mor
 ## Who am I?
 <figure markdown>
   ![Image title](https://images.unsplash.com/photo-1595254771206-5bded301347a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80){ width="700" }
-  <figcaption>This is me!</figcaption>
+  <figcaption>If this image failed to load contact me at theroyakash[at]outlook.com</figcaption>
 </figure>
 
-I go by theroyakash on the internet. I am a computer scientist, a masters student in computer science from **Indian Institute of Technology (IIT) Madras**, with research in **high-performance algorithms**, **data structures**, **distributed systems**, and beyond. I am an upcoming software engineering intern at Amazon India. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
+I go by theroyakash on the internet. I am a computer scientist, a masters student in the department of computer science at **Indian Institute of Technology (IIT) Madras**, with research in *high-performance algorithms*, *data structures*, *distributed systems*, and beyond. I am an upcoming software engineer at **Microsoft**, previously I was a SDE intern at **Amazon** India. See my work searching google for [theroyakash](https://g.co/kgs/Yx9DpE) and on [Github](https://github.com/theroyakash).
 
 
 ## Other links
-- Visit my website [here](https://theroyakash.com/).
+- Visit my website [here](https://www.theroyakash.com/).
 - More about me [here](https://theroyakash.com/about)
-- My [Github](https://github.com/theroyakash),
+- My [Github](https://github.com/theroyakash/),
 - [More about me](https://theroyakash.com/about/),
 - [Send me an email](mailto:hey@theroyakash.com).
