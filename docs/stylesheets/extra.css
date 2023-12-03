@@ -58,14 +58,25 @@
 	font-weight: bold;
 }
 
+@font-face {
+	font-family: "segoe";
+	src: url('./SegoeUI.ttf');
+	font-weight: regular;
+}
+
+@font-face {
+	font-family: "segoe";
+	src: url('./SegoeUIBold.ttf');
+	font-weight: bold;
+}
 
 :root{
-    --md-text-font: "vv", "Inter";
+    --md-text-font: "segoe", "Inter";
 	--md-code-font: "mono";
 }
 
 h1 {
-	font-family: "vb", "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+	font-family: "segoe", "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
     font-weight: bold;
     letter-spacing: -1px;
 }
