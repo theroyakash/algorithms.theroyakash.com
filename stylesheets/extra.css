@@ -70,13 +70,25 @@
 	font-weight: bold;
 }
 
+@font-face {
+	font-family: "Product Sans";
+	src: url("./pbold.ttf");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Product Sans";
+	src: url("./ProductSans-Regular.ttf");
+	font-weight: normal;
+}
+
 :root{
-    --md-text-font: "segoe", "Inter";
+    --md-text-font: "Product Sans", "Inter";
 	--md-code-font: "mono";
 }
 
 h1 {
-	font-family: "segoe", "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
+	font-family: "Product Sans", "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
     font-weight: bold;
     letter-spacing: -1px;
 }
