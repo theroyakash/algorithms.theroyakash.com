@@ -4,17 +4,17 @@ These problems discussed below conform to one knapsack pattern called Unbounded 
 
 **Problems Discussed**
 
-- [:material-bag-carry-on: The Unbounded Knapsack Problem](#material-bag-carry-on-the-unbounded-knapsack-problem)
-- [:material-pipe-disconnected: Rod cutting](#material-pipe-disconnected-rod-cutting)
-- [Coin Change II](#coin-change-ii)
-- [Coin Change I (Unbounded Knapsack Way)](#coin-change-i-unbounded-knapsack-way)
-- [Maximum Ribbon Cut](#maximum-ribbon-cut)
+1. [:material-bag-carry-on: The Unbounded Knapsack Problem](#material-bag-carry-on-the-unbounded-knapsack-problem)
+1. [:material-pipe-disconnected: Rod cutting](#material-pipe-disconnected-rod-cutting)
+1. [Coin Change II](#coin-change-ii)
+1. [Coin Change I (Unbounded Knapsack Way)](#coin-change-i-unbounded-knapsack-way)
+1. [Maximum Ribbon Cut](#maximum-ribbon-cut)
 
 
 ## :material-bag-carry-on: The Unbounded Knapsack Problem
 :material-google: :fontawesome-brands-amazon: :material-microsoft: :material-apple: :fontawesome-brands-meta:
 
-To recap in the $0/1$ knapsack case we either include and item or not. Each item has one instance in the universe. Either we take one of e$$ach item in the bag or not. **But** in the unbounded knapsack case we can take any number of same item as we wish. Once we make a decision that we don't or we would take some element, we don't go back and rethink about it.
+To recap in the $0/1$ knapsack case we either include and item or not. Each item has one instance in the universe. Either we take one of each item in the bag or not. **But** in the unbounded knapsack case we can take any number of same item as we wish. Once we make a decision that we don't or we would take some element, we don't go back and rethink about it.
 
 Multiple occurences of same item is allowed. If at some time $t$ we don't choose some element then we don't consider that element again (we call it processed). In $0/1$ knapsack whether we consider it or not we call it processed (we don't reconsider). As here we can include that element multiple amount of time then we consider the element not processed if it is considered in the last decision.
 
