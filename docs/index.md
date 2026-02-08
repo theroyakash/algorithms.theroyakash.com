@@ -45,7 +45,7 @@ This material categorizes coding interview problems into a set of **12 patterns*
 9. [Heaps overview](https://algorithms.theroyakash.com/heaps/heap-pq/) and [heap problems](https://algorithms.theroyakash.com/heaps/problems/) and [2 heaps problems](https://algorithms.theroyakash.com/2heaps/problems/).
 10. [Greedy algorithms](https://algorithms.theroyakash.com/greedy/problems/)
 11. [Dynamic Programming](https://algorithms.theroyakash.com/dp/problems/)
-12.  Bit Manipulation (With C/C++) (coming soon)
+12. [CP 31 Sheet](/cp31/cp31)
 
 ## Problem Counter
 The following table is meant to represent the amount of problems has a full analysis in the website. Maybe incorrectly represented upto 1-2 problems.

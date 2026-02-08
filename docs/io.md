@@ -1,11 +1,28 @@
 # :pencil: Standard input output usage
 
-## Taking data in and writing data out to a file
-In some of the problems in SDE 1 and SDE 2 online coding rounds, you have to take care of the program inputs.
+## Taking fast input output
+In some of the problems in SDE 1 and SDE 2 online coding rounds, you have to take care of the program inputs. Use this following two lines of code to increase your i/o speed in competitive programming contests.
 
+Brief explanation:
+
+- If you include `ios::sync_with_stdio(false)`, then mixing C (`scanf`, `printf`) and C++ (`cin`, `cout`) style I/O may produce unexpected results. The upside is that both `cin / cout` become faster.
+- Including `cin.tie(nullptr)` will reduce the runtime if you are interleaving `cin` and `cout` (as is the case in the task at hand).
+
+```cpp
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    /* code */
+
+    return 0;
+}
+```
+
+## Taking data in and writing data out to a file
 Here is an example of how we can write all inputs to a text file and then run our algorithms.
 
-You must add 2 files called "input.txt" and "output.txt" in the same directory add the function in the code, then in the `main()` function just call the function `fileIO()` to have the input taken from input.txt and the output written to output.txt.
+You must add 2 files called `input.txt` and `output.txt` in the same directory add the function in the code, then in the `main()` function just call the function `fileIO()` to have the input taken from `input.txt` and the output written to output.txt.
 
 ```cpp
 void fileIO() {
@@ -23,7 +40,7 @@ int main() {
 ```
 
 ### Input
-Now in the input.txt file, you design as the inputs are given in the following case the input was
+Now in the `input.txt` file, you design as the inputs are given in the following case the input was
 
 ```
 3

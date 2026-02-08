@@ -58,6 +58,9 @@ nav:
     - DP on Strings: ./dp/dp-on-strings.md
     - Matrix Chain Multiplication: ./dp/mcm.md
     - DP on Stocks: ./dp/stock-dp.md
+  - Competitive Programming:
+    - CP 31 Sheets: ./cp31/cp31.md
+    - 1000 Rated: ./cp31/1000.md
 
 theme:
   name: material

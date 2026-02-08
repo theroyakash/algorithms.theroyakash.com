@@ -1,94 +1,41 @@
 @font-face {
-	font-family: "Computer Modern";
-	src: url("./cmunrm.woff");
+	font-family: "Signifier";
+	src: url("./Signifier.ttf") format("truetype");
 	font-weight: regular;
 }
 
 @font-face {
-	font-family: "Computer Modern";
-	src: url("./cmunbx.woff");
-	font-weight: bold;
+	font-family: "DaVinci Italics";
+	src: url("./TRJNDaVinci-Italic.ttf") format("truetype");
+	font-weight: regular;
+	font-style: italic;
 }
 
 @font-face {
-	font-family: "Computer Modern Code";
-	src: url("./cmuntt.woff");
+	font-family: "DaVinci";
+	src: url("./TRJNDaVinci.otf") format("opentype");
 	font-weight: regular;
 }
 
-@font-face {
-	font-family: "Computer Modern Code Bold";
-	src: url("./cmuntb.woff");
-	font-weight: bold;
+body{
+    font-family: "Signifier", -apple-system, BlinkMacSystemFont, 'Inter';
 }
 
-@font-face {
-	font-family: "Premium Modern";
-	src: url("./Regards.ttf");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "Recoleta Regular";
-	src: url('./Recoleta-Regular.ttf');
-	font-weight: regular;
-}
-
-@font-face {
-	font-family: "Recoleta Bold";
-	src: url('./Recoleta-Bold.ttf');
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "mono";
-	src: url('./mono-b.ttf');
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "vv";
-	src: url('./vv.ttf');
-	font-weight: regular;
-}
-
-@font-face {
-	font-family: "vb";
-	src: url('./vb.ttf');
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "segoe";
-	src: url('./SegoeUI.ttf');
-	font-weight: regular;
-}
-
-@font-face {
-	font-family: "segoe";
-	src: url('./SegoeUIBold.ttf');
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "Product Sans";
-	src: url("./pbold.ttf");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "Product Sans";
-	src: url("./ProductSans-Regular.ttf");
-	font-weight: normal;
-}
-
-:root{
-    --md-text-font: "Product Sans", "Inter";
-	--md-code-font: "mono";
-}
 
 h1 {
-	font-family: "Product Sans", "Premium Modern", "Computer Modern", -apple-system, BlinkMacSystemFont, 'Inter';
-    font-weight: bold;
+	font-family: "DaVinci Italics", -apple-system, BlinkMacSystemFont, 'Inter';
+	letter-spacing: -1px;
+}
+
+h2, h3, h4, h5, h6{
+    font-family: "DaVinci", -apple-system, BlinkMacSystemFont, 'Inter';
     letter-spacing: -1px;
+}
+
+p{
+    font-family: "Signifier", -apple-system, BlinkMacSystemFont, 'Inter';
+}
+
+a{
+    font-family: "Signifier", -apple-system, BlinkMacSystemFont, 'Inter';
 }
